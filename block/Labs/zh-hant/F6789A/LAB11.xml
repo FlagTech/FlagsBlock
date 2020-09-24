@@ -1,0 +1,211 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="(=5+;sIiF-,_^+FXMe^k" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="N6E%NuO-;q@}C/li+iv6">
+        <field name="VAR">計數器</field>
+        <value name="VALUE">
+          <block type="math_number" id="@Y;~FQ?}Zg,h``UsJ9vH">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="x0`2ZbT{D#MdT2DOVrP!">
+            <field name="VAR">按鈕腳位</field>
+            <value name="VALUE">
+              <block type="io_allpins" id=")rY`HWrc}OX7*N?q.US,">
+                <field name="PIN">2</field>
+              </block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="WJUpeQU#y5x@0EO^By}(">
+                <mutation name="七段顯示器顯示數字">
+                  <arg name="數字"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="variables_get" id="z+=DnwD0Nqi;/]lbm-sG">
+                    <field name="VAR">計數器</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="155">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="]Ty!rC37Q0i_*1FjlC%[">
+        <value name="IF0">
+          <block type="logic_compare" id="R27Gb](:8Kzyx__YqWnS">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread_var" id="O]LK}G[ygtj#m~1_1y:s">
+                <value name="PIN">
+                  <block type="variables_get" id="UC`_J[Q?YTv:R}l;WF9G">
+                    <field name="VAR">按鈕腳位</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="Nw5IG{z]^vpLPt6|C=c2">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_waitUntil" id=")kEJ:Y`PTukHHKHbDI?d">
+            <value name="BOOL">
+              <block type="logic_compare" id="=N[UzrPV0J|Pl63T3ohB">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="io_digitalread_var" id="k4GxZ~@Kln6}iVW`(P^G">
+                    <value name="PIN">
+                      <block type="variables_get" id="!s3O|y(ZuNzm.}fr/LMW">
+                        <field name="VAR">按鈕腳位</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="io_highlow" id="QO/@Pr05FPwn}cGs0B*B">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="math_change" id="^=O-,3Cntv(W)[:)d7HV">
+                <field name="VAR">計數器</field>
+                <value name="DELTA">
+                  <block type="math_number" id="gz]D?h=(v70k,sz5q!If">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="K=lXgFR{,)sKd~FpaP0J">
+                    <value name="IF0">
+                      <block type="logic_compare" id="bU@mpbVCCY+CXB7wLl/5">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="#i]JK}v[;RXjGrvZc9)m">
+                            <field name="VAR">計數器</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="dD8J2O-^AiJ9Y7=`pG4d">
+                            <field name="NUM">9</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="DtF+x,wof(E5:m|Bf1U+">
+                        <field name="VAR">計數器</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="L9rLJ^!@dd{zDiGF]mgn">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="procedures_callnoreturn" id="IdwZdCIX}/BK0e@=;kY)">
+                        <mutation name="七段顯示器顯示數字">
+                          <arg name="數字"></arg>
+                        </mutation>
+                        <value name="ARG0">
+                          <block type="variables_get" id="9-m)[O6WWQ7O%VphvGR7">
+                            <field name="VAR">計數器</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="array_2dim_create_with" id="+JQyaay[1p/@VQZ;0AB~" x="0" y="469">
+    <mutation items="10"></mutation>
+    <field name="NAME">0-9字型圖案</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS0">1,1,1,1,1,1,0</field>
+    <field name="ITEMS1">0,1,1,0,0,0,0</field>
+    <field name="ITEMS2">1,1,0,1,1,0,1</field>
+    <field name="ITEMS3">1,1,1,1,0,0,1</field>
+    <field name="ITEMS4">0,1,1,0,0,1,1</field>
+    <field name="ITEMS5">1,0,1,1,0,1,1</field>
+    <field name="ITEMS6">1,0,1,1,1,1,1</field>
+    <field name="ITEMS7">1,1,1,0,0,0,0</field>
+    <field name="ITEMS8">1,1,1,1,1,1,1</field>
+    <field name="ITEMS9">1,1,1,1,0,1,1</field>
+  </block>
+  <block type="procedures_defnoreturn" id="ge5_Z^aPtZ|giIvd5[oF" x="0" y="772">
+    <mutation>
+      <arg name="數字"></arg>
+    </mutation>
+    <field name="NAME">七段顯示器顯示數字</field>
+    <comment pinned="false" h="80" w="160">七段顯示器顯示數字</comment>
+    <statement name="STACK">
+      <block type="controls_for" id="Bl)PwAQ9yQ`^Yd|9_+.}">
+        <field name="VAR">筆劃</field>
+        <value name="FROM">
+          <block type="math_number" id="7vX*wpb?(Y2c1#x;6^Q~">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="PdK((7]DxBG9Z1vk;G@H">
+            <field name="NUM">6</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="7}G*-2g9A5F-tMlNI5K4">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="io_digitalwrite_var" id="jI7!,u*S2DdGzhL5Oak`">
+            <value name="PIN">
+              <block type="math_arithmetic" id="L%k(f4GIs{|[oejd)=n{">
+                <field name="OP">ADD</field>
+                <value name="A">
+                  <block type="variables_get" id="#fBopxfbd2j@O~@Jvk(m">
+                    <field name="VAR">筆劃</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="`A?3Aqb}jyO!Bqyw!=Vo">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="array_2dim_get_index" id="FZ/nhS1JjDSeJOvE~6rN">
+                <field name="NAME">0-9字型圖案</field>
+                <value name="INDEX1">
+                  <block type="variables_get" id="}4`tagYTE:**t%PILu/O">
+                    <field name="VAR">數字</field>
+                  </block>
+                </value>
+                <value name="INDEX2">
+                  <block type="variables_get" id="dJp%=-Q}Zt*jSM0^1tYB">
+                    <field name="VAR">筆劃</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

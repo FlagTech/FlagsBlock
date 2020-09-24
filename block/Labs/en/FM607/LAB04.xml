@@ -1,0 +1,96 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="134" y="-91">
+    <statement name="LOOP_FUNC">
+      <block type="wemos_motor_move" id="1eO.z;q9joGA9^8NY5dl">
+        <value name="L_MOTOR">
+          <block type="math_number" id="3sVqzK{8)[]?pvsn.-nw">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+        <value name="R_MOTOR">
+          <block type="math_number" id="ZxBYAFmC+5xD]K^x1hk(">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="mZ)PP?Nkb2Xrpg#jwUN2">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="{V3f^(z#uJGexx?4lTeV">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="wemos_motor_move" id="i{~OZJt+J)g[ZL*]14qf">
+                <value name="L_MOTOR">
+                  <block type="math_number" id="5U5se!i(oy4j+{g|Wi^(">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="R_MOTOR">
+                  <block type="math_number" id="h`Gb[DSg%A`YMMXGHKrF">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="4[c9-5ecY0|E3/HJ,oAw">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="d/)sy?^d@S`A.Mg]4n._">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="wemos_motor_move" id="sAb^68xe9IwZ{+8r0vQd">
+                        <value name="L_MOTOR">
+                          <block type="math_number" id="jJ}gU%yI/gxF*i}9n)tj">
+                            <field name="NUM">-50</field>
+                          </block>
+                        </value>
+                        <value name="R_MOTOR">
+                          <block type="math_number" id="w7NH=+:HcoaI2I+8i/;*">
+                            <field name="NUM">-50</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="NtZS/t2a5x6aumF~i1I7">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="oR^EdAUGwS^Y0p@2}^dV">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="wemos_motor_move" id="dFFXR6Ka=Jh[r_e,=,5D">
+                                <value name="L_MOTOR">
+                                  <block type="math_number" id="AJPmy_Cru0ZgBzYRVZHr">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="R_MOTOR">
+                                  <block type="math_number" id="k#d7vgYS[ArcWzt~.#)f">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="time_delay" id="@.*LF4ec#LiNA.O+VwH;">
+                                    <value name="DELAY_TIME_MILI">
+                                      <block type="math_number" id=":pq/kuGpigjvp3CV=STD">
+                                        <field name="NUM">1000</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

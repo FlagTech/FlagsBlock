@@ -1,0 +1,259 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="cxvA`Xw%+A}7a*;0]6O9" x="39" y="83">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="`!b4{Py[Xie,pf}}kijl">
+        <field name="VAR">喇叭腳位</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="]`Q=y3MPr!OGL!GtTYGS">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="io_builtin_led" id="/mL=EK^P8I,H2L^gF;Y@">
+            <field name="BUILT_IN_LED">D4</field>
+            <value name="STATE">
+              <block type="io_highlow" id="s%uO9a055l]S{la|0?u0">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="esp8266_sta_setup" id="3@xg#r=}.r+t=^9dm6hT">
+                <value name="SSID">
+                  <block type="text" id="w=N/oYXFoZz-GGf2C2HV">
+                    <field name="TEXT">您的WiFi網路名稱</field>
+                  </block>
+                </value>
+                <value name="PINCODE">
+                  <block type="text" id="WgCDA@n25}/;ks%IHM4M">
+                    <field name="TEXT">您的WiFi網路密碼</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_whileUntil" id="2elH3tJp/qf!D;0iOHi^">
+                    <field name="MODE">WHILE</field>
+                    <value name="BOOL">
+                      <block type="logic_negate" id=")3j2{:)L(MMk}AIs({~Q">
+                        <value name="BOOL">
+                          <block type="esp8266_connected" id="SrS/ADsK!D.zrDtxx:ta"></block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="time_delay" id="c:8jGIYiRrjXxYQ?gB-B">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="]w8:Uj1?*f3%vC%`UFR#">
+                            <field name="NUM">1000</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="io_builtin_led" id="P()J}p4~^|jK-(xEEAfh">
+                        <field name="BUILT_IN_LED">D4</field>
+                        <value name="STATE">
+                          <block type="io_highlow" id="(0RzIaQC9K].s,poiaDn">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="esp8266_wifi_ap_sta" id="ES7btHCTpUhjIy+|a5x-">
+                            <next>
+                              <block type="controls_waitUntil" id="`sn!]]{*{U4cJx{?F-#r">
+                                <value name="BOOL">
+                                  <block type="esp8266_ap_setup" id="3^dX6y`KWkh%VcJZ+k_=">
+                                    <field name="CHANNEL">1</field>
+                                    <field name="HIDDEN">FALSE</field>
+                                    <value name="SSID">
+                                      <block type="text_join" id="w3#P+TIh3~sYEKPCUAIV">
+                                        <mutation items="2"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="/3(cc7j1z|^U|a95%C_h">
+                                            <field name="TEXT">IP-</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="esp8266_localIP" id="4mxobzBo-6*sUq+tn,Nk"></block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="PINCODE">
+                                      <block type="text" id="NYZ)e-v3p+U_:SOLL4*f">
+                                        <field name="TEXT"></field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="esp8266_webserver_secure_setup" id="BoN!52tO2U:,UN^DYoY(">
+                                    <field name="PORT">443</field>
+                                    <next>
+                                      <block type="esp8266_webserver_on2" id="rp2@3d:u:Z6sF95/6c83">
+                                        <field name="FUNCNAME">播放音樂</field>
+                                        <field name="PATH">/playmusic</field>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="36" y="475">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="S^2l+P)6?0)`xRl;vuB4"></block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="g;rz=}8x-n=OZZlAsb[/" x="40" y="560">
+    <field name="NAME">播放音樂</field>
+    <statement name="STACK">
+      <block type="esp8266_webserver_send" id=",,Sx9k-%:iFI9-!aIIXg">
+        <value name="STATUS">
+          <block type="math_number" id="?rY#V(Oy%h7D(K8Z9bft">
+            <field name="NUM">200</field>
+          </block>
+        </value>
+        <value name="MIMETYPE">
+          <block type="text" id="B_dZvQEpNV[lyjNw1@EZ">
+            <field name="TEXT">text/plain</field>
+          </block>
+        </value>
+        <value name="CONTENT">
+          <block type="text" id="r!eO~cvNJBQ44_]M.**-">
+            <field name="TEXT">OK</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="uohMxgO8*~Cm);B[-c/[">
+            <value name="IF0">
+              <block type="esp8266_webserver_has_arg" id="Y-c=^QUNEt(O4#R(X0{A">
+                <value name="ARGNAME">
+                  <block type="text" id="Tp{m+/DCG2j-3bcYe,wv">
+                    <field name="TEXT">mood</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="U7b*=qQS^G?P#Wy@2.5m">
+                <mutation elseif="2"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="7=w?Yr|B5(VFcOU!iR9_">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="esp8266_webserver_arg_by_name" id="Q.Z/OM0Mn|Op^F}nFw]q">
+                        <value name="ARGNAME">
+                          <block type="text" id="n8+GJ/9Fx4pAyH@Pw6Rr">
+                            <field name="TEXT">mood</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="+ThQP+gdkBJr*uS+LUVA">
+                        <field name="TEXT">good</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="io_tone_nummusic" id="uY/UE9)YTwcWJE=/_=f!">
+                    <field name="TEMPOTIME">300</field>
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="o_~NYGe[R%YyHn%1snhv">
+                        <field name="VAR">喇叭腳位</field>
+                      </block>
+                    </value>
+                    <value name="TONENUMMUSIC">
+                      <block type="text" id="GswNj]?[Jlip=83oOGvJ">
+                        <field name="TEXT">3 3 4 5  5 4 3 2  1 1 2 3 3- 2_ 2</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="BGTI)1M0mYZXajNb}EdG">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="esp8266_webserver_arg_by_name" id="JWR(B7uL)dg?G;cbsvZN">
+                        <value name="ARGNAME">
+                          <block type="text" id="vJwdsY6Tg]mz%JBA6xtF">
+                            <field name="TEXT">mood</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="Ji[#~18v-i#c.z;@OF,L">
+                        <field name="TEXT">normal</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="io_tone_nummusic" id=")XhK^NKA6MjkFU!v873]">
+                    <field name="TEMPOTIME">300</field>
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="*_1ndDwrTV5L!zE(VVF;">
+                        <field name="VAR">喇叭腳位</field>
+                      </block>
+                    </value>
+                    <value name="TONENUMMUSIC">
+                      <block type="text" id="ZLJ-P1}:DEv:T7qVn7Y*">
+                        <field name="TEXT">1 1 5 5 6 6 5- 4 4 3 3 2 2 1-</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF2">
+                  <block type="logic_compare" id="Ix}g8Jp9Z/l}gq72@I.L">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="esp8266_webserver_arg_by_name" id="MGB8(E;!.0GnP#u?lh{0">
+                        <value name="ARGNAME">
+                          <block type="text" id="LMsGbq5GR|cFH)rEQR;!">
+                            <field name="TEXT">mood</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="^av9%?4eu5)bW/lCZ~I[">
+                        <field name="TEXT">bad</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO2">
+                  <block type="io_tone_nummusic" id="fYEs=F{5@YS#lEYaNa.=">
+                    <field name="TEMPOTIME">300</field>
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="iD!7YUi!)dJW5qI/iMo1">
+                        <field name="VAR">喇叭腳位</field>
+                      </block>
+                    </value>
+                    <value name="TONENUMMUSIC">
+                      <block type="text" id="W5^A(x)6yAI9s`3q!P#E">
+                        <field name="TEXT">6_6_6 5_3_5 3_2_3 2_1_21_6. 2_3_2_3_1_3._7._6.</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

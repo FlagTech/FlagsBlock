@@ -1,0 +1,53 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="~i+_;Ngf]9:Rm8zdT#N8" x="41" y="-276">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="9WX;|n^qgcaDXFB86jN8">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="variables_set" id="J,JqXMc3CK~oc#rVSo-8">
+            <field name="VAR">計數器</field>
+            <value name="VALUE">
+              <block type="math_number" id="?6QiSG_L!.[@Ubnb;|a]">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="42" y="-157">
+    <statement name="LOOP_FUNC">
+      <block type="math_change2" id="frc%s/gL=DttVlE#[9-X">
+        <field name="VAR">計數器</field>
+        <field name="OP">+</field>
+        <value name="DELTA">
+          <block type="math_number" id="d%f`8sSq15+w=eQ(4CUa">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <next>
+          <block type="serial_print" id="ak+5BPy%P}yXx#|Jw.LN">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="variables_get" id="CPCDrfAt*[*C5Rt^rJv.">
+                <field name="VAR">計數器</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="nZM7GL6N-EATA#mP6%Ch">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="^33|GuX?Zy5tb+?Z6f?h">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

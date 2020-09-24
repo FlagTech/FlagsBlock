@@ -1,0 +1,2245 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="5=Bs2FTnu]PxCwhVI^OP" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id=".-N-YhJCd!(9bEngURBv">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">115200</field>
+        <next>
+          <block type="dancerobot_use" id=";rk)8HJO{ZR}A|#YZ7v)">
+            <field name="RFPIN">D1</field>
+            <field name="LFPIN">D2</field>
+            <field name="RLPIN">D3</field>
+            <field name="LLPIN">D4</field>
+            <next>
+              <block type="dancerobot_restoretrim" id="Ru6rH(?YYka{g6{o?c?1" disabled="true">
+                <next>
+                  <block type="dancerobot_pos" id="myXqG_|`@8e,w}iA`]mn">
+                    <value name="RF_ANGLE">
+                      <block type="math_number" id="?0Q3C}|F;tXl#oHU@c([">
+                        <field name="NUM">90</field>
+                      </block>
+                    </value>
+                    <value name="LF_ANGLE">
+                      <block type="math_number" id="eB%r9Kl|^|1!S~aZ?%m2">
+                        <field name="NUM">90</field>
+                      </block>
+                    </value>
+                    <value name="RL_ANGLE">
+                      <block type="math_number" id="i*oqu9qqL_o{WO`=?3j#">
+                        <field name="NUM">90</field>
+                      </block>
+                    </value>
+                    <value name="LL_ANGLE">
+                      <block type="math_number" id="@g5j6?hOqTB{CDh/N1hE">
+                        <field name="NUM">90</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="dancerobot_setbpm" id=":PYgwot{llTpE(z5,b8D">
+                        <value name="BPM">
+                          <block type="math_number" id="[31wOww?+(hLm#WR%^wL">
+                            <field name="NUM">97</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="@F*UWd[/hbP/z(aE)u5u">
+                            <field name="VAR">舞步種類</field>
+                            <value name="VALUE">
+                              <block type="text" id="X!K?R,F.4bVwVPsRGWxu">
+                                <field name="TEXT">0</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="misc_comment" id="9/a+XCTvzy/2nH`%e74t">
+                                <field name="COMMENT">建立特殊的 SSID 名稱</field>
+                                <statement name="DO">
+                                  <block type="variables_set" id="xz)3#pOwyOLJLPnyIIyo">
+                                    <field name="VAR">實體位址</field>
+                                    <value name="VALUE">
+                                      <block type="esp8266_softAPMAC" id="1_PI4a[p1)Bpg?SP#[9*"></block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="?)5fUHS9Hp/LD@8GJGL+">
+                                        <field name="VAR">SSID</field>
+                                        <value name="VALUE">
+                                          <block type="text_join" id="sy1K^+zf{1`;GXQ_^MLm">
+                                            <mutation items="3"></mutation>
+                                            <value name="ADD0">
+                                              <block type="text" id="cjOxlIW5+W~9)?kVP,Zr">
+                                                <field name="TEXT">FLAG-</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD1">
+                                              <block type="text_substring" id="|jugh!1ES{oc?P3bxZ#(" inline="false">
+                                                <field name="VAR">實體位址</field>
+                                                <value name="FROM">
+                                                  <block type="math_arithmetic" id="X#Xu*8*277FVl3JZgYxg">
+                                                    <field name="OP">MINUS</field>
+                                                    <value name="A">
+                                                      <block type="text_length" id="@]o.V|jpn)iH]mtp2(us">
+                                                        <value name="VALUE">
+                                                          <block type="variables_get" id="8ro}6^6CJ{i=Mx{%Eie{">
+                                                            <field name="VAR">實體位址</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number" id="V[1fC!L9D[[vb8ZVpv3E">
+                                                        <field name="NUM">5</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <value name="TO">
+                                                  <block type="math_arithmetic" id="89/9]T-rsVJ4X0,yl%q_">
+                                                    <field name="OP">MINUS</field>
+                                                    <value name="A">
+                                                      <block type="text_length" id="i*m=H|;^6a9pVUUhyRT#">
+                                                        <value name="VALUE">
+                                                          <block type="variables_get" id="I-q{g`YUP04eBE;MA%{|">
+                                                            <field name="VAR">實體位址</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number" id=",j8!DGz;jvIzc_|pfyk(">
+                                                        <field name="NUM">3</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="ADD2">
+                                              <block type="text_substring_end" id="FOacj,QRErqMW@QMmhi-" inline="false">
+                                                <field name="VAR">實體位址</field>
+                                                <value name="FROM">
+                                                  <block type="math_arithmetic" id="Y%7TDQoD=0vFV(k1a18:">
+                                                    <field name="OP">MINUS</field>
+                                                    <value name="A">
+                                                      <block type="text_length" id=",93fiRVB5q#@fr|Fpj^f">
+                                                        <value name="VALUE">
+                                                          <block type="variables_get" id="mT8)Ph.nb7eU;^y.QnB?">
+                                                            <field name="VAR">實體位址</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number" id="Fys=(T/~{cIvOngglb0c">
+                                                        <field name="NUM">2</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="misc_comment" id="[,ZmkJJC{OF#UN?`,w@5">
+                                    <field name="COMMENT">自建無線網路</field>
+                                    <statement name="DO">
+                                      <block type="controls_if" id="}NZL*I/{1q@f.6nYZ4vr">
+                                        <mutation else="1"></mutation>
+                                        <value name="IF0">
+                                          <block type="esp8266_ap_setup" id="NYXabnEbTSX|{I*x3,73">
+                                            <field name="CHANNEL">1</field>
+                                            <field name="HIDDEN">FALSE</field>
+                                            <value name="SSID">
+                                              <block type="variables_get" id="2t)GPttkC:5i`3sHNhu?">
+                                                <field name="VAR">SSID</field>
+                                              </block>
+                                            </value>
+                                            <value name="PINCODE">
+                                              <block type="text" id="0lPMR}qf/4:4o!#lg)0n">
+                                                <field name="TEXT"></field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="serial_print" id="gUh],P_r`;cGIve#vMa:">
+                                            <field name="SERIAL_ID">Serial</field>
+                                            <field name="NEW_LINE">TRUE</field>
+                                            <value name="CONTENT">
+                                              <block type="text_join" id="n+:4FUc.xY?-,Uc,XLGq">
+                                                <mutation items="2"></mutation>
+                                                <value name="ADD0">
+                                                  <block type="text" id="iAr{AM(ao@EPr9Pwo,Yx">
+                                                    <field name="TEXT">已自建無線網路：</field>
+                                                  </block>
+                                                </value>
+                                                <value name="ADD1">
+                                                  <block type="variables_get" id="(uFD6,%`gppJYS5O5k].">
+                                                    <field name="VAR">SSID</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="serial_print" id="5fC4YC19=qgONWI!HBy!">
+                                                <field name="SERIAL_ID">Serial</field>
+                                                <field name="NEW_LINE">TRUE</field>
+                                                <value name="CONTENT">
+                                                  <block type="text_join" id="/CM{A26Px?X)O@E22]V,">
+                                                    <mutation items="2"></mutation>
+                                                    <value name="ADD0">
+                                                      <block type="text" id="A8Q.ZK*2TbOHOK=gjNB6">
+                                                        <field name="TEXT">自建 WiFi 網路 IP：</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD1">
+                                                      <block type="esp8266_softAPIP" id="lQ[DV_^@rX=xSz._SVQ,"></block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                        <statement name="ELSE">
+                                          <block type="serial_print" id="W_]P-{_B~-yW%:@~.7eN">
+                                            <field name="SERIAL_ID">Serial</field>
+                                            <field name="NEW_LINE">TRUE</field>
+                                            <value name="CONTENT">
+                                              <block type="text" id="nv!+kx^enUMzKJHPvWYl">
+                                                <field name="TEXT">無法自建無線網路</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </statement>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="esp8266_webserver_setup" id="pN,Wugzd6[7M9,.}-{q,">
+                                        <field name="PORT">80</field>
+                                        <next>
+                                          <block type="esp8266_webserver_on2" id="rpk/9o}~FwzhQn1Ri+;n">
+                                            <field name="FUNCNAME">接收指令</field>
+                                            <field name="PATH">/dance</field>
+                                            <next>
+                                              <block type="esp8266_webserver_on2" id="%q8,7ozV+~GeFFGx`xC`">
+                                                <field name="FUNCNAME">調整馬達</field>
+                                                <field name="PATH">/adj</field>
+                                                <next>
+                                                  <block type="variables_set" id="^%pdSct(rF^CxJ(]r;YW">
+                                                    <field name="VAR">設定中？</field>
+                                                    <value name="VALUE">
+                                                      <block type="logic_boolean" id="i~KmcSWWsJ|gm)v-zU6U">
+                                                        <field name="BOOL">FALSE</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="=Mzsht46`%4AsT,(oZuh" x="0" y="865">
+    <field name="NAME">下一舞步</field>
+    <statement name="STACK">
+      <block type="variables_set" id="(twITDQbB{D|^i+9V]HY">
+        <field name="VAR">行尾位置</field>
+        <value name="VALUE">
+          <block type="text_find" id="!b,C(aH+fs^pV[Z|(0RT">
+            <field name="VAR">編舞內容</field>
+            <value name="FROM">
+              <block type="math_number" id="]{FyYAQ[Anp3N_a7#=L=">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="SUBSTRING">
+              <block type="text_lf" id="*IU@^?oF=Ts./XmGlB%V"></block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="CzMv)}V6HY@%cnNCcE+j">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="Fb`O4b@/!!oM1IEo9-28">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="T(lavOyx~y5;JhBYC1nC">
+                    <field name="VAR">行尾位置</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="}`a(r5~5vZ)qOf)AkxYf">
+                    <field name="NUM">-1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="T[X,/P)*DKfp}c3znqZI">
+                <field name="VAR">目前舞步</field>
+                <value name="VALUE">
+                  <block type="variables_get" id="3zgiE/Q*l{w8/4)EjK1M">
+                    <field name="VAR">編舞內容</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="^}iq;,g5`v)Rlra()BS-">
+                    <field name="VAR">編舞內容</field>
+                    <value name="VALUE">
+                      <block type="text" id="u@Q!S5nL#Eu4fMZYoETv">
+                        <field name="TEXT"></field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="variables_set" id="wVD)c=bp9r]BY8=n:v4j">
+                <field name="VAR">目前舞步</field>
+                <value name="VALUE">
+                  <block type="text_substring" id="t*V#]#XLM#p{Ge;s{CVz">
+                    <field name="VAR">編舞內容</field>
+                    <value name="FROM">
+                      <block type="math_number" id="za_Q}_ZT=}iGH,02989K">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="TO">
+                      <block type="variables_get" id="T4Y6,mi_{]OYlz0cPH-(">
+                        <field name="VAR">行尾位置</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="YgV),FyY3F2I}bXl|gEu">
+                    <field name="VAR">編舞內容</field>
+                    <value name="VALUE">
+                      <block type="text_substring_end" id="u*Y:K~*L?m*@q]CU@Sb[">
+                        <field name="VAR">編舞內容</field>
+                        <value name="FROM">
+                          <block type="math_arithmetic" id="vf!=Ta@WsNc:[}s^%`7z">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="variables_get" id="g3WYG4/VF3f^vE4U6;_~">
+                                <field name="VAR">行尾位置</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="7ywEPhmPBbsm|eXMcIIN">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="variables_set" id="TpGS2pqyw1ry3[9gBL3-">
+                <field name="VAR">逗號位置</field>
+                <value name="VALUE">
+                  <block type="text_find" id="aF)#x5q@we5HOt9|o7Dx">
+                    <field name="VAR">目前舞步</field>
+                    <value name="FROM">
+                      <block type="math_number" id="[MBq!GP4e.T,/~hHRBlN">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="SUBSTRING">
+                      <block type="text" id="JZaj(WCA.=0X?Cl^-h/#">
+                        <field name="TEXT">,</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="|4f.!bG^Z?UHONu9ZQi,">
+                    <value name="IF0">
+                      <block type="logic_compare" id="YYl|3aSu3^OIbzVIzzP!">
+                        <field name="OP">NEQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="=6Z|*CdO5wyCz}y/Lf[D">
+                            <field name="VAR">逗號位置</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="u?Zzc%hO{@PYvy}kAdzr">
+                            <field name="NUM">-1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="5fu~P!kTY.s~fu_Qff5_">
+                        <field name="VAR">舞步種類</field>
+                        <value name="VALUE">
+                          <block type="text_substring" id="^@7B@[@%v!BO7[?=TI{U">
+                            <field name="VAR">目前舞步</field>
+                            <value name="FROM">
+                              <block type="math_number" id="::+o@yn*}S!=Q6HPMgS`">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="TO">
+                              <block type="variables_get" id="@S[Go=x{M=*UdRxX4#xS">
+                                <field name="VAR">逗號位置</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id=";:U(0~ByOW(^S`UK2XcC">
+                            <field name="VAR">目前舞步</field>
+                            <value name="VALUE">
+                              <block type="text_substring_end" id="Y_):[vU.C__,~w1/3kOW">
+                                <field name="VAR">目前舞步</field>
+                                <value name="FROM">
+                                  <block type="math_arithmetic" id="@W`T|ug61DH7OXv7`{JR">
+                                    <field name="OP">ADD</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="VO|K7O-UVyzmFYS98y[x">
+                                        <field name="VAR">逗號位置</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="(u1WOx%pR%lbhv8y4bHX">
+                                        <field name="NUM">1</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="o.sc3,#oUyW=C?av6DVL">
+                                <field name="VAR">逗號位置</field>
+                                <value name="VALUE">
+                                  <block type="text_find" id="!Jq}#81*#/COO06:LOxm">
+                                    <field name="VAR">目前舞步</field>
+                                    <value name="FROM">
+                                      <block type="math_number" id="X!j:?r@-?Hl=hjJK@Ars">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="SUBSTRING">
+                                      <block type="text" id="Z}Lv5w70w?mkj%WU0doX">
+                                        <field name="TEXT">,</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_if" id="~0FananE{SpI{K0EIs+e">
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="7*-XJ@V.,0#l4RO`p,ZE">
+                                        <field name="OP">NEQ</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="LC,ZB1j%4m}cNvTW!HfS">
+                                            <field name="VAR">逗號位置</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="aLX_jbr39L,e)9cs7g::">
+                                            <field name="NUM">-1</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="variables_set" id="_WLpIuJ{*a_gVp*)L/,F">
+                                        <field name="VAR">次數文字</field>
+                                        <value name="VALUE">
+                                          <block type="text_substring" id="h_%Y,trjC8f@/w:0fX{H">
+                                            <field name="VAR">目前舞步</field>
+                                            <value name="FROM">
+                                              <block type="math_number" id="T8p0g~2Lx3Z{)C6_Zvn8">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <value name="TO">
+                                              <block type="variables_get" id="OAj+b0bD0vw268a7.:gP">
+                                                <field name="VAR">逗號位置</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="FMjN^]2G.QcN^q^?,`D8">
+                                            <field name="VAR">次數</field>
+                                            <value name="VALUE">
+                                              <block type="text_atoi" id="5+.yDvX4WqEsDjH`rzk9">
+                                                <field name="VAR">次數文字</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="BKx5{:0Ih/(Ul`=^PfHZ">
+                                                <field name="VAR">拍數文字</field>
+                                                <value name="VALUE">
+                                                  <block type="text_substring_end" id="mc2Kl;KL}!di9eihX^h2">
+                                                    <field name="VAR">目前舞步</field>
+                                                    <value name="FROM">
+                                                      <block type="math_arithmetic" id="WFzM;m6TdSnxirk|@`hH">
+                                                        <field name="OP">ADD</field>
+                                                        <value name="A">
+                                                          <block type="variables_get" id="k|E9QhTD(ihPM:{Mj7M3">
+                                                            <field name="VAR">逗號位置</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="math_number" id="n5NK6G?BPMwY}5Cx*a|:">
+                                                            <field name="NUM">1</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id="ZY*g:j@cHiQvD6WsuXp0">
+                                                    <field name="VAR">拍數</field>
+                                                    <value name="VALUE">
+                                                      <block type="text_atof" id="zPW#q5;nOjwxA*J_wd`g">
+                                                        <field name="VAR">拍數文字</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="1565">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="E;-UheLXQAeg~fv!oq/8">
+        <next>
+          <block type="controls_if" id="PFp4s;~@-Rb}0KDgD8Cx">
+            <value name="IF0">
+              <block type="logic_negate" id="19c/?6.Obs[[TC:hD:|-">
+                <value name="BOOL">
+                  <block type="variables_get" id="U!1+ga/woIu:lkk82YB^">
+                    <field name="VAR">設定中？</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="WV|d3*spOY(Zpo5FXq.4">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="ha7]mv6o+lA?GmC3jM26">
+                    <field name="OP">NEQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="^Yl[0u%p+42S|3jL#Dlw">
+                        <field name="VAR">編舞內容</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="U(lR@mVSsO#12,{LaA[Q">
+                        <field name="TEXT"></field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="procedures_callnoreturn" id="rwHn(K*OZ[eO#s6TG(Ix">
+                    <mutation name="下一舞步"></mutation>
+                    <next>
+                      <block type="procedures_callnoreturn" id="gxzb/I5]N+f[~oFwR,EJ">
+                        <mutation name="跳舞步"></mutation>
+                        <next>
+                          <block type="variables_set" id="2W]B@1N_b2F=C`c2{?15">
+                            <field name="VAR">舞步種類</field>
+                            <value name="VALUE">
+                              <block type="text" id="-=U`_*hCS!p`.)dZzE8F">
+                                <field name="TEXT">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="procedures_callnoreturn" id="vsiT9ChDV/{{gYzon:Rw">
+                    <mutation name="跳舞步"></mutation>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="N~46}f.V(8zg}LlE0|]m" x="0" y="1864">
+    <field name="NAME">接收指令</field>
+    <statement name="STACK">
+      <block type="controls_if" id="bK{,6AIC.uRrTpRVNiVT">
+        <mutation elseif="1"></mutation>
+        <value name="IF0">
+          <block type="esp8266_webserver_has_arg" id="BJ^0R}nd(18d.fw6O=z4">
+            <value name="ARGNAME">
+              <block type="text" id="yeYn%JT[L8je!iK[a-mU">
+                <field name="TEXT">type</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="zCD,@H+#*IiBTt^2=g74">
+            <field name="VAR">舞步種類</field>
+            <value name="VALUE">
+              <block type="esp8266_webserver_arg_by_name" id="jh7XB7Z+[e/j@2*-)rG:">
+                <value name="ARGNAME">
+                  <block type="text" id="PpMV(UUR?Y@t7LP22+1K">
+                    <field name="TEXT">type</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="NA@,w3uw3Ly9nMlf!=x*">
+                <field name="VAR">拍數</field>
+                <value name="VALUE">
+                  <block type="math_number" id="s+V]3D3AlqXg6-A9Hbtt">
+                    <field name="NUM">1.0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="|x3CMjDrxVKcKPoj!H|#">
+                    <field name="VAR">次數</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="4eo,0fPl7NVf4QdQRg0W">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="?qZyjh3WFxQ~{EW9o0q~">
+                        <value name="IF0">
+                          <block type="logic_compare" id="iLo{S,6D+~X+E%=j_M8S">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="(b89*G^GfUJ|%:f_*_bH">
+                                <field name="VAR">舞步種類</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="text" id=",O/MnhzC~VcrE_*I*!+A">
+                                <field name="TEXT">H</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="6DeO6/lq`9_~h?W%r3Z+">
+                            <field name="VAR">拍數</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="amP6nk]an^=G@cy;=9k[">
+                                <field name="NUM">0.5</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="8,Tbur#CpdL?nC{!%wSD">
+                            <value name="IF0">
+                              <block type="logic_compare" id="%]dCT/+cp--~tUT,|Rqa">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="%%so6kOPSnG5N,mt7GzW">
+                                    <field name="VAR">舞步種類</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="text" id="4;~oG*K1if.N6X!u%G2m">
+                                    <field name="TEXT">I</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="variables_set" id="Htm]^DQ#d03Wh}hSu17V">
+                                <field name="VAR">拍數</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="%I@{8nYp(@~G|}1(;mVB">
+                                    <field name="NUM">8.0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="esp8266_webserver_has_arg" id="I,0VNX/66oa8^:KSbkDC">
+            <value name="ARGNAME">
+              <block type="text" id="YAs}Cm]p+~@QL=wkWpEc">
+                <field name="TEXT">bpm</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="variables_set" id="EdgaOOPbSmM#?|p~^ko~">
+            <field name="VAR">每分鐘節拍數</field>
+            <value name="VALUE">
+              <block type="esp8266_webserver_arg_by_name" id="-xrqzN*JXL~uQ=VaL^4,">
+                <value name="ARGNAME">
+                  <block type="text" id="*cK#c{KV_@o5cOygK%g4">
+                    <field name="TEXT">bpm</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="dancerobot_setbpm" id="Bt1Bt`+#0[XMAR174rnA">
+                <value name="BPM">
+                  <block type="text_atoi" id="Qlpa!OUt.#.ByW4^*Xb`">
+                    <field name="VAR">每分鐘節拍數</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="-2@#svE{PJX;v;|{bgFa">
+            <value name="IF0">
+              <block type="esp8266_webserver_has_arg" id="fyE9WCZ=(4M0kq{GwD+j">
+                <value name="ARGNAME">
+                  <block type="text" id="5tQ_ck;M[;c)#fA`NLt6">
+                    <field name="TEXT">steps</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="b*27@a|Os8}4;B/g%f:y">
+                <field name="VAR">編舞內容</field>
+                <value name="VALUE">
+                  <block type="esp8266_webserver_arg_by_name" id="tx5L3SK9Q37s6|H+*5yK">
+                    <value name="ARGNAME">
+                      <block type="text" id="Y_WHGTB^lzZ64RASPGd}">
+                        <field name="TEXT">steps</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="esp8266_webserver_send" id="%8uaJXL#Ah,F_O:/`#DM" inline="false">
+                <value name="STATUS">
+                  <block type="math_number" id="acF4Fj-e*/p0:Vd|p[dK">
+                    <field name="NUM">200</field>
+                  </block>
+                </value>
+                <value name="MIMETYPE">
+                  <block type="text" id="9d-w/}1E;9#E+%LzM;aW">
+                    <field name="TEXT">text/plain</field>
+                  </block>
+                </value>
+                <value name="CONTENT">
+                  <block type="text" id="7tC/B9xEAdcym/j94,,~">
+                    <field name="TEXT">OK</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id=";D9BG9HO9M[,;4[/zHrT" x="0" y="2500">
+    <field name="NAME">跳舞步</field>
+    <statement name="STACK">
+      <block type="controls_if" id="Zpub^?.cOjwnG%KY#xU^">
+        <mutation elseif="24" else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="[_c~S(H3l)rIzY8poL-o">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="I%KcFlH!8rBLumcZVwwe">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="V1nC)4EKX~R#eN{llDm~">
+                <field name="TEXT">A</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="dancerobot_primera_parte" id="/wfAytv7Il#oIwQHd`-I"></block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_compare" id="cCOte3`=J(/U1oR]6n]H">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="IB-*1TS/%!C}EXH(h]sP">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="AysejeBg]?opB}oX80Ky">
+                <field name="TEXT">B</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="dancerobot_lateral_fuerte" id="f,YyiAJ`CvD%A_hPs@c1">
+            <field name="SIDE">0</field>
+            <value name="TEMPO">
+              <block type="variables_get" id="%/_aRZP9N4F?5+*bNkUc">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF2">
+          <block type="logic_compare" id="SB]aRKJTiyQ4MoEY@Bpq">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="xhdxlqC//?zzX(L2BJlp">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="[H4(Y@lrOe:mArvHwcCy">
+                <field name="TEXT">C</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO2">
+          <block type="dancerobot_lateral_fuerte" id="y3O`n}:7PNFX+qppqz6I">
+            <field name="SIDE">1</field>
+            <value name="TEMPO">
+              <block type="variables_get" id="xI[,P:o(rP|QU=urR[XL">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF3">
+          <block type="logic_compare" id="k{A/;,qA]!2n)U3T]+bu">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id=".QnLA#7p7!.69m|P]v,A">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="ST:%m?gHCNwdsE4-]@:@">
+                <field name="TEXT">D</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO3">
+          <block type="dancerobot_crusaito" id="xrL6Zxc+I8^;F*A{_1t)">
+            <value name="STEPS">
+              <block type="variables_get" id="]GS!DC|=@I_nM/0W(NGc">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="8FnZJr{V;2_xWb@E2cFc">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF4">
+          <block type="logic_compare" id="Qes-k:Tsq=zCf`==k}yA">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="%9A6ajTHzna3%:T%)_Li">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="nB~9q#rvYDjgp#HrgVgV">
+                <field name="TEXT">E</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO4">
+          <block type="dancerobot_segunda_parte" id="-/5^Sg2}6!Rb#SN+?6N~"></block>
+        </statement>
+        <value name="IF5">
+          <block type="logic_compare" id="x/aZ(w|GVyi,}w~!h,Di">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="]j9O!Y7]8d]oChJmyxFc">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="it,^w,A:|*~?FrWGrPAN">
+                <field name="TEXT">F</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO5">
+          <block type="dancerobot_moonWalk" id="JK,O)f`*oA8E.4bF#d9?">
+            <field name="SIDE">0</field>
+            <value name="STEPS">
+              <block type="variables_get" id="2O!Wc0O2P83jb]=rnbLu">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="7WhP`80X1mn?r6Bpp/oy">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF6">
+          <block type="logic_compare" id="@0Bt.L@gZgno[%XnB;M)">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="w%e7DoRg6)0rtI%E21K6">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="dK~Q|#T27G/s+#ko8Nqn">
+                <field name="TEXT">G</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO6">
+          <block type="dancerobot_moonWalk" id="2*|0D(Ns!y19VGP7t`J1">
+            <field name="SIDE">1</field>
+            <value name="STEPS">
+              <block type="variables_get" id="j}Qe4^qr@Nrtd`EJr|~Z">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="w(*ki4#oPTq},LSW,0r0">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF7">
+          <block type="logic_compare" id="`CM{Amk.}O353^hl4|8(">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="i^:(l/(@)7Xp(;|_*BTI">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="(tpsz};JZY3UmopJCYf:">
+                <field name="TEXT">H</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO7">
+          <block type="dancerobot_flapping" id="L1C#?kwyFbg-yifFeajh">
+            <value name="STEPS">
+              <block type="variables_get" id="`ggqh[8Q7@^@(1|~6wXR">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="V~s%PXc19vbF/g1Yn4C(">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF8">
+          <block type="logic_compare" id="gK-W;zitdDSJh5meVEW5">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id=")QxcdsmU#k42#VScMVDm">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="WO!_Ln{T`uO6[:pQlIMe">
+                <field name="TEXT">I</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO8">
+          <block type="dancerobot_drunk" id="1hQ1Hm.ViSXD{3[Soe~7">
+            <value name="TEMPO">
+              <block type="variables_get" id="j8fJJR=jN6Gieg,Q4)M9">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF9">
+          <block type="logic_compare" id="[Ub8k;+V}LAE7Zi+iV^H">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="2e2z]R4u.cIO5l`Rrx4t">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="VO`i!PMK2I3`vRVSfg%T">
+                <field name="TEXT">J</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO9">
+          <block type="dancerobot_kick" id="irGjjIfa(!KzrHL%#k~l">
+            <field name="SIDE">0</field>
+            <value name="TEMPO">
+              <block type="variables_get" id="+F41Ti,a%-O/ruj_ENOy">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF10">
+          <block type="logic_compare" id="TlMzo8u.0nx@sC]Jled)">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="aI7aho7E9iDCP|RX`Cci">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="_*0la[_n#i{tB.6P#tHo">
+                <field name="TEXT">K</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO10">
+          <block type="dancerobot_kick" id="eMa*ieBh?]6@YW4uV88e">
+            <field name="SIDE">1</field>
+            <value name="TEMPO">
+              <block type="variables_get" id="9A2AR|CpK96ZNJHG4;h2">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF11">
+          <block type="logic_compare" id="cp,uzA5J*g2yO`UaGEGw">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="G;EGg{DDcF#6-B0HPNB^">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="!+oTMy;g|)Ky@vSF*a72">
+                <field name="TEXT">L</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO11">
+          <block type="dancerobot_walk" id="H8K]HbeJ%Fd6n|En?C3K">
+            <value name="STEPS">
+              <block type="variables_get" id="]/#).Gnu%A%+^J}.D=/w">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="rWotv~FdSGG,tfLo0Wb~">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF12">
+          <block type="logic_compare" id="#+a_}X2`K73CROYR+8f%">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="16MflNx[}Gp})/[j2!OX">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="}tyzQN@h9LhbTB=z:xa0">
+                <field name="TEXT">M</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO12">
+          <block type="dancerobot_backyard" id="v4V:j~#DbrA!P_PnwRtW">
+            <value name="STEPS">
+              <block type="variables_get" id="Q[^]2tWSe8=(=Eqcbdco">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="^MxtLRHx5X`7XqTO]qPz">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF13">
+          <block type="logic_compare" id="nrhRrCJ+9Q9DaFhjJ=?L">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="ZT|8B];~k_OW?Ia/*#7.">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="#_*sB9MB#{oz1`p4*xr|">
+                <field name="TEXT">N</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO13">
+          <block type="dancerobot_goingUp" id="tkY}Q[5tb@{oK,7iZ@NV">
+            <value name="TEMPO">
+              <block type="variables_get" id="sDQmJy=MsEJg=bn(VTu~">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF14">
+          <block type="logic_compare" id=")3nx~s/s|_xXvPJt)koP">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="*YwKnNT9q/D`~p20(3{M">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="1=8h(TI/q*R(~C)2@H0t">
+                <field name="TEXT">O</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO14">
+          <block type="dancerobot_noGravity" id="NP9I3O%y[S68Wv%k2}{K">
+            <value name="TEMPO">
+              <block type="variables_get" id="C@Q]N/}EIKXjSW!8Kx]D">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF15">
+          <block type="logic_compare" id="w?7#i~s78p|Bc_P;4i^Q">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="=hX6am:tMeG*!OYZA1TY">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="u/M}o^`_}5NZS7k?{}ZB">
+                <field name="TEXT">P</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO15">
+          <block type="dancerobot_pasitos" id="Srg}(d5xljlUl9^?hI2#">
+            <value name="STEPS">
+              <block type="variables_get" id="#EwEfjP/0j1NMOVrhw%1">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="v-zn{_=eS-em;-Jn)t:I">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF16">
+          <block type="logic_compare" id="C=k3cQ-M{M=VA5}8Wg(u">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="g.s%572B%,W`~5k`YB]W">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="m=FAF1=kHqMNKJ8Fm[=,">
+                <field name="TEXT">Q</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO16">
+          <block type="dancerobot_patada" id="l8!GR+aQ5Vx]~Tb[2WQG">
+            <value name="TEMPO">
+              <block type="variables_get" id="1eRX;V:I6L5INed1r?yS">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF17">
+          <block type="logic_compare" id="F!!Ir,#c)1)*%G^-dd6k">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="6sOa9Vz@bdP1]s#OA?zu">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id=",P%G9Q,7o^nzPQNqk[#S">
+                <field name="TEXT">R</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO17">
+          <block type="dancerobot_twist" id="K;9/YL=E-b,L9#ht:dCA">
+            <value name="STEPS">
+              <block type="variables_get" id="gLHFt/+~M!V6@v7,))(=">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="RS7NST=w7DJ[k0FQ4wSL">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF18">
+          <block type="logic_compare" id=")O-BA/PJ*_?r~;nZ|%{_">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="gBiN1;%h{e7A2+E2MN/,">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="G~:U@-60R4fg(S*Gk@zA">
+                <field name="TEXT">S</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO18">
+          <block type="dancerobot_upDown" id="2]l@mzMz?fS#2eU)(|1v">
+            <value name="STEPS">
+              <block type="variables_get" id="aujReP[9UNLhU7d5Zz];">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="6.DvAq)DV@s{,|J#P9H^">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF19">
+          <block type="logic_compare" id="P0!@=O%={#/HGT|q{2QX">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="GR1`@i2xFEn-`xRt=js#">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="O.s0H_7L:?{/rP`XVQ3+">
+                <field name="TEXT">T</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO19">
+          <block type="dancerobot_saludo" id="(,tm(x5{~6~E8zP8VF@O">
+            <value name="STEPS">
+              <block type="variables_get" id=":F^}]!0_@#yRUsQ^)jJK">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="97kyJ8iND;(Ak*l^Z{(o">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF20">
+          <block type="logic_compare" id="EI^ix%*`H%^@NF)zA#fH">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="ZFN#V2M#GU/T3N/1C5is">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="K~qJ`GzK:zpg`v)GG^uB">
+                <field name="TEXT">U</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO20">
+          <block type="dancerobot_swing" id="mmc*BW1*+}lt0K*]xE;4">
+            <value name="STEPS">
+              <block type="variables_get" id="QIT]Mj+08lm@a5^uMEN3">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="B@mfJ=0B+641`5sgD8=y">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF21">
+          <block type="logic_compare" id="+PyzZa{1C.J384)m7/y5">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="kfSfmk@Yls-NSO`KQlm*">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="YKTRLzPR`fU]b_t=Co]M">
+                <field name="TEXT">V</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO21">
+          <block type="dancerobot_reverencia1" id="jXc}jRj[L-E8gMAZJ@8[">
+            <value name="STEPS">
+              <block type="variables_get" id="=Ez,zYMX5]2X?(K(i]#f">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="vntz-fJ%L*O9TJa)lx8x">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF22">
+          <block type="logic_compare" id="txed12ud:a9#(c9*|^U@">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="PK+J}-Qy(wslJ4WTk8wm">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="`IR,8r)1:.XZ;c~_aj2v">
+                <field name="TEXT">Y</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO22">
+          <block type="dancerobot_delay" id="0B*%UiV?dY=x0ei4@L~/">
+            <value name="TEMPO">
+              <block type="variables_get" id=";J?%s/By~sno65-G50(N">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF23">
+          <block type="logic_compare" id="J%w1e+YO.uNS4d6SK|a:">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="z*CJX2vs3653x[;E%qXP">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="e-#%[Lh4DnUR7[~ZJZ|J">
+                <field name="TEXT">W</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO23">
+          <block type="dancerobot_reverencia2" id=",T+|W29Y[-?iap_I:_Ul">
+            <value name="STEPS">
+              <block type="variables_get" id="IgE|u/t~p^Re@_I8MTPT">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id=";H5:-hHZS*IK;6!s*7GB">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF24">
+          <block type="logic_compare" id="iIg]~F%]{Duqg)7f=}m`">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="yu+mu1doo#H]lME^/XgK">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="n3d/DH|.A(un/j6!2U%=">
+                <field name="TEXT">X</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO24">
+          <block type="dancerobot_run" id="L#`y@ChwOyzPiK4;Yg;t">
+            <value name="STEPS">
+              <block type="variables_get" id="D5(ys0sJv@qg^!PDvMGP">
+                <field name="VAR">次數</field>
+              </block>
+            </value>
+            <value name="TEMPO">
+              <block type="variables_get" id="Cgsg1St0Bhoy1aA*oI@t">
+                <field name="VAR">拍數</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="dancerobot_pos" id="k{DeC[f}SUv`(D6emCqa">
+            <value name="RF_ANGLE">
+              <block type="math_number" id=".1(n.(T{V-3KDfx5yj^B">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <value name="LF_ANGLE">
+              <block type="math_number" id="xe6hGAnMPSn6{=X*{bw*">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <value name="RL_ANGLE">
+              <block type="math_number" id="dUs^9mfu:E21[Au-}Ul=">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <value name="LL_ANGLE">
+              <block type="math_number" id="977nCv)G.[JA09|{Ia^6">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="!PN@cP+:Zrf2`eEA_6mi">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="bKivm.0VS^Ra~vjm~ppy">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="serial_print" id=")[PgE[(/H]fb#J)V`e#^">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">FALSE</field>
+            <value name="CONTENT">
+              <block type="variables_get" id="tHZOeZ=vAS5Lc6*qyf(8">
+                <field name="VAR">舞步種類</field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_print" id="(ZMF3aGnG5K2GQ_En#DI">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">FALSE</field>
+                <value name="CONTENT">
+                  <block type="text" id=";_V}QM9Cmovt^6-Tet/K">
+                    <field name="TEXT"> 舞步 </field>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_print" id="cOj5#dr-9_654+Dd(KMx">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">FALSE</field>
+                    <value name="CONTENT">
+                      <block type="variables_get" id=";l/1JB%Ef.V4UGW9~0:4">
+                        <field name="VAR">次數</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="serial_print" id="Ek#wqyv141{t9)-fFOjC">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">FALSE</field>
+                        <value name="CONTENT">
+                          <block type="text" id="]S}*wLo0ccjcFZmsstcr">
+                            <field name="TEXT"> 次 </field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_print" id="{fh;F-g_lghy2.wX^Nte">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">FALSE</field>
+                            <value name="CONTENT">
+                              <block type="variables_get" id="U@sd9AJQfF=dkJmxvl:+">
+                                <field name="VAR">拍數</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="serial_print" id=",Cnx!.zoacb!B_k;K3.d">
+                                <field name="SERIAL_ID">Serial</field>
+                                <field name="NEW_LINE">TRUE</field>
+                                <value name="CONTENT">
+                                  <block type="text" id="H!)XUbIfw%(Yum!i27Y[">
+                                    <field name="TEXT"> 拍</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="D|c.Fwl|nNm_c/P:8XBA" x="0" y="4789">
+    <field name="NAME">調整馬達</field>
+    <statement name="STACK">
+      <block type="controls_if" id="Ox*|*dqrEWpKT^5=[u#G">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="esp8266_webserver_has_arg" id="Om9h=d~Of0Nf*a{w9z[5">
+            <value name="ARGNAME">
+              <block type="text" id="9f)5mSUTvghAj~S5;}a+">
+                <field name="TEXT">type</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id=".!q_+}vghN0+1?(9ZL}-">
+            <field name="VAR">調整類型</field>
+            <value name="VALUE">
+              <block type="esp8266_webserver_arg_by_name" id="QvN:@puDsl{/XR#5}I4k">
+                <value name="ARGNAME">
+                  <block type="text" id="?*nrj}ZNc1)h.OA-aecQ">
+                    <field name="TEXT">type</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="zgv?mMX+slyO|KdkwA4s">
+                <mutation elseif="10"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="I.:x?;ha6=|C##)Daet|">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="d(YA4zoDs{!:ygl~E/,L">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="/HG?*b8Ubq,)Fzb^.DSh">
+                        <field name="TEXT">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="1~RA-GV%]Z,kS-}Ve4XD">
+                    <field name="VAR">右腳掌調整值</field>
+                    <value name="VALUE">
+                      <block type="dancerobot_getRFtrim" id="poZhX(*R;{~`G%zc3Lti"></block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="5{zBK7fvO9(RQSC]F8.V">
+                        <field name="VAR">左腳掌調整值</field>
+                        <value name="VALUE">
+                          <block type="dancerobot_getLFtrim" id="F5E=qPYHukUtVsZ;-{+*"></block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="0%F{|t*y,FO)lmir?PWo">
+                            <field name="VAR">右腿調整值</field>
+                            <value name="VALUE">
+                              <block type="dancerobot_getRLtrim" id="3L.v^sbL=rzEB^1oi2tE"></block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="-H?JytxQy!h:g9+k1yC3">
+                                <field name="VAR">左腿調整值</field>
+                                <value name="VALUE">
+                                  <block type="dancerobot_getLLtrim" id=".S1bU],xNh=krt27)_tJ"></block>
+                                </value>
+                                <next>
+                                  <block type="dancerobot_trim" id="gVAgC/w[rf57]B1@4qa9">
+                                    <value name="RF_ANGLE">
+                                      <block type="math_number" id=",9Nj;5+`Hc|zyMy,(Q31">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="LF_ANGLE">
+                                      <block type="math_number" id="Xk0Yi/L@Q1|r=4.SvLU*">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="RL_ANGLE">
+                                      <block type="math_number" id="NBAj^Es)7KavFO^l:),d">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="LL_ANGLE">
+                                      <block type="math_number" id="A5Tgs}h0A)^_8L)HxCmt">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="YHuy`GUt,}ofbu~a6u@q">
+                                        <field name="VAR">設定中？</field>
+                                        <value name="VALUE">
+                                          <block type="logic_boolean" id="nhDnXG-/b/wQ~x4D53Er">
+                                            <field name="BOOL">TRUE</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="s2U9)}m44qoH()VNmA=m">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="Cu!X1nF6QM*b-3I;0Bs[">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id=";W?v[R3F:bTGG9e9puQ+">
+                        <field name="TEXT">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="math_change2" id="yjyfpAL?iKC0Q%%v.%)4">
+                    <field name="VAR">左腿調整值</field>
+                    <field name="OP">-</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="qz!.p=7mQUhGLSg.qjrw">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF2">
+                  <block type="logic_compare" id="|(}0Z3u6_h,6RZ|1nXR|">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="Q8)V[xRR%aAQ}r85PV-P">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="Lr*C+0mMQpz?=7`B%AD~">
+                        <field name="TEXT">2</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO2">
+                  <block type="math_change2" id="a}n8fU7r|ebc5YW^GCms">
+                    <field name="VAR">左腿調整值</field>
+                    <field name="OP">+</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="Y{l#e)1dN/bhcjFYucO.">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF3">
+                  <block type="logic_compare" id="A#AY;Ot_|e3Isj]m3SM2">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="#g-1t5fjQTPN_j0sKNT@">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="Z{-;M|pet{cjCyJzae`I">
+                        <field name="TEXT">3</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO3">
+                  <block type="math_change2" id="oOS*x9!tt)xY9ET^bOK#">
+                    <field name="VAR">右腿調整值</field>
+                    <field name="OP">-</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="`y|c;XnhziIZ}TPVr,z@">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF4">
+                  <block type="logic_compare" id="e7E5ei2?tRO@tISaBV{/">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="kZ*-m?vr+SHRp?{Egj+P">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="#j-DI^/t9KG{F}utb%4Q">
+                        <field name="TEXT">4</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO4">
+                  <block type="math_change2" id="U;=F,`Q?XXB..1;iWT7T">
+                    <field name="VAR">右腿調整值</field>
+                    <field name="OP">+</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="iw1Dv:?Nfw^Y#ah6S=1r">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF5">
+                  <block type="logic_compare" id="0~`Ps;zjql,XvY2k.c7m">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="Ek#@mqKd,:M?@!9XGJzM">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="xhF32+j9[^+?6}[{Ooi9">
+                        <field name="TEXT">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO5">
+                  <block type="math_change2" id="r%;guk/JPGd-(z9){0n@">
+                    <field name="VAR">左腳掌調整值</field>
+                    <field name="OP">-</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="P=_k;hVq8Iz;_d6p7!3T">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF6">
+                  <block type="logic_compare" id="[KpoH*??x[}}~0oG,=eH">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="(H+O1y@IGB:t^95C98Av">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="[:ksaHpwV@kEObYk)d!a">
+                        <field name="TEXT">6</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO6">
+                  <block type="math_change2" id="=6VsoJrqQ!O|cqzQ{e87">
+                    <field name="VAR">左腳掌調整值</field>
+                    <field name="OP">+</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="~!vz5Um0`tOtTW=9))nD">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF7">
+                  <block type="logic_compare" id="5FdC/er1`%f{,kZ1+;05">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="y4WXyogmy_gnu;BPqc9r">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="^;.bjM2x=eC^Qa=#PDW/">
+                        <field name="TEXT">7</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO7">
+                  <block type="math_change2" id="SQnPue-xq8bK]QVk0EkK">
+                    <field name="VAR">右腳掌調整值</field>
+                    <field name="OP">-</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="f@@]V0KJevLS8MO.+/Ym">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF8">
+                  <block type="logic_compare" id="K)[s;Bd,g8GR6ic`WqsO">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="(9h5kR(#!r]ocPR4P{Ej">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="%YLEy/w{BuLH/X?@Ds2T">
+                        <field name="TEXT">8</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO8">
+                  <block type="math_change2" id="9HB`.)b_+3yB|q%a9Z}.">
+                    <field name="VAR">右腳掌調整值</field>
+                    <field name="OP">+</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="Rg!*0:?39kQy6NOC~%R7">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF9">
+                  <block type="logic_compare" id="98|tVVhY~c|2wC%@ipmH">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="0G/d3wlBNnn;0bBRF{6]">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="sIiRE^46fWMJL[x[!@_Y">
+                        <field name="TEXT">9</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO9">
+                  <block type="dancerobot_trim" id="(5:ZLGxxV-)j13`e:JmW">
+                    <value name="RF_ANGLE">
+                      <block type="variables_get" id="z7T7rGmq)IHXtLDE[G[a">
+                        <field name="VAR">右腳掌調整值</field>
+                      </block>
+                    </value>
+                    <value name="LF_ANGLE">
+                      <block type="variables_get" id="8-HNF)d~;N+|*CImF?F6">
+                        <field name="VAR">左腳掌調整值</field>
+                      </block>
+                    </value>
+                    <value name="RL_ANGLE">
+                      <block type="variables_get" id="#LVlnP^hu}#^,f?@eM)O">
+                        <field name="VAR">右腿調整值</field>
+                      </block>
+                    </value>
+                    <value name="LL_ANGLE">
+                      <block type="variables_get" id="tBEwl9GS{y50n.,[h9!A">
+                        <field name="VAR">左腿調整值</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="dancerobot_savetrim" id="{(VWFd}cqSF,,O.a*_7X"></block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF10">
+                  <block type="logic_compare" id="eyTDB)Sh7@E%*]Az6*z6">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="jo5-5,+a1FbAhIrtc|Jp">
+                        <field name="VAR">調整類型</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="[aGx7I[mZS1:#)axiY#3">
+                        <field name="TEXT">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO10">
+                  <block type="dancerobot_restoretrim" id="X?Il#?NA5-]qqh5]U^`|">
+                    <next>
+                      <block type="dancerobot_pos" id="|0M^qr?sZhM@=df+ls;e">
+                        <value name="RF_ANGLE">
+                          <block type="math_number" id="+,y8)~9[x=ujt~;]|wzW">
+                            <field name="NUM">90</field>
+                          </block>
+                        </value>
+                        <value name="LF_ANGLE">
+                          <block type="math_number" id="x{np,nFj`wdkUFdm#vmC">
+                            <field name="NUM">90</field>
+                          </block>
+                        </value>
+                        <value name="RL_ANGLE">
+                          <block type="math_number" id="BdZWvT+IVl66e~xWGsXD">
+                            <field name="NUM">90</field>
+                          </block>
+                        </value>
+                        <value name="LL_ANGLE">
+                          <block type="math_number" id="cHH7e7#Pz[i3Z!FZHT]1">
+                            <field name="NUM">90</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id=";[js+V3XAq4IC~Y5#904">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_operation" id=":lqCJRvSA4pc.~8VMQX!">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="*CU2xqQta)N-CaBC@IA%">
+                            <field name="OP">NEQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="hg-Dd2EnA(Xt:~-0Nlei">
+                                <field name="VAR">調整類型</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="text" id="0zWz+,n6t(2mi=|gD40C">
+                                <field name="TEXT">10</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="J3EISDlaBkuS[1Dk;LJ1">
+                            <field name="OP">NEQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="OIYaA2dINs3Jq0bh[^W!">
+                                <field name="VAR">調整類型</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="text" id="YZKuhe4+YLIv7K*CD{.c">
+                                <field name="TEXT">9</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="dancerobot_pos" id=";[k4GX:Rt*Gz]~QPNb}p" inline="false">
+                        <value name="RF_ANGLE">
+                          <block type="math_arithmetic" id="|;Es8u[p?^(gI~B6[#5X">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="math_number" id="xF4tJH7A?mq;JlBs-[rX">
+                                <field name="NUM">90</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id=",MD0[xwp.oP%R@(%]qD{">
+                                <field name="VAR">右腳掌調整值</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="LF_ANGLE">
+                          <block type="math_arithmetic" id="xpd{.TWO!X8|@nMLDALj">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="math_number" id="Lr7[kZBEN)~p,%zN^a`-">
+                                <field name="NUM">90</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="(PYcN7i;!ZC`1K:KHVYg">
+                                <field name="VAR">左腳掌調整值</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="RL_ANGLE">
+                          <block type="math_arithmetic" id="olErmMphD*H8.woNn%5+">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="math_number" id=")RjJD~rhkm[4Ot-b@GGT">
+                                <field name="NUM">90</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="%qZ~9dj;|eWtl*T_D5v#">
+                                <field name="VAR">右腿調整值</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="LL_ANGLE">
+                          <block type="math_arithmetic" id="s+9jtlAiNRy|dTL?.9/I">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="math_number" id=":94n%{SM+VDNUKmq`uC0">
+                                <field name="NUM">90</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="9%f+Q=~*/0EUl4|^r=+/">
+                                <field name="VAR">左腿調整值</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_print" id="=z*AS{,HP+3!vT*v=vAp">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">FALSE</field>
+                            <value name="CONTENT">
+                              <block type="text_join" id="M,VhjZ,Kiyv|;]IkNYD.">
+                                <mutation items="2"></mutation>
+                                <value name="ADD0">
+                                  <block type="text" id="[nA+pllupp4w3eymAXlh">
+                                    <field name="TEXT">右腳掌：</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="variables_get" id=".R0QyI,#ytBGRWpg3r8r">
+                                    <field name="VAR">右腳掌調整值</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="serial_print" id="Z=i_00xhK]5_0Vr!jWZ{">
+                                <field name="SERIAL_ID">Serial</field>
+                                <field name="NEW_LINE">FALSE</field>
+                                <value name="CONTENT">
+                                  <block type="text_join" id="e?oK7Pup#3,#xpdeCmJj">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="text" id="S8dXr)QzdKvovgej^B?7">
+                                        <field name="TEXT">左腳掌：</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="variables_get" id="p@h%[n(w-Nv[RYeY~~v3">
+                                        <field name="VAR">左腳掌調整值</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="serial_print" id="+TJTGA`T.idVM)*4Uz=:">
+                                    <field name="SERIAL_ID">Serial</field>
+                                    <field name="NEW_LINE">FALSE</field>
+                                    <value name="CONTENT">
+                                      <block type="text_join" id="nZkhw9_X~[{gg#xoNbfl">
+                                        <mutation items="2"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="aOYjx#Wz@G(RX|U2Q@J?">
+                                            <field name="TEXT">右腿：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="variables_get" id="F_n5y92NQ97Y~Im:{+Q:">
+                                            <field name="VAR">右腿調整值</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="serial_print" id="s3%c|Na6@KD,d6Zz]iz9">
+                                        <field name="SERIAL_ID">Serial</field>
+                                        <field name="NEW_LINE">TRUE</field>
+                                        <value name="CONTENT">
+                                          <block type="text_join" id="~TyrrnUA|x0#cw2?QYo[">
+                                            <mutation items="2"></mutation>
+                                            <value name="ADD0">
+                                              <block type="text" id="hnEcP`=Hd}xh35++mC/S">
+                                                <field name="TEXT">左腿：</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD1">
+                                              <block type="variables_get" id="{;#G[Gl{Cc7)y,15Xl#r">
+                                                <field name="VAR">左腿調整值</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="esp8266_webserver_send" id="~[[!din3}ku@EfAThPm^">
+                                            <value name="STATUS">
+                                              <block type="math_number" id="*)KlmYwk;:r[J~G^{JxT">
+                                                <field name="NUM">200</field>
+                                              </block>
+                                            </value>
+                                            <value name="MIMETYPE">
+                                              <block type="text" id="I~A|hxqQaye.+lC+tr1(">
+                                                <field name="TEXT">text/plain</field>
+                                              </block>
+                                            </value>
+                                            <value name="CONTENT">
+                                              <block type="text" id="[6}o](60*%8#60:J|Q)f">
+                                                <field name="TEXT">OK</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="variables_set" id="YseOx6L4lkug%X}AqhG,">
+                        <field name="VAR">設定中？</field>
+                        <value name="VALUE">
+                          <block type="logic_boolean" id="GVSDjmeNeVGd1Gq:eA]A">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="esp8266_webserver_send" id="Hw7/2/|s=;TVA[U{zeOz">
+                            <value name="STATUS">
+                              <block type="math_number" id="uZl_l`}:jmDh^W[:4vhF">
+                                <field name="NUM">303</field>
+                              </block>
+                            </value>
+                            <value name="MIMETYPE">
+                              <block type="text" id="xI7D7/d;)Q9Xa)VN+wZ)">
+                                <field name="TEXT">text/plain</field>
+                              </block>
+                            </value>
+                            <value name="CONTENT">
+                              <block type="text" id="O|ak@{G2~ahIhfyY5oU{">
+                                <field name="TEXT">Back to  Main</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="esp8266_webserver_send" id="c5A@?wMNHW*u1vP%4Rxk">
+            <value name="STATUS">
+              <block type="math_number" id=",pM)u25PLWHED@jLAg_~">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+            <value name="MIMETYPE">
+              <block type="text" id="Q]C/6?]^;cEob^g:758u">
+                <field name="TEXT">text/plain</field>
+              </block>
+            </value>
+            <value name="CONTENT">
+              <block type="text" id="MYS1)H?vLyz//v%u+G=@">
+                <field name="TEXT">unknown type</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

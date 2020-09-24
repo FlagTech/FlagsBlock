@@ -1,0 +1,74 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="50" y="-52">
+    <statement name="LOOP_FUNC">
+      <block type="controls_whileUntil" id="Ht97c~0fAM#=n;q0`l(^">
+        <field name="MODE">WHILE</field>
+        <value name="BOOL">
+          <block type="logic_compare" id="+x!j]b~d=Iyi[+vDKMog">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread_var" id="mC:TRK^*;o=gKWmERK9{">
+                <value name="PIN">
+                  <block type="io_allpins" id="T7KEBru4xO!;bu~D3w*h">
+                    <field name="PIN">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="v7uRuNdz4+VL6K,.)WFH">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="io_digitalwrite_var" id="ILQ%{dd,ks`~tyF%ophb">
+            <value name="PIN">
+              <block type="io_allpins" id="QBm!)c6:T,Hwd(M%R7w}">
+                <field name="PIN">6</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="D3jc/1Q2p6#4_osbUx0q">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="gHfuy4{.6RZ%4j4QeOKV">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="gh%!U+A*ju;bon+Lu09,">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_digitalwrite_var" id="r,d|i_SfK-_mvbjvz]9s">
+                    <value name="PIN">
+                      <block type="io_allpins" id="K_IO|]@|bQ]oMV^HWCAR">
+                        <field name="PIN">6</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="P)B~`66kV23}p-ZICnuA">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="d0KH@0/CHtcvr4H9f{o3">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="d)09FsVylj]Hfy.?:Qam">
+                            <field name="NUM">300</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

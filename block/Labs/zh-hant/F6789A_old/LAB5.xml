@@ -1,0 +1,56 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="m2,a!0k/0zM6mnTZKa=~" x="6" y="12">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="os8eIr85cpq)/fSH-4fK">
+        <field name="VAR">analogPin</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="9F`shM.#KOyeMw`DC`*D">
+            <field name="PIN">A2</field>
+          </block>
+        </value>
+        <next>
+          <block type="serial_setup" id="ag`[t.?h1Re(ufiDcl9)">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="SPEED">9600</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="6" y="114">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="dHsEF,M~;YWcZPw[=6qT">
+        <field name="VAR">readVal</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="^*.b|p4rTng,*lfq+4pn">
+            <value name="PIN">
+              <block type="variables_get" id="kG:ss#X+Vt;MnZ;Tt.ry">
+                <field name="VAR">analogPin</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="serial_print" id=",{WPUkm1sHc_/F{qcG0V">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="variables_get" id="(G::]MFJ/V!SJvHC?rpa">
+                <field name="VAR">readVal</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="@i#4MH-+]fuWFHY-DYu=">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="Gpc_`NjFMGu`hZP)sH5k">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

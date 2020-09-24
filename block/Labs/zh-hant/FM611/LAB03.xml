@@ -1,0 +1,344 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=")NCI7eaSP!}RN(m*:h}@" x="72" y="-36">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="hto`Gng:KX}Iq6Qpy/4N">
+        <field name="VAR">喇叭腳位</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="#.g6yc:E1FWfAfydnSa+">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="{r)pW7ZYkm,z6~XJxH?m">
+            <field name="VAR">雷達模組腳位</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="{A}nZO)pA}b?9Zubc[7h">
+                <field name="PIN">D6</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="Vobc-JeK|zg|rTv?|*^0">
+                <field name="VAR">最後一次低電位的時間</field>
+                <value name="VALUE">
+                  <block type="math_number" id="M(|rGkcV[-ZzJ@t6Xzht">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="8rdh05,*/gr11+_-Y4IK">
+                    <field name="VAR">IFTTT 請求網址</field>
+                    <value name="VALUE">
+                      <block type="text" id="w,1dvR,z0ZAksP)p|_l:">
+                        <field name="TEXT">從IFTTT取得的HTTP請求網址</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="esp8266_sta_setup" id="{-1+(?6CM_FIqaRa}A?|">
+                        <value name="SSID">
+                          <block type="text" id="6wl-rdz~}#PG6YMJ+I.B">
+                            <field name="TEXT">您的WiFi網路名稱</field>
+                          </block>
+                        </value>
+                        <value name="PINCODE">
+                          <block type="text" id="Cp|C4!~x,.eCNrHfnnP}">
+                            <field name="TEXT">您的WiFi網路密碼</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_whileUntil" id="2elH3tJp/qf!D;0iOHi^">
+                            <field name="MODE">WHILE</field>
+                            <value name="BOOL">
+                              <block type="logic_negate" id=")3j2{:)L(MMk}AIs({~Q">
+                                <value name="BOOL">
+                                  <block type="esp8266_connected" id="SrS/ADsK!D.zrDtxx:ta"></block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO">
+                              <block type="time_delay" id="c:8jGIYiRrjXxYQ?gB-B">
+                                <value name="DELAY_TIME_MILI">
+                                  <block type="math_number" id="]w8:Uj1?*f3%vC%`UFR#">
+                                    <field name="NUM">1000</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_repeat_ext" id="I6~]#cpIm1P-_U-/8K6v">
+                                <value name="TIMES">
+                                  <block type="math_number" id="RIz5BCcEXf{LROz`j^dr">
+                                    <field name="NUM">30</field>
+                                  </block>
+                                </value>
+                                <statement name="DO">
+                                  <block type="io_builtin_led" id="?|2ixsZTMf?U5|%?ckw@">
+                                    <field name="BUILT_IN_LED">D4</field>
+                                    <value name="STATE">
+                                      <block type="io_highlow" id="u4-6py/Y{/[?=oU@6qS7">
+                                        <field name="STATE">HIGH</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="time_delay" id="hELYz^bg8,}O#?MA|WNE">
+                                        <value name="DELAY_TIME_MILI">
+                                          <block type="math_number" id="*euaRYUUbi^`Ti{V;X=(">
+                                            <field name="NUM">500</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="io_builtin_led" id="5xbPiIwIk]+G2KZ,:gOf">
+                                            <field name="BUILT_IN_LED">D4</field>
+                                            <value name="STATE">
+                                              <block type="io_highlow" id="/~{sLCgJ|SI1y%yf2)d(">
+                                                <field name="STATE">LOW</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="time_delay" id="s*^-4RVJ2n]dSA8O[daE">
+                                                <value name="DELAY_TIME_MILI">
+                                                  <block type="math_number" id="i~*ZuWBkK5+SFSW`8IJc">
+                                                    <field name="NUM">500</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="variables_set" id="Z+{UTo6#qWpG%{T{Xahe">
+                                    <field name="VAR">最後一次低電位的時間</field>
+                                    <value name="VALUE">
+                                      <block type="time_millis" id="Y)K-EepL:;AtVEq#R|G~"></block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="73" y="438">
+    <statement name="LOOP_FUNC">
+      <block type="io_builtin_led" id="jlo*xAuu/q~cvrQ^P#rP">
+        <field name="BUILT_IN_LED">D4</field>
+        <value name="STATE">
+          <block type="logic_negate" id="*T`Hzn[Pu9Jq7SWANAP:">
+            <value name="BOOL">
+              <block type="io_digitalread_var" id="`X`hy8)({0l4ufQGYdXk">
+                <value name="PIN">
+                  <block type="variables_get" id="rq)L`a{9(,%.Asq|.RyZ">
+                    <field name="VAR">雷達模組腳位</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="q,w.8K586ig{y)wC9PJ.">
+            <mutation elseif="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="}28o:/`unC)H*I.6t)d^">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="io_digitalread_var" id="Z^vZ,Sw,vSg4]7sA:5:b">
+                    <value name="PIN">
+                      <block type="variables_get" id="^1dE2qAua1eR3]=rZn!`">
+                        <field name="VAR">雷達模組腳位</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="io_highlow" id="*5:IO0LM}s1}gc-IDlAM">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="7-zpuQ(SXv9h]`45tdvl">
+                <field name="VAR">最後一次低電位的時間</field>
+                <value name="VALUE">
+                  <block type="time_millis" id=".yA4KTREWR/LvX8:GcW:"></block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="}V]=uY#A/Zab7M^#x2nk">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="K##7_ZxJTT{NY2H#+yeN">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <block type="time_millis" id="10Z|wmF#FxDFr#c8mK,D"></block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="[TVCpS[=g1`0%b}z%den">
+                        <field name="VAR">最後一次低電位的時間</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="YTBYl(t|plbjT[^qv~J^">
+                    <field name="NUM">10000</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="variables_set" id="2+VJ]P[SlY}C%YK3d`]p">
+                <field name="VAR">狀態碼</field>
+                <value name="VALUE">
+                  <block type="esp8266_http_get" id="+#9N{tvqoDRq0A7Y=8df">
+                    <value name="URL">
+                      <block type="variables_get" id="XT^V_TtHWE{c-A_=29-T">
+                        <field name="VAR">IFTTT 請求網址</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_repeat_ext" id="wAlMcjJv[@isoIv*[}S6">
+                    <value name="TIMES">
+                      <block type="math_number" id="VhTRnG#y3v+FVcX9in:/">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="procedures_callnoreturn" id="b=Yx}q7qP!nAO1%p5YJk">
+                        <mutation name="喇叭發出警報聲"></mutation>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="variables_set" id="!bfH{y]e2FXvgW[sjP/V">
+                        <field name="VAR">最後一次低電位的時間</field>
+                        <value name="VALUE">
+                          <block type="time_millis" id="aS}pGQ8+!Fol}a(|46V_"></block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="i^Z3B8h#fkwb-fqw7idL" x="71" y="807">
+    <field name="NAME">喇叭發出警報聲</field>
+    <statement name="STACK">
+      <block type="controls_for" id="q`.^[gYX]3b%:.-6)*)(">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="E5l(=Rqft99ZD~xlFB)p">
+            <field name="NUM">440</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="r@-cI]I:ft:NEJ+pzqte">
+            <field name="NUM">1000</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="MRLnH]~l%[6y}BN;93hy">
+            <field name="NUM">25</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="io_tone_var" id="*(0r+Lv@2Vw!%Rr.}Cd7">
+            <value name="TONEPIN">
+              <block type="variables_get" id="Q)s[B|IFmdj191EM9Fg?">
+                <field name="VAR">喇叭腳位</field>
+              </block>
+            </value>
+            <value name="FREQUENCY">
+              <block type="variables_get" id="Z`,.yEn+n)@zFiVUy%YQ">
+                <field name="VAR">i</field>
+              </block>
+            </value>
+            <value name="DURATION">
+              <block type="math_number" id="Q3!.~5(SlXo6dz~}vv{f">
+                <field name="NUM">50</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="TNiB7vT6j`#NFybmCqPr">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="ffM0:}VdpzO#X(-x.[_(">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_for" id="B=AxQrIVKsqI%mM7m-?B">
+            <field name="VAR">i</field>
+            <value name="FROM">
+              <block type="math_number" id="iy,(wrD!uDZ`wwP7HgF)">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="mjfK=MTy{SJ:uyOmY=z.">
+                <field name="NUM">440</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="dYS0i[,.pLhJj1,WPD])">
+                <field name="NUM">25</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_tone_var" id="-VhzSLk8ou0x)7SU@GIL">
+                <value name="TONEPIN">
+                  <block type="variables_get" id="QgMc@ScT/|7mM)7iG/J:">
+                    <field name="VAR">喇叭腳位</field>
+                  </block>
+                </value>
+                <value name="FREQUENCY">
+                  <block type="variables_get" id="QE1KeZZrnf%I`~NL+0Iv">
+                    <field name="VAR">i</field>
+                  </block>
+                </value>
+                <value name="DURATION">
+                  <block type="math_number" id="2JsK:J:u;{,Pf{St;!pS">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="UFVFqy_la.A^4[b8||GT">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="7IM-cx^%/tu|uk]4v%,i">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

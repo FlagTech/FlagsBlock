@@ -1,0 +1,533 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="rBbLd/6oH9oj2y6/k(=#" x="-610" y="-361">
+    <statement name="SETUP_FUNC">
+      <block type="misc_comment" id="Q|O6^A)C[Ve}(Ay#fr8w">
+        <field name="COMMENT">定義腳位</field>
+        <statement name="DO">
+          <block type="variables_set" id="VN`eqY^Ct:m#JP3njs/i">
+            <field name="VAR">左方向腳位</field>
+            <value name="VALUE">
+              <block type="math_number" id="Y7bZ[~lXd-Q^CI=vY;XW">
+                <field name="NUM">8</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="slsM5SZnem5[gRBHu/Xz">
+                <field name="VAR">左轉速腳位</field>
+                <value name="VALUE">
+                  <block type="math_number" id="+OIFB]MLtnkPa[zgbR1}">
+                    <field name="NUM">9</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="e5|P!(xBrf!dW{pYJP(I">
+                    <field name="VAR">右方向腳位</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="@i!F=?A}p8E:8f=OSk)_">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="W{a,lRX5G;[c;#V:;0|%">
+                        <field name="VAR">右轉速腳位</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="~oV8Ve`Urnx{oF%%Q[iK">
+                            <field name="NUM">11</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="dM``[@QI;X13f+~*Dqfb">
+                            <field name="VAR">前光敏腳位</field>
+                            <value name="VALUE">
+                              <block type="io_allpins" id="]`VI%*yu9HxN:4:WF|K.">
+                                <field name="PIN">A0</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="E1E3it5YrWKJZVGgqz,f">
+                                <field name="VAR">左光敏腳位</field>
+                                <value name="VALUE">
+                                  <block type="io_allpins" id="8rDQKMqw3FOpzT6tm-]|">
+                                    <field name="PIN">A1</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="(.ZOM8^=%u*+Zoh|D;=j">
+                                    <field name="VAR">右光敏腳位</field>
+                                    <value name="VALUE">
+                                      <block type="io_allpins" id=",SZ83p{GHxuKgv=~@1Bd">
+                                        <field name="PIN">A2</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="variables_set" id="qYj0RsW#3cSE1fz`R;L7">
+            <field name="VAR">狀態</field>
+            <value name="VALUE">
+              <block type="text" id="Pcc2A7N1XpmXQ0!y:nkd">
+                <field name="TEXT">停止</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="rrlH3JH[vU)@lVR.taPV" x="14" y="-344">
+    <mutation>
+      <arg name="左轉速"></arg>
+      <arg name="右轉速"></arg>
+    </mutation>
+    <field name="NAME">移動小車</field>
+    <statement name="STACK">
+      <block type="io_digitalwrite_var" id="VJq_8/vLO)yxm/7m[WGe">
+        <value name="PIN">
+          <block type="variables_get" id="@-jt}g3m~!Dm3o`/FnT!">
+            <field name="VAR">左方向腳位</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="logic_ternary" id="yunDKnr_+J_fNk)KA_K*">
+            <value name="IF">
+              <block type="logic_compare" id="JhWWC2(cdO^q{5;(n)DK">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="H@0_MKNUbTc.neH}NG2h">
+                    <field name="VAR">左轉速</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="`q[hbFSlA7|*?p^0~-G`">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="THEN">
+              <block type="io_highlow" id="1@xhHPg/o3VC5JKAn}xJ">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <value name="ELSE">
+              <block type="io_highlow" id="nk|#/Yh*7lV%dV9{trBn">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="io_digitalwrite_var" id="{E^Zs`6,[iI80z8)lkcb">
+            <value name="PIN">
+              <block type="variables_get" id="qplM#v/oJ_6DaH6~!.2I">
+                <field name="VAR">右方向腳位</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="logic_ternary" id="uqX2r7xSim;tZ.]fGIB@">
+                <value name="IF">
+                  <block type="logic_compare" id="C[-X|!b9Q/9fEBktAXbg">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="`[wV=^{^+nKr|t`[ZE{=">
+                        <field name="VAR">右轉速</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="^~^((rjcG-%ve2~286-!">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="THEN">
+                  <block type="io_highlow" id="mbGi_j}cd#eEWjB[|^h:">
+                    <field name="STATE">HIGH</field>
+                  </block>
+                </value>
+                <value name="ELSE">
+                  <block type="io_highlow" id="K7Q9!ditB%b/BpIG9T/v">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="io_analogwrite_var" id="dpR)m8C]sY`)f0F-pP;}">
+                <value name="PIN">
+                  <block type="variables_get" id="F2s.7GXdvX8mTH~P_+H%">
+                    <field name="VAR">左轉速腳位</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <block type="math_single" id="Xbhn24g{b6}T{]X-TE8`">
+                    <field name="OP">ABS</field>
+                    <value name="NUM">
+                      <block type="variables_get" id="lu#Us3wg@RR]P:o5J4`Q">
+                        <field name="VAR">左轉速</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_analogwrite_var" id="d^Kp!ei49?PE`Sb!Nu,H">
+                    <value name="PIN">
+                      <block type="variables_get" id="-#nHxX=UhC#;LY|6UZh@">
+                        <field name="VAR">右轉速腳位</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <block type="math_single" id=":|X+d`ooo*}v%0-f.GCM">
+                        <field name="OP">ABS</field>
+                        <value name="NUM">
+                          <block type="variables_get" id="|ff%7h4r{?Ft88`-}eev">
+                            <field name="VAR">右轉速</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-608" y="-65">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="w{BG+]Hq0lozq,X;E^rV">
+        <mutation name="讀取光照值"></mutation>
+        <next>
+          <block type="controls_if" id="5_~u;9dmM#Sx=J3z*`-s">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_operation" id=",F?,UmP55~DGpuVBzQbd" inline="false">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="logic_compare" id="{McD9Y~ik+NG3Fs@#VRV">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="u)(qwe^qjnhya.J[ukY`">
+                        <field name="VAR">前光照值</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="m}n;2eI7@N9j}rB*MV)k">
+                        <field name="NUM">850</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_operation" id="sqI8.(M=J(|GG4Uh|~5f" inline="false">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id=";=CPUj~Rn^W2t(u4ERr|">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="Gzdd?DASwtwq;U3)oYjy">
+                            <field name="VAR">前光照值</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="wY.g^?x[(sgR.ppWWx;D">
+                            <field name="VAR">左光照值</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_compare" id="d-t,cpTxB|P/QqFUD=O@">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="9J]._9+qd@eW5)GEur@@">
+                            <field name="VAR">前光照值</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="gOhY93qM{^SZ~iP,N0N-">
+                            <field name="VAR">右光照值</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="procedures_callnoreturn" id="]+bs]z}2``xE#;s2S2)M">
+                <mutation name="移動小車">
+                  <arg name="左轉速"></arg>
+                  <arg name="右轉速"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="math_number" id="]].%RE9}[]l5v}nZ3o-7">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="math_number" id="B0n;c/E4QCkJ1%MUvxN5">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="7T?)v.J=PwtSN[t]|pp(">
+                    <field name="VAR">狀態</field>
+                    <value name="VALUE">
+                      <block type="text" id="OGTF57Q)%[^)z4P~zSzN">
+                        <field name="TEXT">直行</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="controls_if" id="Icf;)|RPv%ZLE8%ZbGb;">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="~9)YUVP9qhG:FN9x;3Zs">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="f=C6p36/6x7aZvo0#k^R">
+                        <field name="VAR">狀態</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="q[D;Q5mePD:mbi{RO8-3">
+                        <field name="TEXT">直行</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="procedures_callnoreturn" id="AH%cMS{@+R/VV4F[6nI?">
+                    <mutation name="移動小車">
+                      <arg name="左轉速"></arg>
+                      <arg name="右轉速"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="math_number" id="Tk45E!D~6~qELnkpXv|d">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="math_number" id="^Fs,),j;t^7|Z1W|C5HN">
+                        <field name="NUM">-50</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="kW!(P?4[/R~A/:Xooo81">
+                        <field name="VAR">狀態</field>
+                        <value name="VALUE">
+                          <block type="text" id="d4fF_oDjGNBee#]TcOQh">
+                            <field name="TEXT">自轉</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="JgN18+!duJvJn!2njiem">
+                            <field name="VAR">開始自轉的時間</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="l2fTaPHpKlDa|yk?#cNa"></block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="1G([nZTy|vYc;c1~Xi1D">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="aN8f9w~*RstsS%BR{nJs" inline="false">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <block type="time_millis" id="gf]Y#J4,%*Zo]}C}+-G0"></block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id=",60BTIRxYLqt}uQR:h0z">
+                            <field name="VAR">開始自轉的時間</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="IP5/TLuW4b/SFbkI)7w9">
+                        <field name="NUM">5000</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="procedures_callnoreturn" id="1:oy0!ylSsp1;%T%=.HG">
+                    <mutation name="移動小車">
+                      <arg name="左轉速"></arg>
+                      <arg name="右轉速"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="math_number" id="Qiq4ssl^7BriI.6yUL.f">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="math_number" id="T5[ysP`N%E{OLp[W]b9Z">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="P}t{?kUwOYYP2*=qK:9}">
+                        <field name="VAR">狀態</field>
+                        <value name="VALUE">
+                          <block type="text" id="2lb@vXwAakxvPLGx53e+">
+                            <field name="TEXT">停止</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="*Nj*].7l{E1L[Va0njeh" x="14" y="-20">
+    <field name="NAME">讀取光照值</field>
+    <comment pinned="false" h="80" w="160">函式說明</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="(+Tx^@_R!/#Eu?8HgR+[">
+        <field name="VAR">前光照值</field>
+        <value name="VALUE">
+          <block type="math_number" id="*}4#p{-LzZm!XKSL,@(q">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="g%3B`8?Rc#AQh-H]5@6h">
+            <field name="VAR">左光照值</field>
+            <value name="VALUE">
+              <block type="math_number" id="pb6LaW0WRNRSX}*dabd^">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="JWxMQR`Zm.5rgti^_sYR">
+                <field name="VAR">右光照值</field>
+                <value name="VALUE">
+                  <block type="math_number" id="ST#q:gdeOmGxrN:0HW3{">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_repeat_ext" id="T]=4h%`-lz)L|h!pv=ta">
+                    <value name="TIMES">
+                      <block type="math_number" id="X(cwQY+3Lc-c!*Jt@w@n">
+                        <field name="NUM">20</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="math_change2" id="b/oMHr=GnkptrBrW+MT}">
+                        <field name="VAR">前光照值</field>
+                        <field name="OP">+</field>
+                        <value name="DELTA">
+                          <block type="io_analogread_var" id="/7_BDL[7Aqx99#.i`T4k" inline="true">
+                            <value name="PIN">
+                              <block type="variables_get" id="^|E39I?7ys)~g4-#+uXi">
+                                <field name="VAR">前光敏腳位</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="math_change2" id="Iu;H)Eq2k17pvQUOzskl">
+                            <field name="VAR">左光照值</field>
+                            <field name="OP">+</field>
+                            <value name="DELTA">
+                              <block type="io_analogread_var" id="Q*0+om=#V-u)eR5)|;sU" inline="true">
+                                <value name="PIN">
+                                  <block type="variables_get" id="Om}y8[.z1;G!P3o?`=q(">
+                                    <field name="VAR">左光敏腳位</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="math_change2" id="xyfXbvLy:8p2VS0)-!^6">
+                                <field name="VAR">右光照值</field>
+                                <field name="OP">+</field>
+                                <value name="DELTA">
+                                  <block type="io_analogread_var" id="[nX(nbyV,pfkl}674yj7" inline="true">
+                                    <value name="PIN">
+                                      <block type="variables_get" id="%Tz0)xah6sTIizrTX~K_">
+                                        <field name="VAR">右光敏腳位</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="math_change2" id="E?SY7{%{.J_gVsaHg9?n">
+                        <field name="VAR">前光照值</field>
+                        <field name="OP">/</field>
+                        <value name="DELTA">
+                          <block type="math_number" id="+0Vst[jVXOu?srv6r|`^">
+                            <field name="NUM">20</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="math_change2" id="#*[7-IUn]E_]9H*5CXM}">
+                            <field name="VAR">左光照值</field>
+                            <field name="OP">/</field>
+                            <value name="DELTA">
+                              <block type="math_number" id="(te1S1_U_ZE4.B4]gIxf">
+                                <field name="NUM">20</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="math_change2" id="_IH@DEfn,wQCyw}lb(SE">
+                                <field name="VAR">右光照值</field>
+                                <field name="OP">/</field>
+                                <value name="DELTA">
+                                  <block type="math_number" id="D@wqC[_uidFKiYBRqd/J">
+                                    <field name="NUM">20</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

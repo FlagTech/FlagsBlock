@@ -1,0 +1,184 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="`gpB6Gi`yZ:XxS%=!8[s" x="-354" y="-311">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id=":Ua0,0lDQfnN8jD3laZv">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">115200</field>
+        <next>
+          <block type="apds9930_use" id="i3r*0r[r*.d%:-q;miHb">
+            <next>
+              <block type="esp8266_sta_setup" id="If1`@4;I1o:m1lv@[uog">
+                <value name="SSID">
+                  <block type="text" id="eE[/{g3]kG[A[D%1?+:Q">
+                    <field name="TEXT">無線網路名稱</field>
+                  </block>
+                </value>
+                <value name="PINCODE">
+                  <block type="text" id="qIQ4P+QWwT]HxM5^NGHG">
+                    <field name="TEXT">無線網路密碼</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_whileUntil" id="2elH3tJp/qf!D;0iOHi^">
+                    <field name="MODE">WHILE</field>
+                    <value name="BOOL">
+                      <block type="esp8266_connected" id="SrS/ADsK!D.zrDtxx:ta"></block>
+                    </value>
+                    <statement name="DO">
+                      <block type="time_delay" id="c:8jGIYiRrjXxYQ?gB-B">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="]w8:Uj1?*f3%vC%`UFR#">
+                            <field name="NUM">1000</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="io_digitalwrite_var" id="1WJJgKL!u0=`;oCdZIEf">
+                        <value name="PIN">
+                          <block type="io_allpins" id="@Ddbz-7%v5p,.`js5[Kp">
+                            <field name="PIN">D8</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="f|#V{+QbVV1dvYLqaJNL">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="341" y="-253">
+    <statement name="LOOP_FUNC">
+      <block type="serial_print" id="UGM8dUI]842A7=6bg@Q{">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="NEW_LINE">TRUE</field>
+        <value name="CONTENT">
+          <block type="apds9930_proximity" id="4pjwtj?2DYY:_*IR@k8["></block>
+        </value>
+        <next>
+          <block type="time_delay" id="FOzxFLCJ[`};Pf]Z*XnH">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="5J0^ua+io/8ib=Mx+thX">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="7}[fUXjhhmqFOs:Jef.+">
+                <value name="IF0">
+                  <block type="logic_compare" id="rI6_FHwm0hoj[uWT*B-8">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="apds9930_proximity" id="E1plY75L5Cc369D@QvH:"></block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id=",]f*]s`!MXVR@9AeGVEY">
+                        <field name="NUM">1023</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="io_digitalwrite_var" id="(,}yEKOg.p?{[Wn6!rqQ">
+                    <value name="PIN">
+                      <block type="io_allpins" id="`db)6b-AQHrJT^SFT7U;">
+                        <field name="PIN">D8</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="|rp/:uBf_tKmN([(Fg1w">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="d;H-[x5*CkLfnzfFOzA~">
+                    <value name="IF0">
+                      <block type="logic_compare" id="N(fa^y=hl=g|n1,m]NI#">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="apds9930_proximity" id="5T`AI?c/FMgF*pVjBy]7"></block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="fH;pe+i91.tDUrPWv?uI">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="controls_if" id="2O!jZ{HB8*[R8V~=XtYl">
+                        <value name="IF0">
+                          <block type="logic_compare" id="-cv);x}~K+CBC[pzDs74">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="ifttt_event" id="q84`%0},]3du_yHS(Df#" inline="false">
+                                <value name="APIKEY">
+                                  <block type="text" id="NSCThJwe^.g3fIk`a(Z+">
+                                    <field name="TEXT">coJePlj5ju7W-zb30TGt-z</field>
+                                  </block>
+                                </value>
+                                <value name="VALUE1">
+                                  <block type="text" id="@G6dVACWEls6p{+a?+18">
+                                    <field name="TEXT"></field>
+                                  </block>
+                                </value>
+                                <value name="VALUE2">
+                                  <block type="text" id=":..W);PfwTkHk1jAMgDb">
+                                    <field name="TEXT"></field>
+                                  </block>
+                                </value>
+                                <value name="VALUE3">
+                                  <block type="text" id="4Sq9|zR/pOGri4#q5Rxa">
+                                    <field name="TEXT"></field>
+                                  </block>
+                                </value>
+                                <value name="NAME">
+                                  <block type="text" id="XzH~8U+f-M9jpG+J{[uK">
+                                    <field name="TEXT">open</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_boolean" id="B3Uo|!qwS(`{@@o)un9]">
+                                <field name="BOOL">TRUE</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="io_digitalwrite_var" id="ML-N2e+D?S)*yX6;YDL@">
+                            <value name="PIN">
+                              <block type="io_allpins" id="RQO{npVpw4js)LrJ`!]N">
+                                <field name="PIN">D8</field>
+                              </block>
+                            </value>
+                            <value name="STATE">
+                              <block type="io_highlow" id=",A!^-+mlW6XlbJc3KMK/">
+                                <field name="STATE">HIGH</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

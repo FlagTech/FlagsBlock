@@ -1,0 +1,422 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="rBbLd/6oH9oj2y6/k(=#" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="misc_comment" id="Q|O6^A)C[Ve}(Ay#fr8w">
+        <field name="COMMENT">define pin</field>
+        <statement name="DO">
+          <block type="variables_set" id="dM``[@QI;X13f+~*Dqfb">
+            <field name="VAR">front pin</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="]`VI%*yu9HxN:4:WF|K.">
+                <field name="PIN">D5</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="E1E3it5YrWKJZVGgqz,f">
+                <field name="VAR">left pin</field>
+                <value name="VALUE">
+                  <block type="io_allpins" id="8rDQKMqw3FOpzT6tm-]|">
+                    <field name="PIN">D6</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="(.ZOM8^=%u*+Zoh|D;=j">
+                    <field name="VAR">right pin</field>
+                    <value name="VALUE">
+                      <block type="io_allpins" id=",SZ83p{GHxuKgv=~@1Bd">
+                        <field name="PIN">D7</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="variables_set" id="98CO@hIm)HY@C5@yGAMQ">
+            <field name="VAR">front value</field>
+            <value name="VALUE">
+              <block type="math_number" id="h8DYK#xMI6Z*GSlX:V[J">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="g%3B`8?Rc#AQh-H]5@6h">
+                <field name="VAR">left value</field>
+                <value name="VALUE">
+                  <block type="math_number" id="pb6LaW0WRNRSX}*dabd^">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="JWxMQR`Zm.5rgti^_sYR">
+                    <field name="VAR">right value</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="ST#q:gdeOmGxrN:0HW3{">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="qYj0RsW#3cSE1fz`R;L7">
+                        <field name="VAR">status</field>
+                        <value name="VALUE">
+                          <block type="text" id="Pcc2A7N1XpmXQ0!y:nkd">
+                            <field name="TEXT">stop</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="C,cZ6k01+37=NBg2KNi5" x="0" y="287">
+    <mutation>
+      <arg name="pin"></arg>
+    </mutation>
+    <field name="NAME">read value</field>
+    <statement name="STACK">
+      <block type="variables_set" id="(+Tx^@_R!/#Eu?8HgR+[">
+        <field name="VAR">average</field>
+        <value name="VALUE">
+          <block type="math_number" id="*}4#p{-LzZm!XKSL,@(q">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="io_digitalwrite_var" id="/qeny05cSF66FJOvuFOL">
+            <value name="PIN">
+              <block type="variables_get" id="F5~G]w/ASa%KJ[(t[IXi">
+                <field name="VAR">pin</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="}xrbR_TwGwRCA84WGF]B">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_repeat_ext" id="T]=4h%`-lz)L|h!pv=ta">
+                <value name="TIMES">
+                  <block type="math_number" id="X(cwQY+3Lc-c!*Jt@w@n">
+                    <field name="NUM">20</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="math_change2" id="b/oMHr=GnkptrBrW+MT}">
+                    <field name="VAR">average</field>
+                    <field name="OP">+</field>
+                    <value name="DELTA">
+                      <block type="io_analogread_var" id="7AcW)M|SO:}8CqOuuXYi">
+                        <value name="PIN">
+                          <block type="io_analogpins" id="VLM|HEcJ;~OEKs*-oA75">
+                            <field name="PIN">A0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="time_delay" id="`U,.i?gvv1=6IsKgYlbr">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="|aIn`;77/,*Pvl)Z`(tD">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_digitalwrite_var" id="Scmu?PS`)X6c|meHs*iN">
+                        <value name="PIN">
+                          <block type="variables_get" id="8%Lks7F23jKzMmqm3sbe">
+                            <field name="VAR">pin</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="kMf*u7+b/QZrl7o54uVt">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="math_change2" id="E?SY7{%{.J_gVsaHg9?n">
+                            <field name="VAR">average</field>
+                            <field name="OP">/</field>
+                            <value name="DELTA">
+                              <block type="math_number" id="+0Vst[jVXOu?srv6r|`^">
+                                <field name="NUM">20</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_set_type" id="ab=BD8mp9-_a9^_KWA^=">
+        <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
+        <value name="VARIABLE_SETTYPE_INPUT">
+          <block type="variables_get" id="+O*N?Sq1E|]uJ9oS5JUj">
+            <field name="VAR">average</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="620">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="w{BG+]Hq0lozq,X;E^rV">
+        <mutation name="read light value"></mutation>
+        <next>
+          <block type="controls_if" id="5_~u;9dmM#Sx=J3z*`-s">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_operation" id="MbsEpCces1An*EWSqcr(" inline="false">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="logic_compare" id="{McD9Y~ik+NG3Fs@#VRV">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="u)(qwe^qjnhya.J[ukY`">
+                        <field name="VAR">front value</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="m}n;2eI7@N9j}rB*MV)k">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_operation" id="B0.(Joja;CPA*FG]^m/6" inline="false">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id="B*M.OGah;vwvKfai*U89">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="ulNaB48b}~`br-C2+M?S">
+                            <field name="VAR">front value</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="yc*4Lx7byiRk2Hl3v_YD">
+                            <field name="VAR">right value</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_compare" id="p@y[Q2^6IOi:Q[S~x;]N">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="/Uu:3KSJ;xc3|EO}iqIP">
+                            <field name="VAR">front value</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="FBGIKuMWT^CH0Z04S0`#">
+                            <field name="VAR">left value</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="wemos_motor_move" id=",LDpz!S0:sQ%Y?Wy]!wT">
+                <value name="L_MOTOR">
+                  <block type="math_number" id="]].%RE9}[]l5v}nZ3o-7">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+                <value name="R_MOTOR">
+                  <block type="math_number" id="B0n;c/E4QCkJ1%MUvxN5">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="7T?)v.J=PwtSN[t]|pp(">
+                    <field name="VAR">status</field>
+                    <value name="VALUE">
+                      <block type="text" id="OGTF57Q)%[^)z4P~zSzN">
+                        <field name="TEXT">straight</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="controls_if" id="Icf;)|RPv%ZLE8%ZbGb;">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="~9)YUVP9qhG:FN9x;3Zs">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="f=C6p36/6x7aZvo0#k^R">
+                        <field name="VAR">status</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="q[D;Q5mePD:mbi{RO8-3">
+                        <field name="TEXT">straight</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="wemos_motor_move" id="rZv79@.B_3|y4R|7DH/r">
+                    <value name="L_MOTOR">
+                      <block type="math_number" id="FeY/zMPTKb^wfcEtC3[b">
+                        <field name="NUM">30</field>
+                      </block>
+                    </value>
+                    <value name="R_MOTOR">
+                      <block type="math_number" id="^Fs,),j;t^7|Z1W|C5HN">
+                        <field name="NUM">-30</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="kW!(P?4[/R~A/:Xooo81">
+                        <field name="VAR">status</field>
+                        <value name="VALUE">
+                          <block type="text" id="d4fF_oDjGNBee#]TcOQh">
+                            <field name="TEXT">spin</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="JgN18+!duJvJn!2njiem">
+                            <field name="VAR">spin time</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="l2fTaPHpKlDa|yk?#cNa"></block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="1G([nZTy|vYc;c1~Xi1D">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="aN8f9w~*RstsS%BR{nJs" inline="false">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <block type="time_millis" id="gf]Y#J4,%*Zo]}C}+-G0"></block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id=",60BTIRxYLqt}uQR:h0z">
+                            <field name="VAR">spin time</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="IP5/TLuW4b/SFbkI)7w9">
+                        <field name="NUM">5000</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="wemos_motor_move" id="@Z.Em6+F@2BxB8#C-]`E">
+                    <value name="L_MOTOR">
+                      <block type="math_number" id="oP~Vnl{5N2t]lR7~BXt1">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="R_MOTOR">
+                      <block type="math_number" id="+4uL]3D+hF,|]8aSM*!M">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="P}t{?kUwOYYP2*=qK:9}">
+                        <field name="VAR">status</field>
+                        <value name="VALUE">
+                          <block type="text" id="2lb@vXwAakxvPLGx53e+">
+                            <field name="TEXT">stop</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="*Nj*].7l{E1L[Va0njeh" x="0" y="1180">
+    <field name="NAME">read light value</field>
+    <comment pinned="false" h="80" w="160">函式說明</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="QdbB!0Im|=GO7d0@%?y|">
+        <field name="VAR">front value</field>
+        <value name="VALUE">
+          <block type="procedures_callreturn" id="Q2BM6IXW!h9,cg~%33(Y" inline="false">
+            <mutation name="read value">
+              <arg name="pin"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="variables_get" id="j8@}!Gvi{iB*Xao{)@CP">
+                <field name="VAR">front pin</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="OGI^[PG(iDO#0M6J@ODW">
+            <field name="VAR">left value</field>
+            <value name="VALUE">
+              <block type="procedures_callreturn" id="_2*#Q`{n%Ht)dk{%R-*^" inline="false">
+                <mutation name="read value">
+                  <arg name="pin"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="variables_get" id="hKLj-=fWK}xBn`x:PVf~">
+                    <field name="VAR">left pin</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="CctmaJN+IaA]Hbgy2B}l">
+                <field name="VAR">right value</field>
+                <value name="VALUE">
+                  <block type="procedures_callreturn" id="%jMbaY/Oz1H?h%@XZPYq" inline="false">
+                    <mutation name="read value">
+                      <arg name="pin"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="variables_get" id="~pUP!0*;yheJ3p=htvLl">
+                        <field name="VAR">right pin</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,341 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="Ks{KrkUJsE=ZUr`(q@xo" x="40" y="14">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="`JAOdAV96Z.2NsdK;*0r">
+        <field name="VAR">之前腳位2電位</field>
+        <value name="VALUE">
+          <block type="io_highlow" id="G:LQ5EJH30DS_^|okMdc">
+            <field name="STATE">LOW</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="egN!HPd_G)!)qNQP~I3)">
+            <field name="VAR">目前腳位2電位</field>
+            <value name="VALUE">
+              <block type="io_highlow" id="52`%V:6KhP.2+,=;^`,g">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="2`-r_pB?F,:l)=IqzNI`">
+                <field name="VAR">亮燈中</field>
+                <value name="VALUE">
+                  <block type="logic_boolean" id="IOS|u8H-7Jg5Lj:Rm=_P">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="_2{oFEt..h@}:eWW~.?9">
+                    <field name="VAR">閃爍中</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="ZL.+gMvlnr!Dh0SxMKSO">
+                        <field name="BOOL">FALSE</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_digitalwrite_var" id="/GJ:0jHrLPUoQ7TYGuY3">
+                        <value name="PIN">
+                          <block type="io_allpins" id="kh;dzj~fHea%rIOJ`lY@">
+                            <field name="PIN">6</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="pI;-,)LYv_kV6Z(|n(vw">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="37" y="210">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="jvK+%Hb+Shy2[eC,pW0H">
+        <field name="VAR">目前腳位2電位</field>
+        <value name="VALUE">
+          <block type="io_digitalread_var" id="7SPjm@u^::/Dp6_pc1t}">
+            <value name="PIN">
+              <block type="io_allpins" id="kQAyo.n3HWXz!7Z0FE[R">
+                <field name="PIN">2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="Vi;)szKK48^tk/FdgTTj">
+            <value name="IF0">
+              <block type="logic_compare" id="]poyA8RL/`S[?H],r{yO">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="m(awJVe9^7]?E9u{r*UJ">
+                    <field name="VAR">目前腳位2電位</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="io_highlow" id="dZy}H=y*]BK_`VZJ@_51">
+                    <field name="STATE">HIGH</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="CBU9M0|SrDIS|C7`4mGI">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="h#va:PW7Dr2Ayt3j5%N4">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="j@PrL`XZ)vf{!Ck#wcUF">
+                        <field name="VAR">之前腳位2電位</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="io_highlow" id="o_Rkswf01Bg,KBclU7(a">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="misc_comment_single" id="9?BFnnp)g]N/~`GJ!k%m">
+                    <field name="COMMENT">下一行：如果已開燈或閃爍時則設為關燈, 否則設為開燈</field>
+                    <next>
+                      <block type="variables_set" id="=-{QupbIQn%YSG=V^iTL">
+                        <field name="VAR">亮燈中</field>
+                        <value name="VALUE">
+                          <block type="logic_negate" id="K]o~vNL(*Z3RS-Pg26UQ">
+                            <value name="BOOL">
+                              <block type="logic_operation" id="Ub7dAM{gf@#Ub!QB260p">
+                                <field name="OP">OR</field>
+                                <value name="A">
+                                  <block type="variables_get" id="):z7=W1F?I4BQy|MwUrC">
+                                    <field name="VAR">亮燈中</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="I@e}j7pdh=dsz^JdCcn^">
+                                    <field name="VAR">閃爍中</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="io_digitalwrite_var" id="Lm*eJ|G,voII.YC|Ftkg">
+                            <value name="PIN">
+                              <block type="io_allpins" id="~kicAXx9-Fewz3aP#%m_">
+                                <field name="PIN">6</field>
+                              </block>
+                            </value>
+                            <value name="STATE">
+                              <block type="variables_get" id="zWP0]v@m#t;5z#*RbaUL">
+                                <field name="VAR">亮燈中</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="misc_comment" id="uHULS:5+fzV+#LST#78|">
+                                <field name="COMMENT">先關閉閃爍, 並開始計時 (要長按1秒才開啟閃爍)</field>
+                                <statement name="DO">
+                                  <block type="variables_set" id="sl^zZD8+j:s5Qs:2,vdm">
+                                    <field name="VAR">閃爍中</field>
+                                    <value name="VALUE">
+                                      <block type="logic_boolean" id="7;ElZnm`ANTDYA4NW#gB">
+                                        <field name="BOOL">FALSE</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="jy0As7^-KKPT`#t_ikOF">
+                                        <field name="VAR">計時器</field>
+                                        <value name="VALUE">
+                                          <block type="time_millis" id=".~:tOZE-)DlK8n4Aqn,Z"></block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="misc_comment" id=".N_;~_2dFk.M:n3/6Ftm">
+                    <field name="COMMENT">如果未開啟閃爍, 且長按超過1秒, 則開啟閃爍, 並開始計時(加0.5秒使到期以便先閃爍一次)</field>
+                    <statement name="DO">
+                      <block type="controls_if" id="W#-jO8HvnML{5+sf!|1E">
+                        <value name="IF0">
+                          <block type="logic_operation" id="P)wmpLo=%Wk2FK;[qVDA" inline="false">
+                            <field name="OP">AND</field>
+                            <value name="A">
+                              <block type="logic_negate" id="Px6)~dvkyAS?jSZwIf`u">
+                                <value name="BOOL">
+                                  <block type="variables_get" id="7!xqd}p(cKo)AnaRK_4p">
+                                    <field name="VAR">閃爍中</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="hlJZ8r^!du%{-j+Jve((">
+                                <field name="OP">GTE</field>
+                                <value name="A">
+                                  <block type="math_arithmetic" id="olPM=:aR%pO50}{aYd7O" inline="false">
+                                    <field name="OP">MINUS</field>
+                                    <value name="A">
+                                      <block type="time_millis" id="W3El~oCU:db?Ns/Q^zc_"></block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="variables_get" id="MyzPCZw,ytw5Wh]M5v*x">
+                                        <field name="VAR">計時器</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="(zDt0Dn2o4zc*6/kL8]z">
+                                    <field name="NUM">1000</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="(DW6+U.@+s?9;^)P|N;W">
+                            <field name="VAR">閃爍中</field>
+                            <value name="VALUE">
+                              <block type="logic_boolean" id="`TU+E?68*0UC.w5C4I1n">
+                                <field name="BOOL">TRUE</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="*lYh4ktZi5)xkcl3{@vw">
+                                <field name="VAR">計時器</field>
+                                <value name="VALUE">
+                                  <block type="math_arithmetic" id="4ztP;8yB`I4Qv|P5mtX@">
+                                    <field name="OP">ADD</field>
+                                    <value name="A">
+                                      <block type="time_millis" id="2/YMSy#}ixc??c~Ev%.]"></block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="n=%G5s?11jZTO0E*@bJz">
+                                        <field name="NUM">500</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="variables_set" id="SW8(^jcIqB2x.:@_TMa0">
+                <field name="VAR">之前腳位2電位</field>
+                <value name="VALUE">
+                  <block type="variables_get" id="4.-hO7-P_xwWO-n_ZF#y">
+                    <field name="VAR">目前腳位2電位</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="misc_comment" id="sP;Yg1%gjFlr4`3I([AI">
+                    <field name="COMMENT">如果已開啟閃爍, 並且過了 0.5 秒, 則自動切換LED並重新計時</field>
+                    <statement name="DO">
+                      <block type="controls_if" id="~`q_s#G%wo~fA{yvzZF}">
+                        <value name="IF0">
+                          <block type="logic_operation" id="Z:tEVp,rYY:!8|K%lUMJ">
+                            <field name="OP">AND</field>
+                            <value name="A">
+                              <block type="variables_get" id="Aih=e+745*e?L:jhV0tD">
+                                <field name="VAR">閃爍中</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="cN1*5!9p/]zcI+CL{v3M">
+                                <field name="OP">GTE</field>
+                                <value name="A">
+                                  <block type="math_arithmetic" id="WWnR/`b`lFQ^Dl;+VB~Q" inline="false">
+                                    <field name="OP">MINUS</field>
+                                    <value name="A">
+                                      <block type="time_millis" id="u4~pnL14.RS{R4eQmEgP"></block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="variables_get" id="t`Fz`~#RN^cISr:nq{w-">
+                                        <field name="VAR">計時器</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="CCIi@x%W5NZ[DGt}Q;I]">
+                                    <field name="NUM">500</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id=")v=;2OJmJuVFy)a4Smr.">
+                            <field name="VAR">亮燈中</field>
+                            <value name="VALUE">
+                              <block type="logic_negate" id="R5iWXO*p{X8a34CK?T^O">
+                                <value name="BOOL">
+                                  <block type="variables_get" id="Z,!lD82Q/2(FL^g7s,*|">
+                                    <field name="VAR">亮燈中</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="io_digitalwrite_var" id="C88({B2N,:-#t5*n3V9+">
+                                <value name="PIN">
+                                  <block type="io_allpins" id=";HW6]axm?CF{K)HXCB@~">
+                                    <field name="PIN">6</field>
+                                  </block>
+                                </value>
+                                <value name="STATE">
+                                  <block type="variables_get" id="ow,q4qi@gr-E5@M?~Ne%">
+                                    <field name="VAR">亮燈中</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="B-Hu0%!,:#}I~Mu)!{|O">
+                                    <field name="VAR">計時器</field>
+                                    <value name="VALUE">
+                                      <block type="time_millis" id="oh%H=N.pTw^Y6~f9Q+S("></block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

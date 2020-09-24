@@ -1,0 +1,50 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="24" y="-16">
+    <statement name="LOOP_FUNC">
+      <block type="io_digitalwrite_var" id="rS_j8F:1H0{:JO6Eq[V*">
+        <value name="PIN">
+          <block type="io_allpins" id=";--^-|eo{5WBvf3Am0fv">
+            <field name="PIN">6</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="io_highlow" id="JV-97huL-1d74NYW(nEE">
+            <field name="STATE">HIGH</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="TW2(!d!tSqr|wy}=-/3/">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="+~4YyI]U!%nA(7q@h!K?">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_digitalwrite_var" id="%(mOTIQne#|^RBi;6!S7">
+                <value name="PIN">
+                  <block type="io_allpins" id="M*kj%L+PY{+hG^ud1c#Q">
+                    <field name="PIN">6</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="@*C84~@0sL.!nFKGgZZ,">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="65L}2z;LoFTJJPHr;+FH">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="3R+Gf+KC)PEVCP,(QSm/">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

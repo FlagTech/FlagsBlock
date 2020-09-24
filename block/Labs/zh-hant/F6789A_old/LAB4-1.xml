@@ -1,0 +1,102 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="m2,a!0k/0zM6mnTZKa=~" x="-2" y="11">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="EG,/?PbBYPDQUvJ19lSZ">
+        <field name="VAR">led</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="a?lWMGqQVM8+0uNkc:R7">
+            <field name="PIN">3</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="92">
+    <statement name="LOOP_FUNC">
+      <block type="controls_for" id="*h#I6cHVl,]RaElOC!u_">
+        <field name="VAR">fadeValue</field>
+        <value name="FROM">
+          <block type="math_number" id="JOAff_kzrovsS)}n6UvH">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="^)y(M!|P%vkc/klv}ILy">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="{#vm#Ut4qnVL:U%gP4Y?">
+            <field name="NUM">15</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="io_analogwrite_var" id="ij3*m0Y.G|h0;G_Em|CY">
+            <value name="PIN">
+              <block type="variables_get" id="UWE/7_KOm^g(JV`CK5K7">
+                <field name="VAR">led</field>
+              </block>
+            </value>
+            <value name="NUM">
+              <block type="variables_get" id="2slq+@(C?wc!oQ%k#eTw">
+                <field name="VAR">fadeValue</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="@i#4MH-+]fuWFHY-DYu=">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="Gpc_`NjFMGu`hZP)sH5k">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_for" id="zm`b[`3QF@o|eA-4xlOM">
+            <field name="VAR">fadeValue</field>
+            <value name="FROM">
+              <block type="math_number" id="zmFvo4ZkuOJzBAS;l.Q0">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="vDqJaD4e674S6lXSVL[D">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id=",2;D028nBxA#c5ny47CN">
+                <field name="NUM">15</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_analogwrite_var" id="9M45~xHp5Nk;z.b^7zF.">
+                <value name="PIN">
+                  <block type="variables_get" id="X%ju)Y1`4d`N/#DJI]#s">
+                    <field name="VAR">led</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <block type="variables_get" id="0][wm4ZIHlx)xrYTZzAB">
+                    <field name="VAR">fadeValue</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="anPxb08Bps;#MtkK?a8=">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="f)`aQ,#4)C.+E#1No{xs">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

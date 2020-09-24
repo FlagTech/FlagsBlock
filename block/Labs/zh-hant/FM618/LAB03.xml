@@ -1,0 +1,462 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="mR4Gsjy~[6cPUnPpZo+O" x="24" y="54">
+    <statement name="SETUP_FUNC">
+      <block type="TTP229_use" id="cb^c_svQi9^gJ|#io171">
+        <field name="SCL_PIN">D5</field>
+        <field name="SDO_PIN">D6</field>
+        <next>
+          <block type="variables_set" id="lh|t.3xBR6(knq]}%7NR">
+            <field name="VAR">喇叭</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="Sg)B#smxcWLx2|EygT:I">
+                <field name="PIN">D1</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="25" y="155">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="skggP5j3km7rn%BKY4-}">
+        <field name="VAR">按鈕</field>
+        <value name="VALUE">
+          <block type="TTP229_get" id="!T85IZ7rT{wOFAee1qfg"></block>
+        </value>
+        <next>
+          <block type="controls_if" id="uukRA9s`}-1@fwuV]YC7">
+            <value name="IF0">
+              <block type="logic_compare" id="i08|:Y[,OA0Z{O=bj-J9">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="/*eYRZ}+.,n?FbfI}aVT">
+                    <field name="VAR">按鈕</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id=".*5?lXO,-GhODIu`RpS^">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id=";5qkd!T=_uQkN![f(c(`">
+                <mutation elseif="11"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="TinIkP1:|e`toYTtn{Ie">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="XTKyx0Bf#f;*3P2!SRc,">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="zguJ9ALVNc)2J`==!ZMV">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="io_tone_var" id="k}?Q1-8O(~a6EI:^(Q8^">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="={WJA4sBqPqSb(0tNWF{">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="IF~%VLh7vc]svK*Rou~x">
+                        <field name="NUM">220</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="E~x2DH~Dk[kG+.6a0PLr">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="JVQ/SY%:/gwq9(pUlC7?">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="h,Ma~2wfQ1`Z?yu!{x/L">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="50o}mZw4Sg;nR-fQ*BVI">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="io_tone_var" id="sE0UIOOzEn(NV4qci6C!">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="TCh}]Nwpm[f=g2Kv%*.q">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="s!Z[JyXw,-2lx`DiR{86">
+                        <field name="NUM">247</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="19JcI[:/|(X)ybHikkZh">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF2">
+                  <block type="logic_compare" id="pKltKBY/]pdOZ{z+m|^q">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="lE^[%}^~p1PYT#O%c;Rk">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="o1-Q{:u0CJvEx519w|85">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO2">
+                  <block type="io_tone_var" id="Zw(jCLg!vrOhQFU3dTR:">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id=")*;IiRQ3:yJ9]:^CUAd!">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="0~]2d(OKHbCGQ?Wf-RO~">
+                        <field name="NUM">262</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="2[)X]v#^sgQ7,UR~%D_Z">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF3">
+                  <block type="logic_compare" id="Fp0bY[FZA(Is7F[zfTMS">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="6Bat4HOW6=A37S}igh`s">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="kXEJt}En5in.]ds|Klc?">
+                        <field name="NUM">4</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO3">
+                  <block type="io_tone_var" id="x,W^ELUG]m2rN`7_;sK|">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="6*_EAFz!g8q-bM/PxdOd">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="a~Eu9h2tEc6X90WF3t;l">
+                        <field name="NUM">294</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="06hFA|dm@pU]w@58:,xY">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF4">
+                  <block type="logic_compare" id="i)?4,NkBcPMb}~*;h(sh">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="9fbV%_3-`?_H5IC}1VxB">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="WlHr((RS|oU=j.C^9967">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO4">
+                  <block type="io_tone_var" id="d*4ufh7@vE!B#XJh~MI(">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="6JV~7iH3E;b;Ac8S2Sp/">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="u}guCd,UYtc5?19b@B,l">
+                        <field name="NUM">330</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="qkQY`T:`/;XS;!T|(VR2">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF5">
+                  <block type="logic_compare" id="q2D-HmhU3SAT[BiBNjQN">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="xz{SpL`_ky@oQ2l{GZ,B">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="zElz?D4hNB1GXj7..b2m">
+                        <field name="NUM">6</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO5">
+                  <block type="io_tone_var" id="9]sn.Pbtu%/Z_-#HK=BQ">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="EyXt|X;i=ORl,19q[k,#">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="Et8ZG8uSN?clYU./WW%)">
+                        <field name="NUM">349</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="{bdX)DY14BuxCy`z%i~]">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF6">
+                  <block type="logic_compare" id="a{.U)7zQ9BA+b/HOn,)7">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="_},sus^=L,-:~BNB[4-%">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="_dTou9p20TWW.[P;aovk">
+                        <field name="NUM">7</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO6">
+                  <block type="io_tone_var" id="A^X!8[db5h@oK#PwbSh6">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="nYsTJ+!E0[n./:Dd5/P|">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="OCxYf^A3=s-{!4oygJSU">
+                        <field name="NUM">392</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="iu_VZz)1gE4[ln?s?7@q">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF7">
+                  <block type="logic_compare" id="%`Nn..CGaaS!2NWXHY0S">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="Gnk/eUA^E#G9M2bLPln4">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="yi-JYQwUdyb8LSZDjs@j">
+                        <field name="NUM">8</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO7">
+                  <block type="io_tone_var" id="U/9YX=de_!Q)K6O3WR4P">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="Ocvo8GnZKzwe1362};yv">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="!uw7T3P#NqcdFoIx:|x*">
+                        <field name="NUM">440</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="VYxl9Ys?f={^@h^Tk3)U">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF8">
+                  <block type="logic_compare" id="aRHC9WA#w|f,/S-iTNEm">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="Bi=8Oz|Vt(;FYePQykRX">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id=".hBU:lTzSk{3J8U]=NhG">
+                        <field name="NUM">9</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO8">
+                  <block type="io_tone_var" id="p-5x{PjK1=]T7v(R}|@4">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="iCMMH+Ik9B!-@hhs;}/%">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id=",wxTCoc)Gb.%qic=cKR0">
+                        <field name="NUM">494</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="_[.1vH5Z5/eP7xiS7~g%">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF9">
+                  <block type="logic_compare" id="aoQ3hvXqU1,,X]}0ld_I">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="|2tb_q_jtlA?7u2w6[]|">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="x/)C=K.1Zxn40Vf5nz5h">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO9">
+                  <block type="io_tone_var" id="=#91SlxbInx6dwih6n2^">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="kaLsNaq}54tWHhfUs~UI">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="u1Z3_)VEASmE^o(fldzr">
+                        <field name="NUM">523</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="giXG_R)V[BDeqr8d@=Cp">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF10">
+                  <block type="logic_compare" id="qZCH6Fv@Qp[PrXK{+P99">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="#NU*W=;Y,@NWY0v`zpoq">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="w25=zQ~/_@8Tj:1].su@">
+                        <field name="NUM">11</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO10">
+                  <block type="io_tone_var" id="[xO-QHyV:`s(1_vavE6q">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="jStkCD(GYt*_m9p;cLp8">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="#/I`Gl4Q#[(;iPVO|quL">
+                        <field name="NUM">587</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="EjGztRedv^M%DDu|DRDy">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF11">
+                  <block type="logic_compare" id="2AUqhSJ~{B`~4SjzoRb0">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="FCa2(mGGAvNL5^B=uim^">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id=".7rKU)k!dUrI~`utk)U(">
+                        <field name="NUM">12</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO11">
+                  <block type="io_tone_var" id="h5bcNSIN?)FoiN*t%~Xj">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="daZ=l5P([Kj1B)(VMH=6">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="SwCzJ!2MMniUWFGH~`A%">
+                        <field name="NUM">659</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="_p}#T|FFAgZ-R)g4Ux!2">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

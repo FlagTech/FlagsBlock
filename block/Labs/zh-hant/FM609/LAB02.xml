@@ -1,0 +1,176 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="T1(XI?qpM+86kV#NkVN*" x="-316" y="-270">
+    <statement name="SETUP_FUNC">
+      <block type="controls_waitUntil" id="1w}~(L3t=h,onF@hKz}#">
+        <value name="BOOL">
+          <block type="esp8266_ap_setup" id="2.yXW3u*G8.]XBV8pB2B">
+            <field name="CHANNEL">1</field>
+            <field name="HIDDEN">FALSE</field>
+            <value name="SSID">
+              <block type="text" id=":cKiPwB;uG3kO@4pKw*)">
+                <field name="TEXT">LAB02</field>
+              </block>
+            </value>
+            <value name="PINCODE">
+              <block type="text" id="CqNAAOD%X9At=g4iwjCv">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="esp8266_webserver_on2" id=";mMCl7;CTM1T1iIB6{3J">
+            <field name="FUNCNAME">蜂鳴器</field>
+            <field name="PATH">/call</field>
+            <next>
+              <block type="esp8266_webserver_setup" id="51R=Nkz8SoEEgh:|BB-.">
+                <field name="PORT">80</field>
+                <next>
+                  <block type="io_digitalwrite_var" id="]XbbHgMM7vyr[b{dbT23">
+                    <value name="PIN">
+                      <block type="io_allpins" id="JDqu9j26mB/Vo|nCqF:3">
+                        <field name="PIN">D1</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="/f~eansl/#u/.0B@~a6*">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_init" id="K(6Ts/vZuKjbxHww~o2(">
+                        <field name="VAR">開關狀態</field>
+                        <value name="VALUE">
+                          <block type="text" id="aR3e|~ZS[,xcPv2h+Gv2">
+                            <field name="TEXT">OFF</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="126" y="-186">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id=":=MD}rCr)Ce{(*to}ipn"></block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="e_NrgqT^i3EAq:/2||@J" x="-318" y="-54">
+    <field name="NAME">蜂鳴器</field>
+    <statement name="STACK">
+      <block type="controls_if" id="%sP51+j,u*hlGG].xGjS">
+        <value name="IF0">
+          <block type="esp8266_webserver_has_arg" id="joggGY5Lf}ar.+Ex3p1-">
+            <value name="ARGNAME">
+              <block type="text" id="fKOymxMl2:4ETWY7_,9L">
+                <field name="TEXT">buzzer</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="i(8CC](*9`~i(fwo8K[s">
+            <field name="VAR">開關狀態</field>
+            <value name="VALUE">
+              <block type="esp8266_webserver_arg_by_name" id=";Q0qLeT}X]04i?Pc+4,9">
+                <value name="ARGNAME">
+                  <block type="text" id="92#7+dxO|1V{AVhbAOn_">
+                    <field name="TEXT">buzzer</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="V`)/u09_LOExpyMqDbN_">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="nm[JKc4]R)(m^Q7Pwcb=">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="={pMazIasTcC^S7=P+h!">
+                        <field name="VAR">開關狀態</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="_)U|F!?6qvF5[!.A-6@|">
+                        <field name="TEXT">ON</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="io_digitalwrite_var" id="5tz-D%W7/~D22kXchd=r">
+                    <value name="PIN">
+                      <block type="io_allpins" id="T`V*Yk(]F?SRrKgUI~mU">
+                        <field name="PIN">D1</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="1frM9U`Yv72#Q5!R?B*j">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="t#/m@!tl^QpC8?S`v^}+">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="z!uy7YPzKolcYpfomI^,">
+                        <field name="VAR">開關狀態</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="v1w|G+r!mZ`wgJ+?QJSd">
+                        <field name="TEXT">OFF</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="io_digitalwrite_var" id="f-ZQaEtBv4Siv#Ia*!h-">
+                    <value name="PIN">
+                      <block type="io_allpins" id="g{}5E|O=g#y[90Pcp,f;">
+                        <field name="PIN">D1</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="K%ex_k:jALl0}F1xTyv/">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="esp8266_webserver_send" id=")Mf%Z.mjS[-d5hT1kVSC">
+                    <value name="STATUS">
+                      <block type="math_number" id="6|0kqTBEiF(Zyha5!rvM">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                    <value name="MIMETYPE">
+                      <block type="text" id="WxSn[ud0jIDnH-f_LqO;">
+                        <field name="TEXT">text/plain</field>
+                      </block>
+                    </value>
+                    <value name="CONTENT">
+                      <block type="text" id="D7(@i#KCLEOu0~Ms^(B6">
+                        <field name="TEXT">OK</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

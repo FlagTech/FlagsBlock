@@ -1,0 +1,87 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="={-a5YrP~dLq0~Ai%^7/" x="89" y="-62">
+    <statement name="SETUP_FUNC">
+      <block type="io_input_pullup" id="7/Jc;?Ap2L2tbS6dlw*X">
+        <field name="PIN">D3</field>
+        <next>
+          <block type="variables_set" id="[P7:EF?9[T#mZ#u-6-sr">
+            <field name="VAR">LED狀態</field>
+            <value name="VALUE">
+              <block type="io_highlow" id="d9STG!ljT39U?X;cb,?X">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_builtin_led" id="}j?NHOBT:JZ.ZcIoPvn=">
+                <field name="BUILT_IN_LED">D4</field>
+                <value name="STATE">
+                  <block type="variables_get" id="5B3:|j{8|iWml?uMZ)+}">
+                    <field name="VAR">LED狀態</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="89" y="76">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="{?cKn2!mJX04S}rlS*W@">
+        <value name="IF0">
+          <block type="logic_compare" id="jemuP;|ZYi.88E(Ldj!:">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread_var" id="D!IB^e?:#U9O1Hp/!mP|">
+                <value name="PIN">
+                  <block type="io_allpins" id="B]O+7{6LspMoV~=txfz[">
+                    <field name="PIN">D3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="Gzu(CiF@[eoisAo)wsuE">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="zj=]N[%klL|1[3Fu5tAe">
+            <field name="VAR">LED狀態</field>
+            <value name="VALUE">
+              <block type="logic_negate" id="e5G4jz9:anYt;1@%_L.L">
+                <value name="BOOL">
+                  <block type="variables_get" id="Ql-3s6Fbq?#95Za8wtM5">
+                    <field name="VAR">LED狀態</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="io_builtin_led" id="::P|p5QJrB*%lS1v]RfF">
+                <field name="BUILT_IN_LED">D4</field>
+                <value name="STATE">
+                  <block type="variables_get" id="W|nG8h_%Ad3HYCk!vXtg">
+                    <field name="VAR">LED狀態</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="^q*1@pK(Mrj`Ja_QbOd5">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="#.?lRHb^]GIasoJAn%At">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

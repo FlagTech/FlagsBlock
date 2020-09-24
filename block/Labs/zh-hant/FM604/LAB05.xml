@@ -1,0 +1,169 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="vM4?6,bd|(ptE:+uoYWq" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="]!}sVU#Ewk`FaDP50iLT">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="variables_set" id="K(6kqN_=KRc1VV,C}Inu">
+            <field name="VAR">echoPin</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="DWk0pk`.0/9w[.xGBPhp">
+                <field name="PIN">9</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="A,fsZ;0SbnkKK86p;BSV">
+                <field name="VAR">triggerPin</field>
+                <value name="VALUE">
+                  <block type="io_allpins" id="D6!B0gjuz[h5wZ69sHvD">
+                    <field name="PIN">10</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="s`o+E4ti[1BLNW@xPcSE" x="0" y="144">
+    <field name="NAME">測距</field>
+    <statement name="STACK">
+      <block type="io_digitalwrite_var" id="`{zGM]kagWs.u~64rXIc">
+        <value name="PIN">
+          <block type="variables_get" id="odXPT8f3~_HClNy8%vvX">
+            <field name="VAR">triggerPin</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="io_highlow" id="-UXa%G:!/ito~|?Jx;j4">
+            <field name="STATE">HIGH</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delaymicros" id="Hq/AJQpu9hn_yc;e;o7:">
+            <value name="DELAY_TIME_MICRO">
+              <block type="math_number" id="8~N2i:*s=Vs:2CCr4g/h">
+                <field name="NUM">10</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_digitalwrite_var" id="L)6XByT#f#(+sp=jHf_9">
+                <value name="PIN">
+                  <block type="variables_get" id="=E)^QPesR_6g4f88?P!t">
+                    <field name="VAR">triggerPin</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="9C4%J=#,{+zu,)Mf}Lz+">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="]3g+9undIa2]t8lXoHpd">
+                    <field name="VAR">高電位持續時間</field>
+                    <value name="VALUE">
+                      <block type="io_pulsetimeout_var" id="8Lw6sI8mFll4T=,ZW@cr">
+                        <value name="PIN">
+                          <block type="variables_get" id="kA,ofh}N98rI6!q@dQ4z">
+                            <field name="VAR">echoPin</field>
+                          </block>
+                        </value>
+                        <value name="PULSETYPE">
+                          <shadow type="io_highlow" id="pBRJwPfZ:olX*vPrAK=^">
+                            <field name="STATE">HIGH</field>
+                          </shadow>
+                        </value>
+                        <value name="TIMEOUT">
+                          <block type="math_number" id="uWdW}R5PlAIT`MGp89iz">
+                            <field name="NUM">10000</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="w6XzFGq}M2bw{BBeuPP;">
+                        <value name="IF0">
+                          <block type="logic_compare" id="ww4{y3Zis76aX3G9|gml">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="t)=kj+z6%1694vS~d{.)">
+                                <field name="VAR">高電位持續時間</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="y]F(3MBh-Y-YrGU88crP">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="io_digitalwrite_var" id="?cPL4dBH(/5Z[:,Uq;H6">
+                            <value name="PIN">
+                              <block type="variables_get" id="!nXrsBO+#S}{.?#]wmFm">
+                                <field name="VAR">echoPin</field>
+                              </block>
+                            </value>
+                            <value name="STATE">
+                              <block type="io_highlow" id="|i-#+BfLy,?I-kmX5_PV">
+                                <field name="STATE">LOW</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_set_type" id="^nzH1]]?LgxoP}%XKLLU">
+        <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+        <value name="VARIABLE_SETTYPE_INPUT">
+          <block type="math_arithmetic" id="R@;}Gt5]mek!g1*)zy63">
+            <field name="OP">DIVIDE</field>
+            <value name="A">
+              <block type="variables_get" id="K1|8o~uuh5C;nVZa`T{.">
+                <field name="VAR">高電位持續時間</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="Tvz|YZ+N--9tPDIOXVk1">
+                <field name="NUM">58.2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="483">
+    <statement name="LOOP_FUNC">
+      <block type="serial_print" id="z0a%#_Q#HtE@NS{|r3U;">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="NEW_LINE">TRUE</field>
+        <value name="CONTENT">
+          <block type="procedures_callreturn" id="6T~hBhF*suq-xxdMEaEd">
+            <mutation name="測距"></mutation>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="tg~@#RSKYSOxB[1R^6V4">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="E}93h4A@*IM1z(^28mB5">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

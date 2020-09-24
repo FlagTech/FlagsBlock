@@ -1,0 +1,28 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="37" y="35">
+    <statement name="LOOP_FUNC">
+      <block type="flagpcmasync_startplay" id="9k)Rbr*Af=!V]W7Vo8z7">
+        <next>
+          <block type="controls_waitUntil" id="?#;oU.#FHt|uvvc{.~m*">
+            <value name="BOOL">
+              <block type="flagpcmasync_updateandchecksound" id="4;z3)0f3QdSGwGURJJ|="></block>
+            </value>
+            <next>
+              <block type="flagpcmasync_stopplay" id="Z6I8E3?IGH:[]@8z*=vF">
+                <next>
+                  <block type="time_delay" id="cDO_1iV*+?|;W9;m?5p:">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="|jD6slTXb_DTw2cCViQ0">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,153 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="F/+Dr(!{!{To^%XNZ7%Y" x="-619" y="-73">
+    <statement name="SETUP_FUNC">
+      <block type="controls_repeat_ext" id="@C-_YNy4#9dfEVM1hi-f">
+        <value name="TIMES">
+          <block type="math_number" id="Vu+F]SLA@6LSq0p-?`.4">
+            <field name="NUM">30</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="io_digitalwrite_var" id="kKo)Iyuw.CBzw3*o0lB|">
+            <value name="PIN">
+              <block type="io_allpins" id="|9Wz-dGv]r!DRR~;uyu_">
+                <field name="PIN">13</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="nV|8u|JGBB^?`IWD%wT+">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="*s~O]uo4H,+a7BmrqoGa">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="kI3mDUxH|mSXTanw:l{e">
+                    <field name="NUM">500</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_digitalwrite_var" id="?/#+s6QDo;SQP`S)f=RI">
+                    <value name="PIN">
+                      <block type="io_allpins" id="8oVt5aS#rY_k1Gl_~P:c">
+                        <field name="PIN">13</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="d9dL-WYe0+mY9V9|A[#O">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="4ctki2;`T*jwC=1zT7th">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="}=AkLE3?T5o2iF[missG">
+                            <field name="NUM">500</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-615" y="188">
+    <statement name="LOOP_FUNC">
+      <block type="io_digitalwrite_var" id="~cF~A%!Y%||B,dkH,Qt?">
+        <value name="PIN">
+          <block type="io_allpins" id="I26_Vg2m=MVt#R~}nW!P">
+            <field name="PIN">13</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="io_digitalread_var" id="%n~P*Hr9d?pvNk{Z{HAn">
+            <value name="PIN">
+              <block type="io_allpins" id="dlhc0XbeaN/qco]%:t^V">
+                <field name="PIN">2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="}JFEtbqK=sp0JsY_i-~i">
+            <mutation elseif="1"></mutation>
+            <value name="IF0">
+              <block type="io_digitalread_var" id="2g0YGIU,Z/*RRsaoG_?8">
+                <value name="PIN">
+                  <block type="io_allpins" id="]4Mb3fbV:hN^UB)Z2+:n">
+                    <field name="PIN">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="io_digitalwrite_var" id="CZ!.I=+tD5YZhDoY)P;|">
+                <value name="PIN">
+                  <block type="io_allpins" id="T_?QM18Bd|Cz.~PG~wK%">
+                    <field name="PIN">6</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="n|Df,Do,FUJLcaP{uMfD">
+                    <field name="STATE">HIGH</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="B~,Ag4:2RY}M/-u#Jwlj">
+                    <field name="VAR">計時器</field>
+                    <value name="VALUE">
+                      <block type="time_millis" id="u(O6?1Tu~M]Ihve?~*xH"></block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="==JR;cHX)5;6gmBwJE:[">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="{V?:p}kV;}l;Pe:U%C}5">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <block type="time_millis" id="h/WlyaP{*IDK0S.].9l/"></block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="!R(87|y9j?|`RjXqOHV7">
+                        <field name="VAR">計時器</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id=".oR`@[wjp4fGAb=lpU*K">
+                    <field name="NUM">10000</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="io_digitalwrite_var" id="Jj/;3|nZxYaNKR9-MeH}">
+                <value name="PIN">
+                  <block type="io_allpins" id="%YDg}M~!y?*mk,{RMW,0">
+                    <field name="PIN">6</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="[Uhyk1DC#,qA.J|@8JxM">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="time_micros" id="ELY?ScsrN~3N=0Hxd;h8" x="58" y="1011"></block>
+</xml>

@@ -1,0 +1,267 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="B8wqWJmSw=j3A]w%r]y+" x="-15" y="-106">
+    <statement name="SETUP_FUNC">
+      <block type="FLAGMATRIX_setup" id="kY3fl~)/Zh*O;nJf_5g=">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="DATA_PIN">
+          <block type="io_allpins" id="K,q0lFhn6-7Y%2J/zKvh">
+            <field name="PIN">D7</field>
+          </block>
+        </value>
+        <value name="CLK_PIN">
+          <block type="io_allpins" id="fBrBVq!S1:c]N]:-*kP#">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="FLAGMATRIX_clear" id="xxj|CI/_cgE[y1shnJ8_">
+            <field name="OBJNAME">圖形顯示器</field>
+            <next>
+              <block type="controls_waitUntil" id="XN.`k{o.M}U[}6]8nYTt">
+                <value name="BOOL">
+                  <block type="esp8266_ap_setup" id="1Z-,k4[{j;D:;E3!k2Hb">
+                    <field name="CHANNEL">1</field>
+                    <field name="HIDDEN">FALSE</field>
+                    <value name="SSID">
+                      <block type="text" id="K/9)Vcj[R5Wx15c8]cOO">
+                        <field name="TEXT">LAB11A</field>
+                      </block>
+                    </value>
+                    <value name="PINCODE">
+                      <block type="text" id="L#39Q}qb(*!jDC3o*_5z">
+                        <field name="TEXT"></field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="esp8266_webserver_on2" id="!|aA[KlQXRkeWmO*S?HJ">
+                    <field name="FUNCNAME">更換跑馬燈</field>
+                    <field name="PATH">/call</field>
+                    <next>
+                      <block type="esp8266_webserver_setup" id="rZ;,UtcP4ZPqXDAxtOov">
+                        <field name="PORT">80</field>
+                        <next>
+                          <block type="variables_init" id="[dEtw?KdQS:)t#9(0R%0">
+                            <field name="VAR">顏色字串</field>
+                            <value name="VALUE">
+                              <block type="text" id="9@vb|n)bJA07;+?+xwEW">
+                                <field name="TEXT">2</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_init" id="#[CC,hCZvv8AY61;MuJ+">
+                                <field name="VAR">顏色</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="^aesGT0luPSw/rd}5FUf">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_init" id="cz,rz?*2`oSSK9K+TBS:">
+                                    <field name="VAR">延遲時間字串</field>
+                                    <value name="VALUE">
+                                      <block type="text" id="0AC?`~YB(ZPA@.Y2y7eM">
+                                        <field name="TEXT">200</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_init" id="Xl1oN]wx@nLTmeeV]L{-">
+                                        <field name="VAR">延遲時間</field>
+                                        <value name="VALUE">
+                                          <block type="math_number" id="!#0WmbUZd.5F~8`-0@{7">
+                                            <field name="NUM">200</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_init" id="F{_b8Jl%uhYtsfa?*30~">
+                                            <field name="VAR">亮度字串</field>
+                                            <value name="VALUE">
+                                              <block type="text" id="k{*i*!HZ5q@x7kD9QO7U">
+                                                <field name="TEXT">4</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_init" id=").4Gl@2pqmk}p(;ua%fk">
+                                                <field name="VAR">亮度</field>
+                                                <value name="VALUE">
+                                                  <block type="math_number" id="Ig9wd3PRgS2/FKkpiq4O">
+                                                    <field name="NUM">4</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="oo?MV1V3(c_*f0K,xowH" x="-12" y="251">
+    <field name="NAME">更換跑馬燈</field>
+    <statement name="STACK">
+      <block type="controls_if" id="Tb@8BWqoR(3C0;+SASMs">
+        <value name="IF0">
+          <block type="esp8266_webserver_has_arg" id="NBP*7~~v7@i/^O)I5,OO">
+            <value name="ARGNAME">
+              <block type="text" id="D8U0C(;kOYB^QQBlKT-R">
+                <field name="TEXT">str</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="FLAGMATRIX_marquee" id="^9/z|Yyonp`Ba?I0_/Sb">
+            <field name="OBJNAME">圖形顯示器</field>
+            <value name="CONTENT">
+              <block type="esp8266_webserver_arg_by_name" id="@Ic(/_p?AYhedt1Kpii:">
+                <value name="ARGNAME">
+                  <block type="text" id="rcGgLJB/!is!Ahd4S+@_">
+                    <field name="TEXT">str</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="sNhf*n;UcVnxy.3:.]Qh">
+                <field name="VAR">亮度字串</field>
+                <value name="VALUE">
+                  <block type="esp8266_webserver_arg_by_name" id="+p/Y^|W5NG+z1`jCiozO">
+                    <value name="ARGNAME">
+                      <block type="text" id="B_p^.SBUq=GC?:AjGc^2">
+                        <field name="TEXT">bri</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="sE15S+u*|Qeq)}%Wa-Rd">
+                    <field name="VAR">亮度</field>
+                    <value name="VALUE">
+                      <block type="text_atoi" id="Rh1z:b^3D[G;d%b%3vr8">
+                        <field name="VAR">亮度字串</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="FLAGMATRIX_intensity" id="%OwJFI*UYa!JE7k*byWk">
+                        <field name="OBJNAME">圖形顯示器</field>
+                        <value name="INTENSITY">
+                          <block type="variables_get" id="|8[[Z_GC|h!KwP.?.S|?">
+                            <field name="VAR">亮度</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="-/F+ar/l3lcCEt5`.!_z">
+                            <field name="VAR">顏色字串</field>
+                            <value name="VALUE">
+                              <block type="esp8266_webserver_arg_by_name" id=",N},3Y_Lyi{f1S!_)K[N">
+                                <value name="ARGNAME">
+                                  <block type="text" id=")hXVwGA*PW8_/zDQcZk^">
+                                    <field name="TEXT">col</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="EW[P1;XbDY42ratVM{Hh">
+                                <field name="VAR">顏色</field>
+                                <value name="VALUE">
+                                  <block type="text_atoi" id="[V3Rutr@dhJ.8XE/gN(3">
+                                    <field name="VAR">顏色字串</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="w4+MGq7]d=W:+23)Q;CA">
+                                    <field name="VAR">延遲時間字串</field>
+                                    <value name="VALUE">
+                                      <block type="esp8266_webserver_arg_by_name" id="]lgGSx/!QyM!Zt7I4K:i">
+                                        <value name="ARGNAME">
+                                          <block type="text" id="dry3@GWqDe35=mUP9z%1">
+                                            <field name="TEXT">tim</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="!w[2-2~5.5x^4H?(,u=D">
+                                        <field name="VAR">延遲時間</field>
+                                        <value name="VALUE">
+                                          <block type="text_atoi" id="#ueM0%9F9o#0cS**4F)s">
+                                            <field name="VAR">延遲時間字串</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="esp8266_webserver_send" id="!4gbr/:a+af3SmCxdb{`">
+                                            <value name="STATUS">
+                                              <block type="math_number" id="PjC`xJ?Q9U4!H/LCrxIZ">
+                                                <field name="NUM">200</field>
+                                              </block>
+                                            </value>
+                                            <value name="MIMETYPE">
+                                              <block type="text" id="cy(sr{0p02ou8.T1.Coh">
+                                                <field name="TEXT">text/plain</field>
+                                              </block>
+                                            </value>
+                                            <value name="CONTENT">
+                                              <block type="text" id="*Y*%fMIFDx2{Sn?k,ET@">
+                                                <field name="TEXT">OK</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-1" y="663">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="%:4?8O76E~3f=+6M_?T}">
+        <next>
+          <block type="FLAGMATRIX_scroll" id="EPdI~{g{lQOtNLPyHThn">
+            <field name="OBJNAME">圖形顯示器</field>
+            <value name="DELAY">
+              <block type="variables_get" id="yccJ2}wr+5o|AeTcBqGw">
+                <field name="VAR">延遲時間</field>
+              </block>
+            </value>
+            <value name="COLOR">
+              <block type="variables_get" id="H4r7qn35XOC^9ToMYZnj">
+                <field name="VAR">顏色</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

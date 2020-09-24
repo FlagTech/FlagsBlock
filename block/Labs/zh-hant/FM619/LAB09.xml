@@ -1,0 +1,61 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="o;wSAM*p{5d0HB@iKoCA" x="-12" y="-93">
+    <statement name="SETUP_FUNC">
+      <block type="FLAGMATRIX_setup" id="e#`t2m,htD*m)K]n6JPk">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="DATA_PIN">
+          <block type="io_allpins" id="^7#jCGcb*3JiS=6hS-1@">
+            <field name="PIN">D7</field>
+          </block>
+        </value>
+        <value name="CLK_PIN">
+          <block type="io_allpins" id="5w7o7AX/z#X+%lDy+a)+">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="FLAGMATRIX_clear" id=".Lhc|C7:V[FJmIaGmT%h">
+            <field name="OBJNAME">圖形顯示器</field>
+            <next>
+              <block type="FLAGMATRIX_marquee" id="MeKGB@HUDXpH(hqdwbdy">
+                <field name="OBJNAME">圖形顯示器</field>
+                <value name="CONTENT">
+                  <block type="text" id="8-pIaOf!bSj4;4=wiMMG">
+                    <field name="TEXT">HELLO WORLD</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="FLAGMATRIX_intensity" id="!o_B]/6l[TEKH%X;MiNi">
+                    <field name="OBJNAME">圖形顯示器</field>
+                    <value name="INTENSITY">
+                      <block type="math_number" id="W%BzaASNOBo.FbBa~S,d">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-12" y="133">
+    <statement name="LOOP_FUNC">
+      <block type="FLAGMATRIX_scroll" id="p,K[m4Z[5]Tx~+h+hYs0">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="DELAY">
+          <block type="math_number" id="]GCw!-dOSL#90y4s8P35">
+            <field name="NUM">150</field>
+          </block>
+        </value>
+        <value name="COLOR">
+          <block type="math_number" id="KHqNbYT9{BBk`-V2erfa">
+            <field name="NUM">3</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

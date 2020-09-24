@@ -1,0 +1,141 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=",).KF{ta=/mzE#lWsc?T" x="-205" y="33">
+    <statement name="SETUP_FUNC">
+      <block type="flagledstripe_setup" id="r:_z(.bg=5yA_5!4WXwZ">
+        <field name="OBJNAME">紅綠燈號誌</field>
+        <field name="NUM">3</field>
+        <value name="LEDPIN">
+          <block type="io_allpins" id="3z@`q:CG/hk49=}s@L4-">
+            <field name="PIN">D6</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setbrightness" id="vFXlxlWstyUa.;,*GDpg">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <field name="BRIGHTNESS">40</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-205" y="156">
+    <statement name="LOOP_FUNC">
+      <block type="controls_for" id="j1(WhX:wV.or=q~5k7:.">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="`.I4D[)XGu=}0SxL]~`p">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="V-82d3C^URIhzt+agL=~">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="Xa4^e*A:r4;A?.7(6^^@">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="flagledstripe_setpixelcolor" id="~V/jBWxC}_kBa*Fxe1_l" inline="false">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <value name="NUM">
+              <block type="math_number" id="8,HArGo=W0/9_q_@TTl~">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <value name="RED">
+              <block type="variables_get" id="`,l?tZ]Y8F0OzAA/P^jT">
+                <field name="VAR">i</field>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_number" id="RuN|dB_pZtD-2b3KOZm?">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_number" id="ai6VS*~fw^thOM[s.cLn">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_show" id="^CU-s~;L_*^Er3pjL4_Z">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <next>
+                  <block type="time_delay" id="+4MMZ(MUTtqphfa)(mN!">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="/pv~(NLCxB9HbI^W@i~T">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_for" id="b{vX0YNEq5=wVy~A.+9A">
+            <field name="VAR">i</field>
+            <value name="FROM">
+              <block type="math_number" id="x`eP!,L^VDxek%V^Np49">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="KI^)mG3W]hBl=o;~M?.e">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="g]wFNW#-;#uPn,_VJeBh">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="flagledstripe_setpixelcolor" id="e}PsQwmlIUPs~/2s5I(U" inline="false">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <value name="NUM">
+                  <block type="math_number" id="V1HLZRvV^Fa!x,0,9qWE">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="RED">
+                  <block type="variables_get" id="UoijGDoge-vav^4:b,7]">
+                    <field name="VAR">i</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="U?ET;`)if@Ojk:3ba{m-">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="PS?o3]!wm%zJC6v%?}X+">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="flagledstripe_show" id="m`dlPZQNz^VlWKCB:CQ~">
+                    <field name="OBJNAME">紅綠燈號誌</field>
+                    <next>
+                      <block type="time_delay" id="EdlF2t%@sRPnJ#|tH1k2">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="HGD@ejxtIdTxP^UKGdmY">
+                            <field name="NUM">10</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

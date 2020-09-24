@@ -1,0 +1,118 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=";n}eMlrW2*mZ9QdK~^EI" x="41" y="50">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="!fX.t!4Xpoc;NN0[)i!*">
+        <field name="VAR">計時</field>
+        <value name="VALUE">
+          <block type="time_millis" id="noxIEx-Vpod)3!:vX@Gd"></block>
+        </value>
+        <next>
+          <block type="controls_waitUntil" id="GP];V}ip5VrgmZX`|cQ:">
+            <value name="BOOL">
+              <block type="esp8266_ap_setup" id="HDfYIF3*Vty1AUw0ppVC">
+                <field name="CHANNEL">1</field>
+                <field name="HIDDEN">FALSE</field>
+                <value name="SSID">
+                  <block type="text" id=":?/?r+B)L/G)[wo|gd.f">
+                    <field name="TEXT">SPO2</field>
+                  </block>
+                </value>
+                <value name="PINCODE">
+                  <block type="text" id="{dyS*VU,l4+#wH?*gh[y">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="esp8266_webserver_on2" id="4R6A?]S([D5tiPG4hX0H">
+                <field name="FUNCNAME">傳送血氧值</field>
+                <field name="PATH">/measure</field>
+                <next>
+                  <block type="esp8266_webserver_setup" id="L/CP^Vz22,r|{4vc{)@v">
+                    <field name="PORT">80</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="SRZ:!y.N~=gL:czjcKqw" x="43" y="226">
+    <field name="NAME">傳送血氧值</field>
+    <statement name="STACK">
+      <block type="esp8266_webserver_send" id="}VxR!+Jt)PRb/my*H4~%">
+        <value name="STATUS">
+          <block type="math_number" id="x#wD!bYCJmar~fogdO,_">
+            <field name="NUM">200</field>
+          </block>
+        </value>
+        <value name="MIMETYPE">
+          <block type="text" id="bcNvS(*ToO4PH@^ZP1c,">
+            <field name="TEXT">text/plain</field>
+          </block>
+        </value>
+        <value name="CONTENT">
+          <block type="variables_get" id="9}F)]W4el~ApV.ALF#-|">
+            <field name="VAR">血氧濃度</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="43" y="330">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="cs3mg:}K,W1t-8]bO=99">
+        <next>
+          <block type="MAX30100_setup" id="rq4Q(#J/YU_hpcF7Qig(">
+            <next>
+              <block type="controls_if" id="UZVl_`8~09!6AJd6vqvR">
+                <value name="IF0">
+                  <block type="logic_compare" id="HXkGj5V}5(gzS6jX0]5K">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="4T@OM4J52Ww+.bdiOhy@">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <block type="time_millis" id="8kRYKR@=WLB`0!:Jg9,H"></block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="#5mSOn`N9vR5q-_AG:@-">
+                            <field name="VAR">計時</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="_-us%hP=Tc52Ld[n^[Ca">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="0_oWwtljoaM_.0HpUe2X">
+                    <field name="VAR">血氧濃度</field>
+                    <value name="VALUE">
+                      <block type="MAX30100_getSpO2" id="%##H){v%~h,~Uv9mQ2~~"></block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="wr7]3%70b#fpNlj,/ZLB">
+                        <field name="VAR">計時</field>
+                        <value name="VALUE">
+                          <block type="time_millis" id="CVNXf!Hy%n]7c*ku*6;y"></block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

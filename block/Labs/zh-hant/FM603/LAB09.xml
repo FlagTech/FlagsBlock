@@ -1,0 +1,204 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="b``Xq:b#:u=O;PbtN)8/" x="37" y="13">
+    <statement name="SETUP_FUNC">
+      <block type="I2CLCD_setup" id="!3mKI{p}dURL*o?^rm!v">
+        <field name="I2C_ADDR">0x3F</field>
+        <next>
+          <block type="I2CLCD_printLine" id="rbY~ewM(wI|KR!?#M]V+">
+            <field name="ROW">0</field>
+            <value name="CONTENT">
+              <block type="text" id="Bq!h(HE#4vbvLd;ziCVS">
+                <field name="TEXT">Current level:</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="K)|A+*;JXkfuQH~!QI+S">
+                <field name="VAR">是否要發出警報</field>
+                <value name="VALUE">
+                  <block type="logic_boolean" id="sS(rU*88rv-x55|h#?|C">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="35" y="163">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="HgOodIDeaS}7Z{xQ7+JX">
+        <field name="VAR">目前水位</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="tx!{kGGBs1+QY24p+Ev^">
+            <value name="PIN">
+              <block type="io_analogpins" id="55vU.s0Txxx=D^xG1nEr">
+                <field name="PIN">A0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="I2CLCD_printLine" id="cr_AAS(Vj!6,4%^L.w.N">
+            <field name="ROW">1</field>
+            <value name="CONTENT">
+              <block type="variables_get" id="3m|UdJ@Vc*NC+2*,RKg[">
+                <field name="VAR">目前水位</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="0wYJ%uKLXrDs%}FOtnWZ">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id=":`0h[lk#z5/88qr}FxBy">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="CRkD(8)0(ZA@%_ZT!2.(">
+                        <field name="VAR">目前水位</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="X[|B#N|~gCDdq5oX!@tY">
+                        <field name="NUM">480</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="I*DcTjpdBiLYc#zS_R*#">
+                    <field name="VAR">是否要發出警報</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="u,Niq,];d[MDU]{sv|`u">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="mo;(v5C_Ym_T/1E.tLof">
+                    <field name="OP">LT</field>
+                    <value name="A">
+                      <block type="variables_get" id="FVsmCWwzv)[og7g_*!5y">
+                        <field name="VAR">目前水位</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="JR0v5frwwO5HJz0LFPyR">
+                        <field name="NUM">450</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="variables_set" id="5#1ShGz4YqIDH#K.M1UT">
+                    <field name="VAR">是否要發出警報</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="wzeU(+Md@^3}uLFut^[8">
+                        <field name="BOOL">FALSE</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="xL2.vG7toowaU:W@%E6+">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="gGr^{2N72wR9S1W;tl%D">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="_Ezg]~HyMyt10k(S~RC_">
+                            <field name="VAR">是否要發出警報</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="E%Mp36diLVJ1G:}{z@p1">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="procedures_callnoreturn" id="@k/t4oA((7i]ku6B@3Aj">
+                        <mutation name="蜂鳴器發出警示音並讓 LCD 背光閃爍"></mutation>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="time_delay" id="M0!fkc%6tH2=X0O0p9z/">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="_ABB=0A,dX,x|4i@=(]X">
+                            <field name="NUM">300</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="KMBT]-D)(m0Drw+WV#Xo" x="34" y="574">
+    <field name="NAME">蜂鳴器發出警示音並讓 LCD 背光閃爍</field>
+    <statement name="STACK">
+      <block type="I2CLCD_backlightOn" id="fi#.REP,_^h~3_:DTM;I">
+        <next>
+          <block type="io_digitalwrite_var" id="op:;.*T#-ypQWGe{d_dK">
+            <value name="PIN">
+              <block type="io_allpins" id="tw}*D/J2tid{F|5KFtCG">
+                <field name="PIN">6</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id=",BK=(%T0l)B!lg,ry7JK">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="XwRoWO8ifHt;A!z-zUDQ">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="rP]v;r7yhriEe;P!r^:q">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="I2CLCD_backlightOff" id="vs*8FpZG3Z.J(RUXqTE?">
+                    <next>
+                      <block type="io_digitalwrite_var" id="Zx*?1Im,`L8qF3T_!+IL">
+                        <value name="PIN">
+                          <block type="io_allpins" id="TZFvd-++|8OK4S[Dx0*|">
+                            <field name="PIN">6</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="hi86EkHErAQqP#k,^Isp">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="g6]XAV~pGU7-xuTa9C+;">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="jkt?=p/WQ*#jutBRR(}z">
+                                <field name="NUM">300</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="I2CLCD_backlightOn" id="2*JwD8kLk*?I`q`JlOIw"></block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

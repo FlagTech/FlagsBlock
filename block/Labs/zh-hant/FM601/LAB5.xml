@@ -1,0 +1,574 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="[TKG0!9!bDJ3%-i-ME}E" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="s#@u+cQ1ak%l3tYX[Ihk">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="flagledstripe_setup" id="7od+7V[hf~x9.2pf^Pd5">
+            <field name="OBJNAME">ledStripe</field>
+            <field name="NUM">16</field>
+            <value name="LEDPIN">
+              <block type="io_allpins" id="aY]GI.:#Mp.qOX5*0%MX">
+                <field name="PIN">6</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_setbrightness" id="-maM3(ekoqdjn9EvhoV#">
+                <field name="OBJNAME">ledStripe</field>
+                <field name="BRIGHTNESS">32</field>
+                <next>
+                  <block type="flagledstripe_show" id="xVju%wgozL453zi)U9@r">
+                    <field name="OBJNAME">ledStripe</field>
+                    <next>
+                      <block type="variables_set" id="MT*.P(^0u.dP*UcB5cIN">
+                        <field name="VAR">之前時間</field>
+                        <value name="VALUE">
+                          <block type="time_millis" id="C7DFA|/K3m(v-%]~|b5}"></block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="bJGuC7^_[~aJW]4c|uo3">
+                            <field name="VAR">之前顯示時間</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="9q,:7snEBkv(45IfRU}:"></block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="g;=bQ/).5n@ISX2]aMrn">
+                                <field name="VAR">增量</field>
+                                <value name="VALUE">
+                                  <block type="variables_set_type" id=",`kl^{Fd]vM(8Xny6]ZO">
+                                    <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                    <value name="VARIABLE_SETTYPE_INPUT">
+                                      <block type="math_number" id="%Nobr)`9V]]PG24/Hvk6">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="~!s12pN[{?e@Q);|ogjR">
+                                    <field name="VAR">之前調整時間</field>
+                                    <value name="VALUE">
+                                      <block type="variables_set_type" id="zMLz0#`;]m#(f21F8X9C">
+                                        <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                        <value name="VARIABLE_SETTYPE_INPUT">
+                                          <block type="math_number" id="[(oblc3svYM/M(owZY[e">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="m)Q^WQGa}/HOw^-b;(sP">
+                                        <field name="VAR">倍數</field>
+                                        <value name="VALUE">
+                                          <block type="variables_set_type" id="XV]}5bv!)5G7@7=8LIae">
+                                            <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                            <value name="VARIABLE_SETTYPE_INPUT">
+                                              <block type="math_number" id="}:[urz]j6oUmgS,Dix_M">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="344">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="{-EmDa@ql++X:PTM:F.Y">
+        <mutation name="熱感杯墊">
+          <arg name="熱度基準"></arg>
+          <arg name="速度基準量"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="math_number" id="!1QxO[h/o(Fovm1^s?nS">
+            <field name="NUM">520</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="math_number" id="aw|TAE)j8F(i4@TCx)4@">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="Xgqhk~D!/`]o4I#z}`o7" x="0" y="447">
+    <mutation>
+      <arg name="熱度基準"></arg>
+      <arg name="速度基準量"></arg>
+    </mutation>
+    <field name="NAME">熱感杯墊</field>
+    <statement name="STACK">
+      <block type="variables_set" id="=e,nx[TM;kOb||`^ibNR">
+        <field name="VAR">目前熱度</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="=ie?OEgcjsEieCG|Ou_0">
+            <value name="PIN">
+              <block type="io_analogpins" id="/U_.!B+OzpcL@XEGYcXZ">
+                <field name="PIN">A0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="-w17V2r+4f01]r/[4;Af">
+            <value name="IF0">
+              <block type="logic_compare" id="aT3xK%?.%f!~CT(FJhpT">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="1!ziW5tDK{-Ur|2l^06O">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <block type="time_millis" id="RQsWPQ2r@xNdFCaO^h^}"></block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="J}nkr4d:RWSQ:2c)dy^q">
+                        <field name="VAR">之前顯示時間</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="E(xRlp!eY`Jfe0.SjrR%">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="serial_print" id="p^t]4(_Yka6^*}B*nhwA">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="variables_get" id="g?RQQq{m[;znq,6D#@oC">
+                    <field name="VAR">目前熱度</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="variables_set" id=")dA=:VKI}K:1RN7;Z}_*">
+                <field name="VAR">紅色</field>
+                <value name="VALUE">
+                  <block type="math_constrain" id="uv9wRs[dqsWzz_^xO=(i" inline="false">
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="0/8Mqhkh;#/=Jf1/_bT;">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <block type="variables_get" id="Q]Fi^r:=sPMbsoup,GHN">
+                            <field name="VAR">目前熱度</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="hF6hb`bbwLegGG}5?}5Y">
+                            <field name="VAR">熱度基準</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="LOW">
+                      <block type="math_number" id="];ZcwLwgXRfcY.dF^Odz">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="HIGH">
+                      <block type="math_number" id="(AXiZ=A3JxVR_b-}8)my">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="_Y+r^AS:MCwT@g)%Q;Uk">
+                    <field name="VAR">倍數</field>
+                    <value name="VALUE">
+                      <block type="variables_set_type" id="S8@s**!cviVGe)XoD#v#" inline="false">
+                        <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                        <value name="VARIABLE_SETTYPE_INPUT">
+                          <block type="math_arithmetic" id="6-N+tT37~md:AEH9gCZj">
+                            <field name="OP">DIVIDE</field>
+                            <value name="A">
+                              <block type="variables_get" id="@xaspyLZ}NqzOmUi2R9=">
+                                <field name="VAR">紅色</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_set_type" id="w9sZA?[=2o2PfR94/TG:">
+                                <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                <value name="VARIABLE_SETTYPE_INPUT">
+                                  <block type="variables_get" id="61T_4@oZQWxg=Hq4mI7a">
+                                    <field name="VAR">速度基準量</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="gIkE_Yz4Hn6Z@VB:4M{X">
+                        <value name="IF0">
+                          <block type="logic_compare" id="A5%R*=a}~gaxs3K@y#b)">
+                            <field name="OP">LT</field>
+                            <value name="A">
+                              <block type="variables_get" id="NZ2Fg{kiwB-:,)Nt7=h{">
+                                <field name="VAR">倍數</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="9@^um^SjU`GWv#tH1[Zg">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="JZA{2=iTS~9,Ab0ZQBq#">
+                            <field name="VAR">倍數</field>
+                            <value name="VALUE">
+                              <block type="variables_set_type" id="8xzORizzDj!:kWV@b#K;">
+                                <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                <value name="VARIABLE_SETTYPE_INPUT">
+                                  <block type="math_number" id="oZ!mW=t5#7-9|gUdgs[;">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="variables_set" id="7(psEhj,73t?vH:#WpCp">
+                            <field name="VAR">綠色</field>
+                            <value name="VALUE">
+                              <block type="math_arithmetic" id="vtqqd6wgO)f0FuOsw39/">
+                                <field name="OP">MINUS</field>
+                                <value name="A">
+                                  <block type="math_number" id="Q4lN5Klk7=dq:6afGe4P">
+                                    <field name="NUM">255</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="et`Hpi{3b~RL-kG3|.XO">
+                                    <field name="VAR">紅色</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="k~QT_w;|K#ba%z]HW_]]">
+                                <field name="VAR">亮度</field>
+                                <value name="VALUE">
+                                  <block type="math_arithmetic" id="4YiaupHEZJ)E(Lp;cOo|" inline="false">
+                                    <field name="OP">MULTIPLY</field>
+                                    <value name="A">
+                                      <block type="math_arithmetic" id="E[mEyW4:jk(4HPgU^:hM" inline="false">
+                                        <field name="OP">MINUS</field>
+                                        <value name="A">
+                                          <block type="math_single" id="9=p1tUp0IMq@,8uG9~@Q">
+                                            <field name="OP">EXP</field>
+                                            <value name="NUM">
+                                              <block type="math_trig" id="X.E9Aozw1%HqxI~j%AnE">
+                                                <field name="OP">SIN</field>
+                                                <value name="NUM">
+                                                  <block type="math_arithmetic" id="I}[+2}6]j!udEO0[gX^(" inline="false">
+                                                    <field name="OP">DIVIDE</field>
+                                                    <value name="A">
+                                                      <block type="math_arithmetic" id="BG_5sKZ;^bQCv![STwO%" inline="false">
+                                                        <field name="OP">MULTIPLY</field>
+                                                        <value name="A">
+                                                          <block type="procedures_callreturn" id="=`1@-vqTyy!loi]8Xj-(">
+                                                            <mutation name="調整後的開機時間"></mutation>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="variables_set_type" id="7i~QwTop=WCd^nEudK7b">
+                                                            <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                                            <value name="VARIABLE_SETTYPE_INPUT">
+                                                              <block type="math_number" id="GTrp0=rrjIM`/3zE37C2">
+                                                                <field name="NUM">180</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="variables_set_type" id="]]~p%`P)0AXO7pL[)pl;">
+                                                        <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                                        <value name="VARIABLE_SETTYPE_INPUT">
+                                                          <block type="math_number" id="f#u6a3rl1Rpg?^^0`hiT">
+                                                            <field name="NUM">2000</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="Vum@FY,?-K5oYp(w0R9h">
+                                            <field name="NUM">0.36787944</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="H?MxlUAMczqtOBK,DpdX">
+                                        <field name="NUM">108</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="flagledstripe_showall" id="o[hKC,yRIJ+4`_J!Doxh" inline="false">
+                                    <field name="OBJNAME">ledStripe</field>
+                                    <value name="RED">
+                                      <block type="math_arithmetic" id=")IDQL!j+Ty[2fzaj=kJY">
+                                        <field name="OP">DIVIDE</field>
+                                        <value name="A">
+                                          <block type="math_arithmetic" id="ls,yFr?*H3{;!C6~k!X}">
+                                            <field name="OP">MULTIPLY</field>
+                                            <value name="A">
+                                              <block type="variables_get" id="B/lVJUhbnHuH%[gwUg)i">
+                                                <field name="VAR">亮度</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="variables_get" id="5Fw!(y,W3}n5XR85!}rA">
+                                                <field name="VAR">紅色</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="ex)cDNN#R!VI`PE?DYNs">
+                                            <field name="NUM">255</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="GREEN">
+                                      <block type="math_arithmetic" id="7dX^GYygf),5Y:|yn@Fu">
+                                        <field name="OP">DIVIDE</field>
+                                        <value name="A">
+                                          <block type="math_arithmetic" id="(`!Y^)(~Zg=soi5T-Er+">
+                                            <field name="OP">MULTIPLY</field>
+                                            <value name="A">
+                                              <block type="variables_get" id="^4]xE7Q7;:.@yU5MOS85">
+                                                <field name="VAR">亮度</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="variables_get" id="c=8}709sm_|k^:uZ3n*t">
+                                                <field name="VAR">綠色</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="qsu#fD1YeNDpaslXRn3J">
+                                            <field name="NUM">255</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="BLUE">
+                                      <block type="math_number" id="0FQ)orZB-lb[1PfK~Rl1">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="mtnv|-=H_z)8-CNI%[Qy" x="20" y="1124">
+    <field name="NAME">調整後的開機時間</field>
+    <statement name="STACK">
+      <block type="variables_set" id="7UuY}{p?9m`7v,?IV`U[">
+        <field name="VAR">目前時間</field>
+        <value name="VALUE">
+          <block type="time_millis" id="}?AAWSt3I52lu%M2;LPG"></block>
+        </value>
+        <next>
+          <block type="controls_if" id="|1Ubvve{.|SA?hc3Iq*7">
+            <value name="IF0">
+              <block type="logic_compare" id="G86x88R*XTw=dHXG_awn">
+                <field name="OP">NEQ</field>
+                <value name="A">
+                  <block type="variables_get" id="}e+7oj|wT?(VnmPh;f.]">
+                    <field name="VAR">目前時間</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="|f4cuuS:!e(*LA*~{k!d">
+                    <field name="VAR">之前時間</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="ms{2_`O-3WpFpGHm~_mf">
+                <field name="VAR">增量</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="B^[+EBFo`[0#EK@6%h_e">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="i+pNi|~)+1M)3Cb4QNpz">
+                        <field name="VAR">增量</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_arithmetic" id="hI:4Ic`jYIt:M^?x3Oe7">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="variables_get" id="X=xjZoMvuO;0TwLtMID8">
+                            <field name="VAR">倍數</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_arithmetic" id="2utaGXu:#vJ%vd,b}ELe">
+                            <field name="OP">MULTIPLY</field>
+                            <value name="A">
+                              <block type="variables_get" id="MKK*#HA[sT*KGWu{#coe">
+                                <field name="VAR">目前時間</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="sr-lP{w7u9~74fDFS.tH">
+                                <field name="VAR">之前時間</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="YErE!Oy~VH;FHw0T#49+">
+                    <field name="VAR">之前時間</field>
+                    <value name="VALUE">
+                      <block type="variables_get" id="U-b/e:S0{!pr-)eU:AyM">
+                        <field name="VAR">目前時間</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id=";~(!S|dAr,oEF3yk#:6#">
+                        <value name="IF0">
+                          <block type="logic_compare" id="kMP0nn@O-Wc1a.Od8:u7">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="variables_get" id="|AV7TK/eyYqXD#@?!S-_">
+                                <field name="VAR">增量</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="qx-gZBa34e*,75aIx28#">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="uq65G?85VRiukg^e-Ypo">
+                            <field name="VAR">之前調整時間</field>
+                            <value name="VALUE">
+                              <block type="math_arithmetic" id="T/3{npuU2o3_9qmktIJ7">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <block type="variables_get" id="AdNq8`jchyLpEuxPl3C}">
+                                    <field name="VAR">之前調整時間</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="OAe[@8IYpE,6z]4jlH[+">
+                                    <field name="VAR">增量</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="Zo3WLr4f/x8ARNZAEn?)">
+                                <field name="VAR">增量</field>
+                                <value name="VALUE">
+                                  <block type="variables_set_type" id="+RB8:_SV!inJRx]|QhP#">
+                                    <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                    <value name="VARIABLE_SETTYPE_INPUT">
+                                      <block type="math_number" id="}0o0yUYioEB8R4WfNQ4y">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_set_type" id="s#22b%zYIXxGETa^KL8y">
+        <field name="VARIABLE_SETTYPE_TYPE">UNSIGNED_LARGE_NUMBER</field>
+        <value name="VARIABLE_SETTYPE_INPUT">
+          <block type="math_arithmetic" id="o4QwsjjI12z%WW`%S,X+">
+            <field name="OP">ADD</field>
+            <value name="A">
+              <block type="variables_get" id="qYL.tVP,1ldU@]3U9z]v">
+                <field name="VAR">之前調整時間</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="variables_get" id="mnu]}(S7;90,I%.}eVQ-">
+                <field name="VAR">增量</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+</xml>

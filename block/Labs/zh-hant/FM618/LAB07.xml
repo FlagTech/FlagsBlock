@@ -1,0 +1,1383 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="8_AmtSi/8,8FjW3Pshxc" x="-289" y="88">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="g4l#/?Qvwc-BRkY%8UI~">
+        <field name="VAR">喇叭</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="YSNmvsVEr8+}u4K2HA_k">
+            <field name="PIN">D1</field>
+          </block>
+        </value>
+        <next>
+          <block type="TM1637_setup" id="~!Ja%OuOMc|WdLf4d3(5">
+            <field name="OBJNAME">SSD</field>
+            <value name="CLK_PIN">
+              <block type="io_allpins" id="wnPZQNOpLe^ueQc~;e.H">
+                <field name="PIN">D2</field>
+              </block>
+            </value>
+            <value name="DIO_PIN">
+              <block type="io_allpins" id="o#%u4YAz;Hu*qRr(0K)F">
+                <field name="PIN">D3</field>
+              </block>
+            </value>
+            <next>
+              <block type="TM1637_setbrightness" id="e)QI.3a~Sg]ynq^5sA*0">
+                <field name="OBJNAME">SSD</field>
+                <field name="BRIGHTNESS">7</field>
+                <next>
+                  <block type="TM1637_clear" id="`o6RSQbM{e*y4VCc-ovx">
+                    <field name="OBJNAME">SSD</field>
+                    <next>
+                      <block type="io_input_pullup" id="/c|0GXFt`Rt,9+5@Q}%/">
+                        <field name="PIN">D5</field>
+                        <next>
+                          <block type="io_input_pullup" id="~l2qj=yrm=_`8AZdLJgi">
+                            <field name="PIN">D6</field>
+                            <next>
+                              <block type="io_input_pullup" id="Cf9;^(VL|_X8{VGagnp%">
+                                <field name="PIN">D7</field>
+                                <next>
+                                  <block type="variables_set" id="GLhIWi`=buhGc43Qpq+V">
+                                    <field name="VAR">爆炸計數</field>
+                                    <value name="VALUE">
+                                      <block type="math_number" id="L(QRwY9;Nv1?[]c00W|o">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="}#M5p~+X1-Mx+p]Z8e4t">
+                                        <field name="VAR">狀態</field>
+                                        <value name="VALUE">
+                                          <block type="text" id="4~,8RR4V#*}fDBN6!!(5">
+                                            <field name="TEXT">初始</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="j|{!WLdsUgBrhXT@TodE">
+                                            <field name="VAR">可以拆彈</field>
+                                            <value name="VALUE">
+                                              <block type="logic_boolean" id="VA(s}FvxpD6Av)|F]t[l">
+                                                <field name="BOOL">FALSE</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="p0MI1=d+D5KFMvfv8|l?">
+                                                <field name="VAR">喇叭計時</field>
+                                                <value name="VALUE">
+                                                  <block type="time_millis" id="p1pdza]/i:(PINbu@WA6"></block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id="~p2PQeT1(7+}Zfis)F?|">
+                                                    <field name="VAR">上一次時間</field>
+                                                    <value name="VALUE">
+                                                      <block type="time_millis" id="C.)rRr:l49QqjVCJFUZa"></block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="variables_set" id="crR~oPdSccapFQm@Tvac">
+                                                        <field name="VAR">頻率</field>
+                                                        <value name="VALUE">
+                                                          <block type="math_number" id=";*gDa-oJMMH0tUDI?1^Z">
+                                                            <field name="NUM">500</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="variables_set" id="3?uk*@w}K:S53GC)IS7j">
+                                                            <field name="VAR">倒數時間</field>
+                                                            <value name="VALUE">
+                                                              <block type="math_number" id="cmT`Qm!I-sht}3`mF8hK">
+                                                                <field name="NUM">180</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="variables_set" id=";RARJVhM-|*k42/8YUp(">
+                                                                <field name="VAR">喇叭間隔時間</field>
+                                                                <value name="VALUE">
+                                                                  <block type="math_arithmetic" id="IqJl^6JmvgDoyv[@3w]+" inline="false">
+                                                                    <field name="OP">MULTIPLY</field>
+                                                                    <value name="A">
+                                                                      <block type="math_arithmetic" id="gm%aA`pTyNpt0L51OOyP" inline="false">
+                                                                        <field name="OP">ADD</field>
+                                                                        <value name="A">
+                                                                          <block type="math_arithmetic" id="ROXf,?=k/B`Y(uLmU{=|" inline="false">
+                                                                            <field name="OP">POWER</field>
+                                                                            <value name="A">
+                                                                              <block type="math_arithmetic" id="N0*:Rz6Dp}Y|Lxzh_kmf" inline="false">
+                                                                                <field name="OP">ADD</field>
+                                                                                <value name="A">
+                                                                                  <block type="math_arithmetic" id="sks5%(sSX?]1|24q-lSD" inline="false">
+                                                                                    <field name="OP">MULTIPLY</field>
+                                                                                    <value name="A">
+                                                                                      <block type="variables_get" id="b]t#iNvxC=%N6/bT;7C@">
+                                                                                        <field name="VAR">倒數時間</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="math_number" id="/TWqBkD%2K!p-{gr,}Gx">
+                                                                                        <field name="NUM">100</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="math_number" id="swxi-slLVotyl2l~CZsY">
+                                                                                    <field name="NUM">20</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="B">
+                                                                              <block type="math_number" id="hvrS~N]}_fA9XCj!C|Lt">
+                                                                                <field name="NUM">0.5</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="math_number" id="hyTgbp4fm/?KG`uXP^GD">
+                                                                            <field name="NUM">1</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <block type="math_number" id="0`@ek{owi0k7chC9)};y">
+                                                                        <field name="NUM">20</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="variables_set" id="r=;q)FMl|1#sn.WmJkh@">
+                                                                    <field name="VAR">頻率增益</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="math_arithmetic" id="Vpxw*HL(iP==H0@xuC2|" inline="false">
+                                                                        <field name="OP">DIVIDE</field>
+                                                                        <value name="A">
+                                                                          <block type="math_number" id="-W|PsxR!ybnP;TWO|r7!">
+                                                                            <field name="NUM">10000</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="math_arithmetic" id="TN:#e@/m.E_;+.~0[p2T" inline="false">
+                                                                            <field name="OP">MINUS</field>
+                                                                            <value name="A">
+                                                                              <block type="variables_get" id="SWEH[,syM@[Tyyc|2dFs">
+                                                                                <field name="VAR">喇叭間隔時間</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="B">
+                                                                              <block type="math_number" id="yFT%IgBG!Vp=ApzRd0Kr">
+                                                                                <field name="NUM">100</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="procedures_callnoreturn" id="H:dZy4QEmY*x~t0K6A4|">
+                                                                        <mutation name="顯示剩餘時間"></mutation>
+                                                                        <next>
+                                                                          <block type="variables_set" id="1Yd)F?5?3M#Ll9YZtgco">
+                                                                            <field name="VAR">實體位置</field>
+                                                                            <value name="VALUE">
+                                                                              <block type="esp8266_softAPMAC" id="EZp]M79R-)Tkb.)_G?_u"></block>
+                                                                            </value>
+                                                                            <next>
+                                                                              <block type="controls_waitUntil" id="(,c}Assiz+5E+ft:,a7X">
+                                                                                <value name="BOOL">
+                                                                                  <block type="esp8266_ap_setup" id="z|FC=KE6yT`SB|~7xK?]" inline="false">
+                                                                                    <field name="CHANNEL">1</field>
+                                                                                    <field name="HIDDEN">FALSE</field>
+                                                                                    <value name="SSID">
+                                                                                      <block type="text_join" id="Ox1ZSm8b8nph_d7KX?{.">
+                                                                                        <mutation items="2"></mutation>
+                                                                                        <value name="ADD0">
+                                                                                          <block type="text" id="8I}XnR.;Bo!*h^.#7n?K">
+                                                                                            <field name="TEXT">bomb_</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="ADD1">
+                                                                                          <block type="text_substring_end" id="Vnc{1qeogS2;mFqU#{}`" inline="false">
+                                                                                            <field name="VAR">實體位置</field>
+                                                                                            <value name="FROM">
+                                                                                              <block type="math_arithmetic" id="O[HBuJ.3sc[%rL2[K7O(">
+                                                                                                <field name="OP">MINUS</field>
+                                                                                                <value name="A">
+                                                                                                  <block type="text_length" id="]:;;HI)cmtOvsDU73nYi">
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="variables_get" id="lk#]T9M?3;_Z.G!6[rx^">
+                                                                                                        <field name="VAR">實體位置</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="B">
+                                                                                                  <block type="math_number" id=".PT06gMhP]3jEW1njjbC">
+                                                                                                    <field name="NUM">2</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="PINCODE">
+                                                                                      <block type="text" id="KuWjE1(Yhc4glIarbqa%">
+                                                                                        <field name="TEXT"></field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <next>
+                                                                                  <block type="esp8266_webserver_on2" id="2:5Qs4Bwk/StvN/_y1QV">
+                                                                                    <field name="FUNCNAME">遊戲開始</field>
+                                                                                    <field name="PATH">/start</field>
+                                                                                    <next>
+                                                                                      <block type="esp8266_webserver_on2" id="@U`:hclk5*#jbl@KE)u/">
+                                                                                        <field name="FUNCNAME">允許拆彈</field>
+                                                                                        <field name="PATH">/bombing</field>
+                                                                                        <next>
+                                                                                          <block type="esp8266_webserver_setup" id="8R2kh@rhQ;owpyc9mKY/">
+                                                                                            <field name="PORT">80</field>
+                                                                                          </block>
+                                                                                        </next>
+                                                                                      </block>
+                                                                                    </next>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="9s4TrOoc^?M2b(cQ%bnE" x="825" y="72">
+    <field name="NAME">勝利聲</field>
+    <statement name="STACK">
+      <block type="io_tone_nummusic" id="wB``(8-z{i:VcZJ,wE)A">
+        <field name="TEMPOTIME">200</field>
+        <value name="TONEPIN">
+          <block type="variables_get" id="59qLh-MIvcHoa0=vz;8N">
+            <field name="VAR">喇叭</field>
+          </block>
+        </value>
+        <value name="TONENUMMUSIC">
+          <block type="text" id="MEXJCiy)]8iqzOGRnk9y">
+            <field name="TEXT">13_5_3_5-</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="~_A9._8`,rU=/NJm1@OW" x="822" y="180">
+    <field name="NAME">顯示剩餘時間</field>
+    <statement name="STACK">
+      <block type="variables_set" id="-%up=i%UT[0]6nW*+0VT">
+        <field name="VAR">分</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="r1R2LSt1pl3Y*[qK|jQp">
+            <field name="OP">DIVIDE</field>
+            <value name="A">
+              <block type="variables_get" id="cG(Cl?S^fEn*@xmAV|}T">
+                <field name="VAR">倒數時間</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="D{bJIR){H)%@s,-4Em)W">
+                <field name="NUM">60</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="}fr-;%^fuF]+^]M6?y9C">
+            <field name="VAR">秒</field>
+            <value name="VALUE">
+              <block type="math_modulo" id="uchMkeq(jo=*TnBXw*Qi">
+                <value name="DIVIDEND">
+                  <block type="variables_get" id="_Slt3DN0gu!`Iyx{S=.(">
+                    <field name="VAR">倒數時間</field>
+                  </block>
+                </value>
+                <value name="DIVISOR">
+                  <block type="math_number" id="QqLNcL5*R*||`D0hc}z5">
+                    <field name="NUM">60</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="TM1637_SHOWNUMDEC" id="b.bv68MJguB`?Ap[sRp#">
+                <field name="OBJNAME">SSD</field>
+                <field name="PADDING">TRUE</field>
+                <field name="COLON">TRUE</field>
+                <value name="POSITION">
+                  <block type="math_number" id="^M}wl3kM=KVv7f1T^nr.">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="DIGITS">
+                  <block type="math_number" id="Lo3wwI[v@%XOr*0k@mHb">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <block type="variables_get" id="ASxx(+-7|D_6lQTWWsu=">
+                    <field name="VAR">分</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="TM1637_SHOWNUMDEC" id="ISnv1cPr/f6D,yY7QV{!">
+                    <field name="OBJNAME">SSD</field>
+                    <field name="PADDING">TRUE</field>
+                    <field name="COLON">TRUE</field>
+                    <value name="POSITION">
+                      <block type="math_number" id="2djeb3lLhxzz2Sii;JU`">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                    <value name="DIGITS">
+                      <block type="math_number" id="rHS=!UICF.(]~?]Fz:o}">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <block type="variables_get" id="}0ot--+rcrLi-kbu2)yu">
+                        <field name="VAR">秒</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="[JQ33/(W)SxE3lR#S_1{" x="822" y="409">
+    <field name="NAME">遊戲開始</field>
+    <statement name="STACK">
+      <block type="controls_if" id="yE0GItvNW~hOQ@CY%D6G">
+        <value name="IF0">
+          <block type="logic_compare" id="NX(O/yY_A)[H^/yx(ZRr">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="-?98^{0-g#bt}Gwxaa?8">
+                <field name="VAR">狀態</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="4qbR7x5AOV-jFqji,.cs">
+                <field name="TEXT">初始</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="Uq[Ace:*3-gODlN[=21A">
+            <field name="VAR">狀態</field>
+            <value name="VALUE">
+              <block type="text" id="(JTZAm*T:9U|{XMz965w">
+                <field name="TEXT">開始</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="esp8266_webserver_send" id="xo{n9F7}i.X*mn5|L0)3">
+            <value name="STATUS">
+              <block type="math_number" id="HrXWu{g]sc{i28vl]Lmm">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+            <value name="MIMETYPE">
+              <block type="text" id="%I*yfq~Jg#yC4Q{D7xnd">
+                <field name="TEXT">text/plain</field>
+              </block>
+            </value>
+            <value name="CONTENT">
+              <block type="text" id="L6K+,G,gl..}{w}qcU~2">
+                <field name="TEXT">OK</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="}T1yo?lI!2TSKJ(#5rdS" x="823" y="590">
+    <field name="NAME">允許拆彈</field>
+    <statement name="STACK">
+      <block type="controls_if" id="w)zLR^An)zTi,F3Pf*O6">
+        <value name="IF0">
+          <block type="logic_compare" id="pL-gi0-lUa!+1+hrRfQO">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="#-S-Q|*Oy%Cn#/IvoP5j">
+                <field name="VAR">狀態</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="Wz@l;}nuFy#DVs2vWJZ#">
+                <field name="TEXT">開始</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="b@:9ssIvkvE{AL)#P`Uy">
+            <field name="VAR">可以拆彈</field>
+            <value name="VALUE">
+              <block type="logic_boolean" id="0STBrOEr1HMghZr{U*re">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="esp8266_webserver_send" id=",Jau?AUc%Nku/~ML34/%">
+            <value name="STATUS">
+              <block type="math_number" id="[MGwkp3)go)^|@;@V!Ti">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+            <value name="MIMETYPE">
+              <block type="text" id="SfoUqlbTw6WB#ddN%oBV">
+                <field name="TEXT">text/plain</field>
+              </block>
+            </value>
+            <value name="CONTENT">
+              <block type="text" id="Wu2p*~`wdjqEG~gz7@l%">
+                <field name="TEXT">OK</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="vYA#i:(n`G=R?k?Nf_W*" x="820" y="773">
+    <field name="NAME">判斷接線</field>
+    <statement name="STACK">
+      <block type="controls_if" id="7-9dHV;v5cfyOqiYDb3D">
+        <value name="IF0">
+          <block type="logic_compare" id="*nGIdcd^Gk,2l[fkccGn">
+            <field name="OP">NEQ</field>
+            <value name="A">
+              <block type="variables_get" id="I8vNX;,0LYnB9IIO2v,*">
+                <field name="VAR">狀態</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="c((4)f+HhPC{kPfLiW8.">
+                <field name="TEXT">爆炸</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="~`Pi}m[CvKJ1VqVT+C,(">
+            <field name="VAR">紫色</field>
+            <value name="VALUE">
+              <block type="io_digitalread_var" id="f(;ovLz_8`Z^e2(HFK@,">
+                <value name="PIN">
+                  <block type="io_allpins" id="iz8[O#}.du{W+Ovl1]*3">
+                    <field name="PIN">D5</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="[jqK]iT#32KogmA*t5jl">
+                <field name="VAR">藍色</field>
+                <value name="VALUE">
+                  <block type="io_digitalread_var" id="xUMa_[c!xCct(`[99r#v">
+                    <value name="PIN">
+                      <block type="io_allpins" id="[W,APzY/0,wdeG(Zkwi#">
+                        <field name="PIN">D6</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="jb4K:+3Kt8lb3FEf8~O3">
+                    <field name="VAR">綠色</field>
+                    <value name="VALUE">
+                      <block type="io_digitalread_var" id="+?[E:L%|w^+6WNSk-l15">
+                        <value name="PIN">
+                          <block type="io_allpins" id="zy)@fG0eqeFi#Mf+|84G">
+                            <field name="PIN">D7</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="M|8]}5|mqiN3!!wz/kUv">
+            <mutation elseif="2"></mutation>
+            <value name="IF0">
+              <block type="variables_get" id="@--{5mUN(#8lpH[,T4#y">
+                <field name="VAR">紫色</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_repeat_ext" id="GMtlr_ZlcS8N]-]2~KYQ">
+                <value name="TIMES">
+                  <block type="math_number" id=",,58.FS2O.v(_FHH3kl;">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="variables_set" id="xN;3;Pi|nx3%(j(WdkJK">
+                    <field name="VAR">紫色</field>
+                    <value name="VALUE">
+                      <block type="io_digitalread_var" id="#!i3e,0wIw{BT4+-itEZ">
+                        <value name="PIN">
+                          <block type="io_allpins" id="%9ZBov@1~(fhBUD4OQi8">
+                            <field name="PIN">D5</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id=")*~ZDYOz_V`^D.}AMOIu">
+                        <value name="IF0">
+                          <block type="logic_negate" id=",yNS~;WDN)ru3)/@3[K/">
+                            <value name="BOOL">
+                              <block type="variables_get" id="Y8Vp,J6qF?:5@XCXr!vg">
+                                <field name="VAR">紫色</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="controls_flow_statements" id="6L#wfi6(}H^E^}-Z/5MX">
+                            <field name="FLOW">BREAK</field>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="time_delay" id="5A|^-r2WPBAe};3,ay=h">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="qS!b[Y[@x8Sqm01Dxli[">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="variables_get" id="/WEvC`4P1lKEdV~5kM4]">
+                <field name="VAR">藍色</field>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="controls_repeat_ext" id="#po5mqGR/kcI91EE./%#">
+                <value name="TIMES">
+                  <block type="math_number" id="Z5FUYm~%FmG}mV:U_4`:">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="variables_set" id="U-dAnEylPMzO5(q(Z^{)">
+                    <field name="VAR">藍色</field>
+                    <value name="VALUE">
+                      <block type="io_digitalread_var" id="ih,z0.pPM0HD%],m`L1v">
+                        <value name="PIN">
+                          <block type="io_allpins" id="Nm_(V1ocS2S2X{zRKErJ">
+                            <field name="PIN">D6</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="^#`Z^z)L#5K+Ctvz0mmu">
+                        <value name="IF0">
+                          <block type="logic_negate" id="het,ECSF[*a]cJ#`mRq8">
+                            <value name="BOOL">
+                              <block type="variables_get" id="V2/k2WB*Dt~~vVxvB@y2">
+                                <field name="VAR">藍色</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="controls_flow_statements" id="}x2+A4={10-bM*Z8;Q=x">
+                            <field name="FLOW">BREAK</field>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="time_delay" id="E,(rcA?rO.eP~Bg:M)r+">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="Ly.d1=s]t/=FEE|%PXI}">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <value name="IF2">
+              <block type="variables_get" id="Z3WGCraDi,ZaQ2zjyBgu">
+                <field name="VAR">綠色</field>
+              </block>
+            </value>
+            <statement name="DO2">
+              <block type="controls_repeat_ext" id="O5lInru*}h^0aUC-vvq]">
+                <value name="TIMES">
+                  <block type="math_number" id="3ZzG]Skz,%?7.0`?d.uc">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="variables_set" id="*lD/-B^U|J%9?iaE+zFr">
+                    <field name="VAR">綠色</field>
+                    <value name="VALUE">
+                      <block type="io_digitalread_var" id="CNW%9)%@[Z@|45wF2MI,">
+                        <value name="PIN">
+                          <block type="io_allpins" id="3xcqRaDtmB~FD|I@j|IT">
+                            <field name="PIN">D7</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="sE~]Kq*{/2s^!{hWC;{h">
+                        <value name="IF0">
+                          <block type="logic_negate" id="nax*qg(7(!b/YfLn-1_o">
+                            <value name="BOOL">
+                              <block type="variables_get" id="dX{/B[)#5hWy]hOL|@:1">
+                                <field name="VAR">綠色</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="controls_flow_statements" id=";{(S]8]:Z6|erw0|JRJf">
+                            <field name="FLOW">BREAK</field>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="time_delay" id="@p,DfTR#cgJ(wE)CPBnq">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="]F{az!,GZK;!H84@:#bu">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="serial_print" id="o-:~cCH4YPv]%q@^zFSv">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="text_join" id=":a{0ozd6m3+#t+VPceUV">
+                    <mutation items="6"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id=".%FKdc|w5#^M+9hsLyb~">
+                        <field name="TEXT">紫色:</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="E^JxG4skEr:UyCaejKdX">
+                        <field name="VAR">紫色</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="text" id="RUUVSB5;1qGYNl_J@Y@c">
+                        <field name="TEXT">,藍色:</field>
+                      </block>
+                    </value>
+                    <value name="ADD3">
+                      <block type="variables_get" id="|#_nWe@,|=_qCp3N%Q{_">
+                        <field name="VAR">藍色</field>
+                      </block>
+                    </value>
+                    <value name="ADD4">
+                      <block type="text" id="fUpd,vHsEE*~dTARGH*4">
+                        <field name="TEXT">,綠色:</field>
+                      </block>
+                    </value>
+                    <value name="ADD5">
+                      <block type="variables_get" id="CLF@O_g#MSw-7%/*dq:b">
+                        <field name="VAR">綠色</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-290" y="1048">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="L,!=!oxY60vZ,%yNRG%6">
+        <next>
+          <block type="procedures_callnoreturn" id="h@MYe+qnpQlEI9[m*+j7">
+            <mutation name="判斷接線"></mutation>
+            <next>
+              <block type="controls_if" id=")9Bnl+sJ[e6%7@^7k;Ux">
+                <mutation elseif="2"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="T3RJ9%}Es:|n}m=/aM(x">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="mAhiBl7dtr#0Oc.iRO+t">
+                        <field name="VAR">狀態</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="hN3S-OKwnk5WOQUer(?m">
+                        <field name="TEXT">初始</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="Q%NYi@+py{PdR-(Um.qa">
+                    <value name="IF0">
+                      <block type="logic_operation" id="~=M7AELGG/gG3f~BExB%">
+                        <field name="OP">OR</field>
+                        <value name="A">
+                          <block type="variables_get" id="5-ObC^@-2MEz3yQ_FM:1">
+                            <field name="VAR">紫色</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_operation" id="EK`TJ9H)Z:Qlcba2RY65">
+                            <field name="OP">OR</field>
+                            <value name="A">
+                              <block type="variables_get" id="2[d^]sCV1WdhRyHWZm]G">
+                                <field name="VAR">藍色</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id=")`p6(:sh*nI=wHj1*;CB">
+                                <field name="VAR">綠色</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="}9+OP/H=xWJkqRa.]BvA">
+                        <field name="VAR">狀態</field>
+                        <value name="VALUE">
+                          <block type="text" id="HQPBg3daV?wrB!Z=)UWj">
+                            <field name="TEXT">爆炸</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="%uim!`)3Dz@hA8S{yrrr">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="9e6pH2Vc~J^4_cJKtqN+">
+                        <field name="VAR">狀態</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="?tx}Jq}IwDT;XC#@C`dz">
+                        <field name="TEXT">開始</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="controls_if" id="bRt#kie(yf+E(Wz4di8T">
+                    <value name="IF0">
+                      <block type="logic_compare" id="{T1S?I`{:7p0J,LrkuB-" inline="false">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="math_arithmetic" id="~=f5ZyDUk@_l,*-B`X@Y">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="time_millis" id="/Bsj18!mbRJ:;xo*Y0sh"></block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="j*R0WnAq744`=n9gZi46">
+                                <field name="VAR">喇叭計時</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="AO3%G~(@#I.R=xV[pS!}">
+                            <field name="VAR">喇叭間隔時間</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="io_tone_var" id="X}FNEbjE(fwzBQB9!dWm" inline="false">
+                        <value name="TONEPIN">
+                          <block type="variables_get" id="hv1ajjewYf?O:M-9xk2j">
+                            <field name="VAR">喇叭</field>
+                          </block>
+                        </value>
+                        <value name="FREQUENCY">
+                          <block type="variables_get" id="v~5UxJJ6TNH--~+]U)O@">
+                            <field name="VAR">頻率</field>
+                          </block>
+                        </value>
+                        <value name="DURATION">
+                          <block type="math_arithmetic" id="D/%*toV*szLaJHnR|WCm">
+                            <field name="OP">DIVIDE</field>
+                            <value name="A">
+                              <block type="variables_get" id="li:Pl(6:dzjXo#97P|=7">
+                                <field name="VAR">喇叭間隔時間</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="?n50!D6(AfZtDrn^E(!k">
+                                <field name="NUM">4</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="`bmO{1s+8ubXIE5bx8Gf">
+                            <value name="IF0">
+                              <block type="logic_compare" id="sxGvF[Kr..3e(fS;VCIE">
+                                <field name="OP">GT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="Bs%mgOn8:IcG(gu5iqQA">
+                                    <field name="VAR">喇叭間隔時間</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id=":G3V7KAABq7?Q)clFq!q">
+                                    <field name="NUM">100</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="math_change2" id=":k*d6wu(z?f_Mh~,H9{V">
+                                <field name="VAR">喇叭間隔時間</field>
+                                <field name="OP">-</field>
+                                <value name="DELTA">
+                                  <block type="math_number" id="Mgg]1k@:c{[}%Y3l@0x.">
+                                    <field name="NUM">20</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_if" id="bC9w!=]~p0HKb]*A@J+{">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="J)wIf3MT`]3+n3F6:nqD">
+                                    <field name="OP">LT</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="/2Cn,~tc{0n3bT;]Pywv">
+                                        <field name="VAR">頻率</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="=!pbpyOSV(%vb=fX`A?1">
+                                        <field name="NUM">1000</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="math_change2" id="}2yPcXVe]uu]5JwPW^P3">
+                                    <field name="VAR">頻率</field>
+                                    <field name="OP">+</field>
+                                    <value name="DELTA">
+                                      <block type="variables_get" id="DRTr;(I-WW-rC3T{|bVr">
+                                        <field name="VAR">頻率增益</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="variables_set" id="^6PQYzsFrFWNAH*pQ+(h">
+                                    <field name="VAR">喇叭計時</field>
+                                    <value name="VALUE">
+                                      <block type="time_millis" id="XY#UayUp[Jma=y4ta:F="></block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="D@U8v(?zH2EaU|],Mq3r">
+                        <value name="IF0">
+                          <block type="logic_compare" id="b0]Vm*X];:1o1U,_1;ba" inline="false">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="math_arithmetic" id="ZiN_b~LEqQqS1[9o^5[v">
+                                <field name="OP">MINUS</field>
+                                <value name="A">
+                                  <block type="time_millis" id="rM=RH,)x#_JhR#x#+aAM"></block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="m@#@JVcd;r^y5Yvz7kT4">
+                                    <field name="VAR">上一次時間</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="HC2W#vsPHr468ZFY=O,y">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="math_change2" id="=#;_#%U+|?oTe_fq%E8{">
+                            <field name="VAR">倒數時間</field>
+                            <field name="OP">-</field>
+                            <value name="DELTA">
+                              <block type="math_number" id="/(X%DpQE9ihM=p)l5Bjk">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="procedures_callnoreturn" id="Xqgo!(fSaEh+nO!xh]K,">
+                                <mutation name="顯示剩餘時間"></mutation>
+                                <next>
+                                  <block type="controls_if" id="K#ZtrF99VPrSbsWR)(D.">
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="LYiYx6)Ukr*`6BR|Ri3%">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="w#x0abwQMv:Q74T@iDeI">
+                                            <field name="VAR">倒數時間</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="=l`Yj4crB^:JCjpqo604">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="variables_set" id="CdgtIz9pQh*F^U:L(=R2">
+                                        <field name="VAR">狀態</field>
+                                        <value name="VALUE">
+                                          <block type="text" id="pI(@n08F,yYWUwH(EfvV">
+                                            <field name="TEXT">爆炸</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="variables_set" id="SwY:K+^[pF*GHm4@DC}|">
+                                        <field name="VAR">上一次時間</field>
+                                        <value name="VALUE">
+                                          <block type="time_millis" id="%B8UTZJWih*xQq45*UAu"></block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="js9@6}UodZnpmA]~D=S#">
+                            <mutation else="1"></mutation>
+                            <value name="IF0">
+                              <block type="variables_get" id="I3vr~()5z!C;5DsqoW#c">
+                                <field name="VAR">可以拆彈</field>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="controls_if" id=";id%3Y1:@V7xE=RCi2gf">
+                                <mutation elseif="1"></mutation>
+                                <value name="IF0">
+                                  <block type="logic_operation" id="HpuZ|B*Mc;MR5PJ`M46C">
+                                    <field name="OP">OR</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="hp5r-q=R^Z3].+C`]?s[">
+                                        <field name="VAR">藍色</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="variables_get" id="L?i|r((WwD@:d*^:M=8m">
+                                        <field name="VAR">綠色</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="variables_set" id="^jt62?WZ|,b;6OHvq,e6">
+                                    <field name="VAR">狀態</field>
+                                    <value name="VALUE">
+                                      <block type="text" id="q4XeEgM-Ww?TL;cB?Ief">
+                                        <field name="TEXT">爆炸</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <value name="IF1">
+                                  <block type="variables_get" id="|,L,%ieN8]d_Er~`9*T#">
+                                    <field name="VAR">紫色</field>
+                                  </block>
+                                </value>
+                                <statement name="DO1">
+                                  <block type="procedures_callnoreturn" id="=~S+e.1Z58*9Zs-Z-|2^">
+                                    <mutation name="勝利聲"></mutation>
+                                    <next>
+                                      <block type="variables_set" id="]Ua(ZGwgdov+#axQF3h:">
+                                        <field name="VAR">狀態</field>
+                                        <value name="VALUE">
+                                          <block type="text" id="KYl=urSh,AigWf1G}XLp">
+                                            <field name="TEXT">成功</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </statement>
+                            <statement name="ELSE">
+                              <block type="controls_if" id="iV[)veE6P8`ecv/{},Af">
+                                <value name="IF0">
+                                  <block type="logic_operation" id="]+;_=bI~KGiFXh|DO7IQ">
+                                    <field name="OP">OR</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="*n~SIF!l!Yy%Q@fA5N,5">
+                                        <field name="VAR">紫色</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="logic_operation" id="+XvX^5D`AqzgwXWt,36F">
+                                        <field name="OP">OR</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="1,SeF)}c/-CR~o.(JvsS">
+                                            <field name="VAR">藍色</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="variables_get" id="Yr|.R#Vc#qet*B|T[U()">
+                                            <field name="VAR">綠色</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="variables_set" id="!V`H+M_S|0Jr)]K.L8kf">
+                                    <field name="VAR">狀態</field>
+                                    <value name="VALUE">
+                                      <block type="text" id="we,Yak3B=01GPv5D?E[U">
+                                        <field name="TEXT">爆炸</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </statement>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF2">
+                  <block type="logic_compare" id="R9u|@bxmHStR^6*VtGgz">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="p;[u7(=]xDtUEoYApL[0">
+                        <field name="VAR">狀態</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="W_~dk,s^GjmY:!CW|~oe">
+                        <field name="TEXT">爆炸</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO2">
+                  <block type="io_tone_var" id="(qeHdxE@}VF3YjR{Zik)">
+                    <value name="TONEPIN">
+                      <block type="variables_get" id="yLx{|jHWkI;d79^4:!Ve">
+                        <field name="VAR">喇叭</field>
+                      </block>
+                    </value>
+                    <value name="FREQUENCY">
+                      <block type="math_number" id="W8J@%8a)Jx,+Pczm8s?1">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                    <value name="DURATION">
+                      <block type="math_number" id="f;m(YAByN(_jWSW_,VJ-">
+                        <field name="NUM">3000</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="Z):7tUFZkT-A3hcML-D*">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="1XIeVDvKYH%g=G@*Wkl;">
+                            <field name="NUM">3000</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="io_notone_var" id="{qkoBPXK*IVoObLO}y-]">
+                            <value name="TONEPIN">
+                              <block type="variables_get" id="/yrzZcbW:Zlnu9envS[M">
+                                <field name="VAR">喇叭</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="time_delay" id="*zUL:5iFA~Q?v[Y{^bcb">
+                                <value name="DELAY_TIME_MILI">
+                                  <block type="math_number" id="4FWK8gE7SMWXzYQ#UrLL">
+                                    <field name="NUM">1000</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="io_tone_var" id="0+AuxIu@Z8KoE}VIx2=Z">
+                                    <value name="TONEPIN">
+                                      <block type="variables_get" id="BTU%z-oV(9*7Muc`vrcI">
+                                        <field name="VAR">喇叭</field>
+                                      </block>
+                                    </value>
+                                    <value name="FREQUENCY">
+                                      <block type="math_number" id="cP7{E{c;PKoykZam.(pK">
+                                        <field name="NUM">700</field>
+                                      </block>
+                                    </value>
+                                    <value name="DURATION">
+                                      <block type="math_number" id="za!%[Tkmxq%IDqquLk0|">
+                                        <field name="NUM">500</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="controls_whileUntil" id=";@0mh{+sSxDyJ2{MqS:N">
+                                        <field name="MODE">WHILE</field>
+                                        <value name="BOOL">
+                                          <block type="logic_boolean" id="%c:2:9r5-^0i]~CE#64?">
+                                            <field name="BOOL">TRUE</field>
+                                          </block>
+                                        </value>
+                                        <statement name="DO">
+                                          <block type="controls_if" id="bO}fOjUYW4%;a[L@x;3y">
+                                            <mutation elseif="1"></mutation>
+                                            <value name="IF0">
+                                              <block type="logic_compare" id="`HFXZ!lA`t|}eN3w8)ZA">
+                                                <field name="OP">EQ</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="i3Z3#{QoM]Y*16aj8?Mq">
+                                                    <field name="VAR">爆炸計數</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="t~jYyPDV{[o8u6r=t9eo">
+                                                    <field name="NUM">8</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name="DO0">
+                                              <block type="io_tone_var" id="9Bh,Crlp`xWDVn46#lbO">
+                                                <value name="TONEPIN">
+                                                  <block type="variables_get" id="_sY5}Z*ZFkSG|L4~g~;q">
+                                                    <field name="VAR">喇叭</field>
+                                                  </block>
+                                                </value>
+                                                <value name="FREQUENCY">
+                                                  <block type="math_number" id="IUBFVhVYSp}9nX|iFjOf">
+                                                    <field name="NUM">400</field>
+                                                  </block>
+                                                </value>
+                                                <value name="DURATION">
+                                                  <block type="math_number" id="om/X!RKPqQBszi9`1AgI">
+                                                    <field name="NUM">500</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </statement>
+                                            <value name="IF1">
+                                              <block type="logic_compare" id=";yOF{1g{0cj9OymDnvnf">
+                                                <field name="OP">EQ</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="3MYHTEXRjGQjGCvhDl*G">
+                                                    <field name="VAR">爆炸計數</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="EEbVeIN%fW|PDg}2khM;">
+                                                    <field name="NUM">16</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name="DO1">
+                                              <block type="io_tone_var" id="m,kkC1;qa}Nf2OzJ`[;s">
+                                                <value name="TONEPIN">
+                                                  <block type="variables_get" id="?kZT(61hoJCkM%iUNTd(">
+                                                    <field name="VAR">喇叭</field>
+                                                  </block>
+                                                </value>
+                                                <value name="FREQUENCY">
+                                                  <block type="math_number" id=";x7Jcrw{wJ2~NT40/Bal">
+                                                    <field name="NUM">700</field>
+                                                  </block>
+                                                </value>
+                                                <value name="DURATION">
+                                                  <block type="math_number" id="(FKa^%;afkM6xwfrf%O|">
+                                                    <field name="NUM">500</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id="9]?4e(LocAP)hmTv3xD_">
+                                                    <field name="VAR">爆炸計數</field>
+                                                    <value name="VALUE">
+                                                      <block type="math_number" id="0jX.}@+7HkYCAOb8@|vY">
+                                                        <field name="NUM">0</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="TM1637_SHOWNUMDEC" id="A`DHVJ.3}SKW}PL4L{Y0" inline="false">
+                                                <field name="OBJNAME">SSD</field>
+                                                <field name="PADDING">TRUE</field>
+                                                <field name="COLON">TRUE</field>
+                                                <value name="POSITION">
+                                                  <block type="math_number" id="lgN8Rz3w9Z]s;5aq3V~^">
+                                                    <field name="NUM">0</field>
+                                                  </block>
+                                                </value>
+                                                <value name="DIGITS">
+                                                  <block type="math_number" id="_%cIgj,a7LWix(QTJ{6)">
+                                                    <field name="NUM">4</field>
+                                                  </block>
+                                                </value>
+                                                <value name="NUM">
+                                                  <block type="math_random_int" id="K^rRF=0S*eKtqAzHLeHh">
+                                                    <value name="FROM">
+                                                      <block type="math_number" id="r4+A,WtqG~]*=Q.3PODm">
+                                                        <field name="NUM">0</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="TO">
+                                                      <block type="math_number" id="OJ-m[g66*?Xq?m=g5]|N">
+                                                        <field name="NUM">8888</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="math_change2" id="[==*%dfA:xGB9}rsX~xm">
+                                                    <field name="VAR">爆炸計數</field>
+                                                    <field name="OP">+</field>
+                                                    <value name="DELTA">
+                                                      <block type="math_number" id="nujetegL.[0M[UVz1YJ2">
+                                                        <field name="NUM">1</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="time_delay" id="NMikfhvIR7fK/IR.~]+^">
+                                                        <value name="DELAY_TIME_MILI">
+                                                          <block type="math_number" id="=QXEyW+GnuipXbYZeatR">
+                                                            <field name="NUM">50</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

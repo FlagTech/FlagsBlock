@@ -1,0 +1,258 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="v7Zt/lgA,T1;KFIZ2oF3" x="-38" y="-326">
+    <statement name="SETUP_FUNC">
+      <block type="controls_waitUntil" id="v1@`L=.,2a^|~!{?1Q)Z">
+        <value name="BOOL">
+          <block type="esp8266_ap_setup" id="8_Vp0h#S7l%1*DUG9k{i">
+            <field name="CHANNEL">1</field>
+            <field name="HIDDEN">FALSE</field>
+            <value name="SSID">
+              <block type="text" id="8||NDXjK{3QUkb{NY]kO">
+                <field name="TEXT">Lab10</field>
+              </block>
+            </value>
+            <value name="PINCODE">
+              <block type="text" id="S2CWq[6vOE:yV}aUpG(/">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="esp8266_webserver_setup" id="%@ZD3Kj]hgfcn+M@4%K)">
+            <field name="PORT">80</field>
+            <next>
+              <block type="esp8266_webserver_on2" id="Odf3N;fOh]c#gFIWcd6=">
+                <field name="FUNCNAME">變換燈號</field>
+                <field name="PATH">/light</field>
+                <next>
+                  <block type="flagledstripe_setup" id="X!h2Ks~;0..OlK?`Zyqj">
+                    <field name="OBJNAME">紅綠燈號誌</field>
+                    <field name="NUM">3</field>
+                    <value name="LEDPIN">
+                      <block type="io_allpins" id="q{^MIIYv,~HCLxv(qroc">
+                        <field name="PIN">D6</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="flagledstripe_setbrightness" id="7Q,SpN(sVu;tiK_qJU3Z">
+                        <field name="OBJNAME">紅綠燈號誌</field>
+                        <field name="BRIGHTNESS">255</field>
+                        <next>
+                          <block type="flagledstripe_clear" id="#P|f5U^|*`yL(zC/zYei">
+                            <field name="OBJNAME">紅綠燈號誌</field>
+                            <next>
+                              <block type="variables_set" id="Mame;Bek0qm+=`Sgj56W">
+                                <field name="VAR">顏色字串</field>
+                                <value name="VALUE">
+                                  <block type="text" id="KPzQ,HTI=%#DjmBbFA]Y">
+                                    <field name="TEXT"></field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="574" y="-170">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="zGW?Xb7||=]=]DS=Tjmv"></block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="N9;[p37yu?j5x!N~_~FR" x="-36" y="-64">
+    <field name="NAME">變換燈號</field>
+    <statement name="STACK">
+      <block type="controls_if" id="v;nd[evk2=d~u]hv)YVC">
+        <value name="IF0">
+          <block type="esp8266_webserver_has_arg" id="qvdYb}hpW.Nl-A]Z*6Xv">
+            <value name="ARGNAME">
+              <block type="text" id=";{k.LALe=}^)#e?C^d!R">
+                <field name="TEXT">color</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="w(oGJXBjHTbV{-7`Z/.4">
+            <field name="VAR">顏色字串</field>
+            <value name="VALUE">
+              <block type="esp8266_webserver_arg_by_name" id="X55-Hroagd|yfNk/V`/4">
+                <value name="ARGNAME">
+                  <block type="text" id="w-pFOvb![#O|*U9iY`+_">
+                    <field name="TEXT">color</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="ivd3yG.r)dEA94^cP)7O">
+                <value name="IF0">
+                  <block type="logic_compare" id="/N.?6eFj[nV!9ZVkJGkV">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="QI3umwoudq+p@;m=Nn`F">
+                        <field name="VAR">顏色字串</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="ndwVRMgGcD6ykW3g||L`">
+                        <field name="TEXT">red</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="flagledstripe_setpixelcolor" id="YKyPw%*epa-!BeEr7kXd" inline="false">
+                    <field name="OBJNAME">紅綠燈號誌</field>
+                    <value name="NUM">
+                      <block type="math_number" id="d+/x?[|Hl(7c9@LU-A7w">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="RED">
+                      <block type="math_number" id="s%Htu=-wI0pO/;TI`n*z">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                    <value name="GREEN">
+                      <block type="math_number" id="8rLKQ[R8h41[CjJ.Lm1N">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="BLUE">
+                      <block type="math_number" id=")GmxuD+le9qb}_#?bPug">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="fy.dd)|OVNkBzNNd,ef[">
+                    <value name="IF0">
+                      <block type="logic_compare" id="e/9^3QFonai(vxj%4;X;">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="D.JIQbCXA?{-.czx]4=T">
+                            <field name="VAR">顏色字串</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="text" id="+lQ,GX:MC5,aTi_,+VS@">
+                            <field name="TEXT">yellow</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="flagledstripe_setpixelcolor" id="Ynd/uGQQU#Uy(xt;OA0Y" inline="false">
+                        <field name="OBJNAME">紅綠燈號誌</field>
+                        <value name="NUM">
+                          <block type="math_number" id="mztfc[TjO=eKWG.j*pmf">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <value name="RED">
+                          <block type="math_number" id="ns6jo99u%n5(fZ3,rjwP">
+                            <field name="NUM">255</field>
+                          </block>
+                        </value>
+                        <value name="GREEN">
+                          <block type="math_number" id="v0:A+T_yEf{7Rw:DM/BL">
+                            <field name="NUM">215</field>
+                          </block>
+                        </value>
+                        <value name="BLUE">
+                          <block type="math_number" id="4o?ezo(TkzQ7!r]#DEec">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="q;XC3^C!kN8l=/-u22OL">
+                        <value name="IF0">
+                          <block type="logic_compare" id="4b!H2:5?qh@|{R/!0Vk:">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="ed8Ff2[/twi;-E+##ud;">
+                                <field name="VAR">顏色字串</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="text" id="2#2?Blr0N?:Qs7*h0qeH">
+                                <field name="TEXT">green</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="flagledstripe_setpixelcolor" id="zGJW[[4hzlB}S?cM*?lw" inline="false">
+                            <field name="OBJNAME">紅綠燈號誌</field>
+                            <value name="NUM">
+                              <block type="math_number" id="xd!H@yOE3e:2a[h[{v0;">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <value name="RED">
+                              <block type="math_number" id="G9;*Nj|#A2Tx[5,!`F(a">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="GREEN">
+                              <block type="math_number" id="TfZH^7MjY;,i0=axOg55">
+                                <field name="NUM">255</field>
+                              </block>
+                            </value>
+                            <value name="BLUE">
+                              <block type="math_number" id="RpF@_ZBX:G9J_E!J%;;K">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="flagledstripe_show" id="Vcz18Y`K~q~J}vUe?6Vo">
+                            <field name="OBJNAME">紅綠燈號誌</field>
+                            <next>
+                              <block type="esp8266_webserver_send" id="S}biUqpR%?R0s;tuTiPe">
+                                <value name="STATUS">
+                                  <block type="math_number" id="ItTW8S8:nO*jk[B2X!#S">
+                                    <field name="NUM">200</field>
+                                  </block>
+                                </value>
+                                <value name="MIMETYPE">
+                                  <block type="text" id="Pa!5wqDfaQx=C!XAXd,{">
+                                    <field name="TEXT">text/plain</field>
+                                  </block>
+                                </value>
+                                <value name="CONTENT">
+                                  <block type="text" id="pgv9z]=]y/AC_sCa|[c?">
+                                    <field name="TEXT">OK</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

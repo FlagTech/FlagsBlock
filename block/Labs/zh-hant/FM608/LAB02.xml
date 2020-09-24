@@ -1,0 +1,80 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=";n}eMlrW2*mZ9QdK~^EI" x="250" y="-61">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="!fX.t!4Xpoc;NN0[)i!*">
+        <field name="VAR">計時</field>
+        <value name="VALUE">
+          <block type="time_millis" id="noxIEx-Vpod)3!:vX@Gd"></block>
+        </value>
+        <next>
+          <block type="serial_setup" id=")Mh9kF^1,AG1=!1JD?XA">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="SPEED">9600</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="250" y="57">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="UZVl_`8~09!6AJd6vqvR">
+        <value name="IF0">
+          <block type="logic_compare" id="HXkGj5V}5(gzS6jX0]5K">
+            <field name="OP">GT</field>
+            <value name="A">
+              <block type="math_arithmetic" id="4T@OM4J52Ww+.bdiOhy@">
+                <field name="OP">MINUS</field>
+                <value name="A">
+                  <block type="time_millis" id="8kRYKR@=WLB`0!:Jg9,H"></block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="#5mSOn`N9vR5q-_AG:@-">
+                    <field name="VAR">計時</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="_-us%hP=Tc52Ld[n^[Ca">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="0_oWwtljoaM_.0HpUe2X">
+            <field name="VAR">膚電阻值</field>
+            <value name="VALUE">
+              <block type="io_analogread_var" id="SR9@ujTy=gWNn[PDb=]V">
+                <value name="PIN">
+                  <block type="io_analogpins" id="VBiv/bT/Fo1oRq}WmSQE">
+                    <field name="PIN">A0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="serial_print" id="J-5N])lEydR_cbV`p:_o">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="variables_get" id="J]pPDZr|~([1w0a.)lG#">
+                    <field name="VAR">膚電阻值</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="wr7]3%70b#fpNlj,/ZLB">
+                    <field name="VAR">計時</field>
+                    <value name="VALUE">
+                      <block type="time_millis" id="CVNXf!Hy%n]7c*ku*6;y"></block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

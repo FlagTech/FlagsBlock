@@ -1,0 +1,50 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="s7S}]Q,+Hk1-#aIQ:%-|" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="servo_use" id="){woLIVlsqIii%e[{zv7">
+        <field name="OBJNAME">LR</field>
+        <field name="PIN">D2</field>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="92">
+    <statement name="LOOP_FUNC">
+      <block type="servo_put" id="U~pg2h#7?b~)iC8UkU7.">
+        <field name="OBJNAME">LR</field>
+        <value name="SERVO_ANGLE">
+          <block type="math_number" id="la.QOo8}`FLACJTda)^B">
+            <field name="NUM">105</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id=":BJ+8qrF})lbIvC+G`=-">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="]MyIR-:RLc%]L5KCpp||">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="servo_put" id="c^|H~lze64][9JQ};aGL">
+                <field name="OBJNAME">LR</field>
+                <value name="SERVO_ANGLE">
+                  <block type="math_number" id="oAVy!Mp|4#iL3X#So73X">
+                    <field name="NUM">75</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="4pO1C*RrmbI|CG#0l0;k">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="k*Gu:*6Kf^Cu/jz}zzUq">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

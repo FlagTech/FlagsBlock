@@ -1,0 +1,145 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="dTn1p!cd#!s4#zfIW}dr" x="36" y="-55">
+    <statement name="SETUP_FUNC">
+      <block type="servo_use" id="A258Wy3Hu9fcL!pdw)o+">
+        <field name="OBJNAME">左邊</field>
+        <field name="PIN">4</field>
+        <next>
+          <block type="servo_use" id="R[6|nDZd8)OrPhIa[(v:">
+            <field name="OBJNAME">右邊</field>
+            <field name="PIN">5</field>
+            <next>
+              <block type="variables_set" id="-Lnxy3v}(W1=F#l2T9p6">
+                <field name="VAR">左腳往前角</field>
+                <value name="VALUE">
+                  <block type="math_number" id="sDA:IO%x^JXO(0uuE_/k">
+                    <field name="NUM">75</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="-{UQKHYjW%szt~]Q]ibH">
+                    <field name="VAR">左腳往後角</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="?`G3!XQ|ee|16kqq5}8O">
+                        <field name="NUM">130</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="Qh[A5Tnd:1je-@H8y}3`">
+                        <field name="VAR">右腳往前角</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="ypw?P)c;{-%mcW.xJKR#">
+                            <field name="NUM">105</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="nF~7EEvWTs``ipzHAGFt">
+                            <field name="VAR">右腳往後角</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="j1WIuActb%pS/1dwkF,)">
+                                <field name="NUM">50</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="37" y="155">
+    <statement name="LOOP_FUNC">
+      <block type="servo_put" id="`7p*u{`T}Y~Av`-x-*^7">
+        <field name="OBJNAME">左邊</field>
+        <value name="SERVO_ANGLE">
+          <block type="math_number" id="nSa[y!xR]cTVQ^{1OmXa">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+        <next>
+          <block type="servo_put" id="g]_Y}Y?8Wk^H{^L0.i[5">
+            <field name="OBJNAME">右邊</field>
+            <value name="SERVO_ANGLE">
+              <block type="math_number" id="91*u4rwt6AQx741Yjaj8">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="fG|152f6^:b_O5;0Y~|/">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="mjOetVb6?2Dy@*aTu]f#">
+                    <field name="NUM">2000</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="servo_put" id="9/wzVuFkDKIJfsDiBKHw">
+                    <field name="OBJNAME">左邊</field>
+                    <value name="SERVO_ANGLE">
+                      <block type="variables_get" id="H*1c#kW)yRf--:pX4/iA">
+                        <field name="VAR">左腳往前角</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="servo_put" id="Q-IYByQkNC{ioYkY@l-;">
+                        <field name="OBJNAME">右邊</field>
+                        <value name="SERVO_ANGLE">
+                          <block type="variables_get" id="Lq5JCh4whIw]sxp+%L5I">
+                            <field name="VAR">右腳往前角</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="7mgIDB*U`U:e%2lSO*:z">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id=")*X(72@D[zqvvO?MXc:Z">
+                                <field name="NUM">2000</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="servo_put" id="U4bGqoF=)TC_rMa^vDED">
+                                <field name="OBJNAME">左邊</field>
+                                <value name="SERVO_ANGLE">
+                                  <block type="variables_get" id="5FK0rYgeDohRaRE5}_Wt">
+                                    <field name="VAR">左腳往後角</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="servo_put" id="=G(PKWLbG*Lsa/g/Kfg[">
+                                    <field name="OBJNAME">右邊</field>
+                                    <value name="SERVO_ANGLE">
+                                      <block type="variables_get" id="ls._.D.euAnfAR`NjfRR">
+                                        <field name="VAR">右腳往後角</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="time_delay" id="*rFaz_1en!OR8-1PEt#n">
+                                        <value name="DELAY_TIME_MILI">
+                                          <block type="math_number" id="O-TE9F?CBsZv]K@S3[TS">
+                                            <field name="NUM">2000</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

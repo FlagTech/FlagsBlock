@@ -1,0 +1,314 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=";n}eMlrW2*mZ9QdK~^EI" x="15" y="-193">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="!fX.t!4Xpoc;NN0[)i!*">
+        <field name="VAR">計時</field>
+        <value name="VALUE">
+          <block type="time_millis" id="noxIEx-Vpod)3!:vX@Gd"></block>
+        </value>
+        <next>
+          <block type="tnn_use" id="{KLgZv`5XYv_RVD{k7FY">
+            <field name="OBJNAME">神經2</field>
+            <field name="AFUNC1">CROSSIN</field>
+            <field name="AFUNC2">RELU</field>
+            <next>
+              <block type="tnn_initran" id="_)#t7AZc^k#Jb%Y295C:">
+                <field name="OBJNAME">神經2</field>
+                <next>
+                  <block type="ann_set" id="+FnusJLoN-EOH{Kd)vKW">
+                    <field name="OBJNAME">神經2</field>
+                    <field name="NNVAR">w0</field>
+                    <value name="NNVARNUM">
+                      <block type="math_number" id="!LEEYH@Q0J;WP!q5Z/f/">
+                        <field name="NUM">0.88</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="ann_set" id="F+H45iJnqZ3z(c0jA]=4">
+                        <field name="OBJNAME">神經2</field>
+                        <field name="NNVAR">w1</field>
+                        <value name="NNVARNUM">
+                          <block type="math_number" id=":SSH!xIGjQvYX9Y7[0Y1">
+                            <field name="NUM">0.54</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="ann_set" id="Rq)WoTyU+3VNiWoWfk)9">
+                            <field name="OBJNAME">神經2</field>
+                            <field name="NNVAR">b0</field>
+                            <value name="NNVARNUM">
+                              <block type="math_number" id="s*SayF##w3grbk]/woH[">
+                                <field name="NUM">0.71</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="ann_set" id="QIX(sUP8LLNMdBF|DuGH">
+                                <field name="OBJNAME">神經2</field>
+                                <field name="NNVAR">b1</field>
+                                <value name="NNVARNUM">
+                                  <block type="math_number" id="+0LgNd(*V`m[dPLM15w?">
+                                    <field name="NUM">-0.1</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_waitUntil" id="GP];V}ip5VrgmZX`|cQ:">
+                                    <value name="BOOL">
+                                      <block type="esp8266_ap_setup" id="HDfYIF3*Vty1AUw0ppVC">
+                                        <field name="CHANNEL">1</field>
+                                        <field name="HIDDEN">FALSE</field>
+                                        <value name="SSID">
+                                          <block type="text" id=":?/?r+B)L/G)[wo|gd.f">
+                                            <field name="TEXT">temperature</field>
+                                          </block>
+                                        </value>
+                                        <value name="PINCODE">
+                                          <block type="text" id="{dyS*VU,l4+#wH?*gh[y">
+                                            <field name="TEXT"></field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="esp8266_webserver_on2" id="4R6A?]S([D5tiPG4hX0H">
+                                        <field name="FUNCNAME">傳送原始值</field>
+                                        <field name="PATH">/measureraw</field>
+                                        <next>
+                                          <block type="esp8266_webserver_on2" id="zv`9mg57kM59FtpMX1Xa">
+                                            <field name="FUNCNAME">傳送體溫</field>
+                                            <field name="PATH">/measure</field>
+                                            <next>
+                                              <block type="esp8266_webserver_on2" id="ERU6*A%Ip~?L*rdU+ZZ)">
+                                                <field name="FUNCNAME">訓練網路</field>
+                                                <field name="PATH">/learn</field>
+                                                <next>
+                                                  <block type="esp8266_webserver_setup" id="L/CP^Vz22,r|{4vc{)@v">
+                                                    <field name="PORT">80</field>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="1wa~}(BLhQ(^YCkjq7Bf" x="14" y="235">
+    <field name="NAME">傳送原始值</field>
+    <statement name="STACK">
+      <block type="esp8266_webserver_send" id="c4PCy|;E?ANZSawYV(l(">
+        <value name="STATUS">
+          <block type="math_number" id="H9C?ZcJ5U!LSF!*yGCUa">
+            <field name="NUM">200</field>
+          </block>
+        </value>
+        <value name="MIMETYPE">
+          <block type="text" id="y.{E5N)*0,CU%ho=]P8y">
+            <field name="TEXT">text/plain</field>
+          </block>
+        </value>
+        <value name="CONTENT">
+          <block type="variables_get" id="QltUI;DA6Cajxou?U=*0">
+            <field name="VAR">原始值</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="SRZ:!y.N~=gL:czjcKqw" x="14" y="333">
+    <field name="NAME">傳送體溫</field>
+    <statement name="STACK">
+      <block type="esp8266_webserver_send" id="}VxR!+Jt)PRb/my*H4~%">
+        <value name="STATUS">
+          <block type="math_number" id="x#wD!bYCJmar~fogdO,_">
+            <field name="NUM">200</field>
+          </block>
+        </value>
+        <value name="MIMETYPE">
+          <block type="text" id="bcNvS(*ToO4PH@^ZP1c,">
+            <field name="TEXT">text/plain</field>
+          </block>
+        </value>
+        <value name="CONTENT">
+          <block type="variables_get" id="9}F)]W4el~ApV.ALF#-|">
+            <field name="VAR">體溫</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="6sC=AG9S|_FRTIQg}?j2" x="12" y="433">
+    <field name="NAME">訓練網路</field>
+    <statement name="STACK">
+      <block type="controls_if" id="B:;eUOf=O~[Q#uuk)7;9">
+        <value name="IF0">
+          <block type="esp8266_webserver_has_arg" id="CWJ%Qlkm,/f#)M`ftmut">
+            <value name="ARGNAME">
+              <block type="text" id="Xu4xW_xlE,oDGsqlvWjS">
+                <field name="TEXT">learndata</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="Qn7OrW,hvQyy3KKr8V6#">
+            <field name="VAR">訓練資料</field>
+            <value name="VALUE">
+              <block type="esp8266_webserver_arg_by_name" id="nG7De![tR7Fz)%y_Aa=.">
+                <value name="ARGNAME">
+                  <block type="text" id="(opq{eUD:+jBIg~ct-d^">
+                    <field name="TEXT">learndata</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="tnn_train" id="Oh=sh?1)s_O)F4cKQd!Y">
+                <field name="OBJNAME">神經2</field>
+                <value name="TDATA">
+                  <block type="variables_get" id="7r4+R,Gy06E/:WSahzb7">
+                    <field name="VAR">訓練資料</field>
+                  </block>
+                </value>
+                <value name="LRATE">
+                  <block type="math_number" id="%}T`(/R/Go.ZJs`5v]Cw">
+                    <field name="NUM">0.01</field>
+                  </block>
+                </value>
+                <value name="LTIMES">
+                  <block type="math_number" id="_YWx[c#a_sg8Zv5(Crlb">
+                    <field name="NUM">100000</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="esp8266_webserver_send" id="+{jT!23ECMIz]kK:,`[t">
+                    <value name="STATUS">
+                      <block type="math_number" id="MfE!e)`R#9Gq9uSrRkQ;">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                    <value name="MIMETYPE">
+                      <block type="text" id="9E=ETh#r:2x@!;nSOBR|">
+                        <field name="TEXT">text/plain</field>
+                      </block>
+                    </value>
+                    <value name="CONTENT">
+                      <block type="text" id="Lhzzw)v|5}g[`7lTLzcT">
+                        <field name="TEXT">OK</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="14" y="723">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="cs3mg:}K,W1t-8]bO=99">
+        <next>
+          <block type="controls_if" id="Vb^4`{^yL_bk=pTf(e:q">
+            <value name="IF0">
+              <block type="logic_compare" id="SGP[HpN=2}uV3jxs!a#r">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="b)CR,Cr0.dOt3-,Yev2)">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <block type="time_millis" id="N8_*@eMYo`S-v*t8WWV+"></block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="NCb?P@(bFTqM~hW2W_Kv">
+                        <field name="VAR">計時</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="JR0~17]`r:3d=_hu?w27">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="BW;j284]EWQ@SF?~aAdc">
+                <field name="VAR">原始值</field>
+                <value name="VALUE">
+                  <block type="io_analogread_var" id="t{G{/uAVkGZ!d-HY~j_s">
+                    <value name="PIN">
+                      <block type="io_analogpins" id="VS#nT{O(~Agp;YSg=i8|">
+                        <field name="PIN">A0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="c0tKGi.CSr@;ie^.P(m*">
+                    <field name="VAR">體溫</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id=")#y}:4]MCqJ:[ke,nlPq" inline="false">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="tnn_getoutput" id="rIt|]b_)tYuQ/0=aw!fm">
+                            <field name="OBJNAME">神經2</field>
+                            <value name="INPUT">
+                              <block type="math_arithmetic" id="51U:t]Y0({(%56~(V}|I" inline="false">
+                                <field name="OP">DIVIDE</field>
+                                <value name="A">
+                                  <block type="variables_get" id="gqENpGla5C~Pwr1;5qao">
+                                    <field name="VAR">原始值</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="QB*c_(YE_(s}j2ZQBI~!">
+                                    <field name="NUM">1000.0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="Otfv_Q_Q{L3HmZDF0Hfk">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="LQY)(Xry/v98Ma[*.:*L">
+                        <field name="VAR">計時</field>
+                        <value name="VALUE">
+                          <block type="time_millis" id="}zh@4TPpwsDyfX6=:x8@"></block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

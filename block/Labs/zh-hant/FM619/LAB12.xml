@@ -1,0 +1,348 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="Ty+_jvA`*r|8_gvUh3z4" x="-244" y="-475">
+    <statement name="SETUP_FUNC">
+      <block type="FLAGMATRIX_setup" id="-z{*iaQ:]G-oe5+3mG_b">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="DATA_PIN">
+          <block type="io_allpins" id="ZbZp[Sq3-^-Mn7vX,Ye~">
+            <field name="PIN">D7</field>
+          </block>
+        </value>
+        <value name="CLK_PIN">
+          <block type="io_allpins" id="FN1aY@wpq+furU?fMcsS">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="FLAGMATRIX_clear" id="_PA;483quMX@EtJ(lCvo">
+            <field name="OBJNAME">圖形顯示器</field>
+            <next>
+              <block type="esp8266_sta_setup" id="w(GK04_qE-4k_M)A{bGN">
+                <value name="SSID">
+                  <block type="text" id=",q.GUU;X~B:A)0)+A:+E">
+                    <field name="TEXT">無線網路名稱</field>
+                  </block>
+                </value>
+                <value name="PINCODE">
+                  <block type="text" id="a7H0pbP?%Ir5R2}UuSov">
+                    <field name="TEXT">無線網路密碼</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_digitalwrite_var" id="Xno#YFP8@llw33LHq?lF">
+                    <value name="PIN">
+                      <block type="io_allpins" id="Dm_.oz?~WPM0?}pxnu-Z">
+                        <field name="PIN">D4</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="AQcfvAI5vq.h}U6Pe`X`">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_whileUntil" id="6F=3jje0KDV^4;cf0?l1">
+                        <field name="MODE">WHILE</field>
+                        <value name="BOOL">
+                          <block type="logic_negate" id="|0dGZNPW@noei2*40ooB">
+                            <value name="BOOL">
+                              <block type="esp8266_connected" id="sH1IGcu6oi6WgU^M{(e?"></block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="time_delay" id="W|r^FCzDLh]];8s(ChF{">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="YQpgQG]Q+qvDfp8t}m5L">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="io_digitalwrite_var" id=";MOk`jh6DfX#rSh%(vZ8">
+                            <value name="PIN">
+                              <block type="io_allpins" id="2jWB~Ap:iiXzV9|Q0#[*">
+                                <field name="PIN">D4</field>
+                              </block>
+                            </value>
+                            <value name="STATE">
+                              <block type="io_highlow" id="rWX_BIaHIUk%Mmze}L_t">
+                                <field name="STATE">LOW</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="%U`zyPoQW43!=k.eQ{KL">
+                                <field name="VAR">中央氣象局請求路徑</field>
+                                <value name="VALUE">
+                                  <block type="text" id="#QR(?/2#pIlmpl6B1fqN">
+                                    <field name="TEXT">https://opendata.cwb...</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="pM+goVu5iV-lz:kcQRvN">
+                                    <field name="VAR">降雨機率節點</field>
+                                    <value name="VALUE">
+                                      <block type="text" id="emJ@usWi=:t%_+oiEQ4E">
+                                        <field name="TEXT">records/location/0/weatherElement/0/time/0/parameter/parameterName</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="@aa;cQMnC(+G`4snrknp">
+                                        <field name="VAR">降雨機率字串</field>
+                                        <value name="VALUE">
+                                          <block type="text" id=".orY;2}^xnfKd}0zf0TM">
+                                            <field name="TEXT"></field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="/`MsD!=;fOTcqS1QrD;I">
+                                            <field name="VAR">降雨機率</field>
+                                            <value name="VALUE">
+                                              <block type="math_number" id="+p#8M7Y1wG1/kY?xjUi^">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="zzaO{R3/RzED.oolZdTa">
+                                                <field name="VAR">找到降雨機率</field>
+                                                <value name="VALUE">
+                                                  <block type="logic_boolean" id="5f/;_LNp7ZnRM;]z;PA{">
+                                                    <field name="BOOL">FALSE</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="499" y="-480">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="TRea#eEb]6}a~~ot]CbF">
+        <value name="IF0">
+          <block type="logic_compare" id="_gcM7Aw#Y8dC/59|hzm*">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="!CU50*l?7(H!Fc62SjxO">
+                <field name="VAR">找到降雨機率</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_boolean" id="3vwLb,e_QeuQF`NA0F:O">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="3!jT;,x2/;(4MxAql!/0">
+            <value name="IF0">
+              <block type="logic_compare" id="wm1k+t^d~Cki.Ob_uJ12">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="esp8266_http_get" id="NB:/fB7Y:t]5IBALXJ]{">
+                    <value name="URL">
+                      <block type="variables_get" id="pfm2DCNNpj0F_foBv[Vc">
+                        <field name="VAR">中央氣象局請求路徑</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="IcgK/BZ^SUd-V5@h.Yx-">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="json_parse" id="eg[DWg./tc!{Y8+o8#u]">
+                <value name="JSON_STR">
+                  <block type="esp8266_http_get_response" id="4*zb-+:6mJz)!pgz_Pja"></block>
+                </value>
+                <next>
+                  <block type="controls_if" id="BezDnY3AY[4|nAH.*X)v">
+                    <value name="IF0">
+                      <block type="json_success" id="Scp=!1BqN?F31@G]zJa="></block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="#SWM?d7*8#r0GyX~BhP9">
+                        <field name="VAR">降雨機率字串</field>
+                        <value name="VALUE">
+                          <block type="json_node_str" id="ptU_YWoAliZh,[nway;c" inline="true">
+                            <value name="PATH">
+                              <block type="variables_get" id="%.qt?dZ5USM[CqK2iB{#">
+                                <field name="VAR">降雨機率節點</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="^I6_^gX](P7_E8Dl4I_q">
+                            <field name="VAR">降雨機率</field>
+                            <value name="VALUE">
+                              <block type="text_atoi" id="}xCv#p)/HEPRf!}*q]K:">
+                                <field name="VAR">降雨機率字串</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="Qr1QZDxp387B~a38fmK)">
+                                <field name="VAR">找到降雨機率</field>
+                                <value name="VALUE">
+                                  <block type="logic_boolean" id="G.aR:/9MPNZg3ma4e8er">
+                                    <field name="BOOL">TRUE</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="jf:t13wy.%2-s:?#SB[z">
+            <value name="IF0">
+              <block type="logic_compare" id="rJT_#~IzXs^7ta?;E%X5">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="RG)f?%CBJw[S|_!dGLUU">
+                    <field name="VAR">找到降雨機率</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_boolean" id="bsT?7{q:w3v[!iI%XM}(">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="zHyw3+3`o1d:f;6QS=Zs">
+                <mutation elseif="2"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="WvnDm.mx7@0z0nqglVTx">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="variables_get" id=",M{ewO7NxBrIlNhg-2Qc">
+                        <field name="VAR">降雨機率</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="OPlemunY~u^lhXg@k?/T">
+                        <field name="NUM">35</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="FLAGMATRIX_sun" id="t5Y_tWZQloZCdB^,er;=">
+                    <field name="OBJNAME">圖形顯示器</field>
+                    <value name="DELAY">
+                      <block type="math_number" id="F/cL`C0qN0R+*/TMo%:I">
+                        <field name="NUM">750</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_operation" id="+#4wXV=X(sp)yei=01)H">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id="b:_b.1`8n-I@7tMo+nf%">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="5hOFUn-}i`?3Lz]_i8:d">
+                            <field name="VAR">降雨機率</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="0mWwoH6=9~@xh}ZzjX.^">
+                            <field name="NUM">35</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_compare" id="+BShokjZ6%YASnL~=GI]">
+                        <field name="OP">LTE</field>
+                        <value name="A">
+                          <block type="variables_get" id="DBWB0a#^sJpPOsrk^!|f">
+                            <field name="VAR">降雨機率</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="=#*acGTT@zyog6hxFt=Z">
+                            <field name="NUM">70</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="FLAGMATRIX_cloud" id="v?84|r8JtCV[C)#g{+8L">
+                    <field name="OBJNAME">圖形顯示器</field>
+                    <value name="DELAY">
+                      <block type="math_number" id="+~_8_-qbu/.f~7A@^i`?">
+                        <field name="NUM">300</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF2">
+                  <block type="logic_compare" id="fNgCpgdsvPw^Tl;?kgy2">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="JJ4IIU7lmD/)tB}3hF+^">
+                        <field name="VAR">降雨機率</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="OT*l:hN~cw5ZFIegQ3Qw">
+                        <field name="NUM">70</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO2">
+                  <block type="FLAGMATRIX_rain" id="RLx(F4vfdt9`HAu4H/i#">
+                    <field name="OBJNAME">圖形顯示器</field>
+                    <value name="DELAY">
+                      <block type="math_number" id="]}o`OU+1qx:b|0I{sS0W">
+                        <field name="NUM">250</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

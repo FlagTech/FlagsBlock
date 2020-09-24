@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Flag's Block</title>
+  <script>
+    window.onload = function() {
+      var lang = "";
+      var userLang = window.navigator.language.toLowerCase();
+      var url = 'ardublockly/?'+location.search.substr(1);
+
+      if (userLang == "zh-tw") lang = "zh-hant";
+      else if (userLang == "zh-cn") lang = "zh-hant";
+      else lang = "en";
+
+      if (lang) url += '&lang='+lang;
+
+      document.getElementById('content').src = url;
+      //  'ardublockly/?'+location.search.substr(1)+'&lang=zh-hant';
+    }
+  </script>
+</head>
+<frameset>    
+  <frame id="content" noresize="noresize" frameborder="0">    
+  <noframes></noframes>
+</frameset>
+</html>

@@ -1,0 +1,376 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="-0et3l{tNI=J[C]%k+2L" x="-530" y="-347">
+    <statement name="SETUP_FUNC">
+      <block type="misc_comment" id="Q|O6^A)C[Ve}(Ay#fr8w">
+        <field name="COMMENT">定義腳位</field>
+        <statement name="DO">
+          <block type="variables_set" id="VN`eqY^Ct:m#JP3njs/i">
+            <field name="VAR">左方向腳位</field>
+            <value name="VALUE">
+              <block type="math_number" id="Y7bZ[~lXd-Q^CI=vY;XW">
+                <field name="NUM">8</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="slsM5SZnem5[gRBHu/Xz">
+                <field name="VAR">左轉速腳位</field>
+                <value name="VALUE">
+                  <block type="math_number" id="+OIFB]MLtnkPa[zgbR1}">
+                    <field name="NUM">9</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="e5|P!(xBrf!dW{pYJP(I">
+                    <field name="VAR">右方向腳位</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="@i!F=?A}p8E:8f=OSk)_">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="W{a,lRX5G;[c;#V:;0|%">
+                        <field name="VAR">右轉速腳位</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="~oV8Ve`Urnx{oF%%Q[iK">
+                            <field name="NUM">11</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="procedures_callnoreturn" id="[^%*%EZCI^z{5cn63(N]">
+            <mutation name="移動然後停止">
+              <arg name="左轉速"></arg>
+              <arg name="右轉速"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="math_number" id="W]8vc*TWtE9YIAJ4g:}C">
+                <field name="NUM">40</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="math_number" id=",K,DftDw-WlrvP]~D./|">
+                <field name="NUM">40</field>
+              </block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="a*uRWW4t}mj[W6r}h)1e">
+                <mutation name="移動然後停止">
+                  <arg name="左轉速"></arg>
+                  <arg name="右轉速"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="math_number" id="YVU*Z?t0f{N60}wXN+8Y">
+                    <field name="NUM">-40</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="math_number" id="CrJvUZknna^;h}H-#1Ch">
+                    <field name="NUM">-40</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="procedures_callnoreturn" id="aA+P)n1TbR=KxdLI72?n">
+                    <mutation name="移動然後停止">
+                      <arg name="左轉速"></arg>
+                      <arg name="右轉速"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="math_number" id="H`!2PqYps;q`jjw`}bj{">
+                        <field name="NUM">-40</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="math_number" id="K,ycrqib=_!wJ~Ysyy7k">
+                        <field name="NUM">40</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="procedures_callnoreturn" id="j9I14(fh_e@8BkbgKF._">
+                        <mutation name="移動然後停止">
+                          <arg name="左轉速"></arg>
+                          <arg name="右轉速"></arg>
+                        </mutation>
+                        <value name="ARG0">
+                          <block type="math_number" id="1Xw+cz}j2Ly6]9/wd,l*">
+                            <field name="NUM">40</field>
+                          </block>
+                        </value>
+                        <value name="ARG1">
+                          <block type="math_number" id="}eN2GP@^bz6*+lFtKdjP">
+                            <field name="NUM">-40</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="procedures_callnoreturn" id="TVJ-9:q.voJQO}AA[z3d">
+                            <mutation name="移動然後停止">
+                              <arg name="左轉速"></arg>
+                              <arg name="右轉速"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="math_number" id="YSYaHCFh#ajp5|ITiKSI">
+                                <field name="NUM">40</field>
+                              </block>
+                            </value>
+                            <value name="ARG1">
+                              <block type="math_number" id="pcGv^q07W[bHPwYLC:09">
+                                <field name="NUM">90</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="procedures_callnoreturn" id="q=xx*~eIL|[1U!dZj#6p">
+                                <mutation name="移動然後停止">
+                                  <arg name="左轉速"></arg>
+                                  <arg name="右轉速"></arg>
+                                </mutation>
+                                <value name="ARG0">
+                                  <block type="math_number" id="xC)qqOpseTS!pS^q.eyN">
+                                    <field name="NUM">-40</field>
+                                  </block>
+                                </value>
+                                <value name="ARG1">
+                                  <block type="math_number" id="Q`(G(XG_m~?xJ}2=#,:Y">
+                                    <field name="NUM">-90</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="procedures_callnoreturn" id="[0I-Zzn:t^~h;XPilXs0">
+                                    <mutation name="移動然後停止">
+                                      <arg name="左轉速"></arg>
+                                      <arg name="右轉速"></arg>
+                                    </mutation>
+                                    <value name="ARG0">
+                                      <block type="math_number" id="O(8jm(j`)}-hYJ#4yD7.">
+                                        <field name="NUM">90</field>
+                                      </block>
+                                    </value>
+                                    <value name="ARG1">
+                                      <block type="math_number" id="1NQ-4f@Bw}RcuE}@tQ~K">
+                                        <field name="NUM">40</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="procedures_callnoreturn" id="V_9GG9dbnj4-iD,S/u{2">
+                                        <mutation name="移動然後停止">
+                                          <arg name="左轉速"></arg>
+                                          <arg name="右轉速"></arg>
+                                        </mutation>
+                                        <value name="ARG0">
+                                          <block type="math_number" id="l.C}:{!bC~lq.naWHig{">
+                                            <field name="NUM">-90</field>
+                                          </block>
+                                        </value>
+                                        <value name="ARG1">
+                                          <block type="math_number" id="gAQhx=Y~,#IIHx3]UcnL">
+                                            <field name="NUM">-40</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="rrlH3JH[vU)@lVR.taPV" x="39" y="-338">
+    <mutation>
+      <arg name="左轉速"></arg>
+      <arg name="右轉速"></arg>
+    </mutation>
+    <field name="NAME">移動小車</field>
+    <statement name="STACK">
+      <block type="io_digitalwrite_var" id="VJq_8/vLO)yxm/7m[WGe">
+        <value name="PIN">
+          <block type="variables_get" id="@-jt}g3m~!Dm3o`/FnT!">
+            <field name="VAR">左方向腳位</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="logic_ternary" id="yunDKnr_+J_fNk)KA_K*">
+            <value name="IF">
+              <block type="logic_compare" id="JhWWC2(cdO^q{5;(n)DK">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="H@0_MKNUbTc.neH}NG2h">
+                    <field name="VAR">左轉速</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="`q[hbFSlA7|*?p^0~-G`">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="THEN">
+              <block type="io_highlow" id="1@xhHPg/o3VC5JKAn}xJ">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <value name="ELSE">
+              <block type="io_highlow" id="nk|#/Yh*7lV%dV9{trBn">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="io_digitalwrite_var" id="{E^Zs`6,[iI80z8)lkcb">
+            <value name="PIN">
+              <block type="variables_get" id="qplM#v/oJ_6DaH6~!.2I">
+                <field name="VAR">右方向腳位</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="logic_ternary" id="uqX2r7xSim;tZ.]fGIB@">
+                <value name="IF">
+                  <block type="logic_compare" id="C[-X|!b9Q/9fEBktAXbg">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="`[wV=^{^+nKr|t`[ZE{=">
+                        <field name="VAR">右轉速</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="^~^((rjcG-%ve2~286-!">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="THEN">
+                  <block type="io_highlow" id="mbGi_j}cd#eEWjB[|^h:">
+                    <field name="STATE">HIGH</field>
+                  </block>
+                </value>
+                <value name="ELSE">
+                  <block type="io_highlow" id="K7Q9!ditB%b/BpIG9T/v">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="io_analogwrite_var" id="dpR)m8C]sY`)f0F-pP;}">
+                <value name="PIN">
+                  <block type="variables_get" id="F2s.7GXdvX8mTH~P_+H%">
+                    <field name="VAR">左轉速腳位</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <block type="math_single" id="Xbhn24g{b6}T{]X-TE8`">
+                    <field name="OP">ABS</field>
+                    <value name="NUM">
+                      <block type="variables_get" id="lu#Us3wg@RR]P:o5J4`Q">
+                        <field name="VAR">左轉速</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_analogwrite_var" id="d^Kp!ei49?PE`Sb!Nu,H">
+                    <value name="PIN">
+                      <block type="variables_get" id="-#nHxX=UhC#;LY|6UZh@">
+                        <field name="VAR">右轉速腳位</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <block type="math_single" id=":|X+d`ooo*}v%0-f.GCM">
+                        <field name="OP">ABS</field>
+                        <value name="NUM">
+                          <block type="variables_get" id="|ff%7h4r{?Ft88`-}eev">
+                            <field name="VAR">右轉速</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="xTl,HvyY)o]Y.z6wD==." x="39" y="2">
+    <mutation>
+      <arg name="左轉速"></arg>
+      <arg name="右轉速"></arg>
+    </mutation>
+    <field name="NAME">移動然後停止</field>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn" id="X7#F3:2;*2D628z+1LV@">
+        <mutation name="移動小車">
+          <arg name="左轉速"></arg>
+          <arg name="右轉速"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="variables_get" id="Fz-.vodv0#nd!M:m4R4R">
+            <field name="VAR">左轉速</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="variables_get" id="=E~vetC7oGl;7/ia4Kx^">
+            <field name="VAR">右轉速</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="#O6QnJ`EzUzZrcZ74^v=">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="wA!!n*K=U=qRG8Tw8wOG">
+                <field name="NUM">400</field>
+              </block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="Si/eB`PXP,v1Dw{pW6@)">
+                <mutation name="移動小車">
+                  <arg name="左轉速"></arg>
+                  <arg name="右轉速"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="math_number" id="_{1(noGW]4EP~YD^:cMd">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="math_number" id="E66@;ml=pbtS|Z1u;n=Y">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="l*/QWQjEZGAbnq^rj0oS">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="D:(Jn?O|3;b@zPI/w7iH">
+                        <field name="NUM">600</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-528" y="160"></block>
+</xml>

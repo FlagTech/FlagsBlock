@@ -1,0 +1,225 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="A1yQt:~-[(#V+AE-,Wk/" x="59" y="28">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="R5V@y5sDhf!wdX,+8eLQ">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="variables_set" id="dM``[@QI;X13f+~*Dqfb">
+            <field name="VAR">front</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="v`lFLys,a8@XS.Nt}1xL">
+                <field name="PIN">D5</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="E1E3it5YrWKJZVGgqz,f">
+                <field name="VAR">left</field>
+                <value name="VALUE">
+                  <block type="io_allpins" id="r3?]xz5t(/eGwz7`}2gm">
+                    <field name="PIN">D6</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="(.ZOM8^=%u*+Zoh|D;=j">
+                    <field name="VAR">right</field>
+                    <value name="VALUE">
+                      <block type="io_allpins" id="%SE6:zEXCg-4I0WT2Zw;">
+                        <field name="PIN">D7</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="iNyC0AEH1`2H_qLbo@{h" x="466" y="28">
+    <mutation>
+      <arg name="pin"></arg>
+    </mutation>
+    <field name="NAME">read value</field>
+    <statement name="STACK">
+      <block type="variables_set" id="Y3Z:5TK|iV60G^A]{U5v">
+        <field name="VAR">average</field>
+        <value name="VALUE">
+          <block type="math_number" id="0T7A3_?niofnudrHvg8n">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="io_digitalwrite_var" id="]^ND,cBvyS%FM|G9aSP}">
+            <value name="PIN">
+              <block type="variables_get" id="JnnkqlODKm|PBsNbi%He">
+                <field name="VAR">pin</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="zLz:6y(==eUfn5;.o#+S">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_repeat_ext" id="!u_vgbrZtM-13Z`E65SA">
+                <value name="TIMES">
+                  <block type="math_number" id="Xt8y4yoa}_X4LZ+9fA2V">
+                    <field name="NUM">20</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="math_change2" id="*nGCpEKyg4i+:bxidbnK">
+                    <field name="VAR">average</field>
+                    <field name="OP">+</field>
+                    <value name="DELTA">
+                      <block type="io_analogread_var" id="/=`9Dh@iz4Sz7?j-7~SK">
+                        <value name="PIN">
+                          <block type="io_analogpins" id="p@+nll@_wcHgv:u3L}`V">
+                            <field name="PIN">A0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="time_delay" id="gO7P:uISF?=bUliu8q|;">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="TG5sQqDO.c@bAdYK9rR*">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_digitalwrite_var" id="X:;-iCo-.1!Vtz(8Ak^6">
+                        <value name="PIN">
+                          <block type="variables_get" id="Z!J~Uh!AMjO1jobM(Pq*">
+                            <field name="VAR">pin</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="pCpU9G;[FcKRzoxSeYil">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="math_change2" id="6ECo*wfVve6M(DGGRHCU">
+                            <field name="VAR">average</field>
+                            <field name="OP">/</field>
+                            <value name="DELTA">
+                              <block type="math_number" id="YvyS}B/EMfy9,.dG8ifF">
+                                <field name="NUM">20</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_set_type" id="cd]vC]swxk9wIy^VW|u!">
+        <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
+        <value name="VARIABLE_SETTYPE_INPUT">
+          <block type="variables_get" id="Zo/ibr1`(n2ei4*977^9">
+            <field name="VAR">average</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="53" y="351">
+    <statement name="LOOP_FUNC">
+      <block type="serial_print" id="vy0paf=lr|}QY/S4=3;m">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="NEW_LINE">FALSE</field>
+        <value name="CONTENT">
+          <block type="procedures_callreturn" id="p:cfL*t~g.KqX#nxW]lT">
+            <mutation name="read value">
+              <arg name="pin"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="variables_get" id="FHin/LUgo[hc:}tA8{/b">
+                <field name="VAR">front</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="serial_print" id="36o{Ya5+i0?025S6EZAl">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">FALSE</field>
+            <value name="CONTENT">
+              <block type="text" id="]K(vtw||1(;9O;`T+%5}">
+                <field name="TEXT">, </field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_print" id="!rfS^@:Z:v9MlSNpkaF|">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">FALSE</field>
+                <value name="CONTENT">
+                  <block type="procedures_callreturn" id="ChyOX{4#jl9)xT;*N2_s">
+                    <mutation name="read value">
+                      <arg name="pin"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="variables_get" id="MpuVa2~858PTNMg_cS*w">
+                        <field name="VAR">left</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_print" id="~fxfk@~WM]Vo{(c2dUDV">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">FALSE</field>
+                    <value name="CONTENT">
+                      <block type="text" id="PkI?;YVi3V~rdC0DOrnQ">
+                        <field name="TEXT">, </field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="serial_print" id=",hN5X]1=0nc_l#~K;bEf">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="procedures_callreturn" id="Z!6rDPHNi-WGp%pA-n}8">
+                            <mutation name="read value">
+                              <arg name="pin"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="variables_get" id="U|k1%+0Bm#`|s)lCF`jq">
+                                <field name="VAR">right</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="=biyC_Jz3nK6qyc3l.|4">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="j#VE!Ggi;DaWRp+iP{-H">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

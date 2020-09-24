@@ -1,0 +1,103 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="vi7-TOya+y#VXSU5).Cv" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="deHSxjVb6Ynzh;eRwa}=">
+        <field name="VAR">LED pin</field>
+        <value name="VALUE">
+          <block type="io_allpins" id=".+dx!@xfclE|M|r)8)Wq">
+            <field name="PIN">8</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="b=Ugh};l2mKRMr9v9BJI">
+            <field name="VAR">minimum brightness</field>
+            <value name="VALUE">
+              <block type="math_number" id="uo#4qyB;6vExj(FpoB:!">
+                <field name="NUM">400</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="118">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="8xz.-6.A_maGBL3bEGLR">
+        <field name="VAR">Light sensor value</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="r4++/y}%tcW=i)-s:n0B">
+            <value name="PIN">
+              <block type="io_analogpins" id="?y08=DM-v#KDrH:cbM*P">
+                <field name="PIN">A0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="O)~3?`@FqQYz,6l?gqK!">
+            <mutation elseif="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="]cfTF0rV|!ym2B)Dbyp4">
+                <field name="OP">LTE</field>
+                <value name="A">
+                  <block type="variables_get" id="?5dEzOrZ4wVCzd~6O:Ao">
+                    <field name="VAR">Light sensor value</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="gMYmXCsOK~.t:_zK4jlw">
+                    <field name="VAR">minimum brightness</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="io_digitalwrite_var" id="[^_%`vKWLGMz9}4s;~}S">
+                <value name="PIN">
+                  <block type="variables_get" id="}*.~UjaV;vmCJ``.0e;P">
+                    <field name="VAR">LED pin</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id=".cd9Z1dPzv{J}dooxBB*">
+                    <field name="STATE">HIGH</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="e.A#0dlrh+WA@zNk.lEU">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="variables_get" id="tY*~O_-%X]w(Lu=o!#tD">
+                    <field name="VAR">Light sensor value</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="d-zEQ1O35}QRn?B?mJSh">
+                    <field name="VAR">minimum brightness</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="io_digitalwrite_var" id="9%+3tO#_IoEY#QxxWRmw">
+                <value name="PIN">
+                  <block type="variables_get" id="B9ornD8ar!Mu3ZTQwpg{">
+                    <field name="VAR">LED pin</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="HcjycvrHL1z{)*q!Vo]P">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

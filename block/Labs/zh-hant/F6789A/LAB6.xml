@@ -1,0 +1,453 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="m2,a!0k/0zM6mnTZKa=~" x="6" y="4">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="EG,/?PbBYPDQUvJ19lSZ">
+        <field name="VAR">藍燈腳位</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="Z^.gj@_SVcka5si+L/bA">
+            <field name="PIN">9</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="JjBsp|dtR]^|w.%#OMmL">
+            <field name="VAR">綠燈腳位</field>
+            <value name="VALUE">
+              <block type="io_allpins" id=":F8^kyqD#c=gC=Uck`][">
+                <field name="PIN">10</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="ABS=d)mSC]3L}9b^A6=D">
+                <field name="VAR">紅燈腳位</field>
+                <value name="VALUE">
+                  <block type="io_allpins" id="nmJt#OyE%{|cKGvFIo,f">
+                    <field name="PIN">11</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="5" y="139">
+    <statement name="LOOP_FUNC">
+      <block type="controls_for" id="*h#I6cHVl,]RaElOC!u_">
+        <field name="VAR">紅燈亮度值</field>
+        <value name="FROM">
+          <block type="math_number" id="JOAff_kzrovsS)}n6UvH">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="^)y(M!|P%vkc/klv}ILy">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="{#vm#Ut4qnVL:U%gP4Y?">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="io_analogwrite_var" id="ij3*m0Y.G|h0;G_Em|CY">
+            <value name="PIN">
+              <block type="variables_get" id="UWE/7_KOm^g(JV`CK5K7">
+                <field name="VAR">紅燈腳位</field>
+              </block>
+            </value>
+            <value name="NUM">
+              <block type="variables_get" id="2slq+@(C?wc!oQ%k#eTw">
+                <field name="VAR">紅燈亮度值</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="@i#4MH-+]fuWFHY-DYu=">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="Gpc_`NjFMGu`hZP)sH5k">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_for" id="zm`b[`3QF@o|eA-4xlOM">
+            <field name="VAR">紅燈亮度值</field>
+            <value name="FROM">
+              <block type="math_number" id="zmFvo4ZkuOJzBAS;l.Q0">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="vDqJaD4e674S6lXSVL[D">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id=",2;D028nBxA#c5ny47CN">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_analogwrite_var" id="9M45~xHp5Nk;z.b^7zF.">
+                <value name="PIN">
+                  <block type="variables_get" id="X%ju)Y1`4d`N/#DJI]#s">
+                    <field name="VAR">紅燈腳位</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <block type="variables_get" id="0][wm4ZIHlx)xrYTZzAB">
+                    <field name="VAR">紅燈亮度值</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="anPxb08Bps;#MtkK?a8=">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="f)`aQ,#4)C.+E#1No{xs">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_for" id="O{#Xf(:jJiO6}DJ}i,{s">
+                <field name="VAR">綠燈亮度值</field>
+                <value name="FROM">
+                  <block type="math_number" id="Jjp|gI7ls7RbPIlL@1Cy">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number" id="%iLJ+Ad=[#ux62y2XpKA">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="BY">
+                  <block type="math_number" id="i?3P^4!!2RVX|[?n/v!?">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="io_analogwrite_var" id="Cz%pb=DDre7rkyL6__bM">
+                    <value name="PIN">
+                      <block type="variables_get" id="c_]{WC6[iihO5P;4_IM!">
+                        <field name="VAR">綠燈腳位</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <block type="variables_get" id="ZdtLLTWKu.cN_A9txSFP">
+                        <field name="VAR">綠燈亮度值</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="lOJE3S6dCew;#+`]KR?(">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="xPl:HV]z)6R;Qclk]U,w">
+                            <field name="NUM">10</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_for" id="Quk?MtTKp+gea7J/,G}8">
+                    <field name="VAR">綠燈亮度值</field>
+                    <value name="FROM">
+                      <block type="math_number" id="47){);f~I,#R}sB8/RrV">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                    <value name="TO">
+                      <block type="math_number" id="+.p6q`-a?d_,m6t2ePI:">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="BY">
+                      <block type="math_number" id="mxHssY99GT|CDeUotrAr">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="io_analogwrite_var" id="87_R9*oo;I_*w#IQq@uf">
+                        <value name="PIN">
+                          <block type="variables_get" id="0gCdIgBaO~8C2IM2LLmT">
+                            <field name="VAR">綠燈腳位</field>
+                          </block>
+                        </value>
+                        <value name="NUM">
+                          <block type="variables_get" id="1.RZJ|-4}^Mj`cvErLfh">
+                            <field name="VAR">綠燈亮度值</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id=".]lL;i@It`W|cRao*Lg{">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="tPOiF7df.@ys~)cD6jOW">
+                                <field name="NUM">10</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_for" id="BJ_h(Fsh.d9qwNQw{X*:">
+                        <field name="VAR">藍燈亮度值</field>
+                        <value name="FROM">
+                          <block type="math_number" id="NGjvtQ_2p,P;=k^ERA%5">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="TO">
+                          <block type="math_number" id="Bl+ydMuQCRPcqVw1o2wY">
+                            <field name="NUM">255</field>
+                          </block>
+                        </value>
+                        <value name="BY">
+                          <block type="math_number" id="+sOhzSZ6r9?%EH[4G9dK">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="io_analogwrite_var" id="8S+ZqZEK:j4=@,%.6,hi">
+                            <value name="PIN">
+                              <block type="variables_get" id=";i%[7ryqSV0e5VbyYIgW">
+                                <field name="VAR">藍燈腳位</field>
+                              </block>
+                            </value>
+                            <value name="NUM">
+                              <block type="variables_get" id="L)~gD(AE(p.o/?E]+1VJ">
+                                <field name="VAR">藍燈亮度值</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="time_delay" id=";SMTp)%[ArMiXF/Psnux">
+                                <value name="DELAY_TIME_MILI">
+                                  <block type="math_number" id="!P@*H);{MesGilVd-:-M">
+                                    <field name="NUM">10</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_for" id="=Ltx!Tq^g0uBSj[)gtxY">
+                            <field name="VAR">藍燈亮度值</field>
+                            <value name="FROM">
+                              <block type="math_number" id="5zDPL7@i0jLg^!(Jg^41">
+                                <field name="NUM">255</field>
+                              </block>
+                            </value>
+                            <value name="TO">
+                              <block type="math_number" id="6EQrwDoVC@RCyaPF{y{X">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="BY">
+                              <block type="math_number" id="8CkRuqN~N5YiE@8g04w_">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <statement name="DO">
+                              <block type="io_analogwrite_var" id="*2t0A3:,qm5@R1gZwXb.">
+                                <value name="PIN">
+                                  <block type="variables_get" id="#idJYg_N21%Z1Zs9dZG,">
+                                    <field name="VAR">藍燈腳位</field>
+                                  </block>
+                                </value>
+                                <value name="NUM">
+                                  <block type="variables_get" id="7tvR6T]Vn}*J(Cvdlr,s">
+                                    <field name="VAR">藍燈亮度值</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="time_delay" id="U~V-yx@1NW]Q[gr[!Ehq">
+                                    <value name="DELAY_TIME_MILI">
+                                      <block type="math_number" id="DHT|Je`a73P~v?XJt},%">
+                                        <field name="NUM">10</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_repeat_ext" id="_OGicowtBrak3LrDa/1]">
+                                <value name="TIMES">
+                                  <block type="math_number" id="]_-%SczRHPo;H,sJ3]By">
+                                    <field name="NUM">100</field>
+                                  </block>
+                                </value>
+                                <statement name="DO">
+                                  <block type="variables_set" id="A.{%Afiy}7L8~ftbecS*">
+                                    <field name="VAR">紅燈亮度值</field>
+                                    <value name="VALUE">
+                                      <block type="math_random_int" id="AmZ6WmDL0uM}YKV+p8jZ">
+                                        <value name="FROM">
+                                          <block type="math_number" id="k?n/is9Ik@AV29}*_Rg_">
+                                            <field name="NUM">1</field>
+                                          </block>
+                                        </value>
+                                        <value name="TO">
+                                          <block type="math_number" id="9eZ!_2N8.Bz+SXY6clAy">
+                                            <field name="NUM">30</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="*ZUh[H1eD3XFXdeXcyEJ">
+                                        <field name="VAR">綠燈亮度值</field>
+                                        <value name="VALUE">
+                                          <block type="math_random_int" id="`@:vZk.xoKb|07sD0c8#">
+                                            <value name="FROM">
+                                              <block type="math_number" id="LvjsI7Hh#*:mb5Cs5TnD">
+                                                <field name="NUM">1</field>
+                                              </block>
+                                            </value>
+                                            <value name="TO">
+                                              <block type="math_number" id="s~9R!uiy+nziYtQ)r=Xr">
+                                                <field name="NUM">20</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="h4Hz;9@WItjdurU#4zdr">
+                                            <field name="VAR">藍燈亮度值</field>
+                                            <value name="VALUE">
+                                              <block type="math_random_int" id="8Q^WaG2MrTg+%X}Glsx[">
+                                                <value name="FROM">
+                                                  <block type="math_number" id="m.}Lu|bZY#y2{hb*m:1J">
+                                                    <field name="NUM">1</field>
+                                                  </block>
+                                                </value>
+                                                <value name="TO">
+                                                  <block type="math_number" id="z%15cA3G5==SJCCL|/ow">
+                                                    <field name="NUM">50</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="io_analogwrite_var" id="c,3Fu6,=.NV}IWgf%MLy">
+                                                <value name="PIN">
+                                                  <block type="variables_get" id="|rNrcVP=`pm[1ylsys!K">
+                                                    <field name="VAR">紅燈腳位</field>
+                                                  </block>
+                                                </value>
+                                                <value name="NUM">
+                                                  <block type="variables_get" id="o_2?e**P6HyZa@Ptw:z:">
+                                                    <field name="VAR">紅燈亮度值</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="io_analogwrite_var" id="YFGx6@_a1kdjW[HHRRMg">
+                                                    <value name="PIN">
+                                                      <block type="variables_get" id="6k#R{_w7kGGw7w3IepqO">
+                                                        <field name="VAR">綠燈腳位</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="NUM">
+                                                      <block type="variables_get" id="O+sJjT}Av^KPweSpGFN+">
+                                                        <field name="VAR">綠燈亮度值</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="io_analogwrite_var" id="uq[~),zcBnZ^5m}G5#U-">
+                                                        <value name="PIN">
+                                                          <block type="variables_get" id="#L|Kya/AmmYPK+9r%=}u">
+                                                            <field name="VAR">藍燈腳位</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="NUM">
+                                                          <block type="variables_get" id=")!@~}s7}v%WKaOgs6Ivc">
+                                                            <field name="VAR">藍燈亮度值</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="time_delay" id="-U,2./#!vIo7c3uV@s,^">
+                                                            <value name="DELAY_TIME_MILI">
+                                                              <block type="math_number" id="3Q?4H3-/DHanWE#y;mdi">
+                                                                <field name="NUM">500</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="io_analogwrite_var" id="FO/wS%tn|A{@B2#?W:3y">
+                                    <value name="PIN">
+                                      <block type="variables_get" id="}fGEM#Tbkt^lNNAvt;ao">
+                                        <field name="VAR">紅燈腳位</field>
+                                      </block>
+                                    </value>
+                                    <value name="NUM">
+                                      <block type="math_number" id="G%Ic(NJ+iyH:9i}A4aMP">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="io_analogwrite_var" id="-1W!{Go(3Ojk5kBP/S6B">
+                                        <value name="PIN">
+                                          <block type="variables_get" id="E*](B32[K^@f0fR/,)GT">
+                                            <field name="VAR">綠燈腳位</field>
+                                          </block>
+                                        </value>
+                                        <value name="NUM">
+                                          <block type="math_number" id="ncI-eKuY]YXQD|PG#c.f">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="io_analogwrite_var" id="fS(Vl1#oIl9?S4]1;Fwc">
+                                            <value name="PIN">
+                                              <block type="variables_get" id="6w^MN*R,m6@q*2TYmL-_">
+                                                <field name="VAR">藍燈腳位</field>
+                                              </block>
+                                            </value>
+                                            <value name="NUM">
+                                              <block type="math_number" id=",*OK2K(1Q^|f|^`8i0kX">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

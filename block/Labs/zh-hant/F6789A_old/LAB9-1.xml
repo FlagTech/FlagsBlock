@@ -1,0 +1,60 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="vi7-TOya+y#VXSU5).Cv" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="0@xB%*^Z1_f;ClA(h|[|">
+        <field name="VAR">thermistorPin</field>
+        <value name="VALUE">
+          <block type="io_allpins" id=",v5gKgC*KW%yw+m-mE~4">
+            <field name="PIN">A0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="deHSxjVb6Ynzh;eRwa}=">
+            <field name="VAR">BuzzerPin</field>
+            <value name="VALUE">
+              <block type="io_allpins" id=".+dx!@xfclE|M|r)8)Wq">
+                <field name="PIN">8</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="118">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="8xz.-6.A_maGBL3bEGLR">
+        <field name="VAR">thermistorVal</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="r4++/y}%tcW=i)-s:n0B">
+            <value name="PIN">
+              <block type="variables_get" id="VE[};:09XL+`U3#[}OIX">
+                <field name="VAR">thermistorPin</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="serial_print" id="1)4dAq~Q4Kmqfk*t@}Y%">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="variables_get" id="7eH1=ct#A/!+(M@JJJ+f">
+                <field name="VAR">thermistorVal</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="@UXRyLd=ib!lYfdPMI7Z">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="{7I|`TlcJWpS?ERw4Be4">
+                    <field name="NUM">5000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,631 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=",vROX~F2Hr4uom%,8GZM" x="-174" y="145">
+    <statement name="SETUP_FUNC">
+      <block type="io_input_pullup" id="@3-+^t2:P4*.^-~u%1j2">
+        <field name="PIN">A0</field>
+        <next>
+          <block type="io_input_pullup" id="cbBgvC`ldJwy(P5}1vP1">
+            <field name="PIN">A1</field>
+            <next>
+              <block type="io_input_pullup" id="1Y+Bs,S@!Lr,?}-`8{,L">
+                <field name="PIN">A2</field>
+                <next>
+                  <block type="io_input_pullup" id="P;VEWP|Pcs8#+CaSh_oC">
+                    <field name="PIN">A3</field>
+                    <next>
+                      <block type="io_input_pullup" id="M;DMq)?PJ)/aG2OD:8hl">
+                        <field name="PIN">A4</field>
+                        <next>
+                          <block type="io_input_pullup" id="boUew(0/uYA?^K3DR]i*">
+                            <field name="PIN">A5</field>
+                            <next>
+                              <block type="io_input_pullup" id="{o3hh~W4Sg3)]F0vJ;^C">
+                                <field name="PIN">3</field>
+                                <next>
+                                  <block type="variables_set" id=")U48!W7jP#^ZP~KJQp7_">
+                                    <field name="VAR">限位開關</field>
+                                    <value name="VALUE">
+                                      <block type="io_allpins" id="Bdp[H2glq6/_xL|++)@M">
+                                        <field name="PIN">3</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="Utf]sFw`r-=VQd:S=s#y">
+                                        <field name="VAR">馬達</field>
+                                        <value name="VALUE">
+                                          <block type="io_allpins" id="?@X49!eh4I#slY~]ht1K">
+                                            <field name="PIN">12</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="flagledstripe_setup" id="?l_wX79EG]N1-DmxCHDd">
+                                            <field name="OBJNAME">條燈</field>
+                                            <field name="NUM">2</field>
+                                            <value name="LEDPIN">
+                                              <block type="io_allpins" id="hj^5Jm8k?M-*Dn+o80kE">
+                                                <field name="PIN">4</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="flagledstripe_setbrightness" id="Er}[0k6#EYA1oHm}f1W2">
+                                                <field name="OBJNAME">條燈</field>
+                                                <field name="BRIGHTNESS">50</field>
+                                                <next>
+                                                  <block type="flagpcmasync_startplaybgm" id="dsV|!V|M4i^*eu-h*e=6">
+                                                    <field name="NUM">2</field>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="cx8r0apfR464nOV9dLqm" x="514" y="129">
+    <field name="NAME">待機</field>
+    <statement name="STACK">
+      <block type="variables_set" id="8,mh6)0,V%x(9:D[Fw,[">
+        <field name="VAR">舊能量柱數</field>
+        <value name="VALUE">
+          <block type="math_number" id="qC8Bj=ZHPQfk;h%6]%G[">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="3R~FN@gMQLq@SxN3{_Lg">
+            <field name="VAR">新能量柱數</field>
+            <value name="VALUE">
+              <block type="math_number" id="KZbH#IBydHa=hU)FtDW4">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_whileUntil" id="KTd8u6uN0rdK=yz;FpBH">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_boolean" id="rsbhT5-?q)c#@ZHpV|1-">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="variables_set" id="{{l0Ao0oyQ#m#Y`fWBI_">
+                    <field name="VAR">新能量柱數</field>
+                    <value name="VALUE">
+                      <block type="procedures_callreturn" id="BDJL|w-#A5ut+nll%!mv">
+                        <mutation name="計算插入的能量柱總數"></mutation>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="zzK`nzg7tJ//M=P[AP{o">
+                        <mutation elseif="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_compare" id="Ap?h#n@#6(P5NzDa|{Af">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="zkaa,eSqIruG}^#a3:FZ">
+                                <field name="VAR">新能量柱數</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="IN29uYZ1AabC*xT_3w(v">
+                                <field name="NUM">6</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="flagpcmasync_startplaybgm" id="R;zD^u=MyB8vkjZk.pI3">
+                            <field name="NUM">1</field>
+                            <next>
+                              <block type="flagledstripe_showall" id="S%%yclt]R2ws1Tli+W{S" inline="false">
+                                <field name="OBJNAME">條燈</field>
+                                <value name="RED">
+                                  <block type="math_number" id="zz.qx2^y41*[tFDDJdyY">
+                                    <field name="NUM">255</field>
+                                  </block>
+                                </value>
+                                <value name="GREEN">
+                                  <block type="math_number" id="gn0;wh,N^EuHa2Z-GIz|">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="BLUE">
+                                  <block type="math_number" id="W;4:~_L#`obNd|f}CQoq">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="time_delay" id="8MZ2Jf73/z{pF}K%v5Q;">
+                                    <value name="DELAY_TIME_MILI">
+                                      <block type="math_number" id="j4].n%Zn~D6oDu3|E1Ia">
+                                        <field name="NUM">1500</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="flagledstripe_clear" id="NJ~O5:@o*a]O;Q2_W%!=">
+                                        <field name="OBJNAME">條燈</field>
+                                        <next>
+                                          <block type="controls_flow_statements" id="JcQTYrdZ}2(hT9vO{l=`">
+                                            <field name="FLOW">BREAK</field>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <value name="IF1">
+                          <block type="logic_compare" id="z|1N#.l!DowKy9tf7#{_">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="variables_get" id="oI6%E+GK3b;hIOO8cXa[">
+                                <field name="VAR">新能量柱數</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="=~YA1#6j?3}{n6Ge,Hdb">
+                                <field name="VAR">舊能量柱數</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO1">
+                          <block type="flagpcmasync_startplaybgm" id="N}:v~]LcQJHHbr,tx4}u">
+                            <field name="NUM">2</field>
+                            <next>
+                              <block type="procedures_callnoreturn" id="I*9aS4^okVR*-{A{;5VS">
+                                <mutation name="閃爍條燈"></mutation>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="variables_set" id=":Wyzr{tT3KFKMSs@yXCz">
+                            <field name="VAR">舊能量柱數</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="OZzF!))z{?JuPY#wdbVo">
+                                <field name="VAR">新能量柱數</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="309" y="147">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="l@HdMR_+A%DO9sc!Rz!v">
+        <mutation name="待機"></mutation>
+        <next>
+          <block type="procedures_callnoreturn" id=";P3R(bEfE7.P(%2D9|YD">
+            <mutation name="開始遊戲"></mutation>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="rvKmH+CljdAq0LRQDBky" x="517" y="662">
+    <field name="NAME">開始遊戲</field>
+    <statement name="STACK">
+      <block type="variables_set" id="6tATh0T|uj8Sl~7.Alz7">
+        <field name="VAR">解答能量柱腳位</field>
+        <value name="VALUE">
+          <block type="array_get_index" id="/{_-Nl0|;|]DN3sn_,Zh" inline="false">
+            <field name="NAME">能量柱陣列</field>
+            <value name="INDEX">
+              <block type="math_random_int" id="gU.Lr~p77Rzr(gof6dr)">
+                <value name="FROM">
+                  <block type="math_number" id="`r,t:Pk0/BHY?1AhD/ti">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number" id=":/4#^U]CjR@R}UThnzp`">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="/JLomMyRUiTp+T_2n2{Q">
+            <field name="VAR">遊戲中能量柱數</field>
+            <value name="VALUE">
+              <block type="math_number" id="_7@R4qji_5{|^7,lj?+x">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_whileUntil" id=";cZnk~|:70B{aR#E/nXB">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_boolean" id="kjP=(k?wSE28#%F[^Pv1">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="variables_set" id="HNZTp?2gl4eFvNFi%vkE">
+                    <field name="VAR">新能量柱數</field>
+                    <value name="VALUE">
+                      <block type="procedures_callreturn" id="Ob,e3V({z`o9C(kv+fQg">
+                        <mutation name="計算插入的能量柱總數"></mutation>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="{LnfZFO@^L6NRiK.0Y4v">
+                        <mutation elseif="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_compare" id="[H|v0!(vFy8spG,;?J7)">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="io_digitalread_var" id="pUoKZuo^qSku/QSab~H3">
+                                <value name="PIN">
+                                  <block type="variables_get" id="Q7b5.Fy=JSPWLK8#)_fu">
+                                    <field name="VAR">解答能量柱腳位</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="io_highlow" id="BihBDjD{=*Grh6{B-B0Q">
+                                <field name="STATE">HIGH</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="procedures_callnoreturn" id="efc~SgOzkac%.=pKA!P5">
+                            <mutation name="拔中答案"></mutation>
+                            <next>
+                              <block type="controls_flow_statements" id="vM:CnSedu%-9n55clL5!">
+                                <field name="FLOW">BREAK</field>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <value name="IF1">
+                          <block type="logic_compare" id="+;mg,,0s+z985|VH-VdZ">
+                            <field name="OP">LT</field>
+                            <value name="A">
+                              <block type="variables_get" id="qra!qZD{@;g}2B~;fErG">
+                                <field name="VAR">新能量柱數</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id=".bJE]w9C3kZveKui(o}G">
+                                <field name="VAR">舊能量柱數</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO1">
+                          <block type="flagpcmasync_startplaybgm" id="R_uYcux![.ZbL,b-C]mN">
+                            <field name="NUM">2</field>
+                            <next>
+                              <block type="procedures_callnoreturn" id=".2oTcV(J*X,UrjoAy0cD">
+                                <mutation name="閃爍條燈"></mutation>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="variables_set" id="8n]I%|*|Bc6l^DL?[0g!">
+                            <field name="VAR">舊能量柱數</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="zH%]J?5g#BX?!r.*?=WS">
+                                <field name="VAR">新能量柱數</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="array_create_with" id="bl-e2Ieyn!X4UUY%omi*" x="-174" y="709">
+    <field name="NAME">能量柱陣列</field>
+    <field name="TYPE">char</field>
+    <field name="ITEMS">A0,A1,A2,A3,A4,A5</field>
+  </block>
+  <block type="procedures_defnoreturn" id="Xr9GtgJ2FPye904^+5h`" x="-172" y="777">
+    <field name="NAME">拔中答案</field>
+    <statement name="STACK">
+      <block type="controls_for" id="9K,GiNL^sxTB8O]l]ONA">
+        <field name="VAR">時間</field>
+        <value name="FROM">
+          <block type="math_number" id="teV-!^T;Yxz:/V%pPi[5">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="K#U;rb;u/WjrqL^-I[t~">
+            <field name="NUM">400</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="5wWU0@4~+~^CR!K5eCUL">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="controls_if" id="0A|n_1lXwIgn,u59jEUq">
+            <value name="IF0">
+              <block type="logic_compare" id="z:-3GUVEqKkQ^Ucrl?7Z" inline="false">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="io_digitalread_var" id="!;;;%JBVOE5r*DlR1o+3">
+                    <value name="PIN">
+                      <block type="variables_get" id="F^r9TptmE+383{uePo^Y">
+                        <field name="VAR">限位開關</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="io_highlow" id="}H5fM;8s0/z6%hoqC?t5">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_flow_statements" id="=`SSw?woYg.@MA[z9%]Y">
+                <field name="FLOW">BREAK</field>
+              </block>
+            </statement>
+            <next>
+              <block type="io_digitalwrite_var" id="G@a-6}.ROpE={Z`m:%K[">
+                <value name="PIN">
+                  <block type="variables_get" id="7q%nmenxx.Xbe[SowJzV">
+                    <field name="VAR">馬達</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="=eh{`,-cgGZaJu82J6eS">
+                    <field name="STATE">HIGH</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="u~Fp5L0eEDfP[1^z(I*m">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="w@Au?MK`J,:v;.0PqKnp">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="io_digitalwrite_var" id="f*k7j,w-lkU%_fE9c^eF">
+            <value name="PIN">
+              <block type="variables_get" id="Z5Sf/}F8!*jY2Uj1FRl*">
+                <field name="VAR">馬達</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="~s%Aj~Mu[I)A3bF79*uX">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagpcmasync_startplaybgm" id="hNS8(*B#~(G}?%6388(1">
+                <field name="NUM">3</field>
+                <next>
+                  <block type="controls_for" id="SqWq6LG)J((0.*F,1Z,R">
+                    <field name="VAR">時間</field>
+                    <value name="FROM">
+                      <block type="math_number" id="P:H8c[ALFo,vSU]6bPPI">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="TO">
+                      <block type="math_number" id="wV21k7(:!d}rQ.;2qxb8">
+                        <field name="NUM">3500</field>
+                      </block>
+                    </value>
+                    <value name="BY">
+                      <block type="math_number" id="%7@ch9i[Lp_A=y:yK-6~">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="flagledstripe_rainbow" id=",]{QJu=Cav~D!/rXbHqI">
+                        <field name="OBJNAME">條燈</field>
+                        <value name="INTERVAL">
+                          <block type="math_number" id="~=yHY0MVDh|1Q6%RtBj#">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="m#FLEj`H-|/u8IPH64Y~">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="=pgf+wS?^}0)!xQxFVO2">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="nt8c;:Q]}[m*)O0WG5di" x="-170" y="1260">
+    <field name="NAME">計算插入的能量柱總數</field>
+    <statement name="STACK">
+      <block type="variables_set" id="A3M:1_nJ;!YhZJPAZzsp">
+        <field name="VAR">插入的能量柱數量</field>
+        <value name="VALUE">
+          <block type="math_number" id="%i{|6Hz#5,|Q(,bv{+xs">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_for" id="5X1{N[WfGIWf.yxYw2vF">
+            <field name="VAR">計數變數</field>
+            <value name="FROM">
+              <block type="math_number" id="fVo2hstJufmu:JK@*_`A">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="oKi_N@R4-D4U;I~`eq#s">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="3QK}Tw_drb#xXz~;7XDK">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="controls_if" id="A@uh0Dt2`8HG|o83c%ap">
+                <value name="IF0">
+                  <block type="logic_compare" id="n0KrT~mz~n?,^_YCg(-s" inline="false">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="io_digitalread_var" id="u0kkBS9f/zdW=*%r)zB%" inline="true">
+                        <value name="PIN">
+                          <block type="array_get_index" id="-2!uuG(yO%KN;SP`rJBW" inline="true">
+                            <field name="NAME">能量柱陣列</field>
+                            <value name="INDEX">
+                              <block type="variables_get" id="UA.^+aGMxn)7~XaP1kTz">
+                                <field name="VAR">計數變數</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="io_highlow" id="8S)!Q0g@.R9e(`m}h#TW">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="mka@LU;fKsFOR9VJoBa6">
+                    <field name="VAR">插入的能量柱數量</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="#HC[5l6Lj^X7LexZ*{3w">
+                        <field name="OP">ADD</field>
+                        <value name="A">
+                          <block type="variables_get" id="r,5A%%e-Jd4Ru~2qjtjh">
+                            <field name="VAR">插入的能量柱數量</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="j#W|b-.x#4ylB)?A7n,n">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="~(4_Ax5|OerKm/`/vi0Z">
+        <field name="VAR">插入的能量柱數量</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defnoreturn" id="lc8Cxuj|(uDVdkX,7^9N" x="-165" y="1537">
+    <field name="NAME">閃爍條燈</field>
+    <statement name="STACK">
+      <block type="controls_for" id="7gH|vJXzbwV*ph1_k%?U">
+        <field name="VAR">時間</field>
+        <value name="FROM">
+          <block type="math_number" id="tuoE{!*FfA^(y]_cW@?j">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id=")jEI~=0[/)_6I,!?Lbnu">
+            <field name="NUM">800</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="lIzsV)-spUSmzH@L0v*)">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="flagledstripe_rainbow" id="R360grNi?f#]{bkdCH(,">
+            <field name="OBJNAME">條燈</field>
+            <value name="INTERVAL">
+              <block type="math_number" id="d]pWIu;}q+%_~jxE.C{t">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="col6Wr_K}X|*Qua[++Gm">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="_Af#N,;M:C@URI`5}r1%">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="flagledstripe_clear" id="(LYANJ8Sz(j~1[l.(w,j">
+                    <field name="OBJNAME">條燈</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

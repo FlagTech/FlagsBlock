@@ -1,0 +1,261 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="=:EsNa;P%:Kpo*mm[RKY" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="dancerobot_use" id="srQSs7rB78_EN04xI?aV">
+        <field name="RFPIN">D1</field>
+        <field name="LFPIN">D2</field>
+        <field name="RLPIN">D3</field>
+        <field name="LLPIN">D4</field>
+        <next>
+          <block type="dancerobot_restoretrim" id="pR3^v+Q?(MX~oRe_B%ho" disabled="true">
+            <next>
+              <block type="dancerobot_pos" id=";Vq%11#6tcsOs4;S]?A0">
+                <value name="RF_ANGLE">
+                  <block type="math_number" id="aC/Ur0b_@-vRY2pOfV;D">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="LF_ANGLE">
+                  <block type="math_number" id=".L3~]#h}(t`Vjw4D6ao6">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="RL_ANGLE">
+                  <block type="math_number" id="VB8DO)3Deu6+Hx-:(#00">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="LL_ANGLE">
+                  <block type="math_number" id="LVH]r@~9E@z|1Fv1}#V~">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="dancerobot_setbpm" id="%F(WaI{T%s2Z]Kj_E*9.">
+                    <value name="BPM">
+                      <block type="math_number" id="{3__MS+6yBz@vaAJhEFk">
+                        <field name="NUM">97</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="K5n!GH)!l=4!}RAbw}GP">
+                        <field name="VAR">右腳掌中心角度</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="Y9-a(1!2S8iA=-#LVo%X">
+                            <field name="NUM">75</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="LYyH]CkjT7b?.3ueg2|/">
+                            <field name="VAR">左腳掌中心角度</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="0C@J(#V*#%Ms]FD)j]-/">
+                                <field name="NUM">105</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="Nes%/3jXksz|C:}iU,+C">
+                                <field name="VAR">震幅</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="(aN{Qy_U}]zUVi~Q:O=+">
+                                    <field name="NUM">25</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="^_1@tH*uU@IUvZwXmmO3">
+                                    <field name="VAR">右腳掌相位</field>
+                                    <value name="VALUE">
+                                      <block type="math_number" id="k4Wqvn[U%YBzlIOn/|oW">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="-nY0JAK5T}^st~+viqR1">
+                                        <field name="VAR">左腳掌相位</field>
+                                        <value name="VALUE">
+                                          <block type="math_number" id="*t@;H_K~W6{=8`yA,!~/">
+                                            <field name="NUM">60</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="?[-m;qlx!*U3zE1CEfxv">
+                                            <field name="VAR">相位角</field>
+                                            <value name="VALUE">
+                                              <block type="math_number" id="L,M#*Y]eYnb8|BYFmz;H">
+                                                <field name="NUM">10</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="348">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="QLmZIl]T:qNNF|^nBvIN">
+        <field name="VAR">右腳掌角度</field>
+        <value name="VALUE">
+          <block type="math_round" id="Q5|#f+)sPOTZQiLa-13s">
+            <field name="OP">ROUND</field>
+            <value name="NUM">
+              <block type="math_arithmetic" id="#P{-;~(-).I@dBvQ10ma" inline="false">
+                <field name="OP">ADD</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="s_tc?vhOMgy`?)7mfQ62">
+                    <field name="OP">MULTIPLY</field>
+                    <value name="A">
+                      <block type="math_trig" id=";^WGaAE/,^^K/hwl|B}f">
+                        <field name="OP">SIN</field>
+                        <value name="NUM">
+                          <block type="variables_get" id="U3[9hG=wH#|[ZHm=Uy}!">
+                            <field name="VAR">右腳掌相位</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="}{nX(j^YI)GuNDA4r9`9">
+                        <field name="VAR">震幅</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="g%d1@FB%/?lcG6h#;xkc">
+                    <field name="VAR">右腳掌中心角度</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="wvrjaa{=`x3hgUtceE{B">
+            <field name="VAR">左腳掌角度</field>
+            <value name="VALUE">
+              <block type="math_round" id="5IW7z]6`r0mI^@X2Fd=2">
+                <field name="OP">ROUND</field>
+                <value name="NUM">
+                  <block type="math_arithmetic" id="`bVga]YEW2nBJ+8qb+?e">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="PC{!)k)D2IgR[m[R7=DT">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="math_trig" id="pfJWOb]lP:ysrJ;pqH^B">
+                            <field name="OP">SIN</field>
+                            <value name="NUM">
+                              <block type="variables_get" id="S^FB`BIrKdYF7[,ecMQP">
+                                <field name="VAR">左腳掌相位</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="wj!7x7?JZ:2=JW^{^H8G">
+                            <field name="VAR">震幅</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="#szz;1;gPjHifPoG[l:4">
+                        <field name="VAR">左腳掌中心角度</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="dancerobot_pos" id="b=Ru?-uDs|D^:dM9mupS">
+                <value name="RF_ANGLE">
+                  <block type="variables_get" id="dCTA)/0P9#@`g3WG[a`h">
+                    <field name="VAR">右腳掌角度</field>
+                  </block>
+                </value>
+                <value name="LF_ANGLE">
+                  <block type="variables_get" id="]HpIj/H7M%;.BVkKFk1Y">
+                    <field name="VAR">左腳掌角度</field>
+                  </block>
+                </value>
+                <value name="RL_ANGLE">
+                  <block type="math_number" id="aZvi!zBJuBktvUL7+ZH[">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="LL_ANGLE">
+                  <block type="math_number" id="g06{X8Wwt#=,pu68!JvG">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="math_change2" id="Eb4N-,u6k1(T@Ayc+U-~">
+                    <field name="VAR">右腳掌相位</field>
+                    <field name="OP">+</field>
+                    <value name="DELTA">
+                      <block type="variables_get" id="mU{pnx242n,eT`~nJn`^">
+                        <field name="VAR">相位角</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="math_change2" id="CK4F)%Z5O_~a)q;SdT3:">
+                        <field name="VAR">左腳掌相位</field>
+                        <field name="OP">+</field>
+                        <value name="DELTA">
+                          <block type="variables_get" id="L^+uJDIO*nzJKVsS*iU~">
+                            <field name="VAR">相位角</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="dancerobot_delay" id="bdB_XKPN_Bal}MF5Yj51">
+                            <value name="TEMPO">
+                              <block type="math_arithmetic" id="W4x^vky=wL+9O=ZK*5c)">
+                                <field name="OP">DIVIDE</field>
+                                <value name="A">
+                                  <block type="variables_set_type" id="o/jZU6-jFB3HB8d+%/HF">
+                                    <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                    <value name="VARIABLE_SETTYPE_INPUT">
+                                      <block type="variables_get" id="J]Htw(WtA#bm3yl6%{J@">
+                                        <field name="VAR">相位角</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="^iU(R_[)!TTnIs,j]2j{">
+                                    <field name="NUM">180</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

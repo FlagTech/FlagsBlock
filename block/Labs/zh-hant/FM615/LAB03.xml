@@ -1,0 +1,146 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="YC_;2h2g^[y(Og9.laT|" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="servo_use" id="_/mI;H/uYdv_Vg:WUfNv">
+        <field name="OBJNAME">靶機馬達_TGservo</field>
+        <field name="PIN">4</field>
+        <next>
+          <block type="servo_put" id="VVo4}JiQ=,bP`}rHygSA">
+            <field name="OBJNAME">靶機馬達_TGservo</field>
+            <value name="SERVO_ANGLE">
+              <block type="math_number" id="eN;1mv:Z8!:B_SuaA|p`">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="L%nUc[QxIRF|z*_%-g*F">
+                <field name="VAR">擊中後經過時間_fallPasstime</field>
+                <value name="VALUE">
+                  <block type="time_millis" id="+-O6l?o`-wnARBImY{3{"></block>
+                </value>
+                <next>
+                  <block type="variables_set" id="XhR@9,[U|JAuJqYh@:a%">
+                    <field name="VAR">擊中時間點_falltime</field>
+                    <value name="VALUE">
+                      <block type="time_millis" id="Z6]zIv43pZnK?}@h_U:8"></block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="181">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="|h3O]^J!2DR8?%%3uPtc">
+        <field name="VAR">擊中後經過時間_fallPasstime</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="J.Iq|VfH@bN*q0}Bv0tt" inline="false">
+            <field name="OP">MINUS</field>
+            <value name="A">
+              <block type="time_millis" id="=DtPsQ-K..NM8zUqUz4X"></block>
+            </value>
+            <value name="B">
+              <block type="variables_get" id="%|;zpY;Bb%uAQh3:o`qq">
+                <field name="VAR">擊中時間點_falltime</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="}4snxQF8U6L7t2bg4%l+">
+            <value name="IF0">
+              <block type="logic_compare" id="0C@/p#J|h%6H^0{PcSp]">
+                <field name="OP">GTE</field>
+                <value name="A">
+                  <block type="variables_get" id="ah!ta^s{P4LbQ;;A{CD?">
+                    <field name="VAR">擊中後經過時間_fallPasstime</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id=";V@5(RG:yBZM/4!(m=Yx">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="servo_put" id="?6sEv;ljws83knUa7^QL">
+                <field name="OBJNAME">靶機馬達_TGservo</field>
+                <value name="SERVO_ANGLE">
+                  <block type="math_number" id="jLEi^+(j2R=.03/pAkaR">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="`,!O@Mo(I9w5JhpI|)1v">
+                <value name="IF0">
+                  <block type="logic_operation" id="/W9nOQY%Yk+R.Zczw~JJ" inline="false">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id=";=O`W6cZ1Zu.srzN-lM}">
+                        <field name="OP">GTE</field>
+                        <value name="A">
+                          <block type="variables_get" id=",0]RHaes{JoL2%VcB43Q">
+                            <field name="VAR">擊中後經過時間_fallPasstime</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="d%nWi`[`QXvJl?~O=Dc=">
+                            <field name="NUM">500</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_compare" id="U_![?s3EOrD@JV99iHFp">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="io_digitalread_var" id="mM}Eg!A/be/4g]GEVu_c">
+                            <value name="PIN">
+                              <block type="io_allpins" id="H.mNfG:v5]Wr6ZsIz[+}">
+                                <field name="PIN">5</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="io_highlow" id="cO8:UY,wV{mqWr?ISl]C">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="servo_put" id="Z70O00fenmL8/J)?ab*o">
+                    <field name="OBJNAME">靶機馬達_TGservo</field>
+                    <value name="SERVO_ANGLE">
+                      <block type="math_number" id="|.Bx,h3vDCLeM5E3Pm*o">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="yq6.vzucN~3j.Jn:7pm?">
+                        <field name="VAR">擊中時間點_falltime</field>
+                        <value name="VALUE">
+                          <block type="time_millis" id="`X8L:55L6B5q7Ce(,5FP"></block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

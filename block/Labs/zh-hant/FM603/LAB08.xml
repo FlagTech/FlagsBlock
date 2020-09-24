@@ -1,0 +1,77 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="S9F/x^2h.f0]Ze?o*__Z" x="39" y="42">
+    <statement name="SETUP_FUNC">
+      <block type="I2CLCD_setup" id="x^EFXgBkZC{_sH]2a.1d">
+        <field name="I2C_ADDR">0x3F</field>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="38" y="132">
+    <statement name="LOOP_FUNC">
+      <block type="I2CLCD_printLine" id="G:fvIV(fFM?YmLq0!c(Z">
+        <field name="ROW">0</field>
+        <value name="CONTENT">
+          <block type="text_join" id="}(dG8W%P+4n4lwmMti5j">
+            <mutation items="3"></mutation>
+            <value name="ADD0">
+              <block type="DHT11_readTemp" id="V#xj!nvpnC5Gae{q18OO">
+                <value name="DATAPIN">
+                  <block type="io_allpins" id="o2M==YzZ350FEmNSxr=c">
+                    <field name="PIN">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text_char" id="?v#X?T)eW0M_LNinLS22">
+                <value name="CHARCODE">
+                  <block type="math_number" id="68JhB|kU@3^VQo[c_vRr">
+                    <field name="NUM">223</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="text" id="9w[*6RHtBecyBEn2~?Xv">
+                <field name="TEXT">C</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="I2CLCD_printLine" id="`SR^b!Gl[qFP%jK/.n^F">
+            <field name="ROW">1</field>
+            <value name="CONTENT">
+              <block type="text_join" id="DF{T1^M[;urECD@Q-`_G">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="DHT11_readHumi" id="N%{*{TZOOs`9]dt|a77p">
+                    <value name="DATAPIN">
+                      <block type="io_allpins" id="RVLdEJzTy)E.6fo?ll^1">
+                        <field name="PIN">2</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="}ctb;usHwP;`nGBze1G)">
+                    <field name="TEXT">%</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="agt^:jxmN#CczLC!7N[x">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="*yQu10kZ/)p0EJekfNx2">
+                    <field name="NUM">2000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

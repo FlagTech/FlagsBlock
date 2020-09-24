@@ -1,0 +1,123 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=")NCI7eaSP!}RN(m*:h}@" x="67" y="-65">
+    <statement name="SETUP_FUNC">
+      <block type="io_builtin_led" id="/mL=EK^P8I,H2L^gF;Y@">
+        <field name="BUILT_IN_LED">D4</field>
+        <value name="STATE">
+          <block type="io_highlow" id="s%uO9a055l]S{la|0?u0">
+            <field name="STATE">HIGH</field>
+          </block>
+        </value>
+        <next>
+          <block type="esp8266_sta_setup" id="{-1+(?6CM_FIqaRa}A?|">
+            <value name="SSID">
+              <block type="text" id="6wl-rdz~}#PG6YMJ+I.B">
+                <field name="TEXT">您的WiFi網路名稱</field>
+              </block>
+            </value>
+            <value name="PINCODE">
+              <block type="text" id="Cp|C4!~x,.eCNrHfnnP}">
+                <field name="TEXT">您的WiFi網路密碼</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_whileUntil" id="2elH3tJp/qf!D;0iOHi^">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_negate" id=")3j2{:)L(MMk}AIs({~Q">
+                    <value name="BOOL">
+                      <block type="esp8266_connected" id="SrS/ADsK!D.zrDtxx:ta"></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="time_delay" id="c:8jGIYiRrjXxYQ?gB-B">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="]w8:Uj1?*f3%vC%`UFR#">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="io_builtin_led" id="P()J}p4~^|jK-(xEEAfh">
+                    <field name="BUILT_IN_LED">D4</field>
+                    <value name="STATE">
+                      <block type="io_highlow" id="(0RzIaQC9K].s,poiaDn">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id=".g`0^%%Bdog3gjvPFE#[">
+                        <field name="VAR">交談機器人連線網址</field>
+                        <value name="VALUE">
+                          <block type="text" id="7EKd{ZBr_Mjj]t,D%S)P">
+                            <field name="TEXT">從Google Apps Script取得的網址</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="70" y="193">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="cNH-}|YD05]W.XLYmX0t">
+        <field name="VAR">溫度</field>
+        <value name="VALUE">
+          <block type="DS18B20_readTemp" id="d;5i(I3,4LD2SI~Og:h!">
+            <value name="DATAPIN">
+              <block type="io_allpins" id="E1^_Gbl(hP.F[[5)+s#3">
+                <field name="PIN">D2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="2+VJ]P[SlY}C%YK3d`]p">
+            <field name="VAR">狀態碼</field>
+            <value name="VALUE">
+              <block type="esp8266_http_get" id="F2fH*Pl?NY2|;#7~Clr:">
+                <value name="URL">
+                  <block type="text_join" id="rL3B=50}6HJU/j^=DB~s">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="variables_get" id="*0SDKQP8fc*}=D72US5r">
+                        <field name="VAR">交談機器人連線網址</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="text" id="F!]LG7gz:/L=?p}i}c/F">
+                        <field name="TEXT">?t=</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="variables_get" id="F34Pz0@+^l`|fSj7Aa0C">
+                        <field name="VAR">溫度</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="pf3H3=P_U,rg=k|#E,jO">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id=";fZ-Le%xnqy.=8eqQg0K">
+                    <field name="NUM">10000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

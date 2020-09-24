@@ -1,0 +1,127 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=";n}eMlrW2*mZ9QdK~^EI" x="41" y="-13">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="`Z32t8Tzyt@xfy[KKEYl">
+        <field name="VAR">鈴鐺</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="**Q6+Dm3:R^JO7;AgysW">
+            <field name="PIN">D1</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_waitUntil" id="GP];V}ip5VrgmZX`|cQ:">
+            <value name="BOOL">
+              <block type="esp8266_ap_setup" id="HDfYIF3*Vty1AUw0ppVC">
+                <field name="CHANNEL">1</field>
+                <field name="HIDDEN">FALSE</field>
+                <value name="SSID">
+                  <block type="text" id=":?/?r+B)L/G)[wo|gd.f">
+                    <field name="TEXT">spiritbell</field>
+                  </block>
+                </value>
+                <value name="PINCODE">
+                  <block type="text" id="{dyS*VU,l4+#wH?*gh[y">
+                    <field name="TEXT"></field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="esp8266_webserver_on2" id="4R6A?]S([D5tiPG4hX0H">
+                <field name="FUNCNAME">響鈴</field>
+                <field name="PATH">/ring</field>
+                <next>
+                  <block type="esp8266_webserver_setup" id="L/CP^Vz22,r|{4vc{)@v">
+                    <field name="PORT">80</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="SRZ:!y.N~=gL:czjcKqw" x="44" y="203">
+    <field name="NAME">響鈴</field>
+    <statement name="STACK">
+      <block type="controls_repeat_ext" id="cp_e=p0!28,4nc*wbj!d">
+        <value name="TIMES">
+          <block type="math_number" id="dlb9g6_y3:z::PIj8P)c">
+            <field name="NUM">3</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="io_digitalwrite_var" id="RU5;qqiL/cM{Sq:;y]M(">
+            <value name="PIN">
+              <block type="variables_get" id="r^_%f+CKhcU9{SUxx^q_">
+                <field name="VAR">鈴鐺</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id=")Rydy;VEn.-Iu#6K;)1I">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="?|zw{0ryigfDHrYRv07l">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="mLgFp:m;IOqLPe+luSig">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_digitalwrite_var" id="(?W}c(M#5EUhd^.[unp}">
+                    <value name="PIN">
+                      <block type="variables_get" id="Z+l(4Xd+`)E5xwyw}O+`">
+                        <field name="VAR">鈴鐺</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="M;6_p5P;3v|dO5S%^H1/">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="`%Ar4vR}DP#!KLHGdtlH">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="fGTMgq(bVf732sQoQFB]">
+                            <field name="NUM">200</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="esp8266_webserver_send" id="n.+2eu-%UY~Zqj6961;S">
+            <value name="STATUS">
+              <block type="math_number" id="ixYglfRE2ny?Fo@8,x.D">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+            <value name="MIMETYPE">
+              <block type="text" id="h.Ee{Vu0MqFxeUTEIe=T">
+                <field name="TEXT">text/plain</field>
+              </block>
+            </value>
+            <value name="CONTENT">
+              <block type="text" id="H[Rqv{o)fTFAzB/=%8B_">
+                <field name="TEXT">OK</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="43" y="500">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="cs3mg:}K,W1t-8]bO=99"></block>
+    </statement>
+  </block>
+</xml>

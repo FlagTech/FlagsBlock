@@ -1,0 +1,98 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="U^K(kTv:kl]0Wg}me6(E" x="-449" y="-466">
+    <statement name="SETUP_FUNC">
+      <block type="FLAGMATRIX_setup" id="p16VPk4O1Xj)XG7XJymJ">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="DATA_PIN">
+          <block type="io_allpins" id="Ki|HC[!%U[ph6,P=;CWn">
+            <field name="PIN">D7</field>
+          </block>
+        </value>
+        <value name="CLK_PIN">
+          <block type="io_allpins" id="0}0s*tia17IcM2Y7,jUK">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="FLAGMATRIX_clear" id="[C_BaQ0x5x7v;RkKj.R7">
+            <field name="OBJNAME">圖形顯示器</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-448" y="-344">
+    <statement name="LOOP_FUNC">
+      <block type="FLAGMATRIX_char" id="Ecy)NaVpMn1AE@t.HWE3">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="COLOR">
+          <block type="math_number" id="[s+U/18+;c)SlzVFHxKV">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="CHAR">
+          <block type="text" id="SDh8NXBfmSaF@cJ6J.Ry">
+            <field name="TEXT">A</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="qjjTI9-+%oAzLE0c3xFa">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="hIYfWK~bC!i^,_h_zmj8">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="FLAGMATRIX_char" id="vz08FwWWsby}4v:b/%47">
+                <field name="OBJNAME">圖形顯示器</field>
+                <value name="COLOR">
+                  <block type="math_number" id="#gaC64~)Ff11^1]lOw?#">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <value name="CHAR">
+                  <block type="text" id="jT;wqTZvn;RD?OQ/r5GM">
+                    <field name="TEXT">b</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="=s.w=70QwW2)d!Z-49v4">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="9xIB+sg5:5O=v_z8`%@~">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="FLAGMATRIX_char" id="dy;}LfnFI3KPc6Dmb|T(">
+                        <field name="OBJNAME">圖形顯示器</field>
+                        <value name="COLOR">
+                          <block type="math_number" id="/%d`2tiJ()Ub?H8NRp/~">
+                            <field name="NUM">3</field>
+                          </block>
+                        </value>
+                        <value name="CHAR">
+                          <block type="text" id="0IJJ17[`bzY(MbZA^@l9">
+                            <field name="TEXT">!</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="PF3Tm}bSbwBUVUerb4-*">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="#V9N96ZmH]f6@bUEIjQ3">
+                                <field name="NUM">500</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

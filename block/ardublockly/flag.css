@@ -1,0 +1,100 @@
+.side-nav .collapsible-body li.active a, .side-nav.fixed .collapsible-body li.active a {
+  color: #444;
+}
+
+#slide-out {
+    top: 65px;
+    /*height: 100%;*/
+    height: calc(100% - 65px);
+    background-color: #eeeeee;
+}
+
+.sidebar-submenu {
+  padding-left:45px !important;
+  padding-right:0px !important;
+}
+
+.sidebar-submenu-item a {
+  padding-left:90px !important;
+}
+
+.sketch_name {
+  /*text-align:right;*/
+  margin-left:15px !important;
+  margin-right:5px !important;
+}
+
+.blocklyFlyoutBackground {
+  fill-opacity: 0.9 !important;
+}
+
+#ide_output_progress_bar_container {
+  margin: 0 !important;
+  display: none;
+}
+
+#button_max_blockspanel {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  cursor: pointer;
+}
+
+a.disabled {
+  color: grey;
+  opacity: 0.5
+  pointer-events: none
+  cursor: default
+}
+
+/* 設定積木類別不要透明 */
+.blocklyToolboxDiv {
+  background: rgba(255, 255, 255, 1.0) !important;
+}
+.blocklyTreeRoot {
+  background: rgba(98, 174, 178, .2) !important;  /* Arduino Light Teal */ 
+}
+#button_toggle_toolbox {
+  background: rgba(98, 174, 178, .2) !important;  /* Arduino Light Teal */  
+}
+
+
+.modal_small {
+  height: auto !important;
+  min-height: 250px;
+}
+@media only screen and (min-width: 993px) {
+  .modal_small {
+    max-width: 38% !important;
+    width: 38% !important;
+  }
+}
+
+/* 將積木的英文字設定為等寬字 */
+.blocklyText {
+  font-family: Consolas,Monaco,'Andale Mono',monospace!important;
+}
+
+/* 上排按鈕間隔緊縮一點 */
+nav ul a {
+  padding: 0 10px;
+}
+nav ul a i.left {
+  margin-right: 7px;
+}
+
+
+ul.side-nav i.fa-fw {
+  line-height: inherit !important;
+}
+
+/*-----------------------------------*/
+/* 以下由昕暐添加                     */
+/* 以便讓功能表中的範例名稱可以 2 行    */
+/* 2017/0616                         */
+/*-----------------------------------*/
+.side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {
+  padding-top: 15px;
+  line-height: 21px;
+}
+/*-----------------------------------*/

@@ -1,0 +1,163 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="Z4!88@-j#EQ+:Y=VI:F?" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="esp8266_sta_setup" id="{-1+(?6CM_FIqaRa}A?|">
+        <value name="SSID">
+          <block type="text" id="6wl-rdz~}#PG6YMJ+I.B">
+            <field name="TEXT">你的無線網路名稱</field>
+          </block>
+        </value>
+        <value name="PINCODE">
+          <block type="text" id="Cp|C4!~x,.eCNrHfnnP}">
+            <field name="TEXT">你的無線網路密碼</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_whileUntil" id="SIOQyxx=[.,TY3hOOrsu">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="logic_negate" id="rqLAhGA@n5BztQNXgV,q">
+                <value name="BOOL">
+                  <block type="esp8266_connected" id="RfgTR(ut`|@4-Uvd-DTu"></block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="time_delay" id="{!Z9.x3LE~Q6e4t9|Dz!">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="fx4m-IDLy6BaKzn{%*6?">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="variables_init" id="l|8ywjqao|P?J-paQZmB">
+                <field name="VAR">中央氣象局請求路徑</field>
+                <value name="VALUE">
+                  <block type="text" id="*[o+oH;k|K!SSCek[V{-">
+                    <field name="TEXT">https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-16482B88-696C-4F86-B595-325FD2282306&amp;locationName=臺北市&amp;elementName=CI,MinT,MaxT</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="205">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="U[L]`WZDC5lXY431?yH@">
+        <value name="IF0">
+          <block type="logic_compare" id="W~8u;pS?MkPHuq/iLGDU">
+            <field name="OP">GT</field>
+            <value name="A">
+              <block type="esp8266_http_get" id="8X@?t.gu_kHH9iSUT21?" inline="true">
+                <value name="URL">
+                  <block type="variables_get" id="vpCF?,W{_,*!DyVJD~s,">
+                    <field name="VAR">中央氣象局請求路徑</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="UYtiPTN%DvWn^A9=mNAQ">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="json_parse" id=")S@tQOj:#/2V}Aqw:!oz">
+            <value name="JSON_STR">
+              <block type="esp8266_http_get_response" id="u_@b-3fW_,oYfSbK@X-!"></block>
+            </value>
+            <next>
+              <block type="controls_if" id="G~M:F,b40l;+WA.o(deC">
+                <value name="IF0">
+                  <block type="json_success" id="!c)G)um9QxUMiyFvb8Fj"></block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="VA7JJ]f_C_L:,W.PO3Qr">
+                    <field name="VAR">舒適度</field>
+                    <value name="VALUE">
+                      <block type="json_node_str" id="pGwA}TU95z][E/!Ggjyv" inline="false">
+                        <value name="PATH">
+                          <block type="text" id="@G@NXP[B?}g)d)`Y9dTL">
+                            <field name="TEXT">records/location/0/weatherElement/1/time/0/parameter/parameterName</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="W@xLoSa%5jxF61pvA31g">
+                        <field name="VAR">IFTTT請求路徑</field>
+                        <value name="VALUE">
+                          <block type="text_join" id="tYzSKA#7upB`#9IGm6wL">
+                            <mutation items="3"></mutation>
+                            <value name="ADD0">
+                              <block type="text" id="4.3[#s.nUzS3h.TJrNw9">
+                                <field name="TEXT">http://maker.ifttt.com/trigger/weather/with/key/coJePlj5ju7W-zb30TGt-z?</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="text" id="`P%*;cTy!V/F^f`pG491">
+                                <field name="TEXT">value3=</field>
+                              </block>
+                            </value>
+                            <value name="ADD2">
+                              <block type="esp8266_urlencode" id="/oL%NoOU7hpD(konxI5w">
+                                <value name="CONTENT">
+                                  <block type="variables_get" id="i(V8Du)^P[)O!eApw0l(">
+                                    <field name="VAR">舒適度</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="mZFSBg/4|a)MZ_E_?pT+">
+                            <value name="IF0">
+                              <block type="logic_compare" id="o4verZ.FT]z5E15|TdAi">
+                                <field name="OP">GT</field>
+                                <value name="A">
+                                  <block type="esp8266_http_get" id="?TBlzU,OxkrJOm8Rx!hc">
+                                    <value name="URL">
+                                      <block type="variables_get" id="@h82U+|;MZKZX*%NUaAp">
+                                        <field name="VAR">IFTTT請求路徑</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="LidPx]RBT[Yr4s+21eJx">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="time_delay" id="4~kkX!YfwC4193NuCK-7">
+                                <value name="DELAY_TIME_MILI">
+                                  <block type="math_number" id="}(^ep3Pf5RTr`3?UnGL%">
+                                    <field name="NUM">10000</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

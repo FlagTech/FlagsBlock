@@ -1,0 +1,76 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="array_create_with" id="(H(a|fP!29*}KE~n]!9p" x="-197" y="-40">
+    <field name="NAME">自訂義圖形</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">0b00100010,0b01110111,0b10101010,0b00000000,0b11101110,0b01010110,0b01001010,0b11110101</field>
+  </block>
+  <block type="arduino_setup" id="7ko^w7BNI^FiWAA9w`#O" x="-196" y="5">
+    <statement name="SETUP_FUNC">
+      <block type="FLAGMATRIX_setup" id="*yw5]Bv~SnmbiOMVh|aH">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="DATA_PIN">
+          <block type="io_allpins" id="y5*LX}UclAx)FVh;Jj1Y">
+            <field name="PIN">D7</field>
+          </block>
+        </value>
+        <value name="CLK_PIN">
+          <block type="io_allpins" id="w(Ggg[_P7-1Ge-;7kAm+">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="FLAGMATRIX_clear" id="J1z?c9LWNd+%A(zW`RVn">
+            <field name="OBJNAME">圖形顯示器</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-197" y="119">
+    <statement name="LOOP_FUNC">
+      <block type="controls_for" id="JYa,0`_YwSdv};CV(|J|">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="Q?/GQIHiO=IoXjc8vM(q">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="EM[SywNXtp2Z|iGYhtf,">
+            <field name="NUM">7</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="dN#qgD657@;xLy@jg1zW">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="FLAGMATRIX_newrow" id="b4FA(=W3b6Q0jpoarKKY" inline="false">
+            <field name="OBJNAME">圖形顯示器</field>
+            <value name="ROW">
+              <block type="variables_get" id="nJ?R,nn{)1ktj(Z]NV]E">
+                <field name="VAR">i</field>
+              </block>
+            </value>
+            <value name="DATA">
+              <block type="array_get_index" id="H}hoH#RU}mvq3.tHeVq}">
+                <field name="NAME">自訂義圖形</field>
+                <value name="INDEX">
+                  <block type="variables_get" id="@MA48is;0o{EkBU]?Bqt">
+                    <field name="VAR">i</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="COLOR">
+              <block type="math_number" id="nA7LKilLsU^G4apvq^l_">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

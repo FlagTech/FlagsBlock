@@ -1,0 +1,52 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="?jne=}KW}1f46TQ_I8r~" x="44" y="-90">
+    <statement name="SETUP_FUNC">
+      <block type="flagledstripe_setup" id="50{kl|Am,2{=;@NjXV!Q">
+        <field name="OBJNAME">紅綠燈號誌</field>
+        <field name="NUM">3</field>
+        <value name="LEDPIN">
+          <block type="io_allpins" id="mc/:3V?)~=`!c;78EI:u">
+            <field name="PIN">D6</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setbrightness" id="45OfWZqxRG;7/d!L(oQ)">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <field name="BRIGHTNESS">255</field>
+            <next>
+              <block type="flagledstripe_setpixelcolor" id="nsyR~L+UUdx^_*twKt,M" inline="false">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <value name="NUM">
+                  <block type="math_number" id="afaN@/k4e(?6E*7FV.#M">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="RED">
+                  <block type="math_number" id="qltp`BbU!%`ogJ`/ahPp">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="p_rB+?5V#Q%hr|)FUyqi">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="~![8l*tg=-jw?b`{f.Aq">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="flagledstripe_show" id="TnocMndCf=)HOPc}:2z?">
+                    <field name="OBJNAME">紅綠燈號誌</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="46" y="178"></block>
+</xml>

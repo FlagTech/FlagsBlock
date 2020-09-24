@@ -1,0 +1,65 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="].l^fQ9T2QiGb~fLwmzV" x="42" y="31">
+    <statement name="SETUP_FUNC">
+      <block type="FLAG74HC595_setup" id="Szhx^|RJ=1]_aS_pE9%}">
+        <field name="OBJNAME">數字顯示器</field>
+        <value name="SDI_PIN">
+          <block type="io_allpins" id=",H/ZLEpM=/Gc~d=dhi5L">
+            <field name="PIN">D3</field>
+          </block>
+        </value>
+        <value name="SCLK_PIN">
+          <block type="io_allpins" id="_:wIP}I@r6f@dQ,Fjz(j">
+            <field name="PIN">D2</field>
+          </block>
+        </value>
+        <value name="LOAD_PIN">
+          <block type="io_allpins" id="@g{Fw^Fi1/ZqDJ7oSz__">
+            <field name="PIN">D1</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="42" y="137">
+    <statement name="LOOP_FUNC">
+      <block type="controls_for" id="S2L*=/}HHCyMr-xk53E_">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <block type="math_number" id="NB7n}?~j[cVT4YjVO[}[">
+            <field name="NUM">20</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id=".*5n/JV,~PjI:=I[]@wt">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="cj2:H`2{U^qNms/Sml)u">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="FLAG74HC595_print" id="hY;@~jpTfn7h*3c,V_75">
+            <field name="OBJNAME">數字顯示器</field>
+            <value name="NUM">
+              <block type="variables_get" id="1eSb@`N.jO1[OYgC:,1B">
+                <field name="VAR">i</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="m=yT-xJha?ccEW,j@(wT">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="=NweceA0y1=/]N4eOb#x">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

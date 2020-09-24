@@ -1,0 +1,183 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="=:EsNa;P%:Kpo*mm[RKY" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="dancerobot_use" id="srQSs7rB78_EN04xI?aV">
+        <field name="RFPIN">D1</field>
+        <field name="LFPIN">D2</field>
+        <field name="RLPIN">D3</field>
+        <field name="LLPIN">D4</field>
+        <next>
+          <block type="dancerobot_restoretrim" id="u91b4COq^hL1^rm@wv:w" disabled="true">
+            <next>
+              <block type="dancerobot_pos" id=";Vq%11#6tcsOs4;S]?A0">
+                <value name="RF_ANGLE">
+                  <block type="math_number" id="aC/Ur0b_@-vRY2pOfV;D">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="LF_ANGLE">
+                  <block type="math_number" id=".L3~]#h}(t`Vjw4D6ao6">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="RL_ANGLE">
+                  <block type="math_number" id="VB8DO)3Deu6+Hx-:(#00">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="LL_ANGLE">
+                  <block type="math_number" id="LVH]r@~9E@z|1Fv1}#V~">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="dancerobot_setbpm" id="h(-F]#DSxX?MJj|X|PL7">
+                    <value name="BPM">
+                      <block type="math_number" id="SP8uF)Wwv,zd~;kJ~GXQ">
+                        <field name="NUM">97</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="192">
+    <statement name="LOOP_FUNC">
+      <block type="dancerobot_pos" id="b=Ru?-uDs|D^:dM9mupS">
+        <value name="RF_ANGLE">
+          <block type="math_number" id="6;Wy`+B-R!g%JwShi2mX">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+        <value name="LF_ANGLE">
+          <block type="math_number" id="xOCVjCD}HKl]1o`I}z{a">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+        <value name="RL_ANGLE">
+          <block type="math_number" id="aZvi!zBJuBktvUL7+ZH[">
+            <field name="NUM">110</field>
+          </block>
+        </value>
+        <value name="LL_ANGLE">
+          <block type="math_number" id="g06{X8Wwt#=,pu68!JvG">
+            <field name="NUM">110</field>
+          </block>
+        </value>
+        <next>
+          <block type="dancerobot_delay" id="0zvewm/bND8?zZy;y6wu">
+            <value name="TEMPO">
+              <block type="math_number" id="-P;^}r+0lB![`3BmQSjj">
+                <field name="NUM">0.25</field>
+              </block>
+            </value>
+            <next>
+              <block type="dancerobot_pos" id="C2MIXDum)=Rnz_drz8hw">
+                <value name="RF_ANGLE">
+                  <block type="math_number" id="1C,Z-430,KZ^QeVvG5nY">
+                    <field name="NUM">110</field>
+                  </block>
+                </value>
+                <value name="LF_ANGLE">
+                  <block type="math_number" id="uFlt?7e5-I0t|NV*2|n#">
+                    <field name="NUM">110</field>
+                  </block>
+                </value>
+                <value name="RL_ANGLE">
+                  <block type="math_number" id="yineAXro-=w.!jNVbm!p">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="LL_ANGLE">
+                  <block type="math_number" id="Nh,z.vP]m0p4)x4/d6Ru">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="dancerobot_delay" id="RX(7c6Uc88{:Fp3,l=#Z">
+                    <value name="TEMPO">
+                      <block type="math_number" id="]1]H]h+TZ7VU-zM*|wa6">
+                        <field name="NUM">0.25</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="dancerobot_pos" id="1ATF:tN76l(!3damqO8,">
+                        <value name="RF_ANGLE">
+                          <block type="math_number" id="B-JWT9Hq%IDd90aiJO,P">
+                            <field name="NUM">90</field>
+                          </block>
+                        </value>
+                        <value name="LF_ANGLE">
+                          <block type="math_number" id="Dovs/|:QxK|Dw4-w?r(R">
+                            <field name="NUM">90</field>
+                          </block>
+                        </value>
+                        <value name="RL_ANGLE">
+                          <block type="math_number" id="=Rj2HqYa+nnzs1D,1;MB">
+                            <field name="NUM">70</field>
+                          </block>
+                        </value>
+                        <value name="LL_ANGLE">
+                          <block type="math_number" id="_Z.5~V!R#rDN[Yr#Y:DV">
+                            <field name="NUM">70</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="dancerobot_delay" id="}(8@+`f)BN10#HL6O{4R">
+                            <value name="TEMPO">
+                              <block type="math_number" id="X9x,pEB}=r#w:|!6=.BB">
+                                <field name="NUM">0.25</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="dancerobot_pos" id="1YNx[tA,3FSoGe9AGPdS">
+                                <value name="RF_ANGLE">
+                                  <block type="math_number" id=":Wm*@.aH*0%fePQp!sN?">
+                                    <field name="NUM">70</field>
+                                  </block>
+                                </value>
+                                <value name="LF_ANGLE">
+                                  <block type="math_number" id="P?r?r#J/CYWZj6+Pxvfj">
+                                    <field name="NUM">70</field>
+                                  </block>
+                                </value>
+                                <value name="RL_ANGLE">
+                                  <block type="math_number" id="+MzvM/G%a74aB2`:VQ9|">
+                                    <field name="NUM">90</field>
+                                  </block>
+                                </value>
+                                <value name="LL_ANGLE">
+                                  <block type="math_number" id="Ae*t]RnX4]a[_JT{#7Yd">
+                                    <field name="NUM">90</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="dancerobot_delay" id="2u(*KyqoA)rFJ4#xWqk2">
+                                    <value name="TEMPO">
+                                      <block type="math_number" id="J%X*ng(*!=zzipDGzV;C">
+                                        <field name="NUM">0.25</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,118 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="A1yQt:~-[(#V+AE-,Wk/" x="31" y="67">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="R5V@y5sDhf!wdX,+8eLQ">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="variables_set" id="dM``[@QI;X13f+~*Dqfb">
+            <field name="VAR">前光敏腳位</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="]`VI%*yu9HxN:4:WF|K.">
+                <field name="PIN">A0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="E1E3it5YrWKJZVGgqz,f">
+                <field name="VAR">左光敏腳位</field>
+                <value name="VALUE">
+                  <block type="io_allpins" id="8rDQKMqw3FOpzT6tm-]|">
+                    <field name="PIN">A1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="(.ZOM8^=%u*+Zoh|D;=j">
+                    <field name="VAR">右光敏腳位</field>
+                    <value name="VALUE">
+                      <block type="io_allpins" id=",SZ83p{GHxuKgv=~@1Bd">
+                        <field name="PIN">A2</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="31" y="239">
+    <statement name="LOOP_FUNC">
+      <block type="serial_print" id="vy0paf=lr|}QY/S4=3;m">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="NEW_LINE">FALSE</field>
+        <value name="CONTENT">
+          <block type="io_analogread_var" id="N05E3WcoT%M9l|%9=3P?">
+            <value name="PIN">
+              <block type="variables_get" id="0?F|Otv-=81A+k;tscnc">
+                <field name="VAR">前光敏腳位</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="serial_print" id="36o{Ya5+i0?025S6EZAl">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">FALSE</field>
+            <value name="CONTENT">
+              <block type="text" id="]K(vtw||1(;9O;`T+%5}">
+                <field name="TEXT">, </field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_print" id="!rfS^@:Z:v9MlSNpkaF|">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">FALSE</field>
+                <value name="CONTENT">
+                  <block type="io_analogread_var" id="_;^ig/DVMfA3LOSj7rx6">
+                    <value name="PIN">
+                      <block type="variables_get" id="_(~O[_mlAuA8npqP#Vd#">
+                        <field name="VAR">左光敏腳位</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_print" id="~fxfk@~WM]Vo{(c2dUDV">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">FALSE</field>
+                    <value name="CONTENT">
+                      <block type="text" id="PkI?;YVi3V~rdC0DOrnQ">
+                        <field name="TEXT">, </field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="serial_print" id=",hN5X]1=0nc_l#~K;bEf">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="io_analogread_var" id="@P:^)u/PpY*S:1*fV?V(">
+                            <value name="PIN">
+                              <block type="variables_get" id=")4WPR=FXL@DwaZq2Wz|q">
+                                <field name="VAR">右光敏腳位</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="=biyC_Jz3nK6qyc3l.|4">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="j#VE!Ggi;DaWRp+iP{-H">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

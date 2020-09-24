@@ -1,0 +1,117 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="Z4!88@-j#EQ+:Y=VI:F?" x="-32" y="1">
+    <statement name="SETUP_FUNC">
+      <block type="variables_init" id="ZIQe,SupiE~5OmG.F2Gd">
+        <field name="VAR">二氧化碳感測器電壓值</field>
+        <value name="VALUE">
+          <block type="math_number" id="*Ko2W|`zkm[+Kd^5CM}~">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="esp8266_sta_setup" id="{-1+(?6CM_FIqaRa}A?|">
+            <value name="SSID">
+              <block type="text" id="6wl-rdz~}#PG6YMJ+I.B">
+                <field name="TEXT">無線網路名稱</field>
+              </block>
+            </value>
+            <value name="PINCODE">
+              <block type="text" id="Cp|C4!~x,.eCNrHfnnP}">
+                <field name="TEXT">無線網路密碼</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_whileUntil" id="SIOQyxx=[.,TY3hOOrsu">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_negate" id="rqLAhGA@n5BztQNXgV,q">
+                    <value name="BOOL">
+                      <block type="esp8266_connected" id="RfgTR(ut`|@4-Uvd-DTu"></block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="time_delay" id="{!Z9.x3LE~Q6e4t9|Dz!">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="fx4m-IDLy6BaKzn{%*6?">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-38" y="226">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="hz+A_7NC3r}P#1jX2JuB">
+        <field name="VAR">二氧化碳感測器電壓值</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="NUn_0,rrqn3@~j3O~:VS">
+            <value name="PIN">
+              <block type="io_analogpins" id="QH6;LO[BfRt{M+vR]8jp">
+                <field name="PIN">A0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="gFrXF6VH3WH95R0jhDp;">
+            <field name="VAR">網址</field>
+            <value name="VALUE">
+              <block type="text_join" id="be~4MGVZC)^=5]eWIkd|">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="2jIJz|cE9P(#_#s:XoSN">
+                    <field name="TEXT">http://api.thingspeak.com/update?api_key=I7K8MRCTBWOA3DL9&amp;field1=</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="variables_get" id=")1XA3~g!~p_nX@2:C-Yz">
+                    <field name="VAR">二氧化碳感測器電壓值</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="U[L]`WZDC5lXY431?yH@">
+                <value name="IF0">
+                  <block type="logic_compare" id="W~8u;pS?MkPHuq/iLGDU">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="esp8266_http_get" id="8X@?t.gu_kHH9iSUT21?" inline="true">
+                        <value name="URL">
+                          <block type="variables_get" id="Y%Hm@Fw2^Ob6]HZtKJ;L">
+                            <field name="VAR">網址</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="UYtiPTN%DvWn^A9=mNAQ">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="time_delay" id="at^i/wBT,;d,:!o/I{Fg">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="3=6?/=;*t6i3srJxB*hy">
+                        <field name="NUM">15000</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

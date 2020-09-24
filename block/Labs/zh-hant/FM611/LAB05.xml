@@ -1,0 +1,206 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="!{{hW[tdoSK]n=l^OfW?" x="53" y="17">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="iXsGzJG,{iiS~QI2Kxhy">
+        <field name="VAR">紅色腳位</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="O,j[8Z%bu*@yY(}F(7k{">
+            <field name="PIN">D6</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="uxjr[%^-7?j4Qw)P4IaW">
+            <field name="VAR">綠色腳位</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="z9]61:?W`NJ{sYQd1e#N">
+                <field name="PIN">D7</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="|*,eQ;U=EPpI.azFv~zD">
+                <field name="VAR">藍色腳位</field>
+                <value name="VALUE">
+                  <block type="io_allpins" id="0225I{@7j2H;M./740-j">
+                    <field name="PIN">D8</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="53" y="152">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="7Mq+.`%w9NjWat:xXxkq">
+        <field name="VAR">情緒指數</field>
+        <value name="VALUE">
+          <block type="text_prompt_ext" id="6.q6n2jKnHxLY)_u]0/j">
+            <mutation type="Number"></mutation>
+            <field name="TYPE">Number</field>
+            <value name="TEXT">
+              <block type="text" id="KbCsFwfDM%ZkxK?qYCft">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="Y**B)h-r7r@**a?`2ac6">
+            <field name="VAR">PWM值</field>
+            <value name="VALUE">
+              <block type="math_single" id="8k-UsMC2dFwxhT*py)5S">
+                <field name="OP">ABS</field>
+                <value name="NUM">
+                  <block type="math_arithmetic" id="l4A)F+qPKC:96]mIhId+">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="0XN%PP%6I:hGdCIiFY^!">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="variables_get" id="/hy[#?H049A;g89xI3fO">
+                            <field name="VAR">情緒指數</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="T:7XXr%C4t_.~CZv+Te1">
+                            <field name="NUM">1023</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id=",[@v9M*Zk~nKEtbZ898T">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="io_analogwrite_var" id="?DU*;ESWD02fFiojY0-)">
+                <value name="PIN">
+                  <block type="variables_get" id="ZV(X7IgOgIt%evGsq/p}">
+                    <field name="VAR">紅色腳位</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <block type="math_number" id="=g8NQqglLuN#x34ZzR#4">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_analogwrite_var" id="{DTm0,/I||l?ePfic`a[">
+                    <value name="PIN">
+                      <block type="variables_get" id="=*gqPY0%kA80#34h(uH.">
+                        <field name="VAR">綠色腳位</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <block type="math_number" id="Ke?Zawb`bxur@LhjKt}7">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_analogwrite_var" id="MHr=/gB_SRTv#6.}I8x}">
+                        <value name="PIN">
+                          <block type="variables_get" id="V5Y^]^4Ih!u1h6i+Fe~+">
+                            <field name="VAR">藍色腳位</field>
+                          </block>
+                        </value>
+                        <value name="NUM">
+                          <block type="math_number" id="tX)PG[zHQNJx{1PJQiXd">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="[SS!s*ZQY._?3c1C2Jd_">
+                            <mutation elseif="1" else="1"></mutation>
+                            <value name="IF0">
+                              <block type="logic_compare" id="t7sl`5*`Bro{14s#s2=;">
+                                <field name="OP">GT</field>
+                                <value name="A">
+                                  <block type="variables_get" id=".qe6h?XKpNXk~u0sQ^jS">
+                                    <field name="VAR">情緒指數</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="II1_Ss_nvHm=FPN/nC2%">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="io_analogwrite_var" id="Y-i=1eX|_5,yv-tdlzK3">
+                                <value name="PIN">
+                                  <block type="variables_get" id="O!{.fsDs#{;MDOTf1p;*">
+                                    <field name="VAR">紅色腳位</field>
+                                  </block>
+                                </value>
+                                <value name="NUM">
+                                  <block type="variables_get" id="DGK9h)[Je?6DzL/mgt]N">
+                                    <field name="VAR">PWM值</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <value name="IF1">
+                              <block type="logic_compare" id=":}Tcf8]b~L%Q}*0=XnF!">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="Xkqr/7Fle3Jg~ce:h07.">
+                                    <field name="VAR">情緒指數</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="QORB||=niRw|X[:CzmOc">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO1">
+                              <block type="io_analogwrite_var" id="T8tvC2w|-vq6hb_*8Tu5">
+                                <value name="PIN">
+                                  <block type="variables_get" id="5r36rOdpjs}_eQ{[B]bC">
+                                    <field name="VAR">藍色腳位</field>
+                                  </block>
+                                </value>
+                                <value name="NUM">
+                                  <block type="variables_get" id="rz)~XfM)7o5N%N1,Me6h">
+                                    <field name="VAR">PWM值</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <statement name="ELSE">
+                              <block type="io_analogwrite_var" id="neIHy2?Q==%onTlR=7:]">
+                                <value name="PIN">
+                                  <block type="variables_get" id="_X,}WHk@}]yKjhwkJo,!">
+                                    <field name="VAR">綠色腳位</field>
+                                  </block>
+                                </value>
+                                <value name="NUM">
+                                  <block type="math_number" id="0A=n,Nb68qYqURc_]g/r">
+                                    <field name="NUM">1023</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,629 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="YC_;2h2g^[y(Og9.laT|" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="TM1637_setup" id="U_u{Q*__=f}C4hq,+;Qo">
+        <field name="OBJNAME">顯示器_SSD</field>
+        <value name="CLK_PIN">
+          <block type="io_allpins" id="WS7Kxtw,6`*OPVBs}2Yl">
+            <field name="PIN">2</field>
+          </block>
+        </value>
+        <value name="DIO_PIN">
+          <block type="io_allpins" id="~rl@8O!~.Vb6zhnl1)BR">
+            <field name="PIN">3</field>
+          </block>
+        </value>
+        <next>
+          <block type="TM1637_setbrightness" id="0UMvUJ?V?Ko5K1Ob,@R;">
+            <field name="OBJNAME">顯示器_SSD</field>
+            <field name="BRIGHTNESS">7</field>
+            <next>
+              <block type="servo_use" id="_/mI;H/uYdv_Vg:WUfNv">
+                <field name="OBJNAME">靶機馬達_TGservo</field>
+                <field name="PIN">4</field>
+                <next>
+                  <block type="procedures_callnoreturn" id="xZ%@_b+#7v_K6GDccpH;">
+                    <mutation name="遊戲開始_start"></mutation>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="pbdi3aqbABiVBkXD_Hwg" x="0" y="181">
+    <field name="NAME">遊戲開始_start</field>
+    <statement name="STACK">
+      <block type="servo_put" id="teA0cM,7~:!WiZAE:a%l">
+        <field name="OBJNAME">靶機馬達_TGservo</field>
+        <value name="SERVO_ANGLE">
+          <block type="math_number" id="Hxf%W~URW7M2|WvCYN@c">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="TM1637_SHOWNUMDEC" id="a)aW:Sf`=CwGeIV7?|o_">
+            <field name="OBJNAME">顯示器_SSD</field>
+            <field name="PADDING">TRUE</field>
+            <field name="COLON">FALSE</field>
+            <value name="POSITION">
+              <block type="math_number" id="LtI5HpNHm,`IYruZsrBR">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="DIGITS">
+              <block type="math_number" id="`w%60{Da-n[__BW_r)ZK">
+                <field name="NUM">4</field>
+              </block>
+            </value>
+            <value name="NUM">
+              <block type="math_number" id="ct[A=I`a1Ud,T#n|1y[b">
+                <field name="NUM">3333</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="pDbNCH.L{yD[m%nC@v}a">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="VVxH{0e#AZ8loZk/vmdQ">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="TM1637_SHOWNUMDEC" id="=l/PC]qx*5Nj(}dq4?Pk">
+                    <field name="OBJNAME">顯示器_SSD</field>
+                    <field name="PADDING">TRUE</field>
+                    <field name="COLON">FALSE</field>
+                    <value name="POSITION">
+                      <block type="math_number" id="6QMr}37Sr:-H1M7r7U_t">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="DIGITS">
+                      <block type="math_number" id="DTMB=Z^%_aJpz*qvMl{6">
+                        <field name="NUM">4</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <block type="math_number" id="WLi3`~exn-kAVy3O:-Ae">
+                        <field name="NUM">2222</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="u2#!)Vl!bvJEyOZEzDWC">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id=".C.r]!@#I=N#zR{9,Xmr">
+                            <field name="NUM">1000</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="TM1637_SHOWNUMDEC" id="Exhz[v#T8;@#,(N*atPz">
+                            <field name="OBJNAME">顯示器_SSD</field>
+                            <field name="PADDING">TRUE</field>
+                            <field name="COLON">FALSE</field>
+                            <value name="POSITION">
+                              <block type="math_number" id="QRZ-Cgar0bmjO@_XxLX+">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="DIGITS">
+                              <block type="math_number" id="5T,2z5P-%tuN(pc|Gk44">
+                                <field name="NUM">4</field>
+                              </block>
+                            </value>
+                            <value name="NUM">
+                              <block type="math_number" id="msfu@uch2inD/5lCdfSN">
+                                <field name="NUM">1111</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="time_delay" id="K!xI4CEwVgM%(8;G*?C?">
+                                <value name="DELAY_TIME_MILI">
+                                  <block type="math_number" id="?DiM:tau{5Mw0%,x_h=^">
+                                    <field name="NUM">1000</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="TM1637_SHOWNUMDEC" id="ua@p)uisd~BuuA^-(o9U">
+                                    <field name="OBJNAME">顯示器_SSD</field>
+                                    <field name="PADDING">TRUE</field>
+                                    <field name="COLON">TRUE</field>
+                                    <value name="POSITION">
+                                      <block type="math_number" id="DiL(t1:ewRV@V2=.UK)@">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="DIGITS">
+                                      <block type="math_number" id="oHl[Sd]ZM)T9.XBpvo*x">
+                                        <field name="NUM">4</field>
+                                      </block>
+                                    </value>
+                                    <value name="NUM">
+                                      <block type="math_number" id="241#/vf}AF*l}6J6g#=2">
+                                        <field name="NUM">9090</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="time_delay" id="]a9F]UB`J}nlg(M-VGc:">
+                                        <value name="DELAY_TIME_MILI">
+                                          <block type="math_number" id="I2hui=bEF2:;KHSrNf:e">
+                                            <field name="NUM">1000</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="TM1637_clear" id="G{q@_ivI1,]E+6txS[ww">
+                                            <field name="OBJNAME">顯示器_SSD</field>
+                                            <next>
+                                              <block type="servo_put" id="VVo4}JiQ=,bP`}rHygSA">
+                                                <field name="OBJNAME">靶機馬達_TGservo</field>
+                                                <value name="SERVO_ANGLE">
+                                                  <block type="math_number" id="eN;1mv:Z8!:B_SuaA|p`">
+                                                    <field name="NUM">90</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id=".7;9XU)I8RB4~kep22]j">
+                                                    <field name="VAR">分數_score</field>
+                                                    <value name="VALUE">
+                                                      <block type="math_number" id="y-YCmAIwI8)t.LneE=bX">
+                                                        <field name="NUM">0</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="variables_set" id="bZQH|:dgT!Q:;7apJHe8">
+                                                        <field name="VAR">挑戰剩餘秒數_tgTime</field>
+                                                        <value name="VALUE">
+                                                          <block type="math_number" id="W%)N`X;|^rw,=yLRrSxE">
+                                                            <field name="NUM">30</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="variables_set" id=";m?g(Ak_4+N)DNp/!Kl2">
+                                                            <field name="VAR">前一秒時間_lastSec</field>
+                                                            <value name="VALUE">
+                                                              <block type="time_millis" id="_l5iqj6,VDOupxg7;P1]"></block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="variables_set" id="-Y(]2QGv5PAYd/w!XqL4">
+                                                                <field name="VAR">擊中時間點_falltime</field>
+                                                                <value name="VALUE">
+                                                                  <block type="time_millis" id="M{kC4CN~;FUq_f~po(#v"></block>
+                                                                </value>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="]uD{N!8g2hqsmS-gtl*#" x="0" y="747">
+    <field name="NAME">更新顯示資訊_refreshSSD</field>
+    <statement name="STACK">
+      <block type="TM1637_SHOWNUMDEC" id="e,Cg@U.W8Qf9Ba2f/XZO" inline="false">
+        <field name="OBJNAME">顯示器_SSD</field>
+        <field name="PADDING">FALSE</field>
+        <field name="COLON">FALSE</field>
+        <value name="POSITION">
+          <block type="math_number" id="8:[RuETMm`?EJ+@E|L28">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <value name="DIGITS">
+          <block type="math_number" id="2D=M(KIMTt0+V[ST~nH^">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <value name="NUM">
+          <block type="variables_get" id="WgWTe=sZwX=ZqxGuo~2@">
+            <field name="VAR">分數_score</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="Fl))CYI-C5LyINILB{^U">
+            <value name="IF0">
+              <block type="logic_compare" id="+ARjC[}WUj(J4Nv6c6pW">
+                <field name="OP">GTE</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="9wmWgSq.{g_|Pb8g@x0@" inline="false">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <block type="time_millis" id="Y(,sU_h9Oh/`g?@kvhV?"></block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="sEI*c+~4oRWg(Z5S/Ub9">
+                        <field name="VAR">前一秒時間_lastSec</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="zZ;*56Z3}@0M=Xv7?Tvn">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="math_change2" id="AP(Y[Lwf%ag0!LH`wk7~">
+                <field name="VAR">挑戰剩餘秒數_tgTime</field>
+                <field name="OP">-</field>
+                <value name="DELTA">
+                  <block type="math_number" id="mR,z.}wxF-c2,zvhbhf]">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="Q2JoEp]oBSu,+zrg2oBN">
+                    <field name="VAR">前一秒時間_lastSec</field>
+                    <value name="VALUE">
+                      <block type="time_millis" id="zEp4A?ORQ-3}/RI2*41z"></block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="r#NK|S4Kh[{j0HO*}}m]">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="8)M]fyXFl3fB4I:2{N/`" inline="false">
+                    <field name="OP">LT</field>
+                    <value name="A">
+                      <block type="variables_get" id="}qWI4NqsUQRIJk62(2TV">
+                        <field name="VAR">挑戰剩餘秒數_tgTime</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="P+;p,Nr@aVonam}@~lo?">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="z_d*ZSBYa001)yY-JG}b">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="}+9FhS-GPnom)ot%v+;+">
+                        <field name="OP">LT</field>
+                        <value name="A">
+                          <block type="math_arithmetic" id="o])a=Ww}xYKrt.CPRB3M" inline="false">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="time_millis" id="9xPn@Y.XbrDC*qaT`PxE"></block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="QNqrA2Q14*tXh80Q=l7x">
+                                <field name="VAR">前一秒時間_lastSec</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="#,7Xm2zH=lvNyMa/g^.j">
+                            <field name="NUM">500</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="TM1637_DELETE" id="Pt9E*vsyQ=Z|tV]tbZpW">
+                        <field name="OBJNAME">顯示器_SSD</field>
+                        <value name="POSITION">
+                          <block type="math_number" id="To}.khPo--Y]p`|9avh|">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="TM1637_DELETE" id="yV*7cA*6dXjHD/c!LvOg">
+                            <field name="OBJNAME">顯示器_SSD</field>
+                            <value name="POSITION">
+                              <block type="math_number" id="z7vHN)foNOci%5#1%jkV">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="TM1637_SHOWNUMDEC" id="#{ZQ:kz{+M7,|KehR.^d" inline="false">
+                        <field name="OBJNAME">顯示器_SSD</field>
+                        <field name="PADDING">FALSE</field>
+                        <field name="COLON">TRUE</field>
+                        <value name="POSITION">
+                          <block type="math_number" id="XRUr[b/y}+sMGjQ!R+%f">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="DIGITS">
+                          <block type="math_number" id="@v7k_CTKnNu`Gt3F?eFg">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                        <value name="NUM">
+                          <block type="variables_get" id="q8;fz0]ztLHkhL{:X9Yz">
+                            <field name="VAR">挑戰剩餘秒數_tgTime</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="TM1637_SHOWNUMDEC" id="(X|U39YO#!zD-*j,#Oq*" inline="false">
+                    <field name="OBJNAME">顯示器_SSD</field>
+                    <field name="PADDING">FALSE</field>
+                    <field name="COLON">TRUE</field>
+                    <value name="POSITION">
+                      <block type="math_number" id="%a]XajyKn,t~081nwj0:">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="DIGITS">
+                      <block type="math_number" id="BHuE25negu4s:i9n6YT(">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <block type="variables_get" id="A?vWnq7=Ejx;OCA][1Yv">
+                        <field name="VAR">挑戰剩餘秒數_tgTime</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="C%v-~^Z1!F0jSc{n*)N}" x="0" y="1494">
+    <field name="NAME">遊戲結束顯示成績_gameOver</field>
+    <statement name="STACK">
+      <block type="servo_put" id="[DGah)hI^6U?Yd]xByQx">
+        <field name="OBJNAME">靶機馬達_TGservo</field>
+        <value name="SERVO_ANGLE">
+          <block type="math_number" id="RFl*ct0[fCF`q-cJx=e!">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_repeat_ext" id="N;hMUkW:4G.ejOp1PJ6b">
+            <value name="TIMES">
+              <block type="math_number" id="2s+{k4,agu3(*MO-Cl,z">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="TM1637_clear" id="6;++:Tp6.lpL1|Mx.p|g">
+                <field name="OBJNAME">顯示器_SSD</field>
+                <next>
+                  <block type="time_delay" id="E_cLSD!jW3`Tb6@=~2r+">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="^VKlUV{s|*euFF{D;6^v">
+                        <field name="NUM">800</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="TM1637_SHOWNUMDEC" id="eugG,[E:u}se]|jn,E[E" inline="false">
+                        <field name="OBJNAME">顯示器_SSD</field>
+                        <field name="PADDING">FALSE</field>
+                        <field name="COLON">FALSE</field>
+                        <value name="POSITION">
+                          <block type="math_number" id="+]^mVySo4s;TSh(Ze90y">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                        <value name="DIGITS">
+                          <block type="math_number" id="%C{5?#gm+a?RaV:47|pS">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                        <value name="NUM">
+                          <block type="variables_get" id="*bAM9%S5?`Lk=w?]3wxu">
+                            <field name="VAR">分數_score</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="JsiRs8H}!4{O%TPx=9[j">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id=".uui)h9H]jkkj4tJ%Cf)">
+                                <field name="NUM">800</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="1852">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id=",vu:7X/+;HG{]xZRN@}^">
+        <mutation name="更新顯示資訊_refreshSSD"></mutation>
+        <next>
+          <block type="variables_set" id="|h3O]^J!2DR8?%%3uPtc">
+            <field name="VAR">擊中後經過時間_fallPasstime</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id="J.Iq|VfH@bN*q0}Bv0tt" inline="false">
+                <field name="OP">MINUS</field>
+                <value name="A">
+                  <block type="time_millis" id="=DtPsQ-K..NM8zUqUz4X"></block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="%|;zpY;Bb%uAQh3:o`qq">
+                    <field name="VAR">擊中時間點_falltime</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="}4snxQF8U6L7t2bg4%l+">
+                <value name="IF0">
+                  <block type="logic_compare" id="0C@/p#J|h%6H^0{PcSp]">
+                    <field name="OP">GTE</field>
+                    <value name="A">
+                      <block type="variables_get" id="ah!ta^s{P4LbQ;;A{CD?">
+                        <field name="VAR">擊中後經過時間_fallPasstime</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id=";V@5(RG:yBZM/4!(m=Yx">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="servo_put" id="?6sEv;ljws83knUa7^QL">
+                    <field name="OBJNAME">靶機馬達_TGservo</field>
+                    <value name="SERVO_ANGLE">
+                      <block type="math_number" id="jLEi^+(j2R=.03/pAkaR">
+                        <field name="NUM">90</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="`,!O@Mo(I9w5JhpI|)1v">
+                    <value name="IF0">
+                      <block type="logic_operation" id="/W9nOQY%Yk+R.Zczw~JJ" inline="false">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id=";=O`W6cZ1Zu.srzN-lM}">
+                            <field name="OP">GTE</field>
+                            <value name="A">
+                              <block type="variables_get" id=",0]RHaes{JoL2%VcB43Q">
+                                <field name="VAR">擊中後經過時間_fallPasstime</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="d%nWi`[`QXvJl?~O=Dc=">
+                                <field name="NUM">500</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="U_![?s3EOrD@JV99iHFp">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="io_digitalread_var" id="mM}Eg!A/be/4g]GEVu_c">
+                                <value name="PIN">
+                                  <block type="io_allpins" id="H.mNfG:v5]Wr6ZsIz[+}">
+                                    <field name="PIN">5</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="io_highlow" id="`w(}!Gn5`[4}l;;N6t6X">
+                                <field name="STATE">LOW</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="math_change2" id="7?-Z;HjJYWM%ti_7=y_}">
+                        <field name="VAR">分數_score</field>
+                        <field name="OP">+</field>
+                        <value name="DELTA">
+                          <block type="math_number" id="]zt6*aJ`GfFz9,eR=me6">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="servo_put" id="Z70O00fenmL8/J)?ab*o">
+                            <field name="OBJNAME">靶機馬達_TGservo</field>
+                            <value name="SERVO_ANGLE">
+                              <block type="math_number" id="|.Bx,h3vDCLeM5E3Pm*o">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="yq6.vzucN~3j.Jn:7pm?">
+                                <field name="VAR">擊中時間點_falltime</field>
+                                <value name="VALUE">
+                                  <block type="time_millis" id="`X8L:55L6B5q7Ce(,5FP"></block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="V@h)pvkaHVkjym!d2=i^">
+                        <value name="IF0">
+                          <block type="logic_compare" id="K~RW0WHO+h1Pcwj%`CwG" inline="false">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="x,pftF{Prn{D0:zyo_}A">
+                                <field name="VAR">挑戰剩餘秒數_tgTime</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id=":Qm6KnXHijEWWe.{usL~">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="procedures_callnoreturn" id="ZC|-C0iuml_^u%X@IocK">
+                            <mutation name="遊戲結束顯示成績_gameOver"></mutation>
+                            <next>
+                              <block type="procedures_callnoreturn" id="gHoe:AC?6@%Wp1#{m^nT">
+                                <mutation name="遊戲開始_start"></mutation>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

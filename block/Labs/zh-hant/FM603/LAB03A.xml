@@ -1,0 +1,168 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="=/T7ZPuP_Pq3c.s9]lC}" x="-159" y="45">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="`JAOdAV96Z.2NsdK;*0r">
+        <field name="VAR">之前腳位2電位</field>
+        <value name="VALUE">
+          <block type="io_highlow" id="G:LQ5EJH30DS_^|okMdc">
+            <field name="STATE">LOW</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="egN!HPd_G)!)qNQP~I3)">
+            <field name="VAR">目前腳位2電位</field>
+            <value name="VALUE">
+              <block type="io_highlow" id="52`%V:6KhP.2+,=;^`,g">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="IZO1S9%%vqnYo9v%iu}(">
+                <field name="VAR">觸摸次數</field>
+                <value name="VALUE">
+                  <block type="math_number" id="N^soO4FfEN98lc1a;.MT">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_digitalwrite_var" id="/GJ:0jHrLPUoQ7TYGuY3">
+                    <value name="PIN">
+                      <block type="io_allpins" id="kh;dzj~fHea%rIOJ`lY@">
+                        <field name="PIN">6</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="pI;-,)LYv_kV6Z(|n(vw">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-159" y="217">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="h`td(@-d,@A*JO3glk~g">
+        <field name="VAR">目前腳位2電位</field>
+        <value name="VALUE">
+          <block type="io_digitalread_var" id="g-_Y(q+WmjJ^XlumkieQ">
+            <value name="PIN">
+              <block type="io_allpins" id="U=?1d0+]%agAW48*HajH">
+                <field name="PIN">2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="Vi;)szKK48^tk/FdgTTj">
+            <value name="IF0">
+              <block type="logic_operation" id=");j4(J!pOt1IMJAWe0[b" inline="false">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="logic_compare" id="h#va:PW7Dr2Ayt3j5%N4">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="j@PrL`XZ)vf{!Ck#wcUF">
+                        <field name="VAR">之前腳位2電位</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="io_highlow" id="o_Rkswf01Bg,KBclU7(a">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_compare" id="]poyA8RL/`S[?H],r{yO">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="m(awJVe9^7]?E9u{r*UJ">
+                        <field name="VAR">目前腳位2電位</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="io_highlow" id="dZy}H=y*]BK_`VZJ@_51">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="math_change2" id="ajvtIImbULsf^8l+wf{v">
+                <field name="VAR">觸摸次數</field>
+                <field name="OP">+</field>
+                <value name="DELTA">
+                  <block type="math_number" id="+vxEGOT@o0haQ@JwDBIQ">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="bkw6}BM;)wD4lgdOgQxR">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="math_number_property" id="RTGz9y[#JmDhNd6^[,_H">
+                        <mutation divisor_input="false"></mutation>
+                        <field name="PROPERTY">ODD</field>
+                        <value name="NUMBER_TO_CHECK">
+                          <block type="variables_get" id="Ln_M].+y:fddcC!aIhfQ">
+                            <field name="VAR">觸摸次數</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="io_digitalwrite_var" id="Lm*eJ|G,voII.YC|Ftkg">
+                        <value name="PIN">
+                          <block type="io_allpins" id="~kicAXx9-Fewz3aP#%m_">
+                            <field name="PIN">6</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="iQfT;h}A*euJ{h*xkES`">
+                            <field name="STATE">HIGH</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="io_digitalwrite_var" id="zUZR**da?kYHP1Tb[-}W">
+                        <value name="PIN">
+                          <block type="io_allpins" id="X8(UOSQ^K^pd7*XBWMwF">
+                            <field name="PIN">6</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="r5ktuxST8J=,]q7MZS=[">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="variables_set" id=")-k~-DqAy[lt2S7P`Fz`">
+                <field name="VAR">之前腳位2電位</field>
+                <value name="VALUE">
+                  <block type="variables_get" id="4.-hO7-P_xwWO-n_ZF#y">
+                    <field name="VAR">目前腳位2電位</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

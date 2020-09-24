@@ -1,0 +1,1017 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="[[_%HDO?|Z^KAKzy;AFE" x="11" y="-80">
+    <statement name="SETUP_FUNC">
+      <block type="TTP229_use" id="K%[:E(63`*#Xl-tp3(rA">
+        <field name="SCL_PIN">D5</field>
+        <field name="SDO_PIN">D6</field>
+        <next>
+          <block type="variables_set" id="3Xc=A?{L5N2*e~8Ea}gt">
+            <field name="VAR">喇叭</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="`3^=r*9LNp}!hhAUGXP5">
+                <field name="PIN">D1</field>
+              </block>
+            </value>
+            <next>
+              <block type="TM1637_setup" id="bbO;[-dY*l/yi[+Sx3*I">
+                <field name="OBJNAME">SSD</field>
+                <value name="CLK_PIN">
+                  <block type="io_allpins" id="XtA2rDFhzBxG@H]kg,C2">
+                    <field name="PIN">D2</field>
+                  </block>
+                </value>
+                <value name="DIO_PIN">
+                  <block type="io_allpins" id="~2obg}~}W:#b2d}/AWz)">
+                    <field name="PIN">D3</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="TM1637_setbrightness" id="G%+Hp3fn.*s{QtuKRteI">
+                    <field name="OBJNAME">SSD</field>
+                    <field name="BRIGHTNESS">7</field>
+                    <next>
+                      <block type="TM1637_SHOWNUMDEC" id="Kjb+[%EJPG3XI(Iq/!p{">
+                        <field name="OBJNAME">SSD</field>
+                        <field name="PADDING">TRUE</field>
+                        <field name="COLON">TRUE</field>
+                        <value name="POSITION">
+                          <block type="math_number" id="C.cUN}_[sd#;]f#F4+#,">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="DIGITS">
+                          <block type="math_number" id="w;VYDzLI:]c,rr0!X!`@">
+                            <field name="NUM">4</field>
+                          </block>
+                        </value>
+                        <value name="NUM">
+                          <block type="math_number" id="-:KKbYK##t[WI#e~)u-C">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id=":m%#BTjeaW)}}rGmBXNe">
+                            <field name="VAR">狀態</field>
+                            <value name="VALUE">
+                              <block type="text" id="]!xL7lxQ^g0n#:zl8)u*">
+                                <field name="TEXT">設定倒數時間</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="GIc[}pp8T6cObSkPC{Vk">
+                                <field name="VAR">倒數時間</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="b6~|wQ#Lx||4@WPlVLL5">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="wUP^G#x5B_j6FoN~?6,_">
+                                    <field name="VAR">暫停</field>
+                                    <value name="VALUE">
+                                      <block type="logic_boolean" id="*U#?/ayg0c_DA@jw[St#">
+                                        <field name="BOOL">FALSE</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="11" y="231">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="(w,757O%H`@4v}^s0hrZ">
+        <field name="VAR">按鈕</field>
+        <value name="VALUE">
+          <block type="TTP229_get" id="#G%TrWymom}95^un=4%/"></block>
+        </value>
+        <next>
+          <block type="controls_if" id="o{R9awTzTBsOx,A_L+kg">
+            <mutation elseif="2"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="EX3n/Apl?KYs32NJRCDI">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="M^s2s%Cz_+~:W23CoGay">
+                    <field name="VAR">狀態</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text" id="OtYx1Xsm%jaR=nl#YFpf">
+                    <field name="TEXT">設定倒數時間</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="L#hmafQ4(ez_-k;4!Nvq">
+                <value name="IF0">
+                  <block type="logic_compare" id="].l`OQF{6Um+!PNH:)l(">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="/R|SOj(FrK~J1sTE_b!C">
+                        <field name="VAR">按鈕</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="y/Yrik5h[}cu52WPmcR,">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="YO@c0_fG_w@bb?={th/@">
+                    <mutation elseif="2"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="-=+Mco*Nl?V1;s7R!sDa">
+                        <field name="OP">LT</field>
+                        <value name="A">
+                          <block type="variables_get" id="`KO`r~zidIecQq2FMr%!">
+                            <field name="VAR">按鈕</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="%jO,Q=`|_aI:+q1?ZmlN">
+                            <field name="NUM">11</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="controls_if" id="o+*Ae(~kM7RFotWYG4Y[">
+                        <value name="IF0">
+                          <block type="logic_compare" id=")U/SO3bb1+U`XELF[,GL">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="?Lt[q?9F,R1:l908m^9+">
+                                <field name="VAR">按鈕</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="Nm*w!t]#/~5ufZpQmu]y">
+                                <field name="NUM">10</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="V]GcTz;w!nd;`}UWGVDu">
+                            <field name="VAR">按鈕</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="S@A9T{D};iIHBMzM2/TF">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="variables_set" id="EeT}G#GC(`s7TN@=#b2V">
+                            <field name="VAR">倒數時間</field>
+                            <value name="VALUE">
+                              <block type="math_arithmetic" id="(3IyaEyFI3RVPQ#wBC`u">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <block type="math_arithmetic" id="?__)krn%@dW(A:M8]L~C">
+                                    <field name="OP">MULTIPLY</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="RA%uUj@*R_]A#V^(k37r">
+                                        <field name="VAR">倒數時間</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="f2,o.Dk8MNneywLG,OQD">
+                                        <field name="NUM">10</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="}J767yWYOZz!Ah!p;9uF">
+                                    <field name="VAR">按鈕</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="TM1637_SHOWNUMDEC" id="bh;7qNSSOm%#g_+ikf_w">
+                                <field name="OBJNAME">SSD</field>
+                                <field name="PADDING">TRUE</field>
+                                <field name="COLON">TRUE</field>
+                                <value name="POSITION">
+                                  <block type="math_number" id="mj=/(NSx?cumX#)thfu`">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="DIGITS">
+                                  <block type="math_number" id="dzTE,GJlG@pS^jKS-zpk">
+                                    <field name="NUM">4</field>
+                                  </block>
+                                </value>
+                                <value name="NUM">
+                                  <block type="variables_get" id="T;DL(Tz,GKBc{2gGBdj*">
+                                    <field name="VAR">倒數時間</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF1">
+                      <block type="logic_operation" id="Fvckp}Uo}+4OcRGT(+7k">
+                        <field name="OP">OR</field>
+                        <value name="A">
+                          <block type="logic_compare" id="T6+E5[Dfwi~VUyvvTIg?">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="TcUVp!8z_=Aj?Ag]PbY(">
+                                <field name="VAR">按鈕</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="DVe3m{:ABtkIip34@rf`">
+                                <field name="NUM">13</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id=":GcTan(ni8Hqx:)k~4mk">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="T1b=]!wLTE/jY4~:`?]l">
+                                <field name="VAR">按鈕</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="wBFW#*_pZml0WRLE!7D.">
+                                <field name="NUM">14</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO1">
+                      <block type="variables_set" id="n.kt#T:({pQ{-u#zAke.">
+                        <field name="VAR">倒數時間</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="OCASp6]QUotlBb#}P5y?">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="TM1637_SHOWNUMDEC" id="B:b#`M9AC!3[=MVMsG-%" inline="false">
+                            <field name="OBJNAME">SSD</field>
+                            <field name="PADDING">TRUE</field>
+                            <field name="COLON">TRUE</field>
+                            <value name="POSITION">
+                              <block type="math_number" id="1H3`5h[j1?-K/epLiPux">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="DIGITS">
+                              <block type="math_number" id="S:P]Q!G^sim_!1WbsWuE">
+                                <field name="NUM">4</field>
+                              </block>
+                            </value>
+                            <value name="NUM">
+                              <block type="variables_get" id="7Y9NL`v]CrQv*7tmb`Ow">
+                                <field name="VAR">倒數時間</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF2">
+                      <block type="logic_operation" id="9sx!cf*VB8)a:Hgfh+az" inline="false">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_operation" id="c!+r]~)/^R?Vf5~X~ZVC">
+                            <field name="OP">OR</field>
+                            <value name="A">
+                              <block type="logic_compare" id="vst2}D`SU9%beZS0YX_7">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="027V:;z]([Pv0{)K5EFR">
+                                    <field name="VAR">按鈕</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="f[!oLH{V(g+~*jDFJR8P">
+                                    <field name="NUM">15</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="kw{M0f+Sb@H^^|}kecv+">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="9)Qq6vfx;`5EEbXAHk3#">
+                                    <field name="VAR">按鈕</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="(]20eJ7|WNQbh8w8m1wR">
+                                    <field name="NUM">16</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="f2*_eaCELjgd+Jlgq{R2">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="variables_get" id="Hrx3E!%*4i4Z2l=`,z:N">
+                                <field name="VAR">倒數時間</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="OELqm@Ug0{hjoI#Zx7kz">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO2">
+                      <block type="variables_set" id="F9A|2)Ngm/3beyoYq:40">
+                        <field name="VAR">倒數時間</field>
+                        <value name="VALUE">
+                          <block type="math_arithmetic" id="xgUjD?fnaHaJQRZMO-30" inline="false">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="math_arithmetic" id="?;@KcsC#PC;_45mfl:K6">
+                                <field name="OP">MULTIPLY</field>
+                                <value name="A">
+                                  <block type="math_arithmetic" id="8IJ=%yUQ|i*T1%)g|2sP">
+                                    <field name="OP">DIVIDE</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="U4`@p.I.B134I~.+F!gm">
+                                        <field name="VAR">倒數時間</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id=",AC*Fv!ECz2}cckXk))e">
+                                        <field name="NUM">100</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="TBlLYp(Pp/L]7ekO[AYe">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_modulo" id="gHmBvVm/T-_+bbAriS5b">
+                                <value name="DIVIDEND">
+                                  <block type="variables_get" id="I9Yu6yu|/`kVW(M72wkY">
+                                    <field name="VAR">倒數時間</field>
+                                  </block>
+                                </value>
+                                <value name="DIVISOR">
+                                  <block type="math_number" id="aV3D=/?3[i+hC9M`+B)3">
+                                    <field name="NUM">100</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="jLDaY5(z-~pl_48lsf+B">
+                            <field name="VAR">倒數時間</field>
+                            <value name="VALUE">
+                              <block type="math_constrain" id="7@8StzL2El_P(If^{lnw">
+                                <value name="VALUE">
+                                  <block type="variables_get" id="%;J)zAMfA?n4OXZzbMzR">
+                                    <field name="VAR">倒數時間</field>
+                                  </block>
+                                </value>
+                                <value name="LOW">
+                                  <block type="math_number" id="lSrcnI-zUJRwcIYJ9WA^">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                                <value name="HIGH">
+                                  <block type="math_number" id="YaC.)Vq-q]3p^%}3drc^">
+                                    <field name="NUM">5999</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="procedures_callnoreturn" id="LXpC[jsZ;SknJMRY~M6D">
+                                <mutation name="顯示剩餘時間"></mutation>
+                                <next>
+                                  <block type="variables_set" id="2Rr!pL/yC?UL=E@xZ)9:">
+                                    <field name="VAR">暫停</field>
+                                    <value name="VALUE">
+                                      <block type="logic_boolean" id="Ym{7*]VmM|(4VmV5gSup">
+                                        <field name="BOOL">FALSE</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="*n/J_.!LJcb+@+y]:64p">
+                                        <field name="VAR">上一次時間</field>
+                                        <value name="VALUE">
+                                          <block type="time_millis" id="+d3I@~X_+GovqseVzRdC"></block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="o5cX1wp@qw)7H|H{CThE">
+                                            <field name="VAR">狀態</field>
+                                            <value name="VALUE">
+                                              <block type="text" id="|hf*BT(or_fEiSkQ}?48">
+                                                <field name="TEXT">倒數計時中</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="time_delay" id="Qm5A|t!fUNFBvu{.]?/j">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="*aZt;?siZI:[]!~DUu^c">
+                            <field name="NUM">300</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="IdbYl*dfZ%CsqmLm)%[r">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="4`ES)C[ZF)hjd5NJ2lBD">
+                    <field name="VAR">狀態</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text" id="/%a_;CP;q/:EmUG(r_gS">
+                    <field name="TEXT">倒數計時中</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="controls_if" id="-9wN,~~2s8YvI*!SsK;;">
+                <value name="IF0">
+                  <block type="logic_operation" id="8j,~d+zm1ms!~j5|RMWT" inline="false">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id="B?,1*1,JSZkl8-UR5~3!">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="math_arithmetic" id="RQTH%hF7c8_Z7-(g`zl{">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="time_millis" id="1DuL6f)EY:OjABC}^~Vu"></block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="Xzfw)Um1`0hc_?lN]e[8">
+                                <field name="VAR">上一次時間</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="ylU:;T!wd3Cw,b[BC)0*">
+                            <field name="NUM">1000</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_negate" id="*3|3`10(hiI.Wj|t:q]~">
+                        <value name="BOOL">
+                          <block type="variables_get" id="2EuU,D-KRy_Ubc8)zt:e">
+                            <field name="VAR">暫停</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="math_change2" id="2/R9pM_SVvE0b}efAyxL">
+                    <field name="VAR">倒數時間</field>
+                    <field name="OP">-</field>
+                    <value name="DELTA">
+                      <block type="math_number" id="gQb+uu4lvO,O32i;Ys[|">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="YpQ#7H[`OQvXVX[i,=`O">
+                        <mutation else="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_compare" id="rfCOFGEBN=5/P4GxcpTX">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id=")?d/`K4:7II]qL^]9QxJ">
+                                <field name="VAR">倒數時間</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="LEN:XZf|dMwlRAcsE8y)">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="udvFfR8^JDkqaYU5qZw+">
+                            <field name="VAR">倒數聲計數</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="M0c*9)W;`AnbV})KvfzD">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="va[[?~!fNZC8,T=1U*T^">
+                                <field name="VAR">狀態</field>
+                                <value name="VALUE">
+                                  <block type="text" id="3slWbXehYT91`Z9|gWn~">
+                                    <field name="TEXT">時間到</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <statement name="ELSE">
+                          <block type="variables_set" id="{Ce(@Mnpiw_.N!ida,hC">
+                            <field name="VAR">上一次時間</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="P]h]HED7,t,z3p`kEi}7"></block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="procedures_callnoreturn" id="Be5BKq%|R3?1j;0TV!z|">
+                            <mutation name="顯示剩餘時間"></mutation>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id=",55C-r21O9!*miAp=`Jm">
+                    <mutation elseif="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_operation" id="!]j=mbS(RQ6tY8pkfR,#">
+                        <field name="OP">OR</field>
+                        <value name="A">
+                          <block type="logic_compare" id="is/D_)FhDKCaz{*Cbb;h">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="RB-uWMBGRRT9Y!Y`wTkO">
+                                <field name="VAR">按鈕</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="t?]T0+u%B+VHu*?7qoIy">
+                                <field name="NUM">15</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="vK/pj/]d~}.)JLX:*H-z">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="ngCQBke0R,6jv~@V[X5w">
+                                <field name="VAR">按鈕</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="3~E@=2{s6e:Eq)+Crw%n">
+                                <field name="NUM">16</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="sZBOm?+t01wdrOzk_ggq">
+                        <field name="VAR">暫停</field>
+                        <value name="VALUE">
+                          <block type="logic_negate" id="^xE0tM?|IPKPI|=CQ^W}">
+                            <value name="BOOL">
+                              <block type="variables_get" id="FqMg%O45,KQ.==k%%TiA">
+                                <field name="VAR">暫停</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id=":W:h/hz.cOd.[c4EE)3_">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="4#yS2MoMf`v4@agdRR(q">
+                                <field name="NUM">300</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF1">
+                      <block type="logic_operation" id="M*`s;RMmm~G8_PPd0W8E">
+                        <field name="OP">OR</field>
+                        <value name="A">
+                          <block type="logic_compare" id="@*S6CSsNQ!-.P(!c`]}1">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="g@G/./*8|Vj?W[5[@iEX">
+                                <field name="VAR">按鈕</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="8#/5Bmp`[Kv%f#GPsIi-">
+                                <field name="NUM">13</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="wZtC*o|uNo}1TL=j-Nv{">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="NzyP6T)Om{|{L~[KR9wQ">
+                                <field name="VAR">按鈕</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="6A^HAu)ML47)Y~enpn7;">
+                                <field name="NUM">14</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO1">
+                      <block type="variables_set" id="~#KZRX-+p!hcmx_+_d/!">
+                        <field name="VAR">倒數時間</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="b1`)le;oVAIzdl;NMik8">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="TM1637_SHOWNUMDEC" id="38g=wt;|S~mieFOvb{t_">
+                            <field name="OBJNAME">SSD</field>
+                            <field name="PADDING">TRUE</field>
+                            <field name="COLON">TRUE</field>
+                            <value name="POSITION">
+                              <block type="math_number" id="*5Gi6+PK*=[=/SG(R=Kv">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="DIGITS">
+                              <block type="math_number" id="OzDNZHpD#eYNuX~:+I^r">
+                                <field name="NUM">4</field>
+                              </block>
+                            </value>
+                            <value name="NUM">
+                              <block type="variables_get" id="HaW)/?H)DOf@ZhEthCL%">
+                                <field name="VAR">倒數時間</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="pRCK.O*iNYhrHA,nGp@U">
+                                <field name="VAR">狀態</field>
+                                <value name="VALUE">
+                                  <block type="text" id="3z~3px!:W^AlEU4fiP=o">
+                                    <field name="TEXT">設定倒數時間</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="apv(+HB:f)bVdN7n[Pl%">
+                        <value name="IF0">
+                          <block type="variables_get" id="zSu0@]Pd3;?iQC58mj)*">
+                            <field name="VAR">暫停</field>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="Zb=esEn[t5h@tBUzX#z0">
+                            <field name="VAR">上一次時間</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="%FQm7}Y*iN@-KZ8Z=Y!H"></block>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF2">
+              <block type="logic_compare" id="c0%vt/@0+vT2Ng0Pf5re">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="f25VAD?W({wRS!V3+4kj">
+                    <field name="VAR">狀態</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text" id="(Cn~?RBsuCtOt]T0yPa.">
+                    <field name="TEXT">時間到</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO2">
+              <block type="controls_if" id="bO}fOjUYW4%;a[L@x;3y">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="`HFXZ!lA`t|}eN3w8)ZA">
+                    <field name="OP">LT</field>
+                    <value name="A">
+                      <block type="variables_get" id="i3Z3#{QoM]Y*16aj8?Mq">
+                        <field name="VAR">倒數聲計數</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="t~jYyPDV{[o8u6r=t9eo">
+                        <field name="NUM">4</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="xVv*Rh0tkSkIW2|bA.#-">
+                    <value name="IF0">
+                      <block type="logic_compare" id="E0SE#s/+jGuh.hS3tfty">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="math_arithmetic" id="k_FlFX{{;33QMb#@WiW#">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="time_millis" id="cSWM+YR,{yw2V/eYwz-M"></block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="E|5bs~U(A83DsMJwRF#u">
+                                <field name="VAR">上一次時間</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="Qg+W2?ysV7zLS!#cDPY~">
+                            <field name="NUM">104</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="math_change2" id="xr*hFnlUR!lz_)dWpE)L">
+                        <field name="VAR">倒數聲計數</field>
+                        <field name="OP">+</field>
+                        <value name="DELTA">
+                          <block type="math_number" id="iq:7lWl`}73MLHfJWjao">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="io_tone_var" id=":Gn5Dk2v/#gNLeYj{!aB">
+                            <value name="TONEPIN">
+                              <block type="variables_get" id="y9[y.fj!R+ts/=H%*FPS">
+                                <field name="VAR">喇叭</field>
+                              </block>
+                            </value>
+                            <value name="FREQUENCY">
+                              <block type="math_number" id=",d%Dr/l#{Lbe|]6M!Xf1">
+                                <field name="NUM">1500</field>
+                              </block>
+                            </value>
+                            <value name="DURATION">
+                              <block type="math_number" id="AQIefm%.:pT0a?nFpos5">
+                                <field name="NUM">80</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="E1EmASY6add_.I7RsWB(">
+                                <field name="VAR">上一次時間</field>
+                                <value name="VALUE">
+                                  <block type="time_millis" id="%9LfLv*Q3z9O-Hd(BsRz"></block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="controls_if" id="v)o=+6W_YE4K483aNFS^">
+                    <value name="IF0">
+                      <block type="logic_compare" id="+[M=qt57q?IR@Y8yh{jJ">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="math_arithmetic" id="7tOkoTlO`sX5uI/6G+V^">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="time_millis" id="%|jD|UuW]BOylkYY}Jt8"></block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="FY(UjVMApJ=9Trc|o(Gj">
+                                <field name="VAR">上一次時間</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="LAcaF/Y`9VtvAriq.BFj">
+                            <field name="NUM">500</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="aF5mi`,Bc9EDC?YBU0qH">
+                        <field name="VAR">倒數聲計數</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="%G5HbMz*B+|F(2/7q3|k">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="|T~m.T2f`VTCYcCEYOAp">
+                            <field name="VAR">上一次時間</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="c5{1|`L)8#a_n0Xe|2,}"></block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="LpCu+j=q8i~qUlA_2iBC">
+                    <value name="IF0">
+                      <block type="logic_compare" id="Hh3r?5mHPw)`u%{exQNj">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="D0SL`MXauWh.m)iknv];">
+                            <field name="VAR">按鈕</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="gDKl[P*x.`D[DgOX~R9!">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="ppUpD/n=L)N~ZHBO4?9N">
+                        <field name="VAR">狀態</field>
+                        <value name="VALUE">
+                          <block type="text" id="zQZO^aylN9VRk=`h9JT)">
+                            <field name="TEXT">設定倒數時間</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="xlp43x?/#-%x=,orw9Vh" x="892" y="253">
+    <field name="NAME">顯示剩餘時間</field>
+    <statement name="STACK">
+      <block type="variables_set" id="e^h^6s@0]`6`lk}va*PH">
+        <field name="VAR">分</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="hie1@to8qxe1d)36[UE~">
+            <field name="OP">DIVIDE</field>
+            <value name="A">
+              <block type="variables_get" id="SHHQ%Z/HxJ]q.-9PO?Cg">
+                <field name="VAR">倒數時間</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="-lt@U.U9%1mZ9M7cn-~W">
+                <field name="NUM">60</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="K4vaNQFzhQ1pub3hFOUc">
+            <field name="VAR">秒</field>
+            <value name="VALUE">
+              <block type="math_modulo" id="%CSgkb{1~G.[G~orAymS">
+                <value name="DIVIDEND">
+                  <block type="variables_get" id="A[o8.{{RX6ew0((F]Z4K">
+                    <field name="VAR">倒數時間</field>
+                  </block>
+                </value>
+                <value name="DIVISOR">
+                  <block type="math_number" id="!.VsPu^/w*PJ!y3#f,9a">
+                    <field name="NUM">60</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="TM1637_SHOWNUMDEC" id="a_!0U=6*q7!ku)(%~]k=">
+                <field name="OBJNAME">SSD</field>
+                <field name="PADDING">TRUE</field>
+                <field name="COLON">TRUE</field>
+                <value name="POSITION">
+                  <block type="math_number" id="!kqy36hT[YeC-Gg*D.k1">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="DIGITS">
+                  <block type="math_number" id="(ZJew72Hp[XZht(ujS?e">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <value name="NUM">
+                  <block type="variables_get" id="t6xevRVYg=He(FWxqQq/">
+                    <field name="VAR">分</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="TM1637_SHOWNUMDEC" id="qP2oLw|qdjfig-N9cPKK">
+                    <field name="OBJNAME">SSD</field>
+                    <field name="PADDING">TRUE</field>
+                    <field name="COLON">TRUE</field>
+                    <value name="POSITION">
+                      <block type="math_number" id="D~V4Ou`iNV@Bm/pTP,5^">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                    <value name="DIGITS">
+                      <block type="math_number" id="s?B1RNNjjvAk2?Euw.W?">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                    <value name="NUM">
+                      <block type="variables_get" id="ecfKe44ReNMI-DO)XNkm">
+                        <field name="VAR">秒</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

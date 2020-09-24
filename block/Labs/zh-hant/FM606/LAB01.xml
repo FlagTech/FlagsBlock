@@ -1,0 +1,83 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="I)v?~oe@80_+aWKm5i4H" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="dancerobot_use" id="b);nZASZI{i7T7:i+jeT">
+        <field name="RFPIN">D1</field>
+        <field name="LFPIN">D2</field>
+        <field name="RLPIN">D3</field>
+        <field name="LLPIN">D4</field>
+        <next>
+          <block type="dancerobot_restoretrim" id="q,{frgu{qP{[xZoIpBRv" disabled="true"></block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="118">
+    <statement name="LOOP_FUNC">
+      <block type="dancerobot_pos" id="?`/:j[JAXJiESrtHqdx#">
+        <value name="RF_ANGLE">
+          <block type="math_number" id="58f+e%;wP%Bpm}AV%~Iy">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+        <value name="LF_ANGLE">
+          <block type="math_number" id="}~U[@^Nfv-e+}#s78Upu">
+            <field name="NUM">70</field>
+          </block>
+        </value>
+        <value name="RL_ANGLE">
+          <block type="math_number" id="QqsSK^ad)Z:.:yFlqazE">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+        <value name="LL_ANGLE">
+          <block type="math_number" id="]l%4(NZ/K8jSv92rMp6-">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="st]1F3[qLnP7ECOLs3bq">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id=";.1ya)nr:31n#wB_1AHE">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="dancerobot_pos" id="AAwKf^|Omzw^t**i@aZ3">
+                <value name="RF_ANGLE">
+                  <block type="math_number" id="~?uz(NM(t4Z`?U{MBgNe">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="LF_ANGLE">
+                  <block type="math_number" id="!Xz_qOQ%)A]n=RiBFXSE">
+                    <field name="NUM">110</field>
+                  </block>
+                </value>
+                <value name="RL_ANGLE">
+                  <block type="math_number" id="A/SDwZYy=ZH^=cK2ZD!8">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <value name="LL_ANGLE">
+                  <block type="math_number" id=";XOE(hKBt`1Kmm(xIl,S">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="JB(oP/b_)kjpZopR=7i*">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="}%HEiU*wbkx%89!p=H_[">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

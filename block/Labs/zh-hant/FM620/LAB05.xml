@@ -1,0 +1,71 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="Sc/ahtD-z2+Kp:3Bp%%F" x="-111" y="-110">
+    <statement name="SETUP_FUNC">
+      <block type="io_input_pullup" id="^G,`GbiTlATE=n2d4nW[">
+        <field name="PIN">A0</field>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-112" y="-27">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="5+O7ChP0Yg%?T)oSsbG^">
+        <value name="IF0">
+          <block type="logic_compare" id="QKY.mL@q6A{5br:4w{},">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread_var" id="ci+wxr_POxJpfdWGx0{u">
+                <value name="PIN">
+                  <block type="io_allpins" id="riGt@SWWLu;EZxZRgIhX">
+                    <field name="PIN">A0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="O_J]0a,|d*5WJGA+:J=:">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="io_digitalwrite_var" id="zMy@PM4ME;{f/T!1/2`@">
+            <value name="PIN">
+              <block type="io_allpins" id="Oxx(j;T}Dj0SHk)T1YzP">
+                <field name="PIN">12</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="O1TwVyx9^/OEhvtKxaC1">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="j7P`kI(-)?[#XL^;I[EH">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="~:XV~[.=Hj:3CVeV;qmy">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="io_digitalwrite_var" id="njoOA0`?W?Tww3S*yFK[">
+            <value name="PIN">
+              <block type="io_allpins" id="pMjdQplAt2m:;q5k=aJH">
+                <field name="PIN">12</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="FvTSwRgvqDzR6u9C|N0M">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

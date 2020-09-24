@@ -1,0 +1,122 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="wC{cfhP00+qcZ/|njdHW" x="30" y="12">
+    <statement name="SETUP_FUNC">
+      <block type="FLAG74HC595_setup" id="!C_[urAsJjtme!c:E6gY">
+        <field name="OBJNAME">數字顯示器</field>
+        <value name="SDI_PIN">
+          <block type="io_allpins" id="cCm|Hp?.6w.sX6o-J;8}">
+            <field name="PIN">D3</field>
+          </block>
+        </value>
+        <value name="SCLK_PIN">
+          <block type="io_allpins" id="#Qi0c~C:BI~Kq-a0]riH">
+            <field name="PIN">D2</field>
+          </block>
+        </value>
+        <value name="LOAD_PIN">
+          <block type="io_allpins" id=".DwgDQl(5vYJxWG3PcqR">
+            <field name="PIN">D1</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="29" y="138">
+    <statement name="LOOP_FUNC">
+      <block type="FLAG74HC595_set" id="PGThceprT3iL;H;U1TK3">
+        <field name="OBJNAME">數字顯示器</field>
+        <value name="DIGIT2">
+          <block type="text" id="pH^|^/!9P(YW!((6NCJZ">
+            <field name="TEXT">11000110</field>
+          </block>
+        </value>
+        <value name="DIGIT1">
+          <block type="text" id="2dYQ/~UM5pMI+pY6-T%r">
+            <field name="TEXT">11000110</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="~7e]PcCo65}5LzxGQeDQ">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="|iAgaoH}RHj1PonXAXSw">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="FLAG74HC595_set" id="iDjBvzxFz=9:IYA!8id4">
+                <field name="OBJNAME">數字顯示器</field>
+                <value name="DIGIT2">
+                  <block type="text" id="/(LoB4c,qb-=W5Ef8=mm">
+                    <field name="TEXT">00000010</field>
+                  </block>
+                </value>
+                <value name="DIGIT1">
+                  <block type="text" id="_Ces^eApl14:ZnV=H.0U">
+                    <field name="TEXT">00000010</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="QxBRQwRfc}6k]bj03Mb1">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="8|oAF^[@lZ7LH2])2z0i">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="FLAG74HC595_set" id="6WT~*DhtS?F(h_4JE3us">
+                        <field name="OBJNAME">數字顯示器</field>
+                        <value name="DIGIT2">
+                          <block type="text" id="2Ws1SQz08oO8tiSLMS]b">
+                            <field name="TEXT">11000110</field>
+                          </block>
+                        </value>
+                        <value name="DIGIT1">
+                          <block type="text" id="q*v,SeL@KBtVN)Hw)VS7">
+                            <field name="TEXT">11000110</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="|Wb9j,[Y;j(:r]^IV,Wn">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="h_rx/rcS!OH8Xc|:4Nns">
+                                <field name="NUM">200</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="FLAG74HC595_set" id="?05|~brdAzL;S/uPw#Os">
+                                <field name="OBJNAME">數字顯示器</field>
+                                <value name="DIGIT2">
+                                  <block type="text" id="eu.w02=V]u]JqKj[Bd7u">
+                                    <field name="TEXT">00000010</field>
+                                  </block>
+                                </value>
+                                <value name="DIGIT1">
+                                  <block type="text" id="%2sUhfPGg9xP(@lEEE%R">
+                                    <field name="TEXT">00000010</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="time_delay" id="ezuO_9#bw7t}?o;o)H.3">
+                                    <value name="DELAY_TIME_MILI">
+                                      <block type="math_number" id="B/^9f;|nl`f/CEu568;,">
+                                        <field name="NUM">200</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

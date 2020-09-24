@@ -1,0 +1,208 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="[TKG0!9!bDJ3%-i-ME}E" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="flagledstripe_setup" id="7od+7V[hf~x9.2pf^Pd5">
+        <field name="OBJNAME">ledStripe</field>
+        <field name="NUM">16</field>
+        <value name="LEDPIN">
+          <block type="io_allpins" id="aY]GI.:#Mp.qOX5*0%MX">
+            <field name="PIN">6</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setbrightness" id="-maM3(ekoqdjn9EvhoV#">
+            <field name="OBJNAME">ledStripe</field>
+            <field name="BRIGHTNESS">32</field>
+            <next>
+              <block type="flagledstripe_show" id="xVju%wgozL453zi)U9@r">
+                <field name="OBJNAME">ledStripe</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="155">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="dYE7P%_elQDO6S#uMHi^">
+        <mutation name="呼吸效果">
+          <arg name="紅色"></arg>
+          <arg name="綠色"></arg>
+          <arg name="藍色"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="math_number" id="*ikL]*olbhCa?c0il(YW">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="math_number" id="02IK46Rm998Gf/-0.Yo*">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="ARG2">
+          <block type="math_number" id="G{V+i-/-qCh5`_tr%hS4">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="/UQWy7AV=4QdLq{r-8:#" x="20" y="278">
+    <mutation>
+      <arg name="紅色"></arg>
+      <arg name="綠色"></arg>
+      <arg name="藍色"></arg>
+    </mutation>
+    <field name="NAME">呼吸效果</field>
+    <statement name="STACK">
+      <block type="variables_set" id="k~QT_w;|K#ba%z]HW_]]">
+        <field name="VAR">亮度</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="4YiaupHEZJ)E(Lp;cOo|" inline="false">
+            <field name="OP">MULTIPLY</field>
+            <value name="A">
+              <block type="math_arithmetic" id="E[mEyW4:jk(4HPgU^:hM" inline="false">
+                <field name="OP">MINUS</field>
+                <value name="A">
+                  <block type="math_single" id="9=p1tUp0IMq@,8uG9~@Q">
+                    <field name="OP">EXP</field>
+                    <value name="NUM">
+                      <block type="math_trig" id="X.E9Aozw1%HqxI~j%AnE">
+                        <field name="OP">SIN</field>
+                        <value name="NUM">
+                          <block type="math_arithmetic" id="I}[+2}6]j!udEO0[gX^(" inline="false">
+                            <field name="OP">DIVIDE</field>
+                            <value name="A">
+                              <block type="math_arithmetic" id="BG_5sKZ;^bQCv![STwO%" inline="false">
+                                <field name="OP">MULTIPLY</field>
+                                <value name="A">
+                                  <block type="time_millis" id="zJVp)gz{5Z@a_Z8w7+KP"></block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_set_type" id="7i~QwTop=WCd^nEudK7b">
+                                    <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                    <value name="VARIABLE_SETTYPE_INPUT">
+                                      <block type="math_number" id="GTrp0=rrjIM`/3zE37C2">
+                                        <field name="NUM">180</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_set_type" id="]]~p%`P)0AXO7pL[)pl;">
+                                <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+                                <value name="VARIABLE_SETTYPE_INPUT">
+                                  <block type="math_number" id="f#u6a3rl1Rpg?^^0`hiT">
+                                    <field name="NUM">2000</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="Vum@FY,?-K5oYp(w0R9h">
+                    <field name="NUM">0.36787944</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="H?MxlUAMczqtOBK,DpdX">
+                <field name="NUM">108</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_showall" id="o[hKC,yRIJ+4`_J!Doxh" inline="false">
+            <field name="OBJNAME">ledStripe</field>
+            <value name="RED">
+              <block type="math_arithmetic" id=")IDQL!j+Ty[2fzaj=kJY">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="ls,yFr?*H3{;!C6~k!X}">
+                    <field name="OP">MULTIPLY</field>
+                    <value name="A">
+                      <block type="variables_get" id="B/lVJUhbnHuH%[gwUg)i">
+                        <field name="VAR">亮度</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="5Fw!(y,W3}n5XR85!}rA">
+                        <field name="VAR">紅色</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="ex)cDNN#R!VI`PE?DYNs">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_arithmetic" id="7dX^GYygf),5Y:|yn@Fu">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="(`!Y^)(~Zg=soi5T-Er+">
+                    <field name="OP">MULTIPLY</field>
+                    <value name="A">
+                      <block type="variables_get" id="^4]xE7Q7;:.@yU5MOS85">
+                        <field name="VAR">亮度</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="c=8}709sm_|k^:uZ3n*t">
+                        <field name="VAR">綠色</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="qsu#fD1YeNDpaslXRn3J">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_arithmetic" id="OiYUXP%vg9n=;:=E,F-T">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="f^7PenFu;-Hv=mDMoAZ2">
+                    <field name="OP">MULTIPLY</field>
+                    <value name="A">
+                      <block type="variables_get" id="PXQE1g6Lc2K-jP~uu24K">
+                        <field name="VAR">亮度</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="^EVYWW4J%[1]F`bdvXf~">
+                        <field name="VAR">藍色</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="||hJowkCmnk,Y2AF-|HV">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

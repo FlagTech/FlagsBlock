@@ -1,0 +1,628 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="dTn1p!cd#!s4#zfIW}dr" x="-64" y="-72">
+    <statement name="SETUP_FUNC">
+      <block type="servo_use" id="8}p,?]=sw,92=c?e@6eZ">
+        <field name="OBJNAME">中間</field>
+        <field name="PIN">3</field>
+        <next>
+          <block type="servo_use" id="A258Wy3Hu9fcL!pdw)o+">
+            <field name="OBJNAME">左邊</field>
+            <field name="PIN">4</field>
+            <next>
+              <block type="servo_use" id="R[6|nDZd8)OrPhIa[(v:">
+                <field name="OBJNAME">右邊</field>
+                <field name="PIN">5</field>
+                <next>
+                  <block type="variables_set" id="-Lnxy3v}(W1=F#l2T9p6">
+                    <field name="VAR">左腳往前角</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="sDA:IO%x^JXO(0uuE_/k">
+                        <field name="NUM">75</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="-{UQKHYjW%szt~]Q]ibH">
+                        <field name="VAR">左腳往後角</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="?`G3!XQ|ee|16kqq5}8O">
+                            <field name="NUM">130</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="Qh[A5Tnd:1je-@H8y}3`">
+                            <field name="VAR">右腳往前角</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="ypw?P)c;{-%mcW.xJKR#">
+                                <field name="NUM">105</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="nF~7EEvWTs``ipzHAGFt">
+                                <field name="VAR">右腳往後角</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="j1WIuActb%pS/1dwkF,)">
+                                    <field name="NUM">50</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="4o+jVhg+b4`E2#2JV|r8">
+                                    <field name="VAR">撐起右邊角</field>
+                                    <value name="VALUE">
+                                      <block type="math_number" id="m]5eroqzGVQ2@V08PT9v">
+                                        <field name="NUM">80</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="_/}Hynchp+*BEs*,.35J">
+                                        <field name="VAR">撐起左邊角</field>
+                                        <value name="VALUE">
+                                          <block type="math_number" id="3MmVidj7%Z6^,6Ji/h/c">
+                                            <field name="NUM">105</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="gTh2.#Pk=6,lsud2YJ~M">
+                                            <field name="VAR">echoPin</field>
+                                            <value name="VALUE">
+                                              <block type="io_allpins" id="DWk0pk`.0/9w[.xGBPhp">
+                                                <field name="PIN">9</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="05qLyWwbLVE@P*n;IV1X">
+                                                <field name="VAR">triggerPin</field>
+                                                <value name="VALUE">
+                                                  <block type="io_allpins" id="D6!B0gjuz[h5wZ69sHvD">
+                                                    <field name="PIN">10</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id="sT2O5~sR~SZqJcfn;:t!">
+                                                    <field name="VAR">上次測距時間</field>
+                                                    <value name="VALUE">
+                                                      <block type="time_millis" id="B*J^hnK#BEyLiK##.u;2"></block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="s/*g-imberZ#P2)qW}5o" x="629" y="-77">
+    <field name="NAME">前進</field>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn" id="_3zMi5_X_H8nYcYMA.,W">
+        <mutation name="撐起右邊"></mutation>
+        <next>
+          <block type="procedures_callnoreturn" id="ejtZCjy^zJYQ_:cH_=I@">
+            <mutation name="左腳往後右腳往前"></mutation>
+            <next>
+              <block type="procedures_callnoreturn" id=":CR_oWDLQY8UZqrF3u_6">
+                <mutation name="撐起左邊"></mutation>
+                <next>
+                  <block type="procedures_callnoreturn" id="02.vQQU8}fNF.[XMa5{;">
+                    <mutation name="左腳往前右腳往後"></mutation>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="q}nUnL1uFjy[Is#XWw47" x="920" y="-78">
+    <field name="NAME">撐起右邊</field>
+    <statement name="STACK">
+      <block type="servo_put" id="=G(PKWLbG*Lsa/g/Kfg[">
+        <field name="OBJNAME">中間</field>
+        <value name="SERVO_ANGLE">
+          <block type="variables_get" id="ls._.D.euAnfAR`NjfRR">
+            <field name="VAR">撐起右邊角</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="*rFaz_1en!OR8-1PEt#n">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="O-TE9F?CBsZv]K@S3[TS">
+                <field name="NUM">80</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="X{Gw@Z+q,Eqi,w#?R{]M" x="919" y="42">
+    <field name="NAME">撐起左邊</field>
+    <statement name="STACK">
+      <block type="servo_put" id="h@6(mA%H9%!A5v`(82r]">
+        <field name="OBJNAME">中間</field>
+        <value name="SERVO_ANGLE">
+          <block type="variables_get" id="uBB!^[/H]or_w(Dk)o{_">
+            <field name="VAR">撐起左邊角</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id=".8u3P88Hmg#V0fs=k=,z">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="n)k([VT[r9eIoV^{zIY/">
+                <field name="NUM">80</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="dFL=oUZ4XMlYkMzf8S4`" x="629" y="75">
+    <field name="NAME">後退</field>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn" id="bg48xU@(e`LJQ7/ODHtG">
+        <mutation name="撐起右邊"></mutation>
+        <next>
+          <block type="procedures_callnoreturn" id="Ajf+(r6-hT:xUJRFrLQ-">
+            <mutation name="左腳往前右腳往後"></mutation>
+            <next>
+              <block type="procedures_callnoreturn" id="*u7L06md1)CB^7]tfhpp">
+                <mutation name="撐起左邊"></mutation>
+                <next>
+                  <block type="procedures_callnoreturn" id="%MZ]ny20qEWQ^tXx,8Fu">
+                    <mutation name="左腳往後右腳往前"></mutation>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="z|VAlL/;fmj=xI26L?;B" x="920" y="161">
+    <field name="NAME">左腳往後右腳往前</field>
+    <statement name="STACK">
+      <block type="servo_put" id="9Mgx8mBi[jL`NbJ~@m.^">
+        <field name="OBJNAME">左邊</field>
+        <value name="SERVO_ANGLE">
+          <block type="variables_get" id="2KF~?)k9jgn~t#xnDZe-">
+            <field name="VAR">左腳往後角</field>
+          </block>
+        </value>
+        <next>
+          <block type="servo_put" id="0b0#*+p#LouH4MT4ibt*">
+            <field name="OBJNAME">右邊</field>
+            <value name="SERVO_ANGLE">
+              <block type="variables_get" id="RIWUwG3FlLa)aI}@mIcj">
+                <field name="VAR">右腳往前角</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="_gBvsB[8?^;1b;6yEM8(">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="Wi-7:dV)~=/0Y6n-#yjk">
+                    <field name="NUM">240</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="7DyHy9L/W+7h=Mr,%QT`" x="631" y="226">
+    <field name="NAME">右轉</field>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn" id="KoS52gpYv!/uuP@L~~{S">
+        <mutation name="撐起右邊"></mutation>
+        <next>
+          <block type="procedures_callnoreturn" id="IGiIAvf!taWrBd3SNmhe">
+            <mutation name="左右腳都往後"></mutation>
+            <next>
+              <block type="procedures_callnoreturn" id=",k`(1BnE`xA;K9C:qv9|">
+                <mutation name="撐起左邊"></mutation>
+                <next>
+                  <block type="procedures_callnoreturn" id="CAc(X87L2zJcAO[UBVpP">
+                    <mutation name="左右腳都往前"></mutation>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-62" y="291">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="5_!#I*!u*6k^EiwN%xFY">
+        <value name="IF0">
+          <block type="logic_compare" id="Kg{8Pc7|z;p*2-Dfu*fE">
+            <field name="OP">GTE</field>
+            <value name="A">
+              <block type="math_arithmetic" id="DM9z[OW%dSrZxO`X,1TM">
+                <field name="OP">MINUS</field>
+                <value name="A">
+                  <block type="time_millis" id="foxlW605OYHEeRIY.q0_"></block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="mh5+R6Fk_oyf(E_,y,e(">
+                    <field name="VAR">上次測距時間</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="Kt]nDHLW#cP?S!t=c2,|">
+                <field name="NUM">300</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="yRa0q^4itxD]|KdM)@]B">
+            <field name="VAR">距離</field>
+            <value name="VALUE">
+              <block type="procedures_callreturn" id="B.T;a?*8L0DPiKy+VLhH">
+                <mutation name="測距"></mutation>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="=)x2@[d0^Ag6=9s.G)G~">
+                <value name="IF0">
+                  <block type="logic_operation" id="TQ/Uh,8jmA2`td-By`TV">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id="da~)7Nf@r4tH,Y;bSROX">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="variables_get" id="CnV|Uj`MM%#TKH;KjCTh">
+                            <field name="VAR">距離</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="},,wwa]kp(SZtr0K#r3@">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_compare" id="R1QfR3HQEnG[oj54zQ;v">
+                        <field name="OP">LTE</field>
+                        <value name="A">
+                          <block type="variables_get" id="ZZOq3}YYjXYo*e+Wn4+C">
+                            <field name="VAR">距離</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="+DGBJKTmpD/}YtuxdQ+w">
+                            <field name="NUM">15</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_repeat_ext" id="/=dJc{0Z5QO)G,Lm+KU|">
+                    <value name="TIMES">
+                      <block type="math_number" id="v!UdsaGt-3*DOgrYw5Q*">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="procedures_callnoreturn" id=")v,DoKty.:O+M7|y3d:#">
+                        <mutation name="後退"></mutation>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_repeat_ext" id="mF]6d^4pYS]({do1;iZq">
+                        <value name="TIMES">
+                          <block type="math_number" id="m3{3xamAXp;H4uP1)MKQ">
+                            <field name="NUM">5</field>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="procedures_callnoreturn" id="_Q7I^ZAu9G;iVA{2Wgg5">
+                            <mutation name="右轉"></mutation>
+                            <next>
+                              <block type="time_delay" id="(s8VodIvWq5c7QtgjBl-">
+                                <value name="DELAY_TIME_MILI">
+                                  <block type="math_number" id="ql=mnR]_TMd`IM8|cP-r">
+                                    <field name="NUM">200</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="variables_set" id="6E/WBU)dR!RwVn:aED4z">
+                    <field name="VAR">上次測距時間</field>
+                    <value name="VALUE">
+                      <block type="time_millis" id="Md44{(9g`P[r7GId-V5*"></block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="procedures_callnoreturn" id="PC6wMX#{+`eW,l,unf2H">
+            <mutation name="前進"></mutation>
+            <next>
+              <block type="time_delay" id="kDF%j.hp%#Y+_wK[R]ds">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="dw`n||DZ#:ni-;JPff}5">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="|x,bj7@2i-(qh(g.DvPY" x="919" y="321">
+    <field name="NAME">左腳往前右腳往後</field>
+    <statement name="STACK">
+      <block type="servo_put" id="-*GJ9[vBac/|K?eF-9gT">
+        <field name="OBJNAME">左邊</field>
+        <value name="SERVO_ANGLE">
+          <block type="variables_get" id="GCIMr_km0zg=Ckw/*V}A">
+            <field name="VAR">左腳往前角</field>
+          </block>
+        </value>
+        <next>
+          <block type="servo_put" id="VfP[:Yq8q#V%GVLB({84">
+            <field name="OBJNAME">右邊</field>
+            <value name="SERVO_ANGLE">
+              <block type="variables_get" id="+#pK?vn_B[_9lnSs_)([">
+                <field name="VAR">右腳往後角</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="G5)~6{V9G`3RQlZJ6uD8">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="nP%WrT{q;jxYU{.V%k4E">
+                    <field name="NUM">240</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="LZ:b[M;7^cG}-^91E,hW" x="632" y="378">
+    <field name="NAME">左轉</field>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn" id="We~8{U`z#j7yA@GM]btP">
+        <mutation name="撐起右邊"></mutation>
+        <next>
+          <block type="procedures_callnoreturn" id="nsK`Lt`LO6/@{R~U|9-9">
+            <mutation name="左右腳都往前"></mutation>
+            <next>
+              <block type="procedures_callnoreturn" id="SYYE6o^P@ovq/])|KlB6">
+                <mutation name="撐起左邊"></mutation>
+                <next>
+                  <block type="procedures_callnoreturn" id="h7EI2pgD,g0dl9wLM=r0">
+                    <mutation name="左右腳都往後"></mutation>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="W!8XwsTp%2?BJx^:[#Cb" x="920" y="479">
+    <field name="NAME">左右腳都往後</field>
+    <statement name="STACK">
+      <block type="servo_put" id="09?V4vV{m]6g87*D(XI`">
+        <field name="OBJNAME">左邊</field>
+        <value name="SERVO_ANGLE">
+          <block type="variables_get" id=",Lz;-bHffO.um,W*f{t[">
+            <field name="VAR">左腳往後角</field>
+          </block>
+        </value>
+        <next>
+          <block type="servo_put" id="XFtpAqs9rmQ@9*Sht#6d">
+            <field name="OBJNAME">右邊</field>
+            <value name="SERVO_ANGLE">
+              <block type="variables_get" id="If~DCFP~^(emUcsvuE1P">
+                <field name="VAR">右腳往後角</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="0fDka3[1n5|Ry_0+W-hl">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="5v|8#x|G#9mFFpwaMdx{">
+                    <field name="NUM">240</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="kfbxPv4@_E~#asz9j#@8" x="921" y="637">
+    <field name="NAME">左右腳都往前</field>
+    <statement name="STACK">
+      <block type="servo_put" id="u482PU()J5+U?5.2fM+A">
+        <field name="OBJNAME">左邊</field>
+        <value name="SERVO_ANGLE">
+          <block type="variables_get" id="ns.;rfGym|ah~us9j..#">
+            <field name="VAR">左腳往前角</field>
+          </block>
+        </value>
+        <next>
+          <block type="servo_put" id="f%MF2(i_f%%CB=-,=^y*">
+            <field name="OBJNAME">右邊</field>
+            <value name="SERVO_ANGLE">
+              <block type="variables_get" id="33Kp|UNmUL#=O5d%](w.">
+                <field name="VAR">右腳往前角</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="5ky}IeTwCFKUO)%M~r}|">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="+Jie/n:ij7A6;5eEYsY8">
+                    <field name="NUM">240</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="s`o+E4ti[1BLNW@xPcSE" x="925" y="802">
+    <field name="NAME">測距</field>
+    <statement name="STACK">
+      <block type="io_digitalwrite_var" id="`{zGM]kagWs.u~64rXIc">
+        <value name="PIN">
+          <block type="variables_get" id="odXPT8f3~_HClNy8%vvX">
+            <field name="VAR">triggerPin</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="io_highlow" id="-UXa%G:!/ito~|?Jx;j4">
+            <field name="STATE">HIGH</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delaymicros" id="Hq/AJQpu9hn_yc;e;o7:">
+            <value name="DELAY_TIME_MICRO">
+              <block type="math_number" id="8~N2i:*s=Vs:2CCr4g/h">
+                <field name="NUM">10</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_digitalwrite_var" id="L)6XByT#f#(+sp=jHf_9">
+                <value name="PIN">
+                  <block type="variables_get" id="=E)^QPesR_6g4f88?P!t">
+                    <field name="VAR">triggerPin</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="9C4%J=#,{+zu,)Mf}Lz+">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="]3g+9undIa2]t8lXoHpd">
+                    <field name="VAR">高電位持續時間</field>
+                    <value name="VALUE">
+                      <block type="io_pulsetimeout_var" id="8Lw6sI8mFll4T=,ZW@cr">
+                        <value name="PIN">
+                          <block type="variables_get" id="kA,ofh}N98rI6!q@dQ4z">
+                            <field name="VAR">echoPin</field>
+                          </block>
+                        </value>
+                        <value name="PULSETYPE">
+                          <shadow type="io_highlow" id="pBRJwPfZ:olX*vPrAK=^">
+                            <field name="STATE">HIGH</field>
+                          </shadow>
+                        </value>
+                        <value name="TIMEOUT">
+                          <block type="math_number" id="uWdW}R5PlAIT`MGp89iz">
+                            <field name="NUM">10000</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="w6XzFGq}M2bw{BBeuPP;">
+                        <value name="IF0">
+                          <block type="logic_compare" id="ww4{y3Zis76aX3G9|gml">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="t)=kj+z6%1694vS~d{.)">
+                                <field name="VAR">高電位持續時間</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="y]F(3MBh-Y-YrGU88crP">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="io_digitalwrite_var" id="?cPL4dBH(/5Z[:,Uq;H6">
+                            <value name="PIN">
+                              <block type="variables_get" id="!nXrsBO+#S}{.?#]wmFm">
+                                <field name="VAR">echoPin</field>
+                              </block>
+                            </value>
+                            <value name="STATE">
+                              <block type="io_highlow" id="|i-#+BfLy,?I-kmX5_PV">
+                                <field name="STATE">LOW</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_set_type" id="^nzH1]]?LgxoP}%XKLLU">
+        <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+        <value name="VARIABLE_SETTYPE_INPUT">
+          <block type="math_arithmetic" id="R@;}Gt5]mek!g1*)zy63">
+            <field name="OP">DIVIDE</field>
+            <value name="A">
+              <block type="variables_get" id="K1|8o~uuh5C;nVZa`T{.">
+                <field name="VAR">高電位持續時間</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="Tvz|YZ+N--9tPDIOXVk1">
+                <field name="NUM">58.2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+</xml>

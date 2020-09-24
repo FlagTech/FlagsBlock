@@ -1,0 +1,280 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="APdZ`6}idx2qi8~;4?g~" x="17" y="-93">
+    <statement name="SETUP_FUNC">
+      <block type="controls_waitUntil" id="@9DU1@{E4hNX-/(B5iK=">
+        <value name="BOOL">
+          <block type="esp8266_ap_setup" id=")VSQz)67.[J,ib2sHcf#">
+            <field name="CHANNEL">1</field>
+            <field name="HIDDEN">FALSE</field>
+            <value name="SSID">
+              <block type="text" id="g}m]hj[G73V@:V.*5E%V">
+                <field name="TEXT">LAB03</field>
+              </block>
+            </value>
+            <value name="PINCODE">
+              <block type="text" id="*uG]ZJL+N^r?rTjTc{w#">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="esp8266_webserver_on2" id="S2q5`@:prcPLb*7m2Eb9">
+            <field name="FUNCNAME">傳送燈的狀態給網頁</field>
+            <field name="PATH">/state</field>
+            <next>
+              <block type="esp8266_webserver_setup" id="IZ0/Y;{+15cz,%#R}Az_">
+                <field name="PORT">80</field>
+                <next>
+                  <block type="io_digitalwrite_var" id="7*h`~`fJ{bA+auJ}Hr5i">
+                    <value name="PIN">
+                      <block type="io_allpins" id="j:+[U0@UlL#nTX%.P|:p">
+                        <field name="PIN">D2</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="W__KDutrP8?Am(d-1@Eu">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_init" id="(H~~]FlOU^s/mI5c27)m">
+                        <field name="VAR">燈的狀態</field>
+                        <value name="VALUE">
+                          <block type="logic_boolean" id="pqdT=k+s*WvxrO=u~?+Y">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_init" id="n~p,QbD;?s/A@Jo-q86`">
+                            <field name="VAR">聽到聲音的次數</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="kmJFuYc[K{rOjW/3eL`c">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_init" id="a2-pB.4*oLd*st%lj4Hq">
+                                <field name="VAR">紀錄時間</field>
+                                <value name="VALUE">
+                                  <block type="time_millis" id="q)n#[Yl@f|]!IcLaBOpJ"></block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="V3^=3G[F=b^zZ#8Q~KNk" x="623" y="124">
+    <field name="NAME">傳送燈的狀態給網頁</field>
+    <statement name="STACK">
+      <block type="controls_if" id="gF^pdll^czoMj4]B[)ZQ">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="bE3=aa-y+ry|PTda5^9N">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="oSAgujj]b76`3:WHB4*k">
+                <field name="VAR">燈的狀態</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_boolean" id="xoqa+Sfg:zG4_r`XW,JC">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="esp8266_webserver_send" id="tcdYBCh(2e|9hJU[]N7E">
+            <value name="STATUS">
+              <block type="math_number" id="O]2F|,aW`aMOmsXM%vnr">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+            <value name="MIMETYPE">
+              <block type="text" id="?fabtu`Oj(sgzL#?g:EM">
+                <field name="TEXT">text/plain</field>
+              </block>
+            </value>
+            <value name="CONTENT">
+              <block type="text" id="!ccJ8paWKiaMq8+0OZ-0">
+                <field name="TEXT">on</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="esp8266_webserver_send" id="},2rrrG(ck9M`sVMx_*}">
+            <value name="STATUS">
+              <block type="math_number" id="M`ES|sVTvEg:@ssDTVGm">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+            <value name="MIMETYPE">
+              <block type="text" id="`5wL/AdVO)LvTv,s)v7]">
+                <field name="TEXT">text/plain</field>
+              </block>
+            </value>
+            <value name="CONTENT">
+              <block type="text" id="vCX@I0Ur?F];7.NhBrH5">
+                <field name="TEXT">off</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="20" y="224">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="e%XHZz3buwRCyjaJyq%}">
+        <next>
+          <block type="time_delay" id="1Oiz3GPijOX=(*IiU6n?">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="x,36raOqh1.VW{Hl!?)V">
+                <field name="NUM">50</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="x]LP6YT!@dWpCB;5=Qhr">
+                <value name="IF0">
+                  <block type="logic_compare" id="Y*~~bBfBj~]]ncFEjDL+" inline="false">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="io_digitalread_var" id="2=PtuKM08CqBlzN/OdrE">
+                        <value name="PIN">
+                          <block type="io_allpins" id="Tp|p!v_iH3Gpk_k#pHjE">
+                            <field name="PIN">D1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="io_highlow" id="yF#iRs_m?5E]|^ikNAb%">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="%4(J,PDfd1^Zi5uL6JXB">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="gZJo.Tz)Q+q{VT?fhIQJ" inline="false">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="math_arithmetic" id="PcIG5s#~]8Eh:b[,GzVG" inline="false">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="time_millis" id="6qR,qO#5k`lIf!fHA3h5"></block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="w^fzQ(7uZU(?4?TH#;4(">
+                                <field name="VAR">紀錄時間</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="Plxjlbzv:::qtil7bIUt">
+                            <field name="NUM">1000</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="xiH5=x#BCI%FkL+#;:A(">
+                        <field name="VAR">聽到聲音的次數</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="D^/61nS7w3[Z6d*?3aoR">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="uNoc^CViNIL:GXhhje-4">
+                            <field name="VAR">紀錄時間</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="alhOzU:s)CV!xUV|k8Mz"></block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="math_change2" id="M17|_wuG,hvpY]uFrkFM">
+                        <field name="VAR">聽到聲音的次數</field>
+                        <field name="OP">+</field>
+                        <value name="DELTA">
+                          <block type="math_number" id="O|@h.{S=OJ-+@9a.OF!x">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="_7`CKtzRA^Lgvp0kiQLL">
+                            <value name="IF0">
+                              <block type="logic_compare" id="Yoj0x@tA4V@J!Oc:**9H" inline="false">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="I[-Yh5=mweobXC*2e4W@">
+                                    <field name="VAR">聽到聲音的次數</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id=")N-jAaBTv*kq_3Eq[+t^">
+                                    <field name="NUM">4</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="variables_set" id="W[e{kxMPP1~7U1DZ#]*2">
+                                <field name="VAR">燈的狀態</field>
+                                <value name="VALUE">
+                                  <block type="logic_negate" id=")QFE~DfSAn.L(;jWz{GR">
+                                    <value name="BOOL">
+                                      <block type="variables_get" id="~|++LJ[l.p|AVR,.d3d6">
+                                        <field name="VAR">燈的狀態</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="io_digitalwrite_var" id="{sF-cboNxBu7KUXl=EYy">
+                                    <value name="PIN">
+                                      <block type="io_allpins" id="(*1))HyIKd?k_u?4CQ}l">
+                                        <field name="PIN">D2</field>
+                                      </block>
+                                    </value>
+                                    <value name="STATE">
+                                      <block type="variables_get" id="tw|j#S!?H)-Hjv^9VS.E">
+                                        <field name="VAR">燈的狀態</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

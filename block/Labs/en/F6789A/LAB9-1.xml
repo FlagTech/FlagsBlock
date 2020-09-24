@@ -1,0 +1,28 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="14" y="10">
+    <statement name="LOOP_FUNC">
+      <block type="serial_print" id="1)4dAq~Q4Kmqfk*t@}Y%">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="NEW_LINE">TRUE</field>
+        <value name="CONTENT">
+          <block type="io_analogread_var" id="r4++/y}%tcW=i)-s:n0B">
+            <value name="PIN">
+              <block type="io_analogpins" id="6.hBC#GlBarEH[D@!dC@">
+                <field name="PIN">A0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="@UXRyLd=ib!lYfdPMI7Z">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="{7I|`TlcJWpS?ERw4Be4">
+                <field name="NUM">5000</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

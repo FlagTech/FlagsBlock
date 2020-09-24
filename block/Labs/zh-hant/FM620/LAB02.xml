@@ -1,0 +1,110 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="8)AwYE`nRZdPs|W*pKlf" x="38" y="-89">
+    <statement name="SETUP_FUNC">
+      <block type="flagledstripe_setup" id="Rczxf_5Kw#|aw}CXvfzm">
+        <field name="OBJNAME">條燈</field>
+        <field name="NUM">2</field>
+        <value name="LEDPIN">
+          <block type="io_allpins" id="g2w]nzzVEOHIWtzkY2r+">
+            <field name="PIN">4</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setbrightness" id="0:!#o8*7gl.]hry}^EMg">
+            <field name="OBJNAME">條燈</field>
+            <field name="BRIGHTNESS">128</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="40" y="32">
+    <statement name="LOOP_FUNC">
+      <block type="flagledstripe_showall" id="j!hTwVIZnY,L6jiaJ{1[">
+        <field name="OBJNAME">條燈</field>
+        <value name="RED">
+          <block type="math_number" id="u]2:LX^EKMyN1^m;zNqO">
+            <field name="NUM">128</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number" id="/c:a{%krFLd#lw)]SZQN">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number" id="2.6O|=N7:tgV9k?@,46N">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="}y[L5D{8jsRBS{mzLasW">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="2M`oHxSb7.t!O{e3-=FI">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_showall" id="blSu,Cc+s/oEqs2EeM|_">
+                <field name="OBJNAME">條燈</field>
+                <value name="RED">
+                  <block type="math_number" id="~Bc-.ys9/s}tdXwVa+`-">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="pog6an:OOROj43Y4aB.|">
+                    <field name="NUM">128</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="0^A1M;Qkp(a*[,fTX*Xa">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id=",8x9_O:Jr^_}zj9Sc01^">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="F!2y:#w5Mh=ohqUd+bfN">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="flagledstripe_showall" id="IOjN1w~G|K0}{b#-I`w1">
+                        <field name="OBJNAME">條燈</field>
+                        <value name="RED">
+                          <block type="math_number" id="RK[NhD*KBxEc^saM)#}Z">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="GREEN">
+                          <block type="math_number" id="Af,Y{jB(KOi{)-q/LrvL">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="BLUE">
+                          <block type="math_number" id="X*k5|?]c7[+EzL/utl#v">
+                            <field name="NUM">128</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="5C}d[9k{2{B3+cXTD4YN">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="#bz0POGCg*qK_J,s@Id.">
+                                <field name="NUM">500</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

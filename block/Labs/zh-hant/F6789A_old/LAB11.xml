@@ -1,0 +1,830 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="(=5+;sIiF-,_^+FXMe^k" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="eH7y)w-rcxlk*?G.*_u7">
+        <field name="VAR">button</field>
+        <value name="VALUE">
+          <block type="io_allpins" id=")rY`HWrc}OX7*N?q.US,">
+            <field name="PIN">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="N6E%NuO-;q@}C/li+iv6">
+            <field name="VAR">count</field>
+            <value name="VALUE">
+              <block type="math_number" id="@Y;~FQ?}Zg,h``UsJ9vH">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="118">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="%VZ7vd^m2p9:+ItYDP,z">
+        <field name="VAR">buttonStatus</field>
+        <value name="VALUE">
+          <block type="io_digitalread_var" id="O]LK}G[ygtj#m~1_1y:s">
+            <value name="PIN">
+              <block type="variables_get" id="GZYE6bY0~%#noIF+5:^f">
+                <field name="VAR">button</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="(udjwOPm-X*iuw)#Rxe:">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="(ibv#lKy}owkp3;U%tz+">
+                <field name="NUM">100</field>
+              </block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="IdwZdCIX}/BK0e@=;kY)">
+                <mutation name="sevenSegmentWrite">
+                  <arg name="digit"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="variables_get" id="9-m)[O6WWQ7O%VphvGR7">
+                    <field name="VAR">count</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="]Ty!rC37Q0i_*1FjlC%[">
+                    <value name="IF0">
+                      <block type="logic_compare" id="R27Gb](:8Kzyx__YqWnS">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="dl(Zk1uE.,h[;aR%FR}#">
+                            <field name="VAR">buttonStatus</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="io_highlow" id="Nw5IG{z]^vpLPt6|C=c2">
+                            <field name="STATE">HIGH</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="math_change" id="^=O-,3Cntv(W)[:)d7HV">
+                        <field name="VAR">count</field>
+                        <value name="DELTA">
+                          <block type="math_number" id="gz]D?h=(v70k,sz5q!If">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="K=lXgFR{,)sKd~FpaP0J">
+                        <value name="IF0">
+                          <block type="logic_compare" id="bU@mpbVCCY+CXB7wLl/5">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="variables_get" id="#i]JK}v[;RXjGrvZc9)m">
+                                <field name="VAR">count</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="dD8J2O-^AiJ9Y7=`pG4d">
+                                <field name="NUM">9</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="DtF+x,wof(E5:m|Bf1U+">
+                            <field name="VAR">count</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="L9rLJ^!@dd{zDiGF]mgn">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="time_delay" id="8Ix]QCWDkH9#9rZ!?k=#">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="aa}?3Sy={eveU|jZjO.r">
+                                <field name="NUM">100</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="array_create_with" id="*Gzz+o5DO,7-CJk-!mWS" x="0" y="484">
+    <field name="NAME">segmentPattern0</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">1,1,1,1,1,1,0</field>
+  </block>
+  <block type="array_create_with" id="aSK,eFl*bmqNlF[i8y/." x="0" y="537">
+    <field name="NAME">segmentPattern1</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">0,1,1,0,0,0,0</field>
+  </block>
+  <block type="array_create_with" id="oW3jnId*R#UcrTN-.2v." x="0" y="590">
+    <field name="NAME">segmentPattern2</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">1,1,0,1,1,0,1</field>
+  </block>
+  <block type="array_create_with" id="/:{K]D!uai)4!^,bbL.y" x="0" y="643">
+    <field name="NAME">segmentPattern3</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">1,1,1,1,0,0,1</field>
+  </block>
+  <block type="array_create_with" id="f4KaKIXBE@5U)qAn0E7c" x="0" y="696">
+    <field name="NAME">segmentPattern4</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">0,1,1,0,0,1,1</field>
+  </block>
+  <block type="array_create_with" id=":.MaT/}A,XR%//8Cl#%I" x="0" y="749">
+    <field name="NAME">segmentPattern5</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">1,0,1,1,0,1,1</field>
+  </block>
+  <block type="array_create_with" id="piTnQgmetr+gMGn-Nxjj" x="0" y="802">
+    <field name="NAME">segmentPattern6</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">1,0,1,1,1,1,1</field>
+  </block>
+  <block type="array_create_with" id="k??-@^/o.-u70t.Li]6{" x="0" y="855">
+    <field name="NAME">segmentPattern7</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">1,1,1,0,0,0,0</field>
+  </block>
+  <block type="array_create_with" id=",m6OFx+8drrS0jtv]Uyx" x="0" y="908">
+    <field name="NAME">segmentPattern8</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">1,1,1,1,1,1,1</field>
+  </block>
+  <block type="array_create_with" id="QAtInR9+u:}sP;#vE8/C" x="0" y="961">
+    <field name="NAME">segmentPattern9</field>
+    <field name="TYPE">int</field>
+    <field name="ITEMS">1,1,1,1,0,1,1</field>
+  </block>
+  <block type="procedures_defnoreturn" id="ge5_Z^aPtZ|giIvd5[oF" x="0" y="1014">
+    <mutation>
+      <arg name="digit"></arg>
+    </mutation>
+    <field name="NAME">sevenSegmentWrite</field>
+    <comment pinned="false" h="80" w="160">digit顯示為LED字型的函式</comment>
+    <statement name="STACK">
+      <block type="controls_if" id="g8vTok?{!9;VMX28-!d2">
+        <mutation elseif="9"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="c0w9r#::ayw]Fg*06A{~">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="x/{i9}vmtjI2ZaH+gosq">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="B*Aa3i+%BFg@=QB+U[%#">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_for" id="Bl)PwAQ9yQ`^Yd|9_+.}">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="7vX*wpb?(Y2c1#x;6^Q~">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="PdK((7]DxBG9Z1vk;G@H">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="7}G*-2g9A5F-tMlNI5K4">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="jI7!,u*S2DdGzhL5Oak`">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="L%k(f4GIs{|[oejd)=n{">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="#fBopxfbd2j@O~@Jvk(m">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="`A?3Aqb}jyO!Bqyw!=Vo">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="9XR}S8`zhb[6]Uk`_!xN">
+                    <field name="NAME">segmentPattern0</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="dJp%=-Q}Zt*jSM0^1tYB">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_compare" id="jT-DbKkyOdYv@fM9|k[g">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id=",Z!8M5.:sVz^RJKe=8Nt">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="PdMkK|_`C:)jR3fMd?1d">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="controls_for" id="^7E/,S=G_^25r?=r/{JE">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="KGb#tXe_O;E#7+xRwZI;">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="+lF(OEr,qPZ.QGw;xI2A">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="FwP~-ax4(`gU9VJ23Q55">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="R`TFD-e*p9V9/u80=0)=">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="Tw@EE[5+=8qj%pf7.mX9">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="hq@Z0JfghKvkFrdc`hB#">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="s^x]U}s#kl::xq.gK2Zk">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="5N;W7K|r_sw/=i{#ZO{c">
+                    <field name="NAME">segmentPattern1</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="7TLvwy[_=i3Tie=^.x;N">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF2">
+          <block type="logic_compare" id="w_,UHFIm_{7:`L.`QH|;">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id=";aH1Us.=e{LjgGkuq{*q">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="vrRc-6_5r~#!jxFH+QZD">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO2">
+          <block type="controls_for" id="z32^9E8)t!LzhcdJ6a;-">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="9-t[sQ|`4m~1b,5DJ%9%">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="mLjrqVtg1P~4:+nvOWy3">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="k1N0MWgoNoS.rQ.dnf~2">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="aUj)q|8-%R5a(;H?7J7@">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="yFDbA]h7jYboEwv+._cR">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="WJA+`X-@4}P_p8R]mlu`">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="n:9/fwd2K#S,.)lr+`lK">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="zyuQpX)Q]}GEK`oq/Z[Y">
+                    <field name="NAME">segmentPattern2</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="9f?8f}bVMkHpS`E9-Jf_">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF3">
+          <block type="logic_compare" id="I.AqG*}C7%b7d6a6LR/h">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="*sFj74;:3#LZwQ;#D~rZ">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id=":hKYDX,[q(M,w~VXN%FV">
+                <field name="NUM">3</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO3">
+          <block type="controls_for" id="i|SmjUMt`=`,mpWVo)rg">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="l(D4sQnL%H1MQed+_m:L">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="dw;2pux7j;S_mu!OhW86">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="-AcYH4auT1iZ7p#c{+-c">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="9ytsBaWMfT-U?Gg2iP8]">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="=xb5nc?elebL{`=fZaJX">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="w=i-Z{u*m3w`o7f^RrII">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="pF`bUIvT*?T;94)oO:@V">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="pck-bI{]=Bkup}/;`/Y0">
+                    <field name="NAME">segmentPattern3</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="#.#q,^S}[dNfjpuBtgV8">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF4">
+          <block type="logic_compare" id=":NePy`40v`~(kXGNJr^1">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="24*-l5gN[doQX%_/y.@m">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="6H~s;*Tr`mKD0xU~0QXR">
+                <field name="NUM">4</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO4">
+          <block type="controls_for" id="sYX(R.V0_(59x0pb-MEK">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="2;!rPHx2:5~..AFr(t=|">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="WrQH+@*[+[[U1)|93)bk">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="83zRTCyh^JM@iuf]L.Dn">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="5Xi_wP4ie~sxu|.N-RKk">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="h;c/;^=fhPyF!|+}K(E{">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="`TeB8}k(Z81^@YGIsx+w">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id=",z?2RVyCqio@?+a/HEwF">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="j2OV%i`U*mv:8NhPG,Y@">
+                    <field name="NAME">segmentPattern4</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="Nuq4Bn*#f)lIl4)[U}QQ">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF5">
+          <block type="logic_compare" id="uoTl;|UUf)x(n`oXT[ao">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="Rp,7s`DP@enb_YBdt%D]">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="{l_tcY|!J*4`0Hl1#nqI">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO5">
+          <block type="controls_for" id="9_*YihPhLK!:8t6ZmA-/">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="*@?^wOnSNT={PP=+=9{4">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="bQ(Y}MsiVp|J^,qhxG~C">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="A|M%QY-e?%QJ`ckMS+nF">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="mh5TWyYkU0%bh-*o-2]%">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="x9_jtaQ[^V;hl{)^^#br">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="kS,q+S4uCU2-mG3aif4G">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="YA:OKC%fSJk]iQ[rVSRa">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="iAGjtizRcD7kDP5+D,dJ">
+                    <field name="NAME">segmentPattern5</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="@J]6p`@]O.#;N/r+vb8(">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF6">
+          <block type="logic_compare" id="^Tzj!Kb^mgQ14RIJ^X/g">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="L?ARM.:dCW/ShfTH:(v?">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="#:{_tvFd%mu7)Uz[PhF=">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO6">
+          <block type="controls_for" id="o]/Yh8%Kptvk3#w97AO/">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="a?~GL[])~6{)n6%Vz;qs">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="bdvP.G+=Roubbp{{ByPv">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="MWFY`G)%AM5`twM2.;T*">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="oU=i@aI!CJR6s0d]md4p">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="Rq5.QIy|!HgEf*-S*3hL">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="{ReFo1/_Q{LU8a;cY3hL">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="xX2za+kuupII`svmuhRB">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id=".,CAXDw1jrH#;~jLQD,7">
+                    <field name="NAME">segmentPattern6</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="t/bu]_1TxyU)3.YbA/q(">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF7">
+          <block type="logic_compare" id="?0J9JlN^l0w%8Z(?6LCP">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="8V^2G0*Xintf{1kRFZP@">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="#X2Jt_c!~+Z1:ucvs,Dl">
+                <field name="NUM">7</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO7">
+          <block type="controls_for" id="ii#iim=!JghJ38Mn=JE;">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="}@;)O3:%E)(t.*ZBTK=u">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="]JKHY]fxFVtIeh8E6h5K">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="@aZTN^7R^awXp/4sUe#Q">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="e@1oGcHGnMoJs[xYKPuT">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="FL%PAyeFA:Don.j2)Ti#">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="lZ=|m(V{:7Pet4=qLrZi">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="6fVSF/ls|K#B:;2n}gm;">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="}(z)n7iWfkhAT+?:.g2O">
+                    <field name="NAME">segmentPattern7</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="#1TTxdAraiQfnSY^i#O!">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF8">
+          <block type="logic_compare" id="VJSPEmRBUP2K-d*go(us">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="bR/D@k2,x{}p,bs5]15;">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="tEq1ar.yk#O_YUKeF6UZ">
+                <field name="NUM">8</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO8">
+          <block type="controls_for" id="AK(y=8*[D=,Wr91@}gvJ">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="1)YDbf?,HPlro_[WmCy%">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="LM%VVBu*=l=4V1tu2`Kb">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="mC6x!G{7XGGz(R{eB/Pd">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="b5#gz{McdoWRsH!*`UHR">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="yNWDcxCdNjI*Xo3v%=]z">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id="VA^ZKR]Z1Qa2+rbXn5;9">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="E=:pf0*VuWTQjQ:IOKX)">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="[6~t46`4,#%v~hS#zS6W">
+                    <field name="NAME">segmentPattern8</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="4[RkXjRnHDK4WOMYgK=s">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <value name="IF9">
+          <block type="logic_compare" id="w,u8zw_q?vncRV0o{P*L">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="-8G3,[/me7hZf1koU^D2">
+                <field name="VAR">digit</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="ZH4o6=QvP4#FdWu~=t0D">
+                <field name="NUM">9</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO9">
+          <block type="controls_for" id="wg9`(oQn8b*#RX7p3D5d">
+            <field name="VAR">ledSeg</field>
+            <value name="FROM">
+              <block type="math_number" id="PWGW-?c[~Hmvn]LJqb`W">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="-O~0d)nmDa=gWyX]!X2f">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="!7-c|fzOT6~/S%)vA5,Y">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="J%ZGEI0ckrH-lOum1|yn">
+                <value name="PIN">
+                  <block type="math_arithmetic" id="`jFhr-35vJgkh#ioJ=/D">
+                    <field name="OP">ADD</field>
+                    <value name="A">
+                      <block type="variables_get" id=".;h4Af_~:e_fv)43R_B:">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="db,.!%pu@i0J4ea3gP15">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="array_get_index" id="bHDcS8Az/;S/?T`F9e3B">
+                    <field name="NAME">segmentPattern9</field>
+                    <value name="INDEX">
+                      <block type="variables_get" id="uX~RoF|H:)htNt[Ba)AQ">
+                        <field name="VAR">ledSeg</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,251 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="@y1?!A0HnD7a^m5i_+@t" x="-43" y="-160">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="yIWmT_sRsFI3.fID%B1?">
+        <field name="VAR">左方向腳位</field>
+        <value name="VALUE">
+          <block type="math_number" id="YNA=f2nW((6tdfNk-O4,">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="1Oj3LI+6ls|PBJQPh#,1">
+            <field name="VAR">左轉速腳位</field>
+            <value name="VALUE">
+              <block type="math_number" id="/lsML3L%JGXiJk9b+Fwi">
+                <field name="NUM">9</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="KuG,tX),)%:|X[f{I.WC">
+                <field name="VAR">右方向腳位</field>
+                <value name="VALUE">
+                  <block type="math_number" id=":1o{9g}|2IH_j?l-)brt">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="DWFGeA.SCV*JfCud#j~:">
+                    <field name="VAR">右轉速腳位</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="La6;NNHn{2*GCG9HT-zL">
+                        <field name="NUM">11</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="tJJXVja4;w2tfi9w*q2D" x="241" y="-162">
+    <field name="NAME">前進</field>
+    <statement name="STACK">
+      <block type="io_digitalwrite_var" id="ZsJ{S`PEu4Bz={d12j}!">
+        <value name="PIN">
+          <block type="variables_get" id="!^uMAbLXNvAT{bfVVRv=">
+            <field name="VAR">左方向腳位</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="io_highlow" id="0S4*lR7r4{x?Lu;ZB!+)">
+            <field name="STATE">HIGH</field>
+          </block>
+        </value>
+        <next>
+          <block type="io_digitalwrite_var" id="IHn}ND+q(+s=7jHXL0/+">
+            <value name="PIN">
+              <block type="variables_get" id="|4mG2p;JP4xdv.E5fSq|">
+                <field name="VAR">左轉速腳位</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="A`RjlwVBS`9#nFSB9f5U">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_digitalwrite_var" id="A`*Pry3YrEHZMhJd?+aL">
+                <value name="PIN">
+                  <block type="variables_get" id="f7O]-@w*9ewi9+e1Imd0">
+                    <field name="VAR">右方向腳位</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="b`0tIhy?bja:!?9_Ydl0">
+                    <field name="STATE">HIGH</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_digitalwrite_var" id="3PQZ0MvJl17{)3yGw@%o">
+                    <value name="PIN">
+                      <block type="variables_get" id="MCRK{[8-M30q#(+A:Pe/">
+                        <field name="VAR">右轉速腳位</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="BEh9`8QToc;Q8b@f(7]N">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-40" y="10">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="!%u9*vbW;o2ujHwt!I@U">
+        <mutation name="前進"></mutation>
+        <next>
+          <block type="time_delay" id="@F07k[fYv`Ig1FO.pKpC">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="Uszoo4E|r95{%{FF}}WL">
+                <field name="NUM">100</field>
+              </block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="*])SXvWvrY0*3He*S]KN">
+                <mutation name="停車"></mutation>
+                <next>
+                  <block type="time_delay" id="=+]v8.fKt,aYT`o(c=Xt">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="H3|0Kk;~Jfg(J=0u~K1#">
+                        <field name="NUM">2000</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="procedures_callnoreturn" id="2?ON%GvrU8~#lv2g(O)f">
+                        <mutation name="後退"></mutation>
+                        <next>
+                          <block type="time_delay" id="@[M.6*`h./PekH`:XE^=">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="{zQ[HX*L,XW~WxX:Y,J_">
+                                <field name="NUM">100</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="procedures_callnoreturn" id="qNg2p5c=GE=F`6DzAs%+">
+                                <mutation name="停車"></mutation>
+                                <next>
+                                  <block type="time_delay" id="7F;X`{z-brET2[{mpq)Y">
+                                    <value name="DELAY_TIME_MILI">
+                                      <block type="math_number" id=")#n.y6FYf%Rx1qAu|xb`">
+                                        <field name="NUM">2000</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="G(k|})iv?N|~Jjh~t28." x="239" y="37">
+    <field name="NAME">後退</field>
+    <statement name="STACK">
+      <block type="io_digitalwrite_var" id="4qu-tC3B3?%-0JeGkC+U">
+        <value name="PIN">
+          <block type="variables_get" id="!TvV5cjdxre17TaZF1QU">
+            <field name="VAR">左方向腳位</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="io_highlow" id="z*jE-p.-g9L81?^k{pn6">
+            <field name="STATE">LOW</field>
+          </block>
+        </value>
+        <next>
+          <block type="io_digitalwrite_var" id="{mXqa5~~i|6V.#f|bWA0">
+            <value name="PIN">
+              <block type="variables_get" id="BK.k?#-V)z2}nO0}a^!9">
+                <field name="VAR">左轉速腳位</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="{+xCtsl{2alz-6jVn8-%">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_digitalwrite_var" id="=}FfgW)f;QBB]XOrhh4U">
+                <value name="PIN">
+                  <block type="variables_get" id="NS@rwcn.s};{TTi!?]}a">
+                    <field name="VAR">右方向腳位</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="Va9igHIrB-VF~,|V_)1U">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="io_digitalwrite_var" id="-Y5Gg(dq~U~7i[.Mg6xr">
+                    <value name="PIN">
+                      <block type="variables_get" id="oxGoxPs(e^G`yJ9NgGcT">
+                        <field name="VAR">右轉速腳位</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="7)AbQO|_vo87|aiJJxwN">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="4ytpY}Z.YAjkFPDA+9-l" x="241" y="237">
+    <field name="NAME">停車</field>
+    <statement name="STACK">
+      <block type="io_digitalwrite_var" id="Lm?`gFdpUsN?(4L.Z;CI">
+        <value name="PIN">
+          <block type="variables_get" id=".]nHm*?8)W3YSLaYn[00">
+            <field name="VAR">左轉速腳位</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="io_highlow" id="f}Uq%13CbKgw/;S%||IJ">
+            <field name="STATE">LOW</field>
+          </block>
+        </value>
+        <next>
+          <block type="io_digitalwrite_var" id="E|fO{Y{:W-Qc4gu,n.Rb">
+            <value name="PIN">
+              <block type="variables_get" id="lJlU^ZhqIV-|#wgBP`L5">
+                <field name="VAR">右轉速腳位</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id="B1b}gOR{VMexoc7-/^YT">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,50 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="YC_;2h2g^[y(Og9.laT|" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="servo_use" id="_/mI;H/uYdv_Vg:WUfNv">
+        <field name="OBJNAME">靶機馬達_TGservo</field>
+        <field name="PIN">4</field>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="92">
+    <statement name="LOOP_FUNC">
+      <block type="servo_put" id="BRHRRU1V!#{Ik%M@5i;*">
+        <field name="OBJNAME">靶機馬達_TGservo</field>
+        <value name="SERVO_ANGLE">
+          <block type="math_number" id="s!R5Oi,?`roExg,s0L`1">
+            <field name="NUM">75</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="g)R^k~S4^-Y;g7w1AK%2">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="+GgIk{HA.}XHl%`G[[PV">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="servo_put" id="~XR6}6}6f%uR*fgBiJSE">
+                <field name="OBJNAME">靶機馬達_TGservo</field>
+                <value name="SERVO_ANGLE">
+                  <block type="math_number" id="_.wxl:`[1iI_]O2W(qw^">
+                    <field name="NUM">105</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="(rRWqP3DOcapilKX.bm(">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="2oGUm6Fu7ALBb?W^.)`]">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

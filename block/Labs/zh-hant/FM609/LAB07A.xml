@@ -1,0 +1,118 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="@w{x9D,NH,J6!EkJRsW0" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="I|@77qwR=Q~^O{sqc6R{">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">115200</field>
+        <next>
+          <block type="irremote_recv_use" id="QhSO+;7lcWJ:u9LO#SG4">
+            <field name="PIN">D5</field>
+            <next>
+              <block type="io_digitalwrite_var" id="S+Ct-kgdpVq|+[FkC`+`">
+                <value name="PIN">
+                  <block type="io_allpins" id="{1Lnp!lEr{R+/p=.}{~;">
+                    <field name="PIN">D8</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="zhzRL3ZmcT#X-14BSDhi">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-7" y="173">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="=u-OZC@E:^rOT_l|WtEj">
+        <value name="IF0">
+          <block type="irremote_recv_decoded" id="zbmal6j{-gr%!O{EqZpP"></block>
+        </value>
+        <statement name="DO0">
+          <block type="serial_print" id="WSWf@gDUtJ;pL;0JQ*Tq">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="irremote_recv_result" id="(PPd7(-?rxj)J`OU8N+#"></block>
+            </value>
+            <next>
+              <block type="controls_if" id="n~n{=hGFp5:Xw1J`P*H6">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="XMgL*meC=%EzR6:l7,;6">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="irremote_recv_result" id="kV[HMSEX1l(0cUr;fQL*"></block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="Jq~38_1P`^Q+:DS%;w!6">
+                        <field name="TEXT">FF30CF</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="io_digitalwrite_var" id="YtZF|*-MI~1?fF[4EGx?">
+                    <value name="PIN">
+                      <block type="io_allpins" id="YKcYbykFd|6`+JOx`zb#">
+                        <field name="PIN">D8</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="Ao{Endd_7(ZNx(FW-h@q">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="qYud!%}u)e+`d+w7-Dl`">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="irremote_recv_result" id="39CCz1t4`z[(J49Wc2;,"></block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="oHY^Q4Y-5^-aFNA:}=HE">
+                        <field name="TEXT">FF18E7</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="io_digitalwrite_var" id="tBwV#UwLSXlJNl{0%nA0">
+                    <value name="PIN">
+                      <block type="io_allpins" id="]BWa:b+svdIRhqXBYLg8">
+                        <field name="PIN">D8</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="VZ!.QAw7+L5*yJ]ZlOwo">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="time_delay" id="0}dy)=XmI.!yJ_nm=NpE">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="VC^022cj[*aA)F%oT4:*">
+                        <field name="NUM">100</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="irremote_recv_resume" id="DIi*t,t4X(nu.+,x3nVL"></block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

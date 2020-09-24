@@ -1,0 +1,48 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="()d-~@FPH%T)6CxfLOlo" x="-11" y="-31">
+    <statement name="SETUP_FUNC">
+      <block type="io_input_pullup" id="q^Us(~L-_*|P(@G9wpt,">
+        <field name="PIN">A0</field>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-15" y="95">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="Jee7`97Cq;h,:n`O2|(K">
+        <value name="IF0">
+          <block type="logic_compare" id="=Qx5rX9xRW3Cf!6Vzowh">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread_var" id="pdC@rxD8_q^GJr(3|_)Q">
+                <value name="PIN">
+                  <block type="io_allpins" id="HFMkEh|SQc!8`V+hR^a?">
+                    <field name="PIN">A0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="`1`jn?n;|ychJz]hQa9%">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="flagpcmasync_startplaybgm" id="wP3Bq(,Uj19;:05eh6-[">
+            <field name="NUM">1</field>
+            <next>
+              <block type="time_delay" id="S~`PEqQj|LY9fC%+Rki`">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="hxvp#)6[gI?ZGh./-K5|">
+                    <field name="NUM">2000</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

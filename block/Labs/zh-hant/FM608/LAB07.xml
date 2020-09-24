@@ -1,0 +1,87 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="ufs|gkfyU1EGdlK]Q3HR" x="71" y="57">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="q1}?w]T8jA=~tZ@wg#YR">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="rnn_use" id="YK%;?5/~QFxz?vh-T*c(">
+            <field name="OBJNAME">神經3</field>
+            <value name="RNN_weight">
+              <block type="math_number" id="lBh9457hAV=XPcqb-5@6">
+                <field name="NUM">0.6</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="73" y="201">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="962f?`-C8C)D=G^YO|ot">
+        <field name="VAR">原始值</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="Cv3wp/p[m0|#/abqsk_b">
+            <value name="PIN">
+              <block type="io_analogpins" id=".?hmTZ/KG5aykH2:mAp;">
+                <field name="PIN">A0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="ZG7cNN^)rDi9F:@wUS|n">
+            <field name="VAR">濾波ECG</field>
+            <value name="VALUE">
+              <block type="rnn_getoutput" id="AoR*Z4F@e(Ll:6CQANNp">
+                <field name="OBJNAME">神經3</field>
+                <value name="INPUT">
+                  <block type="variables_get" id="Gw^}UI:~e2bP855|*8JI">
+                    <field name="VAR">原始值</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="serial_print" id="1*/}.H.~D--z-9V5znb)">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="text_join" id="Jn=)y@PchRW#zEdIa/a-">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="math_arithmetic" id="49fGk:=o{.y_m`!U%IHe">
+                        <field name="OP">ADD</field>
+                        <value name="A">
+                          <block type="variables_get" id="yj}zu[!(p1HFQMOxudMo">
+                            <field name="VAR">原始值</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="/DcBFi)CPw%1lOZ7qa0e">
+                            <field name="NUM">500</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="text" id="8i^[uw2*aE^?27-%(lq`">
+                        <field name="TEXT">,</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="variables_get" id="wuIfa=R{2u]XrDdAIMjb">
+                        <field name="VAR">濾波ECG</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,285 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="[TKG0!9!bDJ3%-i-ME}E" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="flagledstripe_setup" id="7od+7V[hf~x9.2pf^Pd5">
+        <field name="OBJNAME">ledStripe</field>
+        <field name="NUM">16</field>
+        <value name="LEDPIN">
+          <block type="io_allpins" id="aY]GI.:#Mp.qOX5*0%MX">
+            <field name="PIN">6</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setbrightness" id="-maM3(ekoqdjn9EvhoV#">
+            <field name="OBJNAME">ledStripe</field>
+            <field name="BRIGHTNESS">32</field>
+            <next>
+              <block type="flagledstripe_show" id="xVju%wgozL453zi)U9@r">
+                <field name="OBJNAME">ledStripe</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="155">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="dYE7P%_elQDO6S#uMHi^">
+        <mutation name="漸亮漸暗">
+          <arg name="紅色"></arg>
+          <arg name="綠色"></arg>
+          <arg name="藍色"></arg>
+          <arg name="間隔毫秒"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="math_number" id="*ikL]*olbhCa?c0il(YW">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="math_number" id="02IK46Rm998Gf/-0.Yo*">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="ARG2">
+          <block type="math_number" id="G{V+i-/-qCh5`_tr%hS4">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="ARG3">
+          <block type="math_number" id="q3U5rYj^yr?WC,N3^XAN">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="/UQWy7AV=4QdLq{r-8:#" x="0" y="258">
+    <mutation>
+      <arg name="紅色"></arg>
+      <arg name="綠色"></arg>
+      <arg name="藍色"></arg>
+      <arg name="間隔毫秒"></arg>
+    </mutation>
+    <field name="NAME">漸亮漸暗</field>
+    <statement name="STACK">
+      <block type="controls_for" id="w_F87ES5Uo=~0j+W+Z4J">
+        <field name="VAR">亮度</field>
+        <value name="FROM">
+          <block type="math_number" id="2S0`Kk;%|T[O)D6{Ep0p">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="{bnvMFb9RI{ZkG%ZT?G[">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="q1g*a5OI,o=WhGEd9av~">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="flagledstripe_showall" id="B~KwT=)DtPSK*q)EFVaD" inline="false">
+            <field name="OBJNAME">ledStripe</field>
+            <value name="RED">
+              <block type="math_arithmetic" id="^f!u0{4Qr9pG]j]Z!fFC">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <block type="math_arithmetic" id=";l}:myMqF*elfm)(9@;B">
+                    <field name="OP">MULTIPLY</field>
+                    <value name="A">
+                      <block type="variables_get" id="PepuMr+uq`%7]MeB6f+w">
+                        <field name="VAR">亮度</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="Csn[f]XE;Wp]pqA[wwQC">
+                        <field name="VAR">紅色</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="8ATzw5.2LcNbhPgcMDwd">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_arithmetic" id="xyG9V#(lMpH:26dC(tY4">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="3lhNI2piVg5_(gfmc}Xg">
+                    <field name="OP">MULTIPLY</field>
+                    <value name="A">
+                      <block type="variables_get" id="wFCF/2cd93_7IO6Vnbbf">
+                        <field name="VAR">亮度</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="ILYZ0;W%(db}h}Ugm*+y">
+                        <field name="VAR">綠色</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="uukV?WFP(URTKhFPk;sU">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_arithmetic" id="9Tsk6|0]QAnOjZ{elM],">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="@?|+nsi=qBHbAi.)|U4C">
+                    <field name="OP">MULTIPLY</field>
+                    <value name="A">
+                      <block type="variables_get" id="_!Px~`:Khv6!_O!.CzlO">
+                        <field name="VAR">亮度</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="(uZYU_q=7e@ao:9TtOP:">
+                        <field name="VAR">藍色</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="}jqJ~y._d8O5|H]]nz@.">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="2daq`hqmHkj{RJ7tcYl1">
+                <value name="DELAY_TIME_MILI">
+                  <block type="variables_get" id="kK`B^c9UM.CZuh4+BLIu">
+                    <field name="VAR">間隔毫秒</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_for" id="HoNK4DobXeMx}vEwFGQI">
+            <field name="VAR">亮度</field>
+            <value name="FROM">
+              <block type="math_number" id="=]3LnuQdaYf)J_AzsB+Q">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="cYv=P=ETEAiW5)Fc_T|?">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="M;{YV=i:!TeC2?`Zt0!Y">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="flagledstripe_showall" id="G=5VwK-lqpv^_!T}eA5:" inline="false">
+                <field name="OBJNAME">ledStripe</field>
+                <value name="RED">
+                  <block type="math_arithmetic" id=",NqT%6:O,Or8vzj~+8z/">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id=";HA?V;Tjm=@AxC(V2s`c">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="variables_get" id="*AfqBkK=:pjwPHu9oN~r">
+                            <field name="VAR">亮度</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="1-SxcMkFu@?!j]N*:APC">
+                            <field name="VAR">紅色</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="1YS|-Q:|HL%ht#IPUx=1">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_arithmetic" id="yK/|MN(a}Dl^5l4uY_z5">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="eOtygkgC,n5C[Fxi0kC^">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="variables_get" id="TdfwYlwIySVROgqRK^SQ">
+                            <field name="VAR">亮度</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id=";pnHj/5{Mne{bTeW6{hy">
+                            <field name="VAR">綠色</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="A6;P/Pl?xBM)XcKsKpg!">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_arithmetic" id="J=H~o@}!@[QDaE@L6k7n">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id=".0e]Q?LLew%Hm^3a;dzk">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="variables_get" id="pVr5`lIp4`?!:N(IVzTN">
+                            <field name="VAR">亮度</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="WGJKtfg*~!k*rZ7MaoNV">
+                            <field name="VAR">藍色</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="h]=}Mrcaep~vU!ZmvC?G">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="p3m:||j+@pAY52bP}!+#">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="variables_get" id="tC:8od?eQQ+[HAfEADlL">
+                        <field name="VAR">間隔毫秒</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

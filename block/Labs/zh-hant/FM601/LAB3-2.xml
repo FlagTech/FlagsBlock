@@ -1,0 +1,514 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="aj6n,F-!X%EVY~9#7F]?" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="flagledstripe_setup" id="`]fo;Edmn~`rLcYvpKFJ">
+        <field name="OBJNAME">ledStripe</field>
+        <field name="NUM">15</field>
+        <value name="LEDPIN">
+          <block type="io_allpins" id="^:O.L0o0Db{(O6oDp5kx">
+            <field name="PIN">6</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setbrightness" id="Ae9ZvqX@MSI5i]hWkPJQ">
+            <field name="OBJNAME">ledStripe</field>
+            <field name="BRIGHTNESS">32</field>
+            <next>
+              <block type="flagledstripe_show" id="6~u|?_H(G58z%92/2FDI">
+                <field name="OBJNAME">ledStripe</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="155">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="?gP;^K6WG[SLd_9hqXvC">
+        <mutation name="流星燈">
+          <arg name="紅色"></arg>
+          <arg name="綠色"></arg>
+          <arg name="藍色"></arg>
+          <arg name="長度"></arg>
+          <arg name="間隔毫秒數"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="math_number" id="hxk3HDKU/g~8o(yd#,#0">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="math_number" id="cDhrS.eF?Sn-|ig*lJb5">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="ARG2">
+          <block type="math_number" id="*AZ:Su!4gEAum4mbXzFX">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="ARG3">
+          <block type="math_number" id="tNT%D2W[hO^iCpgyFh_U">
+            <field name="NUM">8</field>
+          </block>
+        </value>
+        <value name="ARG4">
+          <block type="math_number" id="+R0(+mV_dDwD2X]zJ%7i">
+            <field name="NUM">35</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="6+W.9s^s7jLX3N]8:|KC">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_random_int" id="D4M:=z@|ZEsf{K-ub#-h">
+                <value name="FROM">
+                  <block type="math_number" id="@{]8-JbTFMEGf|yp;r*Z">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number" id=")}ekn)o-=jp?NWLga-B8">
+                    <field name="NUM">3000</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="u7(85KcLFbT`zM,F#Em!" x="0" y="306">
+    <mutation>
+      <arg name="紅色"></arg>
+      <arg name="綠色"></arg>
+      <arg name="藍色"></arg>
+      <arg name="長度"></arg>
+      <arg name="間隔毫秒數"></arg>
+    </mutation>
+    <field name="NAME">流星燈</field>
+    <statement name="STACK">
+      <block type="variables_set" id="Gol!keF0ci`lWy!+,Qia">
+        <field name="VAR">尾巴位置</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="E@=Ur51r5c7r+/ZIsjlt">
+            <field name="OP">MINUS</field>
+            <value name="A">
+              <block type="math_number" id="gP?Sf*}1|7/L238PZ`{1">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="variables_get" id="HKwKe0T(9}qSKQV!*3@*">
+                <field name="VAR">長度</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_repeat_ext" id="L+Nq+~w4:RGV!z~TJY*N">
+            <value name="TIMES">
+              <block type="math_arithmetic" id="4AL%7R68D|l;l#qv~)l}">
+                <field name="OP">ADD</field>
+                <value name="A">
+                  <block type="flagledstripe_getlength" id="I(hh7RFVO3-:~.[x3_ti">
+                    <field name="OBJNAME">ledStripe</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="variables_get" id="!nCgYdZ+sxZRc{?L#cqp">
+                    <field name="VAR">長度</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="procedures_callnoreturn" id="x2taBt)7ipwXxcy8!/_G">
+                <mutation name="流星效果">
+                  <arg name="紅色"></arg>
+                  <arg name="綠色"></arg>
+                  <arg name="藍色"></arg>
+                  <arg name="啟始位置"></arg>
+                  <arg name="長度"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="variables_get" id="M:pB0yFg{g^zhPlW)~wu">
+                    <field name="VAR">紅色</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="variables_get" id=";USXVyKR,#]EaZqpiXF3">
+                    <field name="VAR">綠色</field>
+                  </block>
+                </value>
+                <value name="ARG2">
+                  <block type="variables_get" id="zX+_,[L[mbVkS8.3-9^W">
+                    <field name="VAR">藍色</field>
+                  </block>
+                </value>
+                <value name="ARG3">
+                  <block type="variables_get" id=":e%9,F#G2XE]=bBu(Gd^">
+                    <field name="VAR">尾巴位置</field>
+                  </block>
+                </value>
+                <value name="ARG4">
+                  <block type="variables_get" id="N~8x3voqNip8%B@-Hpw#">
+                    <field name="VAR">長度</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="zUJnWRV`)CMS]!l7ZFoC">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="variables_get" id="lNv]4k%*=Uzlq49D;A8c">
+                        <field name="VAR">間隔毫秒數</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="math_change2" id="V@4oJG@e!:oj16R-}N%U">
+                        <field name="VAR">尾巴位置</field>
+                        <field name="OP">+</field>
+                        <value name="DELTA">
+                          <block type="math_number" id="?}=|NXU~}Ty/PzBhE6P^">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id=":.q9]In[=c-G1Od^MH^A" x="0" y="571">
+    <mutation>
+      <arg name="紅色"></arg>
+      <arg name="綠色"></arg>
+      <arg name="藍色"></arg>
+      <arg name="啟始位置"></arg>
+      <arg name="長度"></arg>
+    </mutation>
+    <field name="NAME">流星效果</field>
+    <statement name="STACK">
+      <block type="variables_set" id="Cg(R|TpGqVL:vzh`4D@P">
+        <field name="VAR">亮度乘數</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="XwJ-/A|]`inYUn}{Ow22" inline="false">
+            <field name="OP">DIVIDE</field>
+            <value name="A">
+              <block type="math_number" id=":jK*{v:fW5m5q?yop*%^">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_arithmetic" id="H:C)4MNAMiTW/ppU:01:" inline="false">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <block type="math_arithmetic" id="|Qn/o=O~0BlxX#[Os0JQ" inline="false">
+                    <field name="OP">MULTIPLY</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="__MCU@|s~4:^{9MDJH!X" inline="false">
+                        <field name="OP">ADD</field>
+                        <value name="A">
+                          <block type="math_number" id="b,B6+^}KI]7B?n#p=f.k">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id=":d5S=zegUJ-gV#P@dDOX">
+                            <field name="VAR">長度</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="R(F`#k@0#GUtHRgE@@T9">
+                        <field name="VAR">長度</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="%V]KFpg1%hlifVeWPm~H">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="|}R#?a5CzHU/jak#e0fT">
+            <field name="VAR">亮度</field>
+            <value name="VALUE">
+              <block type="math_modulo" id=")4f({%~@p_{1s3ob^s;0" inline="false">
+                <value name="DIVIDEND">
+                  <block type="math_number" id="FlJ!aBS8Nj-t[}!6tP%k">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="DIVISOR">
+                  <block type="math_arithmetic" id="payZnp]om%rN?:}xiFZ}" inline="false">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="_W^=;?Cnv,g91|Lm,4G," inline="false">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="math_arithmetic" id="mR]/?7u^]N+vD3zuv*@H" inline="false">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <block type="math_number" id="qKYPF5:4YBXrM[?8uXay">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="jt2D|rE+6vTQNn^69U20">
+                                <field name="VAR">長度</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="szqKi*XfWb~hW:4DBu*S">
+                            <field name="VAR">長度</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="(Sx.%.?{]A`Aa`jZK#=3">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_clear" id="R^i3JW}^s2WEZH[j!SVE">
+                <field name="OBJNAME">ledStripe</field>
+                <next>
+                  <block type="variables_set" id="{W?_|obJ!umvaI#I-V)G">
+                    <field name="VAR">目前燈序</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="=ij#pzJn(101-j~_9kf?">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="FN*kjeCZ+ZJ@Q80vQ~v{">
+                        <field name="VAR">目前位置</field>
+                        <value name="VALUE">
+                          <block type="variables_get" id="JVs3u(u`*;c6M.Vx0o-^">
+                            <field name="VAR">啟始位置</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_repeat_ext" id="{;.z8-^f[D3#F+0r99/M">
+                            <value name="TIMES">
+                              <block type="variables_get" id="17;R?GTS0Ep8R_`3=B,:">
+                                <field name="VAR">長度</field>
+                              </block>
+                            </value>
+                            <statement name="DO">
+                              <block type="math_change2" id="FKE+^bhdxbV-~j%(A_TB">
+                                <field name="VAR">亮度</field>
+                                <field name="OP">+</field>
+                                <value name="DELTA">
+                                  <block type="math_arithmetic" id="EMA~PK7Tpcy+8bEic*Ga">
+                                    <field name="OP">MULTIPLY</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="p0%Fltv#u7Q#iG67/ySE">
+                                        <field name="VAR">目前燈序</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="variables_get" id="ytS!D2?vT@iRi@%{4_9]">
+                                        <field name="VAR">亮度乘數</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_if" id="O.4*Qs7lvr}}dVJBg/Hk">
+                                    <value name="IF0">
+                                      <block type="logic_operation" id="s(s#XX1h0_qk[IYs0fXd" inline="false">
+                                        <field name="OP">AND</field>
+                                        <value name="A">
+                                          <block type="logic_compare" id="EUcjkzfyYbsj}zAV9)py">
+                                            <field name="OP">GTE</field>
+                                            <value name="A">
+                                              <block type="variables_get" id="O+yp@,1.2ahm%lnT|.Ot">
+                                                <field name="VAR">目前位置</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_number" id="GBC7)D@j#|1]{Xm|,,2U">
+                                                <field name="NUM">1</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="logic_compare" id="cUK:^BPv[/42_.Ov54PR">
+                                            <field name="OP">LTE</field>
+                                            <value name="A">
+                                              <block type="variables_get" id=".803Q,jTa1_;ysc-k6-R">
+                                                <field name="VAR">目前位置</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="flagledstripe_getlength" id="90uX:SpirDI2o^X(vylS">
+                                                <field name="OBJNAME">ledStripe</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="flagledstripe_setpixelcolor" id="OP1uC11TZIJm/EACb(i/" inline="false">
+                                        <field name="OBJNAME">ledStripe</field>
+                                        <value name="NUM">
+                                          <block type="variables_get" id="{emq{B_ci.3HY~8a~L/+">
+                                            <field name="VAR">目前位置</field>
+                                          </block>
+                                        </value>
+                                        <value name="RED">
+                                          <block type="arduino_map" id="Gp]k_RzpAs?TE4T8CC:W">
+                                            <value name="NUM">
+                                              <block type="variables_get" id="wG]x?r7J{*nTC]odaql5">
+                                                <field name="VAR">亮度</field>
+                                              </block>
+                                            </value>
+                                            <value name="FROMLOW">
+                                              <block type="math_number" id="afiVnyg+bLPbPo`h`v@L">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <value name="FROMHIGH">
+                                              <block type="math_number" id="zRk.OWJ?}Kwg+9|hdy`?">
+                                                <field name="NUM">255</field>
+                                              </block>
+                                            </value>
+                                            <value name="TOLOW">
+                                              <block type="math_number" id="Y{z`mE0Zywa+)6(;N;BZ">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <value name="TOHIGH">
+                                              <block type="variables_get" id="DCu68DuhLq/06L_2sBwk">
+                                                <field name="VAR">紅色</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="GREEN">
+                                          <block type="arduino_map" id="?A,O[!8,wkB1Y{R4;N~d">
+                                            <value name="NUM">
+                                              <block type="variables_get" id="#NIyaUt0lkgW%Olq?58n">
+                                                <field name="VAR">亮度</field>
+                                              </block>
+                                            </value>
+                                            <value name="FROMLOW">
+                                              <block type="math_number" id="3z]W#*B/zR6A^KV,sOR4">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <value name="FROMHIGH">
+                                              <block type="math_number" id="`?%ul4z5K/`h_AUZd}8X">
+                                                <field name="NUM">255</field>
+                                              </block>
+                                            </value>
+                                            <value name="TOLOW">
+                                              <block type="math_number" id="%PUaG4WwG`;QjT/aHNn9">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <value name="TOHIGH">
+                                              <block type="variables_get" id="N;I-WQN,vb.uf3rO=Tk.">
+                                                <field name="VAR">綠色</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="BLUE">
+                                          <block type="arduino_map" id="TMEw^*Mp?{I(9_RKUGlG">
+                                            <value name="NUM">
+                                              <block type="variables_get" id="`Cod.PKy8TSd1Q?r.F-i">
+                                                <field name="VAR">亮度</field>
+                                              </block>
+                                            </value>
+                                            <value name="FROMLOW">
+                                              <block type="math_number" id="o[J+T3x3Z!zTD,`_*?2{">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <value name="FROMHIGH">
+                                              <block type="math_number" id="MC}yN!K#lc?_#LMbjvB1">
+                                                <field name="NUM">255</field>
+                                              </block>
+                                            </value>
+                                            <value name="TOLOW">
+                                              <block type="math_number" id="-b~P.Vfg1X}tPs=q7:oh">
+                                                <field name="NUM">0</field>
+                                              </block>
+                                            </value>
+                                            <value name="TOHIGH">
+                                              <block type="variables_get" id="mn]]3Um)7noLm6%t|M,?">
+                                                <field name="VAR">藍色</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="math_change2" id="BL;ZlocL0mV?I|[,*5~3">
+                                        <field name="VAR">目前燈序</field>
+                                        <field name="OP">+</field>
+                                        <value name="DELTA">
+                                          <block type="math_number" id="6Qz~Px[YXu#K{n-ljw/x">
+                                            <field name="NUM">1</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="math_change2" id="^EVRAb/OBAF.y{VyI/@*">
+                                            <field name="VAR">目前位置</field>
+                                            <field name="OP">+</field>
+                                            <value name="DELTA">
+                                              <block type="math_number" id="Fuxd^-wHRa~@?BC/Vfdk">
+                                                <field name="NUM">1</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="flagledstripe_show" id="?u#lRj:8g)t0~TQ%MN,M">
+                                <field name="OBJNAME">ledStripe</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

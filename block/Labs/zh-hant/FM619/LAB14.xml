@@ -1,0 +1,1600 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="yY;GzOXLcebFBfMvpQDO" x="-482" y="-911">
+    <statement name="SETUP_FUNC">
+      <block type="FLAGMATRIX_setup" id="oX|s{8co1PWjOVKeL%h@">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="DATA_PIN">
+          <block type="io_allpins" id="{Ewb(`GdE0[)]/dy%9eb">
+            <field name="PIN">D7</field>
+          </block>
+        </value>
+        <value name="CLK_PIN">
+          <block type="io_allpins" id="g,[K4gIk@TvcuNF#)uS%">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="FLAG74HC595_setup" id="iq`]mdb]=:uD:shyl,g8">
+            <field name="OBJNAME">數字顯示器</field>
+            <value name="SDI_PIN">
+              <block type="io_allpins" id=",Ti[eZcWAkBEzZ20z4gb">
+                <field name="PIN">D3</field>
+              </block>
+            </value>
+            <value name="SCLK_PIN">
+              <block type="io_allpins" id="oSYDkZzLnoRB(hwtL7BE">
+                <field name="PIN">D2</field>
+              </block>
+            </value>
+            <value name="LOAD_PIN">
+              <block type="io_allpins" id="Q?@B4]3,~bL4rIr1qVpw">
+                <field name="PIN">D1</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_setup" id="#DRY?vZ+8BMrrBTiRlwb">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <field name="NUM">3</field>
+                <value name="LEDPIN">
+                  <block type="io_allpins" id="QqLvk2E)E6OeXC%AJ)*L">
+                    <field name="PIN">D6</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="FLAG74HC595_clear" id="}P]wYQVzSfJ(9nLOjSsY">
+                    <field name="OBJNAME">數字顯示器</field>
+                    <next>
+                      <block type="FLAGMATRIX_char" id="/_1M#cNvtJHha]Fql_MC">
+                        <field name="OBJNAME">圖形顯示器</field>
+                        <value name="COLOR">
+                          <block type="math_number" id="wuRe|8GWru9gy*js+wF%">
+                            <field name="NUM">3</field>
+                          </block>
+                        </value>
+                        <value name="CHAR">
+                          <block type="text" id="EF+KsN0#~WC0?!*0GEmd">
+                            <field name="TEXT">F</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="flagledstripe_setbrightness" id="Zqf,`Pw,kKs(dvwhgH[/">
+                            <field name="OBJNAME">紅綠燈號誌</field>
+                            <field name="BRIGHTNESS">40</field>
+                            <next>
+                              <block type="flagledstripe_clear" id="!j!aPnpY:LY/~VjK#IO(">
+                                <field name="OBJNAME">紅綠燈號誌</field>
+                                <next>
+                                  <block type="io_digitalwrite_var" id="7=SV~!eK`zYy[eYT@N+d">
+                                    <value name="PIN">
+                                      <block type="io_allpins" id="_p.m]@]-L-Au6lm[WrJA">
+                                        <field name="PIN">D4</field>
+                                      </block>
+                                    </value>
+                                    <value name="STATE">
+                                      <block type="io_highlow" id="njBo+]D~yAo6wfW%vJHj">
+                                        <field name="STATE">HIGH</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="esp8266_sta_setup" id="4RQGB!vu4K^ySZZ@fY:.">
+                                        <value name="SSID">
+                                          <block type="text" id="*ZN.{:}7Jr;N)D+t^tPY">
+                                            <field name="TEXT">無線網路名稱</field>
+                                          </block>
+                                        </value>
+                                        <value name="PINCODE">
+                                          <block type="text" id="w?mq*{dpd(.alneTSIc~">
+                                            <field name="TEXT">無線網路密碼</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="controls_whileUntil" id="{I2`UFW2uXzk8zS9~8^_">
+                                            <field name="MODE">WHILE</field>
+                                            <value name="BOOL">
+                                              <block type="logic_negate" id="QBDT[_.upVHP-TH|.Z0I">
+                                                <value name="BOOL">
+                                                  <block type="esp8266_connected" id="bO50mH!B}UC%Vtd4!feX"></block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name="DO">
+                                              <block type="time_delay" id="7LEA2-^?PV5X6H+TK!=/">
+                                                <value name="DELAY_TIME_MILI">
+                                                  <block type="math_number" id="nWNtvCJZ~`Hle%_ujsuk">
+                                                    <field name="NUM">1000</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="io_digitalwrite_var" id="Ieu|!uJA|[eyQWDf?Mfj">
+                                                <value name="PIN">
+                                                  <block type="io_allpins" id="-+-,*(S%~KE/!1[NZV_;">
+                                                    <field name="PIN">D4</field>
+                                                  </block>
+                                                </value>
+                                                <value name="STATE">
+                                                  <block type="io_highlow" id="1B%^V|G0_-ZE@~-#V5cU">
+                                                    <field name="STATE">LOW</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id="%U`zyPoQW43!=k.eQ{KL">
+                                                    <field name="VAR">中央氣象局請求路徑</field>
+                                                    <value name="VALUE">
+                                                      <block type="text" id="#QR(?/2#pIlmpl6B1fqN">
+                                                        <field name="TEXT">https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-B46CD5C8-B4B5-4F7E-959C-2740C115E4D8&amp;locationName=%E8%87%BA%E5%8C%97%E5%B8%82&amp;elementName=PoP,MinT,MaxT</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="variables_set" id="=N4t@z;Q~/;#{RP%Y,@0">
+                                                        <field name="VAR">行政院環保署請求路徑</field>
+                                                        <value name="VALUE">
+                                                          <block type="text" id="=dozOiVoh/9A7{[0y4Zw">
+                                                            <field name="TEXT">https://opendata.epa.gov.tw/webapi/Data/REWIQA/?$filter=SiteName%20eq%20%27%E5%A3%AB%E6%9E%97%27&amp;$orderby=SiteName&amp;$skip=0&amp;$top=1000&amp;format=json</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="variables_set" id="zzaO{R3/RzED.oolZdTa">
+                                                            <field name="VAR">找到降雨機率</field>
+                                                            <value name="VALUE">
+                                                              <block type="logic_boolean" id="5f/;_LNp7ZnRM;]z;PA{">
+                                                                <field name="BOOL">FALSE</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="variables_set" id="1F9#W{P97Rm?OBO-D.9-">
+                                                                <field name="VAR">找到AQI</field>
+                                                                <value name="VALUE">
+                                                                  <block type="logic_boolean" id="GNMxx^=aKr0-VgOtSdzu">
+                                                                    <field name="BOOL">FALSE</field>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="variables_set" id="oXXZsClWWp!SQ{)#%}ya">
+                                                                    <field name="VAR">全部找到</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="logic_boolean" id="KyH6K_,hy,[{cg@eI9l:">
+                                                                        <field name="BOOL">FALSE</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="variables_set" id="@aa;cQMnC(+G`4snrknp">
+                                                                        <field name="VAR">降雨機率字串</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="text" id=".orY;2}^xnfKd}0zf0TM">
+                                                                            <field name="TEXT"></field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="variables_set" id="xl[f/rrAlD7..zk,aWUD">
+                                                                            <field name="VAR">最小溫度字串</field>
+                                                                            <value name="VALUE">
+                                                                              <block type="text" id="|#^@Nsj%xe}7jluLn|a,">
+                                                                                <field name="TEXT"></field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <next>
+                                                                              <block type="variables_set" id="|.[mAh^gB4xywl8KhsQs">
+                                                                                <field name="VAR">最大溫度字串</field>
+                                                                                <value name="VALUE">
+                                                                                  <block type="text" id="E;4vqdh4l/@a,l8aJ+r^">
+                                                                                    <field name="TEXT"></field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <next>
+                                                                                  <block type="variables_set" id="/`MsD!=;fOTcqS1QrD;I">
+                                                                                    <field name="VAR">降雨機率</field>
+                                                                                    <value name="VALUE">
+                                                                                      <block type="math_number" id="+p#8M7Y1wG1/kY?xjUi^">
+                                                                                        <field name="NUM">0</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <next>
+                                                                                      <block type="variables_set" id="N#iz%vMt[M*EUP7cG3yT">
+                                                                                        <field name="VAR">最小溫度</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="math_number" id="`Ws2GB3!rb^^z0n@3no|">
+                                                                                            <field name="NUM">0</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <next>
+                                                                                          <block type="variables_set" id="JfEf!)%3^bOb_ehJTU~8">
+                                                                                            <field name="VAR">最大溫度</field>
+                                                                                            <value name="VALUE">
+                                                                                              <block type="math_number" id="0={-O`~}c+v53)*RX-Eq">
+                                                                                                <field name="NUM">0</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <next>
+                                                                                              <block type="variables_set" id="H8F9+X9!ztFV~DdpJ2}H">
+                                                                                                <field name="VAR">AQI字串</field>
+                                                                                                <value name="VALUE">
+                                                                                                  <block type="text" id="yJ0?h!k*g5GOm1t8eN[b">
+                                                                                                    <field name="TEXT"></field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <next>
+                                                                                                  <block type="variables_set" id="R/]ni0k3tvIzhbgZi3qx">
+                                                                                                    <field name="VAR">AQI</field>
+                                                                                                    <value name="VALUE">
+                                                                                                      <block type="math_number" id="UWE,-%3Q#;9C%tSnVcs`">
+                                                                                                        <field name="NUM">0</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                    <next>
+                                                                                                      <block type="variables_set" id="=4LiUz.{1iT0-gcmMLMh">
+                                                                                                        <field name="VAR">開始時間</field>
+                                                                                                        <value name="VALUE">
+                                                                                                          <block type="time_millis" id="k,sHp~1nA9NSV*Ysqpfa"></block>
+                                                                                                        </value>
+                                                                                                      </block>
+                                                                                                    </next>
+                                                                                                  </block>
+                                                                                                </next>
+                                                                                              </block>
+                                                                                            </next>
+                                                                                          </block>
+                                                                                        </next>
+                                                                                      </block>
+                                                                                    </next>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="e#hx9)J`XhVmTsnuAiwP" x="604" y="-638">
+    <field name="NAME">良好</field>
+    <statement name="STACK">
+      <block type="flagledstripe_setpixelcolor" id="Gb!l[cy9lY-G2Ql08FYO">
+        <field name="OBJNAME">紅綠燈號誌</field>
+        <value name="NUM">
+          <block type="math_number" id="up_pYa{LTFD.9_j*W?~~">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="RED">
+          <block type="math_number" id="[L@D-*X|v]YsPJAbrda*">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number" id="}3t[iF_7%wB:b2}?A_Yq">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number" id=")?{KKs},U8i^e`G}+Ue=">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setpixelcolor" id="H}vVTrDBN;KS;Eh;%D^J">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <value name="NUM">
+              <block type="math_number" id="aP*PNd2NB3P4%(W2xilS">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="RED">
+              <block type="math_number" id="O-b_]f4E(7?8aDqH^N^R">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_number" id="y=N-xe{wHP1*AT!%}+K0">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_number" id=",0f`5nn!h]J7m.9)z;s/">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_setpixelcolor" id="lE?fyF+-q%9S80OAS|js">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <value name="NUM">
+                  <block type="math_number" id="}+q=DEpZ;]M?=L.~X8Ns">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="RED">
+                  <block type="math_number" id="V9P9SGW70[A+s^({uAV|">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="?@[iwKs,JojzrAo!rLFd">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="x0s6[u}AiH.Lm16d=Gu:">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="oxx33jF;}sq}krZ(`PnV" x="607" y="-433">
+    <field name="NAME">普通</field>
+    <statement name="STACK">
+      <block type="flagledstripe_setpixelcolor" id="X5S;#T??%54MYAYZZD~W">
+        <field name="OBJNAME">紅綠燈號誌</field>
+        <value name="NUM">
+          <block type="math_number" id="rR|AE7VZ+^s=2NPZMyyJ">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="RED">
+          <block type="math_number" id="X=1TvxsFU%ZT1AERDeg?">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number" id="mu{GkICXj6.L;pJm%pIp">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number" id="Fj+aI#+:tu/XHPk6s}N%">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setpixelcolor" id="%8bCvrfmv41Ekn{a(n`y">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <value name="NUM">
+              <block type="math_number" id="Jj0Q2O/~Y#7jDoO*}DVi">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="RED">
+              <block type="math_number" id="kj#9QY(%`hIe^r[p4B:k">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_number" id="Y|M`m|k=},6bQEweez-0">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_number" id="=Aqp7mIsY!q4=xte;V+M">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_setpixelcolor" id="LQg(e()3D8Lcg|Dn}ZeG">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <value name="NUM">
+                  <block type="math_number" id="IC1,[tz;pPOc4QG4HMa{">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="RED">
+                  <block type="math_number" id=")v,-hOOSME:TOz?_W,yh">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="A!yc]y%5uO2f7I:ZqYV#">
+                    <field name="NUM">215</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="X-Xtbj*VaDuE=L/DLs2y">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="e?x_6T^Ui|nD%Jw,C)a_" x="605" y="-229">
+    <field name="NAME">對敏感族群不健康</field>
+    <statement name="STACK">
+      <block type="flagledstripe_setpixelcolor" id="h{1;%tGqtUOfKMfn`E?5">
+        <field name="OBJNAME">紅綠燈號誌</field>
+        <value name="NUM">
+          <block type="math_number" id="Y=h?G@rjlrdiHS#0J9}o">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="RED">
+          <block type="math_number" id="?7C%#C|CLlJJ=W|066*a">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number" id="nZZoK79Se[K,3s5i|9Dj">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number" id="o3_!S`CmmImfT@z}m0,G">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setpixelcolor" id="km]Zpm]:F*slLM#E?KSz">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <value name="NUM">
+              <block type="math_number" id="^neR)+7M|^5.?20s~Iw4">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="RED">
+              <block type="math_number" id="6N^k?f;l+nQvOu,:wmGK">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_number" id="t0[Fcv)lAMmvv/(yy/D|">
+                <field name="NUM">128</field>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_number" id="%gH];Z`YRGAhB1}tq`F,">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_setpixelcolor" id="q%4)J#,Qef_;;|lwK7#J">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <value name="NUM">
+                  <block type="math_number" id="^7OO*wnJybjwKdA1t2(b">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="RED">
+                  <block type="math_number" id="l%tGhOKL[CL@*6`l[?,x">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="I)W0!JwUABY4acd:66.z">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="^q_1#YvYas.oi~`;@H2.">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-483" y="-94">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="TRea#eEb]6}a~~ot]CbF">
+        <value name="IF0">
+          <block type="logic_compare" id="_gcM7Aw#Y8dC/59|hzm*">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="!CU50*l?7(H!Fc62SjxO">
+                <field name="VAR">找到降雨機率</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_boolean" id="3vwLb,e_QeuQF`NA0F:O">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="3!jT;,x2/;(4MxAql!/0">
+            <value name="IF0">
+              <block type="logic_compare" id="wm1k+t^d~Cki.Ob_uJ12">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="esp8266_http_get" id="NB:/fB7Y:t]5IBALXJ]{">
+                    <value name="URL">
+                      <block type="variables_get" id="pfm2DCNNpj0F_foBv[Vc">
+                        <field name="VAR">中央氣象局請求路徑</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="IcgK/BZ^SUd-V5@h.Yx-">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="json_parse" id="eg[DWg./tc!{Y8+o8#u]">
+                <value name="JSON_STR">
+                  <block type="esp8266_http_get_response" id="4*zb-+:6mJz)!pgz_Pja"></block>
+                </value>
+                <next>
+                  <block type="controls_if" id="BezDnY3AY[4|nAH.*X)v">
+                    <value name="IF0">
+                      <block type="json_success" id="Scp=!1BqN?F31@G]zJa="></block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="#SWM?d7*8#r0GyX~BhP9">
+                        <field name="VAR">降雨機率字串</field>
+                        <value name="VALUE">
+                          <block type="json_node_str" id="ptU_YWoAliZh,[nway;c">
+                            <value name="PATH">
+                              <block type="text" id="emJ@usWi=:t%_+oiEQ4E">
+                                <field name="TEXT">records/location/0/weatherElement/0/time/0/parameter/parameterName</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="6`CKlOfec40{(PY1@@qY">
+                            <field name="VAR">最小溫度字串</field>
+                            <value name="VALUE">
+                              <block type="json_node_str" id="%wwycZLRQMW.MjSD|okJ">
+                                <value name="PATH">
+                                  <block type="text" id="b38!+dkO%{rDsngLejKM">
+                                    <field name="TEXT">records/location/0/weatherElement/1/time/0/parameter/parameterName</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="Tpd!%+:6`sDfIjut}qVi">
+                                <field name="VAR">最大溫度字串</field>
+                                <value name="VALUE">
+                                  <block type="json_node_str" id="U4hwI!,55x@Ei9Q%-Qjj">
+                                    <value name="PATH">
+                                      <block type="text" id="`,1lixkvPbFd9].zw*=(">
+                                        <field name="TEXT">records/location/0/weatherElement/2/time/0/parameter/parameterName</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="^I6_^gX](P7_E8Dl4I_q">
+                                    <field name="VAR">降雨機率</field>
+                                    <value name="VALUE">
+                                      <block type="text_atoi" id="}xCv#p)/HEPRf!}*q]K:">
+                                        <field name="VAR">降雨機率字串</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="V)KmAeZul2Vo8?r3VG^B">
+                                        <field name="VAR">最小溫度</field>
+                                        <value name="VALUE">
+                                          <block type="text_atoi" id="Q5p@qgitfANIsXb.k,re">
+                                            <field name="VAR">最小溫度字串</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="_@kSTvM.?xzY:#Vd],s^">
+                                            <field name="VAR">最大溫度</field>
+                                            <value name="VALUE">
+                                              <block type="text_atoi" id="6^])a@V/n#yn7FryZEw6">
+                                                <field name="VAR">最大溫度字串</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="Qr1QZDxp387B~a38fmK)">
+                                                <field name="VAR">找到降雨機率</field>
+                                                <value name="VALUE">
+                                                  <block type="logic_boolean" id="G.aR:/9MPNZg3ma4e8er">
+                                                    <field name="BOOL">TRUE</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id="_zo_DxFwu?jZ%1IZH8RJ">
+                                                    <field name="VAR">連到網際網路</field>
+                                                    <value name="VALUE">
+                                                      <block type="logic_boolean" id="Dap1p%E{U@X^JB26q0!`">
+                                                        <field name="BOOL">TRUE</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="0.i.*w52)xPd:LNtt]e}">
+            <value name="IF0">
+              <block type="logic_compare" id=",uFA5WcL5t:s`b^?r08a">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="o92qdMpy)o#=5{TI!M{j">
+                    <field name="VAR">找到AQI</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_boolean" id="VW6l),%0,5`yQThh?4+@">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="|0yjuphyjr2%-?E,lgbh">
+                <value name="IF0">
+                  <block type="logic_compare" id="PAETL5TQE2MwEh~siBm9">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="esp8266_http_get" id="[ACYK`/}#f2;w8}_csz|">
+                        <value name="URL">
+                          <block type="variables_get" id="~?eF=MK4d%Bcl?VUPwGY">
+                            <field name="VAR">行政院環保署請求路徑</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="R3vV6.7TS33G^-TdWzB9">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="json_parse" id=".j`_t^bT(TC@M*+zoe#l">
+                    <value name="JSON_STR">
+                      <block type="esp8266_http_get_response" id="/*1iOyDvX7L7tp(p(7=b"></block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id=")A#-z:G9(YopO]tYIZQY">
+                        <value name="IF0">
+                          <block type="json_success" id="RDy#=~D6@dc~jV+(G@.t"></block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="..dWi?tv/ll51E?wUmLF">
+                            <field name="VAR">AQI字串</field>
+                            <value name="VALUE">
+                              <block type="json_node_str" id="!,/Tob7VV5K;}6~wn3OW">
+                                <value name="PATH">
+                                  <block type="text" id="W#yet?4^DWepd%WhpW1o">
+                                    <field name="TEXT">0/AQI</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="0kVF#eL2PX#Db=}rwfZT">
+                                <field name="VAR">AQI</field>
+                                <value name="VALUE">
+                                  <block type="text_atoi" id="oWJrLXa1ckF]Q(]0+CI5">
+                                    <field name="VAR">AQI字串</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="jn7PnKaVYLNK7I-],Z@{">
+                                    <field name="VAR">找到AQI</field>
+                                    <value name="VALUE">
+                                      <block type="logic_boolean" id="i(*O,9}aL7KxO=%AVW8a">
+                                        <field name="BOOL">TRUE</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="!2?%q|`#?`Wb3N4JZF/7">
+                                        <field name="VAR">連到網際網路</field>
+                                        <value name="VALUE">
+                                          <block type="logic_boolean" id="dXLeka+ZOs_bnb5|p;V#">
+                                            <field name="BOOL">TRUE</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="pct2[B2B,oJ4~Oz3UOz%">
+                <value name="IF0">
+                  <block type="logic_operation" id="-s8YmIAf0(_~F947FP+m">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id=".si29/V|r2nQ[zf^}5ta">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="WRW{Qv9ty#{2e6kZhwwT">
+                            <field name="VAR">找到AQI</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="652it{Y?4[r08qTl{WuT">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_operation" id="Rxuu8`pw,uy00a)8IZj)">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="?A;u-B;q_Y{TxqrURzym">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="[Xr1#ZgHRk6`rKIZ372p">
+                                <field name="VAR">找到降雨機率</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_boolean" id="gX6x_yh^*inmM|gDW_1r">
+                                <field name="BOOL">TRUE</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="Kjy-ucM/+[JIXLz@td0g">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="r)-b:3I!GTFt|nE`GN5)">
+                                <field name="VAR">全部找到</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_boolean" id="5#DTcbRFE%8)fcKdOfI(">
+                                <field name="BOOL">FALSE</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="3R/Kq22/,|HO0|SwMvm}">
+                    <field name="VAR">全部找到</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="KjJVyH-GEIyqQ?z#bKv]">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="FLAGMATRIX_clear" id="NjUnE8q8tHG32FUU2`:[">
+                        <field name="OBJNAME">圖形顯示器</field>
+                        <next>
+                          <block type="variables_set" id="MsAm`;0DwTV(:yEBw(;7">
+                            <field name="VAR">開始時間</field>
+                            <value name="VALUE">
+                              <block type="time_millis" id="i5,k%,Qq%(@c.Ir(yJx_"></block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="T[6ZN)w9+bcA#B_bT2xT">
+                    <value name="IF0">
+                      <block type="logic_compare" id="I7ZGw0FW{Hh`!Z/SmEo]">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="4,f8nR7CrIIju|aNc3FB">
+                            <field name="VAR">全部找到</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="jSDp3]S`~`G,Rd5)X*hY">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="FLAG74HC595_print" id="u/ovD4pW3vM2CH%qj=3c">
+                        <field name="OBJNAME">數字顯示器</field>
+                        <value name="NUM">
+                          <block type="math_arithmetic" id="s@)[!ggkp1FO;mt(9yM8">
+                            <field name="OP">DIVIDE</field>
+                            <value name="A">
+                              <block type="math_arithmetic" id="lOTGDrGjQ%^J2q]?AeeG">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <block type="variables_get" id="_@I?tB`#O[-Rd@yKqhy?">
+                                    <field name="VAR">最小溫度</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="_TVijCkXuc3)=`]0Tqsu">
+                                    <field name="VAR">最大溫度</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="L6aXedc1:6uLk`^tW#W[">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="zHyw3+3`o1d:f;6QS=Zs">
+                            <value name="IF0">
+                              <block type="logic_compare" id="WvnDm.mx7@0z0nqglVTx">
+                                <field name="OP">LTE</field>
+                                <value name="A">
+                                  <block type="variables_get" id=",M{ewO7NxBrIlNhg-2Qc">
+                                    <field name="VAR">降雨機率</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="OPlemunY~u^lhXg@k?/T">
+                                    <field name="NUM">35</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="FLAGMATRIX_intensity" id=":ViD5]#hGc)t+P[Z]3m/">
+                                <field name="OBJNAME">圖形顯示器</field>
+                                <value name="INTENSITY">
+                                  <block type="math_number" id="MOs@E~[NsQxz}FCMbZL#">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="FLAGMATRIX_sun" id="t5Y_tWZQloZCdB^,er;=">
+                                    <field name="OBJNAME">圖形顯示器</field>
+                                    <value name="DELAY">
+                                      <block type="math_number" id="F/cL`C0qN0R+*/TMo%:I">
+                                        <field name="NUM">750</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_if" id="Fbv`T9JOe5%[]}GOhyZn">
+                                <value name="IF0">
+                                  <block type="logic_operation" id="+#4wXV=X(sp)yei=01)H">
+                                    <field name="OP">AND</field>
+                                    <value name="A">
+                                      <block type="logic_compare" id="b:_b.1`8n-I@7tMo+nf%">
+                                        <field name="OP">GT</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="5hOFUn-}i`?3Lz]_i8:d">
+                                            <field name="VAR">降雨機率</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="0mWwoH6=9~@xh}ZzjX.^">
+                                            <field name="NUM">35</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="logic_compare" id="+BShokjZ6%YASnL~=GI]">
+                                        <field name="OP">LTE</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="DBWB0a#^sJpPOsrk^!|f">
+                                            <field name="VAR">降雨機率</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="=#*acGTT@zyog6hxFt=Z">
+                                            <field name="NUM">70</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="FLAGMATRIX_intensity" id="+dnH3THNdE@J~~TFsBO4">
+                                    <field name="OBJNAME">圖形顯示器</field>
+                                    <value name="INTENSITY">
+                                      <block type="math_number" id="*bWr^,HHbcIcIzkN{@v7">
+                                        <field name="NUM">7</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="FLAGMATRIX_cloud" id="v?84|r8JtCV[C)#g{+8L">
+                                        <field name="OBJNAME">圖形顯示器</field>
+                                        <value name="DELAY">
+                                          <block type="math_number" id="+~_8_-qbu/.f~7A@^i`?">
+                                            <field name="NUM">300</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="controls_if" id="?x^/c|C:;1S[|@v7{4Uc">
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="fNgCpgdsvPw^Tl;?kgy2">
+                                        <field name="OP">GT</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="JJ4IIU7lmD/)tB}3hF+^">
+                                            <field name="VAR">降雨機率</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="OT*l:hN~cw5ZFIegQ3Qw">
+                                            <field name="NUM">70</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="FLAGMATRIX_intensity" id="pKy9j_/*T-fV`{7EM{F4">
+                                        <field name="OBJNAME">圖形顯示器</field>
+                                        <value name="INTENSITY">
+                                          <block type="math_number" id=":77]R%Id:T{ZH8*[lPkR">
+                                            <field name="NUM">1</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="FLAGMATRIX_rain" id="RLx(F4vfdt9`HAu4H/i#">
+                                            <field name="OBJNAME">圖形顯示器</field>
+                                            <value name="DELAY">
+                                              <block type="math_number" id="]}o`OU+1qx:b|0I{sS0W">
+                                                <field name="NUM">250</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="controls_if" id="=Hw8pkStPgHb:bbrU/kw">
+                                        <mutation elseif="5"></mutation>
+                                        <value name="IF0">
+                                          <block type="logic_operation" id="/e=Ik#qiY[-^W;CP?Xux">
+                                            <field name="OP">AND</field>
+                                            <value name="A">
+                                              <block type="logic_compare" id="eF)XnUaJ`)l5%?AuQbEi">
+                                                <field name="OP">GTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="Eqcm]wz4Yafu8]=MB)r*">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="IFI7o;..|q,KhH3l@1L*">
+                                                    <field name="NUM">0</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="logic_compare" id="g,xZSAqywu;E?f2z;?fN">
+                                                <field name="OP">LTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="BX-kMQCzx]?%{^!tB5xB">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="qt+=h?epZx]xi)q@eepr">
+                                                    <field name="NUM">50</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="procedures_callnoreturn" id="0csbvB3C.g=O.c-d/gyf">
+                                            <mutation name="良好"></mutation>
+                                          </block>
+                                        </statement>
+                                        <value name="IF1">
+                                          <block type="logic_operation" id="iz^7(UhzBl:;}X0Q5Kxx">
+                                            <field name="OP">AND</field>
+                                            <value name="A">
+                                              <block type="logic_compare" id="OcWgNrn!H-iz2s5BMC?r">
+                                                <field name="OP">GTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="yF/zLQLf!Nw,s=H-LzO:">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="N)/(o05wP4v_A)K!TqFt">
+                                                    <field name="NUM">51</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="logic_compare" id="cO`%+En%+8E-!ShjX,06">
+                                                <field name="OP">LTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="Tu6Y_A*J5TO~rjPidEw?">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="@(FI|5iW+VE+@~iSs_r{">
+                                                    <field name="NUM">100</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO1">
+                                          <block type="procedures_callnoreturn" id="4!(p1xbzevP=Y^W([%SU">
+                                            <mutation name="普通"></mutation>
+                                          </block>
+                                        </statement>
+                                        <value name="IF2">
+                                          <block type="logic_operation" id=",}r[(DRy|5NXi(l~^[]g">
+                                            <field name="OP">AND</field>
+                                            <value name="A">
+                                              <block type="logic_compare" id="|.#m=+{J]([(;D`_W`d9">
+                                                <field name="OP">GTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="0jn-PoZ]*-i#OuPe[W0(">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="GBtupMusN4sf_5j/NwT}">
+                                                    <field name="NUM">101</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="logic_compare" id="bIfge!fIvM,~@72.;#~o">
+                                                <field name="OP">LTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="n!3r-P^Ttz]kj]ps9T@d">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="/?,m0wzm?d3M45;`RC3~">
+                                                    <field name="NUM">150</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO2">
+                                          <block type="procedures_callnoreturn" id="`S[!zZHn9uht4jy9s4P(">
+                                            <mutation name="對敏感族群不健康"></mutation>
+                                          </block>
+                                        </statement>
+                                        <value name="IF3">
+                                          <block type="logic_operation" id="=sCpZC|A:+ddDX}zemCD">
+                                            <field name="OP">AND</field>
+                                            <value name="A">
+                                              <block type="logic_compare" id="{ZdCT2Ij,bT6YsvP{4Rl">
+                                                <field name="OP">GTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="SI:t3-RLDAU1Cife`dAe">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="GF2`Bsd-11,TUq7[,EZL">
+                                                    <field name="NUM">151</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="logic_compare" id="*^;nqL~2n`amA+Mr~hsC">
+                                                <field name="OP">LTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="w5HZc(QSx`r:`q:uT3Dg">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="d[z(JK_d|dC@TmmpGlr6">
+                                                    <field name="NUM">200</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO3">
+                                          <block type="procedures_callnoreturn" id="oXm1.(K`r%J3,^07?cmR">
+                                            <mutation name="對所有族群不健康"></mutation>
+                                          </block>
+                                        </statement>
+                                        <value name="IF4">
+                                          <block type="logic_operation" id="l#/XDk%!|2U/S/6;_/X~">
+                                            <field name="OP">AND</field>
+                                            <value name="A">
+                                              <block type="logic_compare" id="i?AicU%t9Z{d{~%Obd2.">
+                                                <field name="OP">GTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="rUV[XR:)sNTUtva`gLX+">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="Qn#CpctHafWVkK11s}y0">
+                                                    <field name="NUM">201</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="logic_compare" id="D`y0lhA6ZvK496v=AR0*">
+                                                <field name="OP">LTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="-UoU)J%IGh-kxiG.NV3*">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="[n+1;+V~0t_E}da@9Wvo">
+                                                    <field name="NUM">300</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO4">
+                                          <block type="procedures_callnoreturn" id="5yx2kN{Zn~6MH36q%lm*">
+                                            <mutation name="非常不健康"></mutation>
+                                          </block>
+                                        </statement>
+                                        <value name="IF5">
+                                          <block type="logic_operation" id="Y5O!cEVuY7:%v2g==J8K">
+                                            <field name="OP">AND</field>
+                                            <value name="A">
+                                              <block type="logic_compare" id="aik!g4djS?d#xS.Eeb0J">
+                                                <field name="OP">GTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="*o3k[`dyT%/VXH^eC|`a">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="Z(]bZ[{zjVWFwFAfkmW^">
+                                                    <field name="NUM">301</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="logic_compare" id="QK;(!t*#STPnw.;/.Zvo">
+                                                <field name="OP">LTE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="+/AzHHs)HA[lj#1NqT9m">
+                                                    <field name="VAR">AQI</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="r()mW=eBNU)+dO9Yz#iY">
+                                                    <field name="NUM">500</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO5">
+                                          <block type="procedures_callnoreturn" id=",ZDwK/IY;N|*hr1(xb*f">
+                                            <mutation name="危害"></mutation>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="flagledstripe_show" id="}dS)~o3Ae!SM)tKi/%:F">
+                                            <field name="OBJNAME">紅綠燈號誌</field>
+                                            <next>
+                                              <block type="controls_if" id="UUfc]lOwtB5Inh{#TVy5">
+                                                <value name="IF0">
+                                                  <block type="logic_compare" id="1YES~9)*|PWo*5uKb/MZ">
+                                                    <field name="OP">GTE</field>
+                                                    <value name="A">
+                                                      <block type="math_arithmetic" id="%KiL6ujQRJAEgbQK`qf7">
+                                                        <field name="OP">MINUS</field>
+                                                        <value name="A">
+                                                          <block type="time_millis" id="[D%x]hAPD=UG;CqTJPux"></block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="variables_get" id="G{;l;?_,NLZ)RVF3#V!U">
+                                                            <field name="VAR">開始時間</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number" id="Nr94ufbl;K~UJlK];T@v">
+                                                        <field name="NUM">1800000</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <statement name="DO0">
+                                                  <block type="variables_set" id="(i)(b9nf2+P6EhPM0qe#">
+                                                    <field name="VAR">找到AQI</field>
+                                                    <value name="VALUE">
+                                                      <block type="logic_boolean" id="P1?I#I;J).:Aa.U{O+!X">
+                                                        <field name="BOOL">FALSE</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="variables_set" id="v~pqCif6:!8#LQN8tK^z">
+                                                        <field name="VAR">找到降雨機率</field>
+                                                        <value name="VALUE">
+                                                          <block type="logic_boolean" id="ReQa4c8xYAAzvkuBXdjP">
+                                                            <field name="BOOL">FALSE</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="variables_set" id="j380!vY-zBXE:!=L7:5c">
+                                                            <field name="VAR">全部找到</field>
+                                                            <value name="VALUE">
+                                                              <block type="logic_boolean" id="qX?IZZHCVKD6Y)l)s.;X">
+                                                                <field name="BOOL">FALSE</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="FLAGMATRIX_char" id="AKlz%1L(;^/Zpf`c9XhR">
+                                                                <field name="OBJNAME">圖形顯示器</field>
+                                                                <value name="COLOR">
+                                                                  <block type="math_number" id="LX@E8Xr]}N/CsEEnKIQW">
+                                                                    <field name="NUM">3</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="CHAR">
+                                                                  <block type="text" id="kA-UwfufI6S@(v#{la`_">
+                                                                    <field name="TEXT">F</field>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="FLAG74HC595_clear" id=":~SL8]fjnCkd|tfOW%-i">
+                                                                    <field name="OBJNAME">數字顯示器</field>
+                                                                    <next>
+                                                                      <block type="flagledstripe_clear" id="+vc9*;^YWo_d`FhC:s9p">
+                                                                        <field name="OBJNAME">紅綠燈號誌</field>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </statement>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="}^S#{h(P*{XnPF]K=g,a" x="605" y="-37">
+    <field name="NAME">對所有族群不健康</field>
+    <statement name="STACK">
+      <block type="flagledstripe_setpixelcolor" id=";7wx=}iTuz#hWo_c`0QG">
+        <field name="OBJNAME">紅綠燈號誌</field>
+        <value name="NUM">
+          <block type="math_number" id="TsGrP.iL_4l6gHJ{6L1/">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="RED">
+          <block type="math_number" id="Xq9H?}V38ef*Ff/1*|P7">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number" id="qf{+!Mm)89xTn68gu]P@">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number" id="UI1W-:6,4R?nU`(.u?J!">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setpixelcolor" id="JFEFF};8W#)|g}y_ca=3">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <value name="NUM">
+              <block type="math_number" id="Kb5@JgKZ))JQ+B|H`=/f">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="RED">
+              <block type="math_number" id="]2^T!Fh@vYngFt|)[r3R">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_number" id="+*aB?UiPuh(AnZCap:#q">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_number" id="Gv,{Be_LklHW4#!Ig7*)">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_setpixelcolor" id="3qn~f7[EjlV9y{*v9x}N">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <value name="NUM">
+                  <block type="math_number" id="Y=W;,z{g?ujwETh7|be(">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="RED">
+                  <block type="math_number" id=";jOgW{7LixTgj[pBCb39">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="+g6EpO!CY.vJQ?Sn:z{4">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="Mn?-k?8PL7PTRyh)g[z%">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="Ie/~IYCxV`rE^[YQ%D=5" x="817" y="164">
+    <field name="NAME">非常不健康</field>
+    <statement name="STACK">
+      <block type="flagledstripe_setpixelcolor" id="%Pz/XmUO2R:GhV:Ffc~k">
+        <field name="OBJNAME">紅綠燈號誌</field>
+        <value name="NUM">
+          <block type="math_number" id="aYCjr1v:JoXTZ(Luu5(=">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="RED">
+          <block type="math_number" id="+y8FkXAOPdOUHoqtKPjM">
+            <field name="NUM">160</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number" id="4Gy9H:*%WAA+-12XT!+t">
+            <field name="NUM">32</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number" id="Q6{zYty8hp?J{^6E%GJ)">
+            <field name="NUM">240</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setpixelcolor" id="0hHn~}V-4.,L_cu=|QQu">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <value name="NUM">
+              <block type="math_number" id="4!*KU6X@/bo{EuZ=%/rD">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="RED">
+              <block type="math_number" id="vU;/GrlD_bY)A~b/H]}#">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_number" id="1*2E8#r+jVdk^Z9@.DPO">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_number" id="Ki7IVaGC2]h|c:^MaF0`">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_setpixelcolor" id="@3i+)ymuCT_[tVPf8l;z">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <value name="NUM">
+                  <block type="math_number" id="4wRcPldD2T^D0=Q+K16D">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="RED">
+                  <block type="math_number" id="CN,^V6!o6cV2ZA#PSyMj">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id="l|JrQAzW+K^m4X6?0i?C">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="SU%R-Hubqy:td78V?mk:">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="!wIXu3ou%X[1;i|907D[" x="613" y="355">
+    <field name="NAME">危害</field>
+    <statement name="STACK">
+      <block type="flagledstripe_setpixelcolor" id="b*QbZ%tz@A-jWdVjucRZ">
+        <field name="OBJNAME">紅綠燈號誌</field>
+        <value name="NUM">
+          <block type="math_number" id="_M2Epr_Y5lZ3+tTafY~.">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="RED">
+          <block type="math_number" id="(|2=9}]Z}XSz3yW]UJvg">
+            <field name="NUM">188</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number" id="?]`j9xK22A5z|/|_.S{r">
+            <field name="NUM">143</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number" id="b_Gx4/}-zfAIj]^E(2Ft">
+            <field name="NUM">143</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setpixelcolor" id="2}x(~Mv,ACuh-TB4c}}(">
+            <field name="OBJNAME">紅綠燈號誌</field>
+            <value name="NUM">
+              <block type="math_number" id="-LQFgW@Q%2gi[a`LJn(U">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="RED">
+              <block type="math_number" id="W6q^=}2SpWin{/QzwtKd">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="math_number" id="1CX3tOUp_Vv{-MpJh)Zc">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="math_number" id="xos%D?KvIN5V|da_7l`:">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_setpixelcolor" id="jo3{J?v2oxV7X1Obm=o7">
+                <field name="OBJNAME">紅綠燈號誌</field>
+                <value name="NUM">
+                  <block type="math_number" id="4aH0L-``VI[D`yI1F:I`">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="RED">
+                  <block type="math_number" id="n^HDXGZ#/bki{GEphE~*">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="math_number" id=",ZS9xc_[SS,l|!^m;1[=">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="math_number" id="sw%M}89J4}7Z?jvcw6PC">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

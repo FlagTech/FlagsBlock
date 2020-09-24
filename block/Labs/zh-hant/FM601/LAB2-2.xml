@@ -1,0 +1,246 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="^Ozfv,AjZR8[wt69T^Kj" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="flagledstripe_setup" id="9N7Y*F06?AHI.`sG83|K">
+        <field name="OBJNAME">ledStripe</field>
+        <field name="NUM">16</field>
+        <value name="LEDPIN">
+          <block type="io_allpins" id="c*|:b]vNxcw]xfEjPT}S">
+            <field name="PIN">6</field>
+          </block>
+        </value>
+        <next>
+          <block type="flagledstripe_setbrightness" id="n-?df6IXBg6rQ7TW};%5">
+            <field name="OBJNAME">ledStripe</field>
+            <field name="BRIGHTNESS">32</field>
+            <next>
+              <block type="flagledstripe_show" id="):6NY8{lf}ez8v*Df-rs">
+                <field name="OBJNAME">ledStripe</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="1" y="153">
+    <statement name="LOOP_FUNC">
+      <block type="procedures_callnoreturn" id="C,h})BY?{|}u[_RDSfML">
+        <mutation name="彩色擦布">
+          <arg name="紅色"></arg>
+          <arg name="綠色"></arg>
+          <arg name="藍色"></arg>
+          <arg name="間隔毫秒數"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="math_number" id="E^2[+?_j,ZwH76n0vrO~">
+            <field name="NUM">255</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="math_number" id="LP]y;Wj6{mBWa]3})6:(">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="ARG2">
+          <block type="math_number" id="#)ZCDE)a+Q44:S.*J3Cu">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="ARG3">
+          <block type="math_number" id="U3z5)0F]C_#ff;{@B]D~">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+        <next>
+          <block type="procedures_callnoreturn" id="Es`yYF+k-(O6LUF0%pc~">
+            <mutation name="彩色擦布">
+              <arg name="紅色"></arg>
+              <arg name="綠色"></arg>
+              <arg name="藍色"></arg>
+              <arg name="間隔毫秒數"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="math_number" id="?jBiqwjVZ9Kd]9Zv=1hX">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="math_number" id="(00/OK4SU|W])Gwz+#v*">
+                <field name="NUM">255</field>
+              </block>
+            </value>
+            <value name="ARG2">
+              <block type="math_number" id="];d}?{FYIJlr3@r{1u7y">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="ARG3">
+              <block type="math_number" id="DAo^P8`kC=cbB||B7G+W">
+                <field name="NUM">50</field>
+              </block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="uk5,Z=7g{rr`78ro*4*7">
+                <mutation name="彩色擦布">
+                  <arg name="紅色"></arg>
+                  <arg name="綠色"></arg>
+                  <arg name="藍色"></arg>
+                  <arg name="間隔毫秒數"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="math_number" id="O.0^ntfXI2IXHg_LllJw">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="math_number" id="-g~}gfFRoYr:hBa`nAp]">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="ARG2">
+                  <block type="math_number" id="Na.IlAfQpQ-s|.SS@xDp">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+                <value name="ARG3">
+                  <block type="math_number" id="|-2rwqODCs~#*H8u`udc">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="procedures_callnoreturn" id="^1;@YiujFW135)]%GQvp">
+                    <mutation name="彩色擦布">
+                      <arg name="紅色"></arg>
+                      <arg name="綠色"></arg>
+                      <arg name="藍色"></arg>
+                      <arg name="間隔毫秒數"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="math_number" id="t6pXI~B0#f+Rl~;9@nRx">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="math_number" id="XO(Jz_1Fp-RO~2nxcZwI">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                    <value name="ARG2">
+                      <block type="math_number" id="{gNCm::m6s;!mDLLYAVE">
+                        <field name="NUM">255</field>
+                      </block>
+                    </value>
+                    <value name="ARG3">
+                      <block type="math_number" id="/WCUy0kjvJ-}OW52ZSY-">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="procedures_callnoreturn" id="aKrbe~?)ny*4ye8C)hyn">
+                        <mutation name="彩色擦布">
+                          <arg name="紅色"></arg>
+                          <arg name="綠色"></arg>
+                          <arg name="藍色"></arg>
+                          <arg name="間隔毫秒數"></arg>
+                        </mutation>
+                        <value name="ARG0">
+                          <block type="math_number" id="|jXMD}zH}()r[#0Xi8;W">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="ARG1">
+                          <block type="math_number" id="-dgeA]egMS5FB7DSR)Td">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="ARG2">
+                          <block type="math_number" id="uO%@KZO{aH195O*C^#5p">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="ARG3">
+                          <block type="math_number" id="P/=B7W)y7qrw}lGO8[DV">
+                            <field name="NUM">200</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="|z~]RE:o%zn0`.B4eQ]h" x="1" y="403">
+    <mutation>
+      <arg name="紅色"></arg>
+      <arg name="綠色"></arg>
+      <arg name="藍色"></arg>
+      <arg name="間隔毫秒數"></arg>
+    </mutation>
+    <field name="NAME">彩色擦布</field>
+    <statement name="STACK">
+      <block type="controls_for" id="q~Y*pGm(,kqE+uirwU]u">
+        <field name="VAR">目前燈號</field>
+        <value name="FROM">
+          <block type="math_number" id="tB?gp(lf`Qr7oEVP~{ql">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="flagledstripe_getlength" id="~lCZNJ2ngpV|2mQDF^2L">
+            <field name="OBJNAME">ledStripe</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="-,l5el.3d.A#uk*lCJ.u">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="flagledstripe_setpixelcolor" id="nCws){4RBde^di@WeB{S" inline="false">
+            <field name="OBJNAME">ledStripe</field>
+            <value name="NUM">
+              <block type="variables_get" id="[[%Z|o27^_u,`}.ru0EC">
+                <field name="VAR">目前燈號</field>
+              </block>
+            </value>
+            <value name="RED">
+              <block type="variables_get" id="j[8Sj|3BK?}iHf5F|lF=">
+                <field name="VAR">紅色</field>
+              </block>
+            </value>
+            <value name="GREEN">
+              <block type="variables_get" id="lWy[q-^6uB[SAv*ThZeH">
+                <field name="VAR">綠色</field>
+              </block>
+            </value>
+            <value name="BLUE">
+              <block type="variables_get" id="-#3nyjPl4bPceN_}xMdR">
+                <field name="VAR">藍色</field>
+              </block>
+            </value>
+            <next>
+              <block type="flagledstripe_show" id="j7JEsbM%}8vi9seYN?Z9">
+                <field name="OBJNAME">ledStripe</field>
+                <next>
+                  <block type="time_delay" id="F5Gq~ow-0.9]Vqki:+XM">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="variables_get" id=":o=*-,M#kxuaNeMKsJq6">
+                        <field name="VAR">間隔毫秒數</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

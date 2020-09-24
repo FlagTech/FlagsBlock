@@ -1,0 +1,1037 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="misc_comment" id="OQzl9fWQ`{gIw*SW3,q]" x="0" y="0">
+    <field name="COMMENT">這是條燈 (環燈也適用) 的展示範例</field>
+    <statement name="DO">
+      <block type="misc_comment_single" id="m)@+1m,:Wq.*7tBD%69M">
+        <field name="COMMENT">可從序列埠下指令控制 (請用 LF 當結尾)</field>
+        <next>
+          <block type="misc_comment_single" id="viRx(q(y!`M`+l8Ya:sC">
+            <field name="COMMENT">N：換下一個特效</field>
+            <next>
+              <block type="misc_comment_single" id="c~KbT=_pAK4`oqmTf%RM">
+                <field name="COMMENT">Nx：換到下 x 個特效</field>
+                <next>
+                  <block type="misc_comment_single" id="Iq-|)M/C5n?+a]U7[Z:!">
+                    <field name="COMMENT">Rx：調整紅色值為 x</field>
+                    <next>
+                      <block type="misc_comment_single" id="Y8qcU,O^@@k%[.uNS*FL">
+                        <field name="COMMENT">Gx：調整綠色值為 x</field>
+                        <next>
+                          <block type="misc_comment_single" id="o|XZ0cfuB:6-_Od%gV*8">
+                            <field name="COMMENT">Bx：調整藍色值為 x</field>
+                            <next>
+                              <block type="misc_comment_single" id="SL?I}e-m82UQvc10YL21">
+                                <field name="COMMENT">Lx：更改總燈數 (串接條燈或環燈時)</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="-4,#%lH3;7-p1MF3E~7n" x="0" y="250">
+    <field name="NAME">讀到換行為止</field>
+    <statement name="STACK">
+      <block type="variables_set" id=":R/ucpT[l[[B7VzX@N=!">
+        <field name="VAR">輸入內容</field>
+        <value name="VALUE">
+          <block type="text" id="9c|s`/LG:tG/cZU@ak7F">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="v/ji}tfKUs_l7pFJgh%M">
+            <field name="VAR">目前字元</field>
+            <value name="VALUE">
+              <block type="text" id="1gQ)^ICT.lLSfgU4Fhie">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_whileUntil" id="~c*Xz!C|:nu#bVbS#g!+">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_boolean" id="HGs;VA/r9-G_9![z]t;c">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="controls_if" id="VPN-a*Z_dz@XzE^2ol1L">
+                    <value name="IF0">
+                      <block type="logic_compare" id="tCvWq|[%gq:jkGtU0AW}">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="serial_available" id="*e4)WG%;GLqotA0AD:k4">
+                            <field name="SERIAL_ID">Serial</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="9im)IGMRdc3Gc`T);!`W">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="xxb-FIc{U0CkWTd6X?tc">
+                        <field name="VAR">目前字元</field>
+                        <value name="VALUE">
+                          <block type="serial_read" id="hr0#K_pWJcS=2pln)L@%">
+                            <field name="SERIAL_ID">Serial</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="9p-+_z8FSX:XEl,ok{r8">
+                            <value name="IF0">
+                              <block type="logic_compare" id="?0;P+sY!b`6Jn,p6Y4=)">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="/m,8xe},tJ3IX`[3dL=g">
+                                    <field name="VAR">目前字元</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="text_cr" id="#[yb,PQls)PSA_F|)f|5"></block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="controls_flow_statements" id="damVUFPvu-Kjk!V#(w1*">
+                                <field name="FLOW">CONTINUE</field>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_if" id="1sq_vdbm)J%s63euNa+{">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="[krQoDjejcCnk;Fr[{+g">
+                                    <field name="OP">EQ</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="hUOX!`35*W.ts%_2:dX7">
+                                        <field name="VAR">目前字元</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="text_lf" id="AyGBcIs|iRPC:=8}MQ7W"></block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="controls_flow_statements" id="!G;d!k*3IpO-^5D@0Tz;">
+                                    <field name="FLOW">BREAK</field>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="text_append" id="FUTf8]u^iTrYqAF)xtFY">
+                                    <field name="VAR">輸入內容</field>
+                                    <value name="TEXT">
+                                      <block type="variables_get" id="%apB`tJD79(EXP8{GZPk">
+                                        <field name="VAR">目前字元</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_setup" id="Lr?-C.aU.s_p^i;ZU|bT" x="0" y="657">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id=".Np@y;7kDY4wjjIZ([tx">
+        <field name="VAR">特效總數</field>
+        <value name="VALUE">
+          <block type="math_number" id="w@[}f!6NLi3Dy7(Id*iQ">
+            <field name="NUM">11</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="P7n:8m.7R;2Jk-9,0??l">
+            <field name="VAR">目前特效</field>
+            <value name="VALUE">
+              <block type="math_number" id="*Lm=CL(UNe{D7#Y,;D78">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="A8D*=e=kCeb}Exa4WZCE">
+                <field name="VAR">紅色值</field>
+                <value name="VALUE">
+                  <block type="math_number" id="s7KvEyf.7?X3(lij//wZ">
+                    <field name="NUM">128</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="_NXmwNRxD`c.sUcf0mGe">
+                    <field name="VAR">綠色值</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="A]8{ezz]7Q08mJ=%:ime">
+                        <field name="NUM">128</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="c=`KOIyYA}n1hp}KLr7o">
+                        <field name="VAR">藍色值</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="dGk2W^L?Zi=tOSZ?9e50">
+                            <field name="NUM">128</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="JFfERxNgo3!!HQr+B^:C">
+                            <field name="VAR">總燈數</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="u/n_Ep?zV[X@3jGaMj4h">
+                                <field name="NUM">15</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="serial_setup" id=",jH1i|R?nTqQ-4-K/fn,">
+                                <field name="SERIAL_ID">Serial</field>
+                                <field name="SPEED">9600</field>
+                                <next>
+                                  <block type="flagledstripe_setup" id="-[j/``g9LVu/E+hYDr]+">
+                                    <field name="OBJNAME">ledStrip</field>
+                                    <field name="NUM">15</field>
+                                    <value name="LEDPIN">
+                                      <block type="io_allpins" id="yV{^9^=!CsGhJjMV8kD4">
+                                        <field name="PIN">6</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="flagledstripe_length" id="g[9kv+2H|@L)L0%/fnRr">
+                                        <field name="OBJNAME">ledStrip</field>
+                                        <value name="NUM">
+                                          <block type="variables_get" id="p#FJ*xkZ=XWlGR[h[XW9">
+                                            <field name="VAR">總燈數</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="flagledstripe_setbrightness" id="?qB8z0r6y-d2g[}gqt4S">
+                                            <field name="OBJNAME">ledStrip</field>
+                                            <field name="BRIGHTNESS">255</field>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="1005">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="jdVzh1yVOlZpJ_.;3]T.">
+        <value name="IF0">
+          <block type="logic_compare" id="tLxz1*gt;lx%4_=3rHWJ">
+            <field name="OP">GT</field>
+            <value name="A">
+              <block type="serial_available" id="?UV?tnNgVt![5P``}#/h">
+                <field name="SERIAL_ID">Serial</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="M~g*gs{1uB2GW%9JVE%d">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="etJpo*}Kz3/|A-CSAYQ3">
+            <field name="VAR">指令</field>
+            <value name="VALUE">
+              <block type="serial_read" id="1tTBwg4X[b~A[3R1hw~4">
+                <field name="SERIAL_ID">Serial</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="X|aSnGR{i1ylK.Ffh@-f">
+                <value name="IF0">
+                  <block type="logic_compare" id="5;SS??lZ+Ph?=0]KA6=8">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="h!Y7HV_#-|tPfFM;Z2=X">
+                        <field name="VAR">指令</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="eFtf:Yu8(BRbc1x0w_yt">
+                        <field name="TEXT">N</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="procedures_callnoreturn" id="eV?[9+).jV}CiVe*io~t">
+                    <mutation name="讀到換行為止"></mutation>
+                    <next>
+                      <block type="controls_if" id="ije,[~^|T3h)aK56oQlZ">
+                        <mutation else="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_compare" id="_,a.4##pOg:^LG=hcT`F">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id=",p_IdYD!/f6a/_]#S7hN">
+                                <field name="VAR">輸入內容</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="text" id="(=1R`a5XbEuq)^YRI:KS">
+                                <field name="TEXT"></field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="VsIvWW:q|PTAwU{b)@g^">
+                            <field name="VAR">目前特效</field>
+                            <value name="VALUE">
+                              <block type="math_modulo" id="6+mEoJouJvmEI%Ox9amh">
+                                <value name="DIVIDEND">
+                                  <block type="math_arithmetic" id="Jyw@:=)mXh%2-`,h=hXT">
+                                    <field name="OP">ADD</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="1gcqLd8kZpp8X5Eg%Vf/">
+                                        <field name="VAR">目前特效</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id=".z`nz#3O/16=u!PPWVM3">
+                                        <field name="NUM">1</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="DIVISOR">
+                                  <block type="variables_get" id="i?RfG9f^EnAVVP%nvPt%">
+                                    <field name="VAR">特效總數</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="flagledstripe_stop" id="?NHGY6u7J|p8l0{mrbHi">
+                                <field name="OBJNAME">ledStrip</field>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <statement name="ELSE">
+                          <block type="serial_print" id="}vuT;jw#Il{=BYWExDAf">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">TRUE</field>
+                            <value name="CONTENT">
+                              <block type="variables_get" id="mh){[%}f%T%U-{Fua/U#">
+                                <field name="VAR">輸入內容</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="gfY[/tBb)U]h7WHsF/5.">
+                                <field name="VAR">目前特效</field>
+                                <value name="VALUE">
+                                  <block type="math_modulo" id=",p2*`Z*T/TZw-rSU~a7d">
+                                    <value name="DIVIDEND">
+                                      <block type="text_atoi" id="2U8:H}v4^+y69T3C*o#]">
+                                        <field name="VAR">輸入內容</field>
+                                      </block>
+                                    </value>
+                                    <value name="DIVISOR">
+                                      <block type="variables_get" id="vx%6pyP[q0WcU6nVt9/2">
+                                        <field name="VAR">特效總數</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="6+)o3o;2xg3?+cOVez8l">
+                    <value name="IF0">
+                      <block type="logic_compare" id="_;4^dv,f{M{_koW0E(^W">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="S#D-W2Y;5.f)7ou!*aF_">
+                            <field name="VAR">指令</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="text" id="!6CQj1Qd4(n^FhL6_zfM">
+                            <field name="TEXT">L</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="procedures_callnoreturn" id="HSKqt0gT/6xPV?}d{ell">
+                        <mutation name="讀到換行為止"></mutation>
+                        <next>
+                          <block type="flagledstripe_stop" id="5{]JcqVPw58WG`_CcY)~">
+                            <field name="OBJNAME">ledStrip</field>
+                            <next>
+                              <block type="serial_print" id="A|JS8qkFWQj{=8v6z!}(">
+                                <field name="SERIAL_ID">Serial</field>
+                                <field name="NEW_LINE">TRUE</field>
+                                <value name="CONTENT">
+                                  <block type="variables_get" id="L8/N(0t(-j3DR^hj0=sp">
+                                    <field name="VAR">輸入內容</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="sTY5,`qKJjBg(8.6~LmK">
+                                    <field name="VAR">總燈數</field>
+                                    <value name="VALUE">
+                                      <block type="text_atoi" id="1wd[VfXIu1?,0/zN,8f1">
+                                        <field name="VAR">輸入內容</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="flagledstripe_length" id="`%O*]A*@Pi,a:hD?GeAr">
+                                        <field name="OBJNAME">ledStrip</field>
+                                        <value name="NUM">
+                                          <block type="variables_get" id="k*D0t}Z^vpY4vFp09wJA">
+                                            <field name="VAR">總燈數</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="eC6S5/y+EK%LQJB+pOmG">
+                        <value name="IF0">
+                          <block type="logic_compare" id="X!6|{keCaH4U*^C)wjSq">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="cx|b7v:=1OwH%D3:/v_p">
+                                <field name="VAR">指令</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="text" id="v]BU:oq-._5zAwuue[=R">
+                                <field name="TEXT">R</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="procedures_callnoreturn" id="a#g,nni3XY^~Wed.dx#e">
+                            <mutation name="讀到換行為止"></mutation>
+                            <next>
+                              <block type="serial_print" id="s8|bWXR!1Z-7vM-55Q}A">
+                                <field name="SERIAL_ID">Serial</field>
+                                <field name="NEW_LINE">TRUE</field>
+                                <value name="CONTENT">
+                                  <block type="variables_get" id="iUBhD*PFqh}2pyg]3r^w">
+                                    <field name="VAR">輸入內容</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="oI2`~d5_B]19BZc8Q)5J">
+                                    <field name="VAR">紅色值</field>
+                                    <value name="VALUE">
+                                      <block type="math_modulo" id="h]R?/#HH%.7/V)LtIG}9">
+                                        <value name="DIVIDEND">
+                                          <block type="text_atoi" id="sCg;R7kW(5fPlM9-K4np">
+                                            <field name="VAR">輸入內容</field>
+                                          </block>
+                                        </value>
+                                        <value name="DIVISOR">
+                                          <block type="math_number" id="u+DG%Vhp^M}z|ej%TGhE">
+                                            <field name="NUM">256</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="OLGop7F-X4W48!jP_U+s">
+                            <value name="IF0">
+                              <block type="logic_compare" id="IiW6i=V#2(s()(@D}S3B">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="Uh[%MUQTKYKZuk8L,h-z">
+                                    <field name="VAR">指令</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="text" id="fB#FUG#_BO;k]#a9#Y2w">
+                                    <field name="TEXT">G</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="procedures_callnoreturn" id=".]`W0TVsBjrn2{vmJ/M#">
+                                <mutation name="讀到換行為止"></mutation>
+                                <next>
+                                  <block type="serial_print" id="L{=rHp7j]*8lY%NFU(p[">
+                                    <field name="SERIAL_ID">Serial</field>
+                                    <field name="NEW_LINE">TRUE</field>
+                                    <value name="CONTENT">
+                                      <block type="variables_get" id="ae]:F+-DkDLnd7lFv:5%">
+                                        <field name="VAR">輸入內容</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="nq0ud,1ZPP{Ts-J.(-Nh">
+                                        <field name="VAR">綠色值</field>
+                                        <value name="VALUE">
+                                          <block type="math_modulo" id="5c)/LPV-/8liRC+5@_XE">
+                                            <value name="DIVIDEND">
+                                              <block type="text_atoi" id="pHG==`b5;U.ph}7Xa`H!">
+                                                <field name="VAR">輸入內容</field>
+                                              </block>
+                                            </value>
+                                            <value name="DIVISOR">
+                                              <block type="math_number" id="q3qZyelM)Eo9qa2*c1eh">
+                                                <field name="NUM">256</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_if" id="IYoYl1#m4TS_KkI)Xc}n">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="+]XTvn6C^+Gw:=1tZy7}">
+                                    <field name="OP">EQ</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="pj2]`o4a9CZ,oEd:pKbR">
+                                        <field name="VAR">指令</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="text" id="[LNQVD{fjd`q1kb9J[*9">
+                                        <field name="TEXT">B</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="procedures_callnoreturn" id="2)Uzwtw5]DU:5/*tjZlz">
+                                    <mutation name="讀到換行為止"></mutation>
+                                    <next>
+                                      <block type="serial_print" id="cn,Sw/4R;h{N}POIP_o?">
+                                        <field name="SERIAL_ID">Serial</field>
+                                        <field name="NEW_LINE">TRUE</field>
+                                        <value name="CONTENT">
+                                          <block type="variables_get" id="a)rIJoQyJpF.J1D-H%fF">
+                                            <field name="VAR">輸入內容</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="*Cl#HTkEw.{O}YW.kk4@">
+                                            <field name="VAR">藍色值</field>
+                                            <value name="VALUE">
+                                              <block type="math_modulo" id="X=gqeAPE?c%jB:gB~1/a">
+                                                <value name="DIVIDEND">
+                                                  <block type="text_atoi" id="c.,2!a[{.@t.8/G);.f{">
+                                                    <field name="VAR">輸入內容</field>
+                                                  </block>
+                                                </value>
+                                                <value name="DIVISOR">
+                                                  <block type="math_number" id="v~P=9vK,(R;t69m1iO45">
+                                                    <field name="NUM">256</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="uN=NZQI5FTCsADbIj]Cx">
+            <mutation elseif="10"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="TU48.]`uzzdzmeoCHV[%">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="SI_kfE/D-/+{o,~vW|Fq">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="}p0N;MG4DCGS/+g`+l2_">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="flagledstripe_breathing" id="H!:m()L)8L##zQO9W,0L">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="RED">
+                  <block type="variables_get" id="r^hj%9to0GyxxGB.G;U-">
+                    <field name="VAR">紅色值</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="variables_get" id="d;J*@|*]V0#-XkKEoM25">
+                    <field name="VAR">綠色值</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="variables_get" id="~?i@g=8*#12^TTc]A%1P">
+                    <field name="VAR">藍色值</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="=?q(#vu*E9i;n}aXl(GT">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="fT~-M5`u`-Tl?f_9MW61">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="*uy]7HaRl5kp%80#~K*F">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="flagledstripe_rgbloop" id="NIi]2_]7=8ulF_75QOZB">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="INTERVAL">
+                  <block type="math_number" id=":az=d!M;B^7+[_Mi_Ca)">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF2">
+              <block type="logic_compare" id="~W=Irm5:ab}sJ-kPXn@?">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="1aJ8_1WE3@`^ndLff3a:">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="!Pt-i8]w5U)1~79^OKU]">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO2">
+              <block type="flagledstripe_rainbowcycle" id="UC%n?b4[|xeBH;Wly4bz">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="INTERVAL">
+                  <block type="math_number" id="MM/,TD7]JD-NfwMQ,.Jz">
+                    <field name="NUM">20</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF3">
+              <block type="logic_compare" id="Bl8eX8,TOgR~dyxLa:d{">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="C.ZF+5R?f-KIUFJuA7_W">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id=")-d=BgGARnU7qc)[.Eov">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO3">
+              <block type="flagledstripe_rainbow" id=".Pt))jy+5%X#3J4iRPBN">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="INTERVAL">
+                  <block type="math_number" id="*GzN]f08{Z~kS+1=p)|r">
+                    <field name="NUM">20</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF4">
+              <block type="logic_compare" id="{61?v4Xj/rp3#TKSa3F2">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="o-kcK.6[2?X@|Fu2./8d">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="0C9e;a(5{LT_P`uf0(Xl">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO4">
+              <block type="flagledstripe_runninglights" id="^z.P4vyvg,M)f#^/*Rm}">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="RED">
+                  <block type="variables_get" id="DJnN?ZOY(;S~8E5C=tqM">
+                    <field name="VAR">紅色值</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="variables_get" id="`wZl|D;C*sQ}@]tU2s4{">
+                    <field name="VAR">綠色值</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="variables_get" id="Aqsoh~P~CA[E:)cjYa^S">
+                    <field name="VAR">藍色值</field>
+                  </block>
+                </value>
+                <value name="INTERVAL">
+                  <block type="math_number" id="?}kf?G[r%Ys59_.:yntu">
+                    <field name="NUM">80</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF5">
+              <block type="logic_compare" id="H~r/3f/#l`r)sk_WHM[w">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id=":jk)b8gAuF=Ub+sv,pkJ">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="]OYwP,bsz!={MoPwv*G7">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO5">
+              <block type="flagledstripe_meteorlamp" id="!M;#1/SmNI@M1PFHLpr3" inline="false">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="RED">
+                  <block type="variables_get" id="Spy-UYI%Gsr-HbX*6CDV">
+                    <field name="VAR">紅色值</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="variables_get" id="{][ZFTy-N0iGi2bs_iB4">
+                    <field name="VAR">綠色值</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="variables_get" id="rZ~S.XuOcUQ(q*EsEr_j">
+                    <field name="VAR">藍色值</field>
+                  </block>
+                </value>
+                <value name="LEN">
+                  <block type="math_arithmetic" id="{3@2vaL`UZoR`,H82dQ9">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="variables_get" id="k0v4Pb5kx*6gLH!((K%3">
+                        <field name="VAR">總燈數</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="dV/V((K!tNN9:1j{J+.L">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="INTERVAL">
+                  <block type="math_number" id="V_NBe7mB,Z|B*C0i@xL%">
+                    <field name="NUM">35</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF6">
+              <block type="logic_compare" id="S7?d*VfNytStTm_(2Deu">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="yP}-,J8AE]2N@lMffM(/">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="S[uG~e[%D}y8=*`(f8IH">
+                    <field name="NUM">6</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO6">
+              <block type="flagledstripe_cylonbounce" id=":sA]](p9,U.{%iS.xkU%">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="RED">
+                  <block type="variables_get" id="+~g~q[,PHvdc07UpuqI-">
+                    <field name="VAR">紅色值</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="variables_get" id="B;{`QG))u}IHY{FTd9|f">
+                    <field name="VAR">綠色值</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="variables_get" id="hn(q4?~uxM04FAVpgz.6">
+                    <field name="VAR">藍色值</field>
+                  </block>
+                </value>
+                <value name="EYESIZE">
+                  <block type="math_arithmetic" id="}}I2[j6u]mqMVs6zVf0q">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="variables_get" id="VRTFD(y,#G.(k[-Qi_6#">
+                        <field name="VAR">總燈數</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="Wr,n!t,z/|oGb~2xsUB_">
+                        <field name="NUM">8</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="INTERVAL">
+                  <block type="math_number" id="7A{/UB?!(zF_Bp0a3IM_">
+                    <field name="NUM">70</field>
+                  </block>
+                </value>
+                <value name="DELAY">
+                  <block type="math_number" id="Y==EF[9pc_ox|xd%HId9">
+                    <field name="NUM">70</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF7">
+              <block type="logic_compare" id="y(TS4Z.pb^W.}Qm75/}p">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="qlctzK2m#or9?zwo#^^W">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="jqi,)3KmoM!KVQg=r(+/">
+                    <field name="NUM">7</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO7">
+              <block type="flagledstripe_theaterchase" id="^)l@c4bvrr9HEX_1:wPB">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="RED">
+                  <block type="variables_get" id="x(Q=A#aWyyDl]bJq@-Uw">
+                    <field name="VAR">紅色值</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="variables_get" id="Aqt/PD*Iqdic/-;;8p5]">
+                    <field name="VAR">綠色值</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="variables_get" id="6#Q%5x3c;_coQNOye+3W">
+                    <field name="VAR">藍色值</field>
+                  </block>
+                </value>
+                <value name="INTERVAL">
+                  <block type="math_number" id="mXqVY8:fx:~m(c*g2ar:">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF8">
+              <block type="logic_compare" id="B^xF1|1Z(iNY=~6T/L!{">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="7Y4z0qii{J3j3`8[u^oj">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="GQDk:FOq6}]%UuSwQf92">
+                    <field name="NUM">8</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO8">
+              <block type="flagledstripe_theaterchaserainbow" id="J/-EpS]:mF21ExVk_g4=">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="INTERVAL">
+                  <block type="math_number" id="X.^%r7zR;#_aXa{[(eCG">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF9">
+              <block type="logic_compare" id="r8%a2_,F@h~!JwEAwZ-*">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="2dh6%LQMyOP2]l~OE:[Z">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="QZZx5(g1c:1+|Dx!s1|F">
+                    <field name="NUM">9</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO9">
+              <block type="flagledstripe_sparkle" id="Wl`%sgcEK(,p#DD8lF5n">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="RED">
+                  <block type="variables_get" id="LrdTU4orGp#B(tT(ikn!">
+                    <field name="VAR">紅色值</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="variables_get" id="RuJuZz2N9g?m}i]NuwYF">
+                    <field name="VAR">綠色值</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="variables_get" id="g*VmkIhogNlEgrkiK.BH">
+                    <field name="VAR">藍色值</field>
+                  </block>
+                </value>
+                <value name="INTERVAL">
+                  <block type="math_number" id="0gPMj8]16QU,F7fko_eB">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <value name="IF10">
+              <block type="logic_compare" id="eN!O%3?nwEGmw(+mCLd/">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="v(m65UHC^{9oa43+BNZQ">
+                    <field name="VAR">目前特效</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="Y+NvmKy)c2tMgwoaHrxM">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO10">
+              <block type="flagledstripe_strobe" id="5a,HEXzZ`/usfPW4CxPE">
+                <field name="OBJNAME">ledStrip</field>
+                <value name="RED">
+                  <block type="variables_get" id="nT)?JVFugVq]0c1Fw+p}">
+                    <field name="VAR">紅色值</field>
+                  </block>
+                </value>
+                <value name="GREEN">
+                  <block type="variables_get" id="sx5p2|R}5N!W6)w.)Ndb">
+                    <field name="VAR">綠色值</field>
+                  </block>
+                </value>
+                <value name="BLUE">
+                  <block type="variables_get" id="3-0I0NS@M]8+4dUk/*Pn">
+                    <field name="VAR">藍色值</field>
+                  </block>
+                </value>
+                <value name="TIMES">
+                  <block type="math_number" id="iE~+L9bT]n,F!1]x/L2`">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+                <value name="INTERVAL">
+                  <block type="math_number" id="SWh2#tTMdSZ!n,}I62+~">
+                    <field name="NUM">50</field>
+                  </block>
+                </value>
+                <value name="PAUSE">
+                  <block type="math_number" id="oTb#dvWGM7emF{)cLlk6">
+                    <field name="NUM">1000</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

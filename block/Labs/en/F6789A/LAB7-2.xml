@@ -1,0 +1,180 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id=".K!3O/q4*Uf!7:Jax+Sq" x="0" y="0">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="zt*em%z|Y@ff6U-O@=ZC">
+        <field name="VAR">first LED pin</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="+;c``_}Fa*8{|@n_myty">
+            <field name="PIN">4</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="DsnMpI@NxL+(yD22MR5.">
+            <field name="VAR">last LED pin</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="!ce`%I1(P?r6O1ZLi*Vl">
+                <field name="PIN">13</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="0" y="118">
+    <statement name="LOOP_FUNC">
+      <block type="controls_for" id="osNI8`_tBOL~`@sbl8XI">
+        <field name="VAR">time intervals</field>
+        <value name="FROM">
+          <block type="math_number" id=";E}rZ|*-jW9QUEX7JUNo">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number" id="E~/d]8=4f+XCfPpB;+l/">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number" id="tP:n[o!O8PRIljs)-(LQ">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="controls_for" id="-YO]_fi3oGX@!ytAWu%%">
+            <field name="VAR">LED pin</field>
+            <value name="FROM">
+              <block type="variables_get" id="CW7MA3TM_NS=,ePdf^,R">
+                <field name="VAR">first LED pin</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="variables_get" id="7!#B`+(cM(QSqK?+M,==">
+                <field name="VAR">last LED pin</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="1`n0Ld~8h/H)[7]t+*0o">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="io_digitalwrite_var" id="df8vAwvOim=R+5N73{e%">
+                <value name="PIN">
+                  <block type="variables_get" id=";-z9Jwj2|9T]b*UAcvh7">
+                    <field name="VAR">LED pin</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="TE[T:#9WTlT:^~Mr]6}z">
+                    <field name="STATE">HIGH</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id=";i}UQcP@gZ~hR)rm1-%_">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_arithmetic" id="X]G(I]?{~4v6rIvK-q,b">
+                        <field name="OP">MULTIPLY</field>
+                        <value name="A">
+                          <block type="variables_get" id="ex+=yOX93q7Qk!g8B9jt">
+                            <field name="VAR">time intervals</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="U`R*BFlq,uIvV!Wi3Uvq">
+                            <field name="NUM">20</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_digitalwrite_var" id=";?0tC(_/YVRc|7dC-nxK">
+                        <value name="PIN">
+                          <block type="variables_get" id="NW/#pS28vr=mS5u^:-cY">
+                            <field name="VAR">LED pin</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="cwSo.;`QmXhxru[0n3S/">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_for" id="Gq*Q|!nJ5pg/CHGYv04K">
+                <field name="VAR">LED pin</field>
+                <value name="FROM">
+                  <block type="variables_get" id="c4^!N-Yy:Xd(Crmj0jNl">
+                    <field name="VAR">last LED pin</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="variables_get" id="K:}*hv5yT}-Gy.8g2=Q5">
+                    <field name="VAR">first LED pin</field>
+                  </block>
+                </value>
+                <value name="BY">
+                  <block type="math_number" id="jX*e-h5A{C7g#n5z,(%2">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="io_digitalwrite_var" id="6:AD=D0_F)Pj(M3As,hx">
+                    <value name="PIN">
+                      <block type="variables_get" id="q0CAvK1;--;/+i)RKLK;">
+                        <field name="VAR">LED pin</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="Qy.C~+IGH,w(dky)EeH%">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="VY+d2MM:estXYs)2ev^|">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_arithmetic" id="^hyf`DY?1HH#jMrg#[Z.">
+                            <field name="OP">MULTIPLY</field>
+                            <value name="A">
+                              <block type="variables_get" id="jg^RVBFn81XgnnjAlDXT">
+                                <field name="VAR">time intervals</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="K;f0i]L~{nKv|0cXhA+V">
+                                <field name="NUM">20</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="io_digitalwrite_var" id="^fPdnGW.1`r:/gOlW.F*">
+                            <value name="PIN">
+                              <block type="variables_get" id="rQJKC(wAdrUgGclT.w^=">
+                                <field name="VAR">LED pin</field>
+                              </block>
+                            </value>
+                            <value name="STATE">
+                              <block type="io_highlow" id="]stu;|-3^}Iy/1T/pJwI">
+                                <field name="STATE">LOW</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

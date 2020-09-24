@@ -1,0 +1,384 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="b``Xq:b#:u=O;PbtN)8/" x="37" y="13">
+    <statement name="SETUP_FUNC">
+      <block type="io_input_pullup" id="~YZBs/JD*5~3lKQn=YJd">
+        <field name="PIN">2</field>
+        <next>
+          <block type="I2CLCD_setup" id="!3mKI{p}dURL*o?^rm!v">
+            <field name="I2C_ADDR">0x3F</field>
+            <next>
+              <block type="variables_set" id="KCv,}(y85*C^3cD0GlF/">
+                <field name="VAR">倒數總秒數</field>
+                <value name="VALUE">
+                  <block type="math_number" id="LLRzmH8p]9qkva_RcrnM">
+                    <field name="NUM">5</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="J]%s:HlX%,OlF45Vh*Md">
+                    <field name="VAR">倒數剩下秒數</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="/+bxEhYsAgYO6{@FD0k(">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="YkkMIarSXbT9{6?9LvKu">
+                        <field name="VAR">倒數開始時間</field>
+                        <value name="VALUE">
+                          <block type="variables_set_type" id="aR}{=4Kw}/(0w(O]=Y:B">
+                            <field name="VARIABLE_SETTYPE_TYPE">UNSIGNED_LARGE_NUMBER</field>
+                            <value name="VARIABLE_SETTYPE_INPUT">
+                              <block type="math_number" id="?x{%*SjLAVSO=BmE.~S^">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="36" y="206">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="0wYJ%uKLXrDs%}FOtnWZ">
+        <mutation elseif="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id=":`0h[lk#z5/88qr}FxBy">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread_var" id="uf3RGc].Dvlkin1GtoII">
+                <value name="PIN">
+                  <block type="io_allpins" id="Prd?H6W[3g5%EPAXwz)K">
+                    <field name="PIN">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="k7ekYW65QnZSl^dHO5l|">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="time_delay" id="wR:SRt7GUV6s|{r%JqMf">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="9{GaGh-~`ym`T{F()U+N">
+                <field name="NUM">100</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="In1A@s-:iF+z_q{1#/=h">
+                <value name="IF0">
+                  <block type="logic_compare" id="9Y%NDgRp}3uOT5w0Cje}">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="io_digitalread_var" id="ygAg}y#0s~5xYer9hhB[">
+                        <value name="PIN">
+                          <block type="io_allpins" id="CU^h^iw(*yx,|MGO#ItZ">
+                            <field name="PIN">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="io_highlow" id="S#)^d0K)U7gZ_!w3U{#n">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="procedures_callnoreturn" id="mW|0~iVjfF?__`n}6irP">
+                    <mutation name="進行倒數計時"></mutation>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_compare" id="k0Mm4KGM/U)lwx6QCn@@">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread_var" id="yqX/RxD(hgaL9~(.KwrO">
+                <value name="PIN">
+                  <block type="io_allpins" id="YR;l]r9%hcen/+PwMgsl">
+                    <field name="PIN">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="uj_.LSbXs(ikWMs=5HQ]">
+                <field name="STATE">LOW</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="time_delay" id="Er;A,=ED*-K#0{k8bfLo">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="agt93wCDt(/k=C~:g[C*">
+                <field name="NUM">100</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="tB{:%roAOzM0:1(9[X7u">
+                <value name="IF0">
+                  <block type="logic_compare" id="`?R#wt_?,0YFM1/Dz)]I">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="io_digitalread_var" id="gAKLc7ShO:;z@Y^IUZB1">
+                        <value name="PIN">
+                          <block type="io_allpins" id="5EqoJ~0SabVo;F.{*wyE">
+                            <field name="PIN">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="io_highlow" id="3n9CNJ!|HnF9zft.8tMf">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="procedures_callnoreturn" id="3`se~C*tY,xjvYBCgqb8">
+                    <mutation name="停止倒數計時"></mutation>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="`EHm!eO):h`kE;5tvUW2" x="36" y="617">
+    <field name="NAME">進行倒數計時</field>
+    <statement name="STACK">
+      <block type="controls_if" id="zWn4mtqI)4Yt6MpG0`KJ">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="OFAl|m+S-Mze51Etl}/.">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="variables_get" id="6hJqv(U}!8j{3A[K{Xf*">
+                <field name="VAR">倒數開始時間</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="nZiopO(+L:4[QcSg@0cV">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="I2CLCD_clear" id="yRO:#mOwcwQ[*PZRErP*">
+            <next>
+              <block type="variables_set" id="w0^WoT4S{z`]_if`tp`K">
+                <field name="VAR">倒數開始時間</field>
+                <value name="VALUE">
+                  <block type="time_millis" id="-WL5D19}X_=B*b9aPb.O"></block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="variables_set" id="9v()MhU4%Np-YE58RC(^">
+            <field name="VAR">倒數剩下秒數</field>
+            <value name="VALUE">
+              <block type="math_arithmetic" id="ZZSxI(B%t*bY,,Bd#6|." inline="false">
+                <field name="OP">MINUS</field>
+                <value name="A">
+                  <block type="variables_get" id="VZskHw9i[zCDx^T}?-Om">
+                    <field name="VAR">倒數總秒數</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_arithmetic" id="mi6k%RG:.H88M`t8}~0-">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="math_arithmetic" id="}uFxR_a}*qcXM(^)_ubk">
+                        <field name="OP">MINUS</field>
+                        <value name="A">
+                          <block type="time_millis" id="fMbA[wS!nEfN{K9s|VSr"></block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="3m|UdJ@Vc*NC+2*,RKg[">
+                            <field name="VAR">倒數開始時間</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="ZcNep(`R:n/f_I7H.a}n">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="435.klh+fJRG}TO=Js4O">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="9@utq5@Xf9J[lsvK{p+}">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="o!aC?12r~#Am/4eNS.K,">
+                        <field name="VAR">倒數剩下秒數</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="o^y5SMsj8tscCg!-|k+o">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="I2CLCD_printLine" id="cr_AAS(Vj!6,4%^L.w.N">
+                    <field name="ROW">0</field>
+                    <value name="CONTENT">
+                      <block type="variables_get" id="nngvpwYm;^n:4[{#?s~h">
+                        <field name="VAR">倒數剩下秒數</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="I2CLCD_printLine" id="ufF{v@7f?Ew_1y`s:rCr">
+                    <field name="ROW">0</field>
+                    <value name="CONTENT">
+                      <block type="text" id="vEzb4MYjQe04.?N2=4{^">
+                        <field name="TEXT">Time is Up!</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="procedures_callnoreturn" id="@k/t4oA((7i]ku6B@3Aj">
+                        <mutation name="蜂鳴器發出警示音並讓 LCD 背光閃爍"></mutation>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="IM2F]3Fbgf~U@%k-z04-" x="35" y="1027">
+    <field name="NAME">停止倒數計時</field>
+    <statement name="STACK">
+      <block type="variables_set" id=";v0yo{YAkB|TnFa-|HP=">
+        <field name="VAR">倒數開始時間</field>
+        <value name="VALUE">
+          <block type="variables_set_type" id="68K~-(x~jSY`zN=;3l*m">
+            <field name="VARIABLE_SETTYPE_TYPE">UNSIGNED_LARGE_NUMBER</field>
+            <value name="VARIABLE_SETTYPE_INPUT">
+              <block type="math_number" id="G#_6ibw91giWGy6aU^J-">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="I2CLCD_printLine" id="N,6m79{W=#fDim:XqPN^">
+            <field name="ROW">0</field>
+            <value name="CONTENT">
+              <block type="text" id="KJq}4q~dS8:b!}Y4eVhF">
+                <field name="TEXT">Turn left to</field>
+              </block>
+            </value>
+            <next>
+              <block type="I2CLCD_printLine" id="DV2Xnp%I+L4|zp)njS/w">
+                <field name="ROW">1</field>
+                <value name="CONTENT">
+                  <block type="text" id="+6uJ%.Fk:tqHhgOVM1R8">
+                    <field name="TEXT">Start......</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="KMBT]-D)(m0Drw+WV#Xo" x="35" y="1194">
+    <field name="NAME">蜂鳴器發出警示音並讓 LCD 背光閃爍</field>
+    <statement name="STACK">
+      <block type="I2CLCD_backlightOn" id="fi#.REP,_^h~3_:DTM;I">
+        <next>
+          <block type="io_digitalwrite_var" id="op:;.*T#-ypQWGe{d_dK">
+            <value name="PIN">
+              <block type="io_allpins" id="tw}*D/J2tid{F|5KFtCG">
+                <field name="PIN">6</field>
+              </block>
+            </value>
+            <value name="STATE">
+              <block type="io_highlow" id=",BK=(%T0l)B!lg,ry7JK">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="XwRoWO8ifHt;A!z-zUDQ">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="rP]v;r7yhriEe;P!r^:q">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="I2CLCD_backlightOff" id="vs*8FpZG3Z.J(RUXqTE?">
+                    <next>
+                      <block type="io_digitalwrite_var" id="Zx*?1Im,`L8qF3T_!+IL">
+                        <value name="PIN">
+                          <block type="io_allpins" id="TZFvd-++|8OK4S[Dx0*|">
+                            <field name="PIN">6</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="hi86EkHErAQqP#k,^Isp">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="g6]XAV~pGU7-xuTa9C+;">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="jkt?=p/WQ*#jutBRR(}z">
+                                <field name="NUM">300</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="I2CLCD_backlightOn" id="SDIlH:C~Laf9K#ShSMgm"></block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

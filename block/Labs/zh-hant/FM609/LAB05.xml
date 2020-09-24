@@ -1,0 +1,46 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="procedures_defreturn" id="|;@JpOzJ:2D{L2H%ZI7X" x="18" y="-21">
+    <field name="NAME">傳送土壤濕度感測值</field>
+    <value name="RETURN">
+      <block type="io_analogread_var" id="3{Cm-JA,mklWqWKgJpOe">
+        <value name="PIN">
+          <block type="io_analogpins" id=".7E0_%zV{ljtxE#G/Brq">
+            <field name="PIN">A0</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="arduino_setup" id="GC]SeFS_4VS{=|!zJ?{c" x="18" y="92">
+    <statement name="SETUP_FUNC">
+      <block type="Blynk_setup" id="PyK3%?mIv}%gQ{LWRMKK" inline="false">
+        <value name="SSID">
+          <block type="text" id="wY1W[Q`kU{XcHpLj=KlA">
+            <field name="TEXT">無線網路名稱</field>
+          </block>
+        </value>
+        <value name="PINCODE">
+          <block type="text" id="D//Q{nU4WD8qdpp!N-:m">
+            <field name="TEXT">無線網路密碼</field>
+          </block>
+        </value>
+        <value name="AUTH">
+          <block type="text" id="H*x*H|US]hgW.hC7LE:V">
+            <field name="TEXT">Blynk 認證碼</field>
+          </block>
+        </value>
+        <next>
+          <block type="Blynk_bind" id="?5^MDW`b7vkZMM^-Z:Iw">
+            <field name="FUNCNAME">傳送土壤濕度感測值</field>
+            <field name="VPIN">V5</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="19" y="291">
+    <statement name="LOOP_FUNC">
+      <block type="Blynk_run" id="2~zYo|wv**dnbSj;#inu"></block>
+    </statement>
+  </block>
+</xml>

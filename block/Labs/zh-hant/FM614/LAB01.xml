@@ -1,0 +1,42 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="108" y="59">
+    <statement name="LOOP_FUNC">
+      <block type="io_builtin_led" id="64*u)2!E:QQ;q+muX!i[">
+        <field name="BUILT_IN_LED">D4</field>
+        <value name="STATE">
+          <block type="io_highlow" id="bXv:[/a)[h_?bM~_@_;S">
+            <field name="STATE">HIGH</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="}Z7Ze;krEI=:p^A1*Rd#">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="g22BeRd-)/uuaaEh{l6:">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_builtin_led" id="P)HV!+F0-x~|e}8by}{~">
+                <field name="BUILT_IN_LED">D4</field>
+                <value name="STATE">
+                  <block type="io_highlow" id="QDvyL4o-%Z|{P9lStufc">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="Z8|veL+ptIxme,6,%z-8">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="H9*XzZ(bM511]8gt)e1*">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

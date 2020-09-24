@@ -1,0 +1,686 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="Z.;j1oRWsIUsS9RQ5HeN" x="-1261" y="-681">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="_QMt7]SP{k6,:|GLBFQ^">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">115200</field>
+        <next>
+          <block type="misc_comment" id="=^yXF^NscmK={2mY/UVG">
+            <field name="COMMENT">建立特殊的 SSID 名稱</field>
+            <statement name="DO">
+              <block type="variables_set" id="1Yd)F?5?3M#Ll9YZtgco">
+                <field name="VAR">實體位置</field>
+                <value name="VALUE">
+                  <block type="esp8266_softAPMAC" id="EZp]M79R-)Tkb.)_G?_u"></block>
+                </value>
+                <next>
+                  <block type="variables_set" id="0[F)?ODHJz_Nz)c|x6FD">
+                    <field name="VAR">SSID</field>
+                    <value name="VALUE">
+                      <block type="text_join" id="Ox1ZSm8b8nph_d7KX?{.">
+                        <mutation items="3"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id=")H:a7]|Zu#xLBK/cU(h-">
+                            <field name="TEXT">FLAG-</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="text_substring" id="^ZD=a~Fm9c^BTo2~^pNU" inline="false">
+                            <field name="VAR">實體位置</field>
+                            <value name="FROM">
+                              <block type="math_arithmetic" id="fZks`Pz_o?CCKY[,[8K,">
+                                <field name="OP">MINUS</field>
+                                <value name="A">
+                                  <block type="text_length" id="|[-;0DAJBtF[{a[tNE((">
+                                    <value name="VALUE">
+                                      <block type="variables_get" id="mGnYkG;gq~sg%*t[3!):">
+                                        <field name="VAR">實體位置</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="PO08jWN8M`a1:[n.kXR,">
+                                    <field name="NUM">5</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="TO">
+                              <block type="math_arithmetic" id="7T7*M(}Z%pb9]j^R,uOV">
+                                <field name="OP">MINUS</field>
+                                <value name="A">
+                                  <block type="text_length" id="KhP(*cak%]W.{wSWaLt/">
+                                    <value name="VALUE">
+                                      <block type="variables_get" id="dxpa/%W*av%UZ^7:]}^E">
+                                        <field name="VAR">實體位置</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="!b)VB}NIfbpo-[hhP[v7">
+                                    <field name="NUM">3</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text_substring_end" id="Vnc{1qeogS2;mFqU#{}`" inline="false">
+                            <field name="VAR">實體位置</field>
+                            <value name="FROM">
+                              <block type="math_arithmetic" id="O[HBuJ.3sc[%rL2[K7O(">
+                                <field name="OP">MINUS</field>
+                                <value name="A">
+                                  <block type="text_length" id="]:;;HI)cmtOvsDU73nYi">
+                                    <value name="VALUE">
+                                      <block type="variables_get" id="lk#]T9M?3;_Z.G!6[rx^">
+                                        <field name="VAR">實體位置</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id=".PT06gMhP]3jEW1njjbC">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="misc_comment" id="{Q/iK|GkS#,v5VXQb@{Z">
+                <field name="COMMENT">自建無線網路</field>
+                <statement name="DO">
+                  <block type="controls_if" id="_}YW6%AbtC+|aUNJ4tb?">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="esp8266_ap_setup" id="W5xdkz`P?hcOCme!cqW-">
+                        <field name="CHANNEL">1</field>
+                        <field name="HIDDEN">FALSE</field>
+                        <value name="SSID">
+                          <block type="variables_get" id="=ya~(O1dc:cerkP[bb81">
+                            <field name="VAR">SSID</field>
+                          </block>
+                        </value>
+                        <value name="PINCODE">
+                          <block type="text" id="`x8;gdyryPl+^#p2#;WF">
+                            <field name="TEXT"></field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="serial_print" id="0sB%(T:hke`v~X-J~dV/">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="text_join" id="%!/2,+sFs/%`d,kP/;.G">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="text" id="B?{owHKS+Ly/5f-Ey}v3">
+                                <field name="TEXT">已建立無線網路:</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="variables_get" id="t!{#Fm#eg6ljxF921%|B">
+                                <field name="VAR">SSID</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="serial_print" id="MT8h`G#2AS#{lIdcUZo~">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">TRUE</field>
+                            <value name="CONTENT">
+                              <block type="text_join" id="W?jQDC{~yu`Y0L;9Gy=~">
+                                <mutation items="2"></mutation>
+                                <value name="ADD0">
+                                  <block type="text" id="g%gUa5FCd[K3+.5Yg#57">
+                                    <field name="TEXT">自建 WiFi 網路 IP:</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="esp8266_softAPIP" id="OE-H_?3KpgR_g|eK229B"></block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="serial_print" id="dM3Wfk}3j#y4whCQN1Xf">
+                        <field name="SERIAL_ID">Serial</field>
+                        <field name="NEW_LINE">TRUE</field>
+                        <value name="CONTENT">
+                          <block type="text" id="N`|fcLs*?HSrn+*t40Df">
+                            <field name="TEXT">無法自建無線網路</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <next>
+                  <block type="esp8266_webserver_setup" id="}5/wrLDaA=(SWz:cWObH">
+                    <field name="PORT">80</field>
+                    <next>
+                      <block type="esp8266_webserver_on2" id="ZhqpYxmmfVUsn,BX)oM_">
+                        <field name="FUNCNAME">handleRace_處理訊息</field>
+                        <field name="PATH">/Race</field>
+                        <next>
+                          <block type="variables_set" id="87=2rU8x,lF}Li%;/L_/">
+                            <field name="VAR">LaserPin_雷射模組腳位</field>
+                            <value name="VALUE">
+                              <block type="io_allpins" id="[KwG/64qU1W!v=+NL`ha">
+                                <field name="PIN">D3</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="io_digitalwrite_var" id="bp~o%6/7),oEQjzbv~?e">
+                                <value name="PIN">
+                                  <block type="io_allpins" id="=exo%LZlR/4Jo3X-kh]P">
+                                    <field name="PIN">D3</field>
+                                  </block>
+                                </value>
+                                <value name="STATE">
+                                  <block type="io_highlow" id="HL3=-5Hhhx4lIVzR^fid">
+                                    <field name="STATE">HIGH</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="procedures_callnoreturn" id="BOQlpRU{5vC:}-2%r{T1">
+                                    <mutation name="shake_試轉馬達"></mutation>
+                                    <next>
+                                      <block type="procedures_callnoreturn" id=":ox1~d)jW~99-p69CQvC">
+                                        <mutation name="blink_閃二下LED"></mutation>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-441" y="-675">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="@A@Z+cs#zt4Ik?EX;y`.">
+        <next>
+          <block type="wemos_motor_check_idle" id="t2zeB/sSg{8:A+V{ePFX"></block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="w02ZdEoddHk^Z3itq+FX" x="-444" y="-576">
+    <field name="NAME">blink_閃二下LED</field>
+    <comment pinned="false" h="80" w="160">函式說明</comment>
+    <statement name="STACK">
+      <block type="io_digitalwrite_var" id="=s~L]0/}Dv1D,9Lj*2!B" inline="false">
+        <value name="PIN">
+          <block type="io_allpins" id="iet/e5-J_n4pT?+Nu,H)">
+            <field name="PIN">D4</field>
+          </block>
+        </value>
+        <value name="STATE">
+          <block type="io_highlow" id="=l-.*(1/}_VE4sV@3Ad6">
+            <field name="STATE">HIGH</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id=";49En)ddF=IyCo.TAA%x">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="pM}jtR=evjFDEe*sZ8!b">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+            <next>
+              <block type="io_digitalwrite_var" id="FLz#0a][wiki=~ccxeGW" inline="false">
+                <value name="PIN">
+                  <block type="io_allpins" id="wsk1jU*)g,XC[tcmVO.!">
+                    <field name="PIN">D4</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="*{P;4jze;G`-8b?Qc,DA">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="uv-Y6(B-9zRx)TgPx9Gx">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id=")*hUzD)?BB=[}GgxxJE=">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="io_digitalwrite_var" id="uKUW_%:{O#+m/|m8rQLv" inline="false">
+                        <value name="PIN">
+                          <block type="io_allpins" id="hO,?T5~,t4z/[+2]mwmf">
+                            <field name="PIN">D4</field>
+                          </block>
+                        </value>
+                        <value name="STATE">
+                          <block type="io_highlow" id="fc(s9=FE7=8uv|6D!|[d">
+                            <field name="STATE">HIGH</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="Kly%Y^6Xv1)(As8,0h!s">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="*Vm~u~K%vUj[cA~ZAIY*">
+                                <field name="NUM">200</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="io_digitalwrite_var" id="tWh#J:im4wgn_X(T2AGA" inline="false">
+                                <value name="PIN">
+                                  <block type="io_allpins" id="6KU*sBn`@OGk6i+9kb]O">
+                                    <field name="PIN">D4</field>
+                                  </block>
+                                </value>
+                                <value name="STATE">
+                                  <block type="io_highlow" id="}=+.;dx#hfQ/pgIe(oZ]">
+                                    <field name="STATE">LOW</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="k.fBF4Hp~/H)wy*-Y~[:" x="-446" y="-208">
+    <field name="NAME">shake_試轉馬達</field>
+    <comment pinned="false" h="80" w="160">函式說明</comment>
+    <statement name="STACK">
+      <block type="wemos_motor_move" id="/%9gf*D6;ecYyLQH1Fe6">
+        <value name="L_MOTOR">
+          <block type="math_number" id="H=A-N[ci(OUiEa!eI(rF">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+        <value name="R_MOTOR">
+          <block type="math_number" id="]]qyUS2r)zU;UXn?`L%b">
+            <field name="NUM">-50</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="0B.ia0wOp@)*xthv3wMK">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="o_yxMH|+1[LOJ{E6.ZpC">
+                <field name="NUM">100</field>
+              </block>
+            </value>
+            <next>
+              <block type="wemos_motor_move" id="5iofpbrlPOh9,V)Om+SD">
+                <value name="L_MOTOR">
+                  <block type="math_number" id="%4a!3NV0oI}]_lx5p[aA">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="R_MOTOR">
+                  <block type="math_number" id="jzw#hRB*]8=5Fl8o#nO9">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="Sf}7p:fUOCf^,AkOBY?a">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="56Kdib~lAV/!LqdckF_l">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="wemos_motor_move" id="ey4FjEXjn`?NhMW:NdpQ">
+                        <value name="L_MOTOR">
+                          <block type="math_number" id="bUU|h?Ue@kv*9Ps+LRnI">
+                            <field name="NUM">-50</field>
+                          </block>
+                        </value>
+                        <value name="R_MOTOR">
+                          <block type="math_number" id="F(/aa]rdFCl]V.DpTi_=">
+                            <field name="NUM">50</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="=EvmAo~A;~wTX1VA)355">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="L*W0;`;;Nys2xai!fk4%">
+                                <field name="NUM">100</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="wemos_motor_move" id="kXrh/m0hjS|J):W3b9`l">
+                                <value name="L_MOTOR">
+                                  <block type="math_number" id="`Mr0-.URv.tctuAt0uFL">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="R_MOTOR">
+                                  <block type="math_number" id="3A]L*2VoxwlsEXYF0ykS">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="[NxJi5uctOiZ][UI4yET" x="-1264" y="75">
+    <field name="NAME">handleRace_處理訊息</field>
+    <statement name="STACK">
+      <block type="controls_if" id="2C1,o2AggYtdmVE4E{v_">
+        <value name="IF0">
+          <block type="esp8266_webserver_has_arg" id="fz}Q;p}e{VA_LrEtNg!#">
+            <value name="ARGNAME">
+              <block type="text" id=":jAs[-x:(EJ%xvIpocf#">
+                <field name="TEXT">output</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="w58nj0AnUQYPj0,n!ykN">
+            <field name="VAR">接收值</field>
+            <value name="VALUE">
+              <block type="esp8266_webserver_arg_by_name" id="8a9a|q@iejbFKyiGZ4Rg">
+                <value name="ARGNAME">
+                  <block type="text" id=")u:ea^a%E1+YmE;^hL_]">
+                    <field name="TEXT">output</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="`}34qnv6V9:#+o~46-Ld">
+                <mutation elseif="2"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="5.L@Gzs7xUy!sX5!@[9E">
+                    <field name="OP">NEQ</field>
+                    <value name="A">
+                      <block type="text_find" id="4i(*%UU{6;V^C?#6g1Z5" inline="false">
+                        <field name="VAR">接收值</field>
+                        <value name="FROM">
+                          <block type="math_number" id="I5A2Nu)ZX{{8[D%vj3=F">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="SUBSTRING">
+                          <block type="text" id="}sH5DyQv66-FVNxQIg|L">
+                            <field name="TEXT">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="[E(/xGz`M*e}VrAPpdbw">
+                        <field name="NUM">-1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set" id="Wv^_El|cYJf*nSa{/(n^">
+                    <field name="VAR">Rstr_右輸出接收值</field>
+                    <value name="VALUE">
+                      <block type="text_substring" id="=4+0akCLi=d#NF`%|Ny5" inline="false">
+                        <field name="VAR">接收值</field>
+                        <value name="FROM">
+                          <block type="math_number" id="]1Y]1;voU4%28uC%0|tx">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="TO">
+                          <block type="text_find" id="RG1ss{~~th9Pt5LNMh.H" inline="false">
+                            <field name="VAR">接收值</field>
+                            <value name="FROM">
+                              <block type="math_number" id="2_UhAs700`kKn*a+(3O1">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="SUBSTRING">
+                              <block type="text" id="%=fhg}^[2f]X`g?QNg`#">
+                                <field name="TEXT">x</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="SDx^+s1GRyW/II`MzO.r">
+                        <field name="VAR">Lstr_左輸出接收值</field>
+                        <value name="VALUE">
+                          <block type="text_substring_end" id="DKlCbMLpjGKLeczj!0CG" inline="false">
+                            <field name="VAR">接收值</field>
+                            <value name="FROM">
+                              <block type="math_arithmetic" id="XgeaTt:Eug:Yc6-EY~@p" inline="false">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <block type="text_find" id="GZYsW(THTy#+8o^0|ea[" inline="false">
+                                    <field name="VAR">接收值</field>
+                                    <value name="FROM">
+                                      <block type="math_number" id="im){s-jq+mC6r*i5str_">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                    <value name="SUBSTRING">
+                                      <block type="text" id="o)@MnC%kfStKY|^iP7C:">
+                                        <field name="TEXT">x</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="ilNy_N|gA:NJH5BYoIe=">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="Yp(E0jNYrcG8QcA[.}sW">
+                            <field name="VAR">outputL_左輸出</field>
+                            <value name="VALUE">
+                              <block type="math_arithmetic" id=",gNY-}`]5!*1#}HNtF`V">
+                                <field name="OP">MULTIPLY</field>
+                                <value name="A">
+                                  <block type="text_atoi" id="WHxM7Yj7N((*j::)R;jI">
+                                    <field name="VAR">Lstr_左輸出接收值</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="[wciClFBC]8;U6b_RN9b">
+                                    <field name="NUM">18</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="(2%8}4];|_m+w#N%dHHI">
+                                <field name="VAR">outputR_右輸出</field>
+                                <value name="VALUE">
+                                  <block type="math_arithmetic" id="9+{Z9wg]krd0T+v6a4.a">
+                                    <field name="OP">MULTIPLY</field>
+                                    <value name="A">
+                                      <block type="text_atoi" id="x#8a!CUp0L4?s|o+rxwP">
+                                        <field name="VAR">Rstr_右輸出接收值</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="g*}c?@ftQsrpDYwZ`oqs">
+                                        <field name="NUM">18</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="wemos_motor_move" id="=/Ro~gy:5v;G07up!)dL">
+                                    <value name="L_MOTOR">
+                                      <block type="variables_get" id="efZ/#b{c3VYF;V`(/XMv">
+                                        <field name="VAR">outputL_左輸出</field>
+                                      </block>
+                                    </value>
+                                    <value name="R_MOTOR">
+                                      <block type="variables_get" id="n@qdA]LVN`CI;;gDE]o{">
+                                        <field name="VAR">outputR_右輸出</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="X@lzTZBL*mM?np@Ycjq6">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="text_find" id="Oo+-tmwi6NiKc)O{D9A-" inline="false">
+                        <field name="VAR">接收值</field>
+                        <value name="FROM">
+                          <block type="math_number" id="3BIK)v@~j}D72W!=/?o4">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="SUBSTRING">
+                          <block type="text" id="i|6kOK{U^.eV8`B=+07:">
+                            <field name="TEXT">M</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="^a%Hc(32JmOktqr#LyTO">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="io_digitalwrite_var" id="_{3(*`G7q0]%66n)wq5%">
+                    <value name="PIN">
+                      <block type="io_allpins" id="MkzJejY04}.16i?Asf0f">
+                        <field name="PIN">D3</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="*Unx{}aE@+:cPHG]du~*">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF2">
+                  <block type="logic_compare" id="ou}H(U%A+]6+*psghqQ_">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="text_find" id="oiSF;9t3fn95:;T9wtf-" inline="false">
+                        <field name="VAR">接收值</field>
+                        <value name="FROM">
+                          <block type="math_number" id="=n)cp!,AQyj]0~M0=@FI">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="SUBSTRING">
+                          <block type="text" id=",/FlODRPOjO24RkA;)X.">
+                            <field name="TEXT">A</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="W)+xtXg}f@0iDNCH~rD2">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO2">
+                  <block type="io_digitalwrite_var" id="DDY[XLXY/~KW)Ol8!Y^_">
+                    <value name="PIN">
+                      <block type="io_allpins" id="UlY3,],Z;uKU_Nom^eM5">
+                        <field name="PIN">D3</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="sbo5CfReRtDVcmReB[i[">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="esp8266_webserver_send" id="H2QI#KRtFMe+W0S_If2k" inline="false">
+            <value name="STATUS">
+              <block type="math_number" id="EfY#u-Pm%ff;*gXveoRk">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+            <value name="MIMETYPE">
+              <block type="text" id="P](sA)aeg):a^Yb,`yla">
+                <field name="TEXT">text/plain</field>
+              </block>
+            </value>
+            <value name="CONTENT">
+              <block type="variables_get" id="x{`9i;@l?v9|%8;jv02;">
+                <field name="VAR">接收值</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

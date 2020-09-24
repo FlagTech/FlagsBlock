@@ -1,0 +1,205 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="Sc/ahtD-z2+Kp:3Bp%%F" x="-86" y="-122">
+    <statement name="SETUP_FUNC">
+      <block type="io_input_pullup" id="^G,`GbiTlATE=n2d4nW[">
+        <field name="PIN">A0</field>
+        <next>
+          <block type="io_input_pullup" id="7/qQiThc]akdm:p2U,`9">
+            <field name="PIN">3</field>
+            <next>
+              <block type="flagledstripe_setup" id="`!8iBrQ_j+`?SZGfi|.{">
+                <field name="OBJNAME">條燈</field>
+                <field name="NUM">2</field>
+                <value name="LEDPIN">
+                  <block type="io_allpins" id="G%v3H)=7uE8Fcj?Olf.p">
+                    <field name="PIN">4</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="flagledstripe_setbrightness" id="joY^gGF#]z:nY*vb|++E">
+                    <field name="OBJNAME">條燈</field>
+                    <field name="BRIGHTNESS">128</field>
+                    <next>
+                      <block type="variables_set" id="rN9(?lc_o`j[%EX;NRt]">
+                        <field name="VAR">限位開關</field>
+                        <value name="VALUE">
+                          <block type="io_allpins" id="L+Mm;4QU+_pp{ohTLdn+">
+                            <field name="PIN">3</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="V=bU?J+9c0Ujh@%34|S^">
+                            <field name="VAR">馬達</field>
+                            <value name="VALUE">
+                              <block type="io_allpins" id=",~^T0KJga{(fPoLr`R((">
+                                <field name="PIN">12</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="-86" y="95">
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="5+O7ChP0Yg%?T)oSsbG^">
+        <value name="IF0">
+          <block type="logic_compare" id="QKY.mL@q6A{5br:4w{},">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="io_digitalread_var" id="ci+wxr_POxJpfdWGx0{u">
+                <value name="PIN">
+                  <block type="io_allpins" id="riGt@SWWLu;EZxZRgIhX">
+                    <field name="PIN">A0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="io_highlow" id="O_J]0a,|d*5WJGA+:J=:">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_for" id="9K,GiNL^sxTB8O]l]ONA">
+            <field name="VAR">時間</field>
+            <value name="FROM">
+              <block type="math_number" id="teV-!^T;Yxz:/V%pPi[5">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <value name="TO">
+              <block type="math_number" id="K#U;rb;u/WjrqL^-I[t~">
+                <field name="NUM">400</field>
+              </block>
+            </value>
+            <value name="BY">
+              <block type="math_number" id="5wWU0@4~+~^CR!K5eCUL">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="controls_if" id="0A|n_1lXwIgn,u59jEUq">
+                <value name="IF0">
+                  <block type="logic_compare" id="z:-3GUVEqKkQ^Ucrl?7Z">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="io_digitalread_var" id="!;;;%JBVOE5r*DlR1o+3">
+                        <value name="PIN">
+                          <block type="variables_get" id="F^r9TptmE+383{uePo^Y">
+                            <field name="VAR">限位開關</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="io_highlow" id="}H5fM;8s0/z6%hoqC?t5">
+                        <field name="STATE">LOW</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_flow_statements" id="=`SSw?woYg.@MA[z9%]Y">
+                    <field name="FLOW">BREAK</field>
+                  </block>
+                </statement>
+                <next>
+                  <block type="io_digitalwrite_var" id="G@a-6}.ROpE={Z`m:%K[">
+                    <value name="PIN">
+                      <block type="variables_get" id="7q%nmenxx.Xbe[SowJzV">
+                        <field name="VAR">馬達</field>
+                      </block>
+                    </value>
+                    <value name="STATE">
+                      <block type="io_highlow" id="=eh{`,-cgGZaJu82J6eS">
+                        <field name="STATE">HIGH</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="u~Fp5L0eEDfP[1^z(I*m">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="w@Au?MK`J,:v;.0PqKnp">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="io_digitalwrite_var" id="f*k7j,w-lkU%_fE9c^eF">
+                <value name="PIN">
+                  <block type="variables_get" id="Z5Sf/}F8!*jY2Uj1FRl*">
+                    <field name="VAR">馬達</field>
+                  </block>
+                </value>
+                <value name="STATE">
+                  <block type="io_highlow" id="~s%Aj~Mu[I)A3bF79*uX">
+                    <field name="STATE">LOW</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="flagpcmasync_startplaybgm" id="hNS8(*B#~(G}?%6388(1">
+                    <field name="NUM">3</field>
+                    <next>
+                      <block type="controls_for" id="SqWq6LG)J((0.*F,1Z,R">
+                        <field name="VAR">時間</field>
+                        <value name="FROM">
+                          <block type="math_number" id="P:H8c[ALFo,vSU]6bPPI">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <value name="TO">
+                          <block type="math_number" id="wV21k7(:!d}rQ.;2qxb8">
+                            <field name="NUM">2000</field>
+                          </block>
+                        </value>
+                        <value name="BY">
+                          <block type="math_number" id="%7@ch9i[Lp_A=y:yK-6~">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="flagledstripe_rainbow" id=",]{QJu=Cav~D!/rXbHqI">
+                            <field name="OBJNAME">條燈</field>
+                            <value name="INTERVAL">
+                              <block type="math_number" id="~=yHY0MVDh|1Q6%RtBj#">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="time_delay" id="m#FLEj`H-|/u8IPH64Y~">
+                                <value name="DELAY_TIME_MILI">
+                                  <block type="math_number" id="=pgf+wS?^}0)!xQxFVO2">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

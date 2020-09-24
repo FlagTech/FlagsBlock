@@ -1,0 +1,73 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="m2,a!0k/0zM6mnTZKa=~" x="6" y="12">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="os8eIr85cpq)/fSH-4fK">
+        <field name="VAR">variable</field>
+        <value name="VALUE">
+          <block type="io_allpins" id="9F`shM.#KOyeMw`DC`*D">
+            <field name="PIN">A2</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="EG,/?PbBYPDQUvJ19lSZ">
+            <field name="VAR">led</field>
+            <value name="VALUE">
+              <block type="io_allpins" id="6{b-L{+3{/ogu)BJ|G7]">
+                <field name="PIN">9</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="7" y="130">
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="dHsEF,M~;YWcZPw[=6qT">
+        <field name="VAR">sensorValue</field>
+        <value name="VALUE">
+          <block type="io_analogread_var" id="^*.b|p4rTng,*lfq+4pn">
+            <value name="PIN">
+              <block type="variables_get" id="kG:ss#X+Vt;MnZ;Tt.ry">
+                <field name="VAR">variable</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="io_analogwrite_var" id="ij3*m0Y.G|h0;G_Em|CY">
+            <value name="PIN">
+              <block type="variables_get" id="UWE/7_KOm^g(JV`CK5K7">
+                <field name="VAR">led</field>
+              </block>
+            </value>
+            <value name="NUM">
+              <block type="math_arithmetic" id="95|2qyISTpa2M|9TrPCY">
+                <field name="OP">DIVIDE</field>
+                <value name="A">
+                  <block type="variables_get" id="2slq+@(C?wc!oQ%k#eTw">
+                    <field name="VAR">sensorValue</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="+(fm/eYk:SU*PPMBYkG[">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="@i#4MH-+]fuWFHY-DYu=">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="Gpc_`NjFMGu`hZP)sH5k">
+                    <field name="NUM">150</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

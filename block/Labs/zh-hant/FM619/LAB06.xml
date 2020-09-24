@@ -1,0 +1,162 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="91SmZ3}z0A4r-l#d9(sL" x="64" y="-40">
+    <statement name="SETUP_FUNC">
+      <block type="FLAGMATRIX_setup" id="`ZXkmbdX+?sUMI41BJy]">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="DATA_PIN">
+          <block type="io_allpins" id="*@j{Z6!d:^E6KjY#t4=4">
+            <field name="PIN">D7</field>
+          </block>
+        </value>
+        <value name="CLK_PIN">
+          <block type="io_allpins" id="k#tXOxALH--X1Mc%r~ef">
+            <field name="PIN">D5</field>
+          </block>
+        </value>
+        <next>
+          <block type="FLAGMATRIX_clear" id="-T1t2h9nT[[kpUXVdet[">
+            <field name="OBJNAME">圖形顯示器</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="65" y="99">
+    <statement name="LOOP_FUNC">
+      <block type="FLAGMATRIX_newdot" id="dO`JtZU6|Pu4!`/+R0sw">
+        <field name="OBJNAME">圖形顯示器</field>
+        <value name="X">
+          <block type="math_number" id="QwFl:1X-s=f:8VN-st9-">
+            <field name="NUM">4</field>
+          </block>
+        </value>
+        <value name="Y">
+          <block type="math_number" id="!w4JaO2Vp-v{w-ym`]x4">
+            <field name="NUM">4</field>
+          </block>
+        </value>
+        <value name="COLOR">
+          <block type="math_number" id=".y:i)P-t)tx/_16*]FN^">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="sY1_gkjzLJM;3}b3PP%}">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="Qpf6*cv2ljc._fc(}-7G">
+                <field name="NUM">300</field>
+              </block>
+            </value>
+            <next>
+              <block type="FLAGMATRIX_newdot" id="JYmEc.kgbvt5}Jcy+dnH">
+                <field name="OBJNAME">圖形顯示器</field>
+                <value name="X">
+                  <block type="math_number" id="NN{Fg!:aDpVhvhs,;_=J">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+                <value name="Y">
+                  <block type="math_number" id="@+E#-d~yTm4g2yhsltc~">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+                <value name="COLOR">
+                  <block type="math_number" id="=f?WeQH#xci}%t4gQ.F[">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="X~iMwMCLj1!@Hb1cG59~">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="iKrGmx/yt7xpPPZkZ:x}">
+                        <field name="NUM">300</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="FLAGMATRIX_clear" id="Sq;o0rZXe[I@9R08(LN2">
+                        <field name="OBJNAME">圖形顯示器</field>
+                        <next>
+                          <block type="FLAGMATRIX_dot" id="?a%}U9BX5/Itq={uucV#">
+                            <field name="OBJNAME">圖形顯示器</field>
+                            <value name="X">
+                              <block type="math_number" id="SMKQ!YplZCzPFXrN+iqq">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                            <value name="Y">
+                              <block type="math_number" id="e#u]4jG@Xc?QIWW+i)`r">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                            <value name="DRAW">
+                              <block type="math_number" id="0p`ph1}Q@e4WMcJa.YK=">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <value name="COLOR">
+                              <block type="math_number" id="17ppf.L!*gIB^h!OB#nu">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="time_delay" id="[aDJg.E=GnoTPb[S]4k?">
+                                <value name="DELAY_TIME_MILI">
+                                  <block type="math_number" id="TZYH]]{bg!J%K!SqK@PP">
+                                    <field name="NUM">300</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="FLAGMATRIX_dot" id=",yGZy7r%hqhA+Z7Iipqx">
+                                    <field name="OBJNAME">圖形顯示器</field>
+                                    <value name="X">
+                                      <block type="math_number" id="nDm#@mBPw3Qp1m+lJ.vc">
+                                        <field name="NUM">3</field>
+                                      </block>
+                                    </value>
+                                    <value name="Y">
+                                      <block type="math_number" id="pl[1DZ6HHWDAm})*deoJ">
+                                        <field name="NUM">3</field>
+                                      </block>
+                                    </value>
+                                    <value name="DRAW">
+                                      <block type="math_number" id="XSj=bSZJ8*5?/H!0*4Yr">
+                                        <field name="NUM">1</field>
+                                      </block>
+                                    </value>
+                                    <value name="COLOR">
+                                      <block type="math_number" id="g|U74jMX.I3U:5NGviK=">
+                                        <field name="NUM">2</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="time_delay" id="Nr];Lv[UK]%qi}vmixI3">
+                                        <value name="DELAY_TIME_MILI">
+                                          <block type="math_number" id="Qo*?0d|+%JfIz?u5EO_q">
+                                            <field name="NUM">300</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="FLAGMATRIX_clear" id="G;h|luo6ETC:rXsAQqv.">
+                                            <field name="OBJNAME">圖形顯示器</field>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

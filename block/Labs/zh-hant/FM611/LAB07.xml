@@ -1,0 +1,164 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="cxvA`Xw%+A}7a*;0]6O9" x="39" y="74">
+    <statement name="SETUP_FUNC">
+      <block type="servo_use" id="Tj%*I3Ih[UWzA7)Kt~;f">
+        <field name="OBJNAME">大門</field>
+        <field name="PIN">D6</field>
+        <next>
+          <block type="io_builtin_led" id="/mL=EK^P8I,H2L^gF;Y@">
+            <field name="BUILT_IN_LED">D4</field>
+            <value name="STATE">
+              <block type="io_highlow" id="s%uO9a055l]S{la|0?u0">
+                <field name="STATE">HIGH</field>
+              </block>
+            </value>
+            <next>
+              <block type="esp8266_sta_setup" id="3@xg#r=}.r+t=^9dm6hT">
+                <value name="SSID">
+                  <block type="text" id="w=N/oYXFoZz-GGf2C2HV">
+                    <field name="TEXT">您的WiFi網路名稱</field>
+                  </block>
+                </value>
+                <value name="PINCODE">
+                  <block type="text" id="WgCDA@n25}/;ks%IHM4M">
+                    <field name="TEXT">您的WiFi網路密碼</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_whileUntil" id="2elH3tJp/qf!D;0iOHi^">
+                    <field name="MODE">WHILE</field>
+                    <value name="BOOL">
+                      <block type="logic_negate" id=")3j2{:)L(MMk}AIs({~Q">
+                        <value name="BOOL">
+                          <block type="esp8266_connected" id="SrS/ADsK!D.zrDtxx:ta"></block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="time_delay" id="c:8jGIYiRrjXxYQ?gB-B">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="]w8:Uj1?*f3%vC%`UFR#">
+                            <field name="NUM">1000</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="io_builtin_led" id="P()J}p4~^|jK-(xEEAfh">
+                        <field name="BUILT_IN_LED">D4</field>
+                        <value name="STATE">
+                          <block type="io_highlow" id="(0RzIaQC9K].s,poiaDn">
+                            <field name="STATE">LOW</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="esp8266_wifi_ap_sta" id="ES7btHCTpUhjIy+|a5x-">
+                            <next>
+                              <block type="controls_waitUntil" id="`sn!]]{*{U4cJx{?F-#r">
+                                <value name="BOOL">
+                                  <block type="esp8266_ap_setup" id="3^dX6y`KWkh%VcJZ+k_=">
+                                    <field name="CHANNEL">1</field>
+                                    <field name="HIDDEN">FALSE</field>
+                                    <value name="SSID">
+                                      <block type="text_join" id="w3#P+TIh3~sYEKPCUAIV">
+                                        <mutation items="2"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="/3(cc7j1z|^U|a95%C_h">
+                                            <field name="TEXT">IP-</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="esp8266_localIP" id="4mxobzBo-6*sUq+tn,Nk"></block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="PINCODE">
+                                      <block type="text" id="NYZ)e-v3p+U_:SOLL4*f">
+                                        <field name="TEXT"></field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="esp8266_webserver_secure_setup" id="BoN!52tO2U:,UN^DYoY(">
+                                    <field name="PORT">443</field>
+                                    <next>
+                                      <block type="esp8266_webserver_on2" id="rp2@3d:u:Z6sF95/6c83">
+                                        <field name="FUNCNAME">開啟門閂</field>
+                                        <field name="PATH">/open</field>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="40" y="505">
+    <statement name="LOOP_FUNC">
+      <block type="esp8266_webserver_handleclient" id="S^2l+P)6?0)`xRl;vuB4"></block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="g;rz=}8x-n=OZZlAsb[/" x="40" y="590">
+    <field name="NAME">開啟門閂</field>
+    <statement name="STACK">
+      <block type="servo_put" id="2jaXycPd3=-7x[X_dg1%">
+        <field name="OBJNAME">大門</field>
+        <value name="SERVO_ANGLE">
+          <block type="math_number" id="EugS-V?#zs}I4cN)`L1M">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="(IU9QV9ab;11GxAU9`W#">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="D;I]m(LVe(Ns)KM}FJqg">
+                <field name="NUM">10000</field>
+              </block>
+            </value>
+            <next>
+              <block type="servo_put" id="j@VB~l10e:L_^S,Za0zQ">
+                <field name="OBJNAME">大門</field>
+                <value name="SERVO_ANGLE">
+                  <block type="math_number" id="1v^I:2_ZY`,{RiH(T!WL">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="esp8266_webserver_send" id=",,Sx9k-%:iFI9-!aIIXg">
+                    <value name="STATUS">
+                      <block type="math_number" id="?rY#V(Oy%h7D(K8Z9bft">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                    <value name="MIMETYPE">
+                      <block type="text" id="B_dZvQEpNV[lyjNw1@EZ">
+                        <field name="TEXT">text/plain</field>
+                      </block>
+                    </value>
+                    <value name="CONTENT">
+                      <block type="text" id="r!eO~cvNJBQ44_]M.**-">
+                        <field name="TEXT">OK</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
