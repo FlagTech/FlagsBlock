@@ -1433,6 +1433,8 @@ Ardublockly.TOOLBOX_XML =
 '      </value>' +
 '    </block>' +
 '    <block type="ADXL345_get"></block>' +
+'    <block type="MPU6050_getacc"></block>' +
+'    <block type="MPU6050_getrot"></block>' +
 '    <block type="irremote_send_use"></block>' +
 '    <block type="irremote_send_nec">' +
 '      <value name="CMD">' +

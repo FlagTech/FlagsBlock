@@ -49,6 +49,7 @@
   <script src="../blockly_flag/blocks/arduino/DS18B20.js"></script>
   <script src="../blockly_flag/blocks/arduino/FlagFFT.js"></script>
   <script src="../blockly_flag/blocks/arduino/ADXL345.js"></script>
+  <script src="../blockly_flag/blocks/arduino/MPU6050.js"></script>
   <script src="../blockly_flag/blocks/arduino/IRRemote.js"></script>
   <script src="../blockly_flag/blocks/arduino/flagpcmasync.js"></script>
   <script src="../blockly_flag/blocks/arduino/dancerobot.js"></script>
@@ -89,6 +90,7 @@
   <script src="../blockly_flag/generators/arduino/DS18B20.js"></script>
   <script src="../blockly_flag/generators/arduino/FlagFFT.js"></script>
   <script src="../blockly_flag/generators/arduino/ADXL345.js"></script>
+  <script src="../blockly_flag/generators/arduino/MPU6050.js"></script>
   <script src="../blockly_flag/generators/arduino/IRRemote.js"></script>
   <script src="../blockly_flag/generators/arduino/APDS9930.js"></script>
   <script src="../blockly_flag/generators/arduino/flagpcmasync.js"></script>
