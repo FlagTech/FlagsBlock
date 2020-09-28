@@ -2,7 +2,7 @@ desktop.ini
 Start.exe
 Start10.exe
 .vscode/
-arduino/
+/arduino
 nwjs/
 python/
 flag/FlagsBlock/Service Worker/
