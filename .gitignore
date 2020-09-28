@@ -3,11 +3,16 @@ Start.exe
 Start10.exe
 setup.sh
 start
-.vscode/   ＃ Visual Studio Code 的設定資料
-/arduino   # 不同平台要自己建立的 arduino 工具
-/nwjs      # 不同平台要自己建立的 nwjs 環境
-/python    # Windows 平台的可攜式 Python 開發環境 (Linux/macOS 使用平台內建的 Python)
-/Linux     # Linux 平台的啟始畫面圖檔 (Windows 平台已置入 start 執行檔中)
+# Visual Studio Code 的設定資料
+.vscode/
+# 不同平台要自己建立的 arduino 工具
+/arduino/
+# 不同平台要自己建立的 nwjs 環境
+/nwjs/
+# Windows 平台的可攜式 Python 開發環境 (Linux/macOS 使用平台內建的 Python)
+/python/
+# Linux 平台的啟始畫面圖檔 (Windows 平台已置入 start 執行檔中)
+/Linux/
 flag/FlagsBlock/Service Worker/
 flag/FlagsBlock/Local Storage/
 flag/FlagsBlock/GPUCache/
