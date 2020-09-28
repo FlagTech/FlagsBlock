@@ -1,10 +1,13 @@
 desktop.ini
 Start.exe
 Start10.exe
+setup.sh
+start
 .vscode/
 arduino/
 nwjs/
 python/
+Linux/
 flag/FlagsBlock/Service Worker/
 flag/FlagsBlock/Local Storage/
 flag/FlagsBlock/GPUCache/
