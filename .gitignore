@@ -1,6 +1,9 @@
+# Windows 自動產生的縮圖檔
 desktop.ini
+# Windows 平台的主執行檔
 Start.exe
 Start10.exe
+# Linux 平台的主執行檔
 setup.sh
 start
 # Visual Studio Code 的設定資料
@@ -17,8 +20,9 @@ flag/FlagsBlock/Service Worker/
 flag/FlagsBlock/Local Storage/
 flag/FlagsBlock/GPUCache/
 flag/FlagsBlock/Cache/
-block/FlagsBlockSketch/preferences_bak.txt
+# FlagsBlock 會自動產生的檔案
 block/FlagsBlockSketch/preferences.txt
 block/FlagsBlockSketch/FlagsBlockSketch.ino
 block/FIRSTRUN
+# Python 快取檔
 *.pyc
