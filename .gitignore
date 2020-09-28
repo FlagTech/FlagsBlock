@@ -4,7 +4,7 @@ Start10.exe
 setup.sh
 start
 .vscode/
-arduino/
+/arduino
 nwjs/
 python/
 Linux/
