@@ -5,5 +5,10 @@ Start10.exe
 arduino/
 nwjs/
 python/
-
-
+flag/FlagsBlock/Service Worker/
+flag/FlagsBlock/Local Storage/
+flag/FlagsBlock/GPUCache/
+flag/FlagsBlock/Cache/
+block/FlagsBlockSketch/preferences_bak.txt
+block/FlagsBlockSketch/preferences.txt
+block/FlagsBlockSketch/FlagsBlockSketch.ino
