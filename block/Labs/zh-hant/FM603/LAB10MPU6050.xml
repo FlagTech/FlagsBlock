@@ -1,0 +1,91 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_setup" id="S9F/x^2h.f0]Ze?o*__Z" x="39" y="42">
+    <statement name="SETUP_FUNC">
+      <block type="I2CLCD_setup" id="]IY#N,4E}k[vHtr@%plp">
+        <field name="I2C_ADDR">0x3F</field>
+      </block>
+    </statement>
+  </block>
+  <block type="arduino_loop" id="EAg)g_/#Sgta~QPPg4@7" deletable="false" x="38" y="132">
+    <statement name="LOOP_FUNC">
+      <block type="I2CLCD_printLine" id="G:fvIV(fFM?YmLq0!c(Z">
+        <field name="ROW">0</field>
+        <value name="CONTENT">
+          <block type="text_join" id="}(dG8W%P+4n4lwmMti5j">
+            <mutation items="5"></mutation>
+            <value name="ADD0">
+              <block type="MPU6050_getacc" id=",cY6lk-2~yU8nwQHkjs_">
+                <field name="AXIS">X</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="9w[*6RHtBecyBEn2~?Xv">
+                <field name="TEXT">,</field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="MPU6050_getacc" id=".rvsRp`RI}QFh6AmDuU+">
+                <field name="AXIS">Y</field>
+              </block>
+            </value>
+            <value name="ADD3">
+              <block type="text" id="|-2.g2(w--RbC{Q^4inZ">
+                <field name="TEXT">,</field>
+              </block>
+            </value>
+            <value name="ADD4">
+              <block type="MPU6050_getacc" id="#ud1a9={CdhI45kbU-xB">
+                <field name="AXIS">Z</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="serial_print" id="z:EZ)x:5a`4A8vRrT[Iw">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="text_join" id="{Qa=4-Q9uHdJM@tg]9YD">
+                <mutation items="5"></mutation>
+                <value name="ADD0">
+                  <block type="MPU6050_getacc" id="0g}sR1b3+U;Z[;a+8Nta">
+                    <field name="AXIS">X</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id=".EQ!Tc)Wj/)?|rPr!WG3">
+                    <field name="TEXT">,</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="MPU6050_getacc" id="fcrFJMk~798_yU.y4,0v">
+                    <field name="AXIS">Y</field>
+                  </block>
+                </value>
+                <value name="ADD3">
+                  <block type="text" id="=M`:_/VDU)d!)liy+y;K">
+                    <field name="TEXT">,</field>
+                  </block>
+                </value>
+                <value name="ADD4">
+                  <block type="MPU6050_getacc" id="UKFR?)H9uH%Ud%S@?t[2">
+                    <field name="AXIS">Z</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="agt^:jxmN#CczLC!7N[x">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="*yQu10kZ/)p0EJekfNx2">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
