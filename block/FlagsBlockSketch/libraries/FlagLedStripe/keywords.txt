@@ -1,0 +1,27 @@
+# Class
+#######################################
+
+FlagLedStripe	KEYWORD1
+
+#######################################
+# Methods and Functions 
+#######################################	
+
+stopEffect	KEYWORD2
+showAll			KEYWORD2
+rgbLoop	KEYWORD2
+theaterChase		KEYWORD2
+theaterChaseRainbow	KEYWORD2
+rainbow			KEYWORD2
+rainbowCycle	KEYWORD2
+strobe	KEWORD2
+runningLights	KEYWORD2
+cylonBounce	KEYWORD2
+sparkle	KEYWORD2
+fadeInOut	KEYWORD2
+breathing	KEYWORD2
+meteorLamp	KEYWORD2
+
+#######################################
+# Constants	LITERAL1
+#######################################

@@ -1,0 +1,46 @@
+# Class
+#######################################
+
+FlagDanceRobot	KEYWORD1
+
+#######################################
+# Methods and Functions 
+#######################################	
+
+attach	KEYWORD2
+setBPM	KEYWORD2
+getMSPerBeat	KEYWORD2
+setTrim	KEYWORD2
+setPosition	KEYWORD2
+detach	KEYWORD2
+saveTrim  KEYWORD2
+restoreTrim KEYWORD2
+oscillate	KEYWORD2
+moveServos	KEYWORD2
+primera_parte	KEYWORD2
+lateral_fuerte	KEYWORD2
+crusaito	KEYWORD2
+segunda_parte	KEYWORD2
+moonWalkRight	KEYWORD2
+moonWalkLeft	KEYWORD2
+flapping	KEYWORD2
+drunk	KEYWORD2
+kickLeft	KEYWORD2
+kickRight	KEYWORD2
+walk	KEYWORD2
+backyard	KEYWORD2
+goingUp	KEYWORD2
+noGravity	KEYWORD2
+pasitos	KEYWORD2
+patada	KEYWORD2
+twist	KEYWORD2
+upDown	KEYWORD2
+saludo	KEYWORD2
+swing	KEYWORD2
+reverencia1	KEYWORD2
+reverencia2	KEYWORD2
+run	KEYWORD2
+
+#################################
+# Constants	LITERAL1
+#######################################
