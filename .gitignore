@@ -20,6 +20,7 @@ start
 /flag/FlagsBlock/Local Storage/
 /flag/FlagsBlock/GPUCache/
 /flag/FlagsBlock/Cache/
+/flag/FlagsBlock/lockfile
 # FlagsBlock 會自動產生的檔案
 block/FlagsBlockSketch/preferences.txt
 block/FlagsBlockSketch/FlagsBlockSketch.ino
