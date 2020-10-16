@@ -16,10 +16,10 @@ start
 /python/
 # Linux 平台的啟始畫面圖檔 (Windows 平台已置入 start 執行檔中)
 /Linux/
-flag/FlagsBlock/Service Worker/
-flag/FlagsBlock/Local Storage/
-flag/FlagsBlock/GPUCache/
-flag/FlagsBlock/Cache/
+/flag/FlagsBlock/Service Worker/
+/flag/FlagsBlock/Local Storage/
+/flag/FlagsBlock/GPUCache/
+/flag/FlagsBlock/Cache/
 # FlagsBlock 會自動產生的檔案
 block/FlagsBlockSketch/preferences.txt
 block/FlagsBlockSketch/FlagsBlockSketch.ino
