@@ -161,7 +161,9 @@ def load_arduino_cli(sketch_path=None):
                 # arduino.exe 只有錯誤時會輸出 stderr
                 # arduino_debug.exe 會使用 stderr 輸出執行過程
                 # Flag's Block 預設使用 arduino.exe 
-                if error and process.returncode == 0:
+                if "not responding" in error:
+                    process.returncode = 1
+                elif error and process.returncode == 0:
                     process.returncode = process.returncode # + 1 modified by Mee
                 # arduino.exe 有些錯誤會直接用對話窗顯示, 不會輸出 stderr
                 elif not error and not out and process.returncode == 0:
