@@ -7,7 +7,7 @@ Written by Yu-Hsiung Chiu in July 2016
 
  */
 
-const VERSION = "1.3.6b";
+const VERSION = "1.3.7";
 var flagsBlockTitle = "Flag's Block"
 
 var debugMode = 0;

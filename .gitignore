@@ -24,7 +24,10 @@ start
 # FlagsBlock 會自動產生的檔案
 block/FlagsBlockSketch/preferences.txt
 block/FlagsBlockSketch/FlagsBlockSketch.ino
+block/FlagsBlockSketch/data/sound.h
+block/FlagsBlockSketch/data/webpages.h
 block/ServerCompilerSettings.ini
 block/FIRSTRUN
 # Python 快取檔
+__pycache__/
 *.pyc
