@@ -9,8 +9,7 @@
       var userLang = window.navigator.language.toLowerCase();
       var url = 'ardublockly/?'+location.search.substr(1);
 
-      if (userLang == "zh-tw") lang = "zh-hant";
-      else if (userLang == "zh-cn") lang = "zh-hant";
+      if (userLang.startsWith("zh")) lang = "zh-hant";
       else lang = "en";
 
       if (lang) url += '&lang='+lang;
