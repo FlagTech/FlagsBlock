@@ -147,8 +147,6 @@ def load_arduino_cli(sketch_path=None):
             out, error = process.communicate()
             try:
                 # 接收中文訊息
-                #out = six.u(out)
-                #error = six.u(error)
                 print("processing message....")
                 # out = out.decode(sys.stdin.encoding)
                 out = out.decode('UTF-8')
@@ -157,18 +155,8 @@ def load_arduino_cli(sketch_path=None):
                 error = error.decode('UTF-8')
                 print("error OK.")
 
-                # arduino.exe exit code = arduino_debug.exe exit code + 1
-                # arduino.exe 只有錯誤時會輸出 stderr
-                # arduino_debug.exe 會使用 stderr 輸出執行過程
-                # Flag's Block 預設使用 arduino.exe 
-                if "not responding" in error:
-                    process.returncode = 1
-                elif error and process.returncode == 0:
-                    process.returncode = process.returncode # + 1 modified by Mee
-                # arduino.exe 有些錯誤會直接用對話窗顯示, 不會輸出 stderr
-                elif not error and not out and process.returncode == 0:
-                    process.returncode = 1
-
+                # returncode 0 : success
+                #            1 : error 
                 exit_code = process.returncode
                 print('Arduino output:\n%s' % out)
                 print('Arduino Error output:\n%s' % error)
